@@ -14,7 +14,7 @@ Topics:
 ### Initialize Project
   * Clone the project.
   * Run the server using `node server.js`
-  * In a separate folder create your project.  Install the following packages `redux`, `react-redux`, `redux-promise`, `react-router-dom`, and `prop-types`.
+  * In a separate folder create your project.  Install the following packages `redux`, `react-redux`, `redux-promise`, `react-dom`, `react-router-dom`, `prop-types`, and `axios`.
   * Set up your router to serve two pages.
   * Your home page should retrieve a list of movies from the server and display them.
   * When a user clicks on a movie title they should be taken to a second page that displays more info about each movie.
