@@ -26,4 +26,4 @@ Topics:
  * The two routes on the server are `/api/movies` which returns the array of movies and `/api/movies/:id` which accepts the `id` from the movie object as a route parameter.  Both routes are meant to handle `GET` requests.
 
 ### Extra Credit
- * Add a new page `/new-movie` that displays some input fields that allow the user to post a new movie to the server.  The route on the server `/api/movies` accepts a post request and an object for the new movie as part of the body.  Make sure that it matches the format of the existing movie objects.
+ * Add a new page `/new-movie` that displays some input fields that allow the user to post a new movie to the server.  The route on the server `/api/movies` accepts a post request and an object for the new movie as part of the body.  Make sure that it matches the format of the existing movie objects and includes a unique `id`.
