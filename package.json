@@ -4,22 +4,21 @@
   "description": "",
   "main": "server.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/SunJieMing/LS-Routing-Movies.git"
+    "url": "git+https://github.com/LambdaSchool/SPA-Routing-React"
   },
-  "author": "",
+  "author": "Lambda School",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/SunJieMing/LS-Routing-Movies/issues"
+    "url": "https://github.com/LambdaSchool/SPA-Routing-React/issues"
   },
-  "homepage": "https://github.com/SunJieMing/LS-Routing-Movies#readme",
+  "homepage": "hhttps://github.com/LambdaSchool/SPA-Routing-React#readme",
   "dependencies": {
-    "body-parser": "^1.17.1",
-    "cors": "^2.8.3",
-    "express": "^4.15.2"
+    "body-parser": "^1.18.2",
+    "cors": "^2.8.4",
+    "express": "^4.16.2"
   }
 }
