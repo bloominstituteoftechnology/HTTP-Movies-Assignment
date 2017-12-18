@@ -13,7 +13,8 @@ Topics:
 
 ### Initialize Project
   * **Fork** this repository, then clone your fork.
-  * Run the server using `node server.js`
+  * Run `yarn` or `npm install` to download dependencies.
+  * Run the server using `yarn start`, `npm start` or `node server.js`.
   * In a separate folder use `create-react-app` to create an application.
   * Set up your application's router to serve two pages: the _home_ page and _movie details_.
   * Your home page should retrieve a list of movies from the server and display them.
