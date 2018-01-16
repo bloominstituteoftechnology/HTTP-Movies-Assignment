@@ -5,10 +5,7 @@ Topics:
 * React Router
 * Passing Route Parameters
 
-## Project Description
-
-### Initialize Project
-
+## Instructions
 * **Fork** this repository, then clone your fork.
 * Run `yarn` or `npm install` to download dependencies.
 * Run the server using `yarn start`, `npm start` or `node server.js`.
@@ -19,3 +16,4 @@ Topics:
   * one route that will take an `id` parameter after`/movies/` (ex: `/movies/2`, `/movies/3` where the id is dynamic). This route should load the `Movie` component.
 * When a user clicks on a movie card they should be taken to `/movies/id of movie here` to see the details for the selected movie.
 * Add a link back to the home page from the `Movie` component inside `/client/src/Movies/Movie.js`.
+* Modify line 12 on the `Movie` component to read the id from the URL.
