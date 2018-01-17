@@ -6,6 +6,6 @@ import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
 
 ReactDOM.render(
-  <div>Application running add your routing</div>,
+  <div>Application running, add your routing</div>,
   document.getElementById('root')
 );
