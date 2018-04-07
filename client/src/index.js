@@ -2,10 +2,6 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import './index.css';
-import MovieList from './Movies/MovieList';
-import Movie from './Movies/Movie'
+import App from './App'
 
-ReactDOM.render(
-  <div>Application running, add your routing</div>,
-  document.getElementById('root')
-);
+ReactDOM.render(<App />,document.getElementById('root'));
