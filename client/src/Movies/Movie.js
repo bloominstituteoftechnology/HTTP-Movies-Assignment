@@ -1,7 +1,7 @@
-import React from 'react';
+import React, { Component } from 'react';
 import axios from 'axios';
-import MovieCard from './MovieCard'
-export default class Movie extends React.Component {
+
+export default class Movie extends Component {
   constructor(props){
     super(props)
     this.state = {
