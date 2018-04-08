@@ -19,7 +19,6 @@ export default class MovieList extends Component {
         console.error('Server Error', error);
       });
   }
-  F;
 
   render() {
     return (
