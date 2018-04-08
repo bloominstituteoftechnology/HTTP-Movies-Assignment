@@ -1,7 +1,7 @@
-import React from 'react'
+import React from 'react';
 
-const MovieCard = (props) => {
-  return 
-}
+const MovieCard = props => {
+  return;
+};
 
-export default MovieCard
+export default MovieCard;

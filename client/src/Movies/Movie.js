@@ -2,29 +2,29 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class Movie extends Component {
-  constructor(props){
-    super(props)
+  constructor(props) {
+    super(props);
     this.state = {
-      movie: null,
+      movie: null
     };
   }
 
   componentDidMount() {
     // change this line to grab the id passed on the URL
     const id = 1;
-    this.fetchMovie(id)
+    this.fetchMovie(id);
   }
-  
-  fetchMovie = (id) => {
+
+  fetchMovie = id => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(response => {
-        this.setState(() => ({ movie: response.data }))
+        this.setState(() => ({ movie: response.data }));
       })
       .catch(error => {
         console.error(error);
       });
-  }
+  };
 
   // componentWillReceiveProps(newProps){
   //   if(this.props.match.params.id !== newProps.match.params.id){
@@ -32,15 +32,14 @@ export default class Movie extends Component {
   //   }
   // }
 
-
   // saveMovie = () => {
   //   const addToSavedList = this.props.addToSavedList;
   //   addToSavedList(this.state.movie)
   // }
-  
+
   render() {
-    if(!this.state.movie) {
-      return <div>Loading movie information...</div>
+    if (!this.state.movie) {
+      return <div>Loading movie information...</div>;
     }
 
     const { title, director, metascore, stars } = this.state.movie;
