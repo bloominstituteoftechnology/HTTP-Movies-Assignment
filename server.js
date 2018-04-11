@@ -7,8 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(CORS());
 
-const movies = [
-  {
+const movies = [{
     id: 0,
     title: 'The Godfather',
     director: 'Francis Ford Coppola',
