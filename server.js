@@ -52,7 +52,7 @@ const movies = [
   }
 ];
 
-let movieId = movies.length - 1;
+let movieId = movies.length;
 
 app.get('/api/movies', (req, res) => {
   res.send(movies);
@@ -71,9 +71,10 @@ app.post('/api/movies', (req, res) => {
     newMovie['id'] = movieId;
     movies.push(newMovie);
   }
+  ++movieId;
   res.status(201).json(movies);
 });
 
-app.listen(5000, () => {
-  console.log('Server listening on port 5000');
+app.listen(3333, () => {
+  console.log('Server listening on port 3333');
 });
