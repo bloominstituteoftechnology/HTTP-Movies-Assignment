@@ -14,5 +14,10 @@
     "build": "react-scripts build",
     "test": "react-scripts test --env=jsdom",
     "eject": "react-scripts eject"
+  },
+  "quokka": {
+    "babel": {
+      "presets": ["react-app"]
+    }
   }
 }
