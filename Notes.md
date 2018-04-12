@@ -1,0 +1,1 @@
+# There was an error on the api routing it should be to 5000 not 3333. It was in the notes as 5000 but the server.js is defined very differently.
