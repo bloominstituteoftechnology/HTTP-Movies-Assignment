@@ -16,6 +16,53 @@ body {
   margin: 1rem auto;
 }
 
+.movie-card a {
+  text-decoration: none;
+}
+
+.add-movie {
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+  0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+}
+
+.movie-form {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-form .left,
+.movie-form .right,
+.movie-form .controls {
+  display: flex;
+  flex-direction: column;
+  align-items: center
+}
+
+.movie-form input,
+.movie-form button {
+  margin: 10px;
+}
+
+.add-movie-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+
+.add-star-button {
+  padding: 5px 10px;
+  background-color: lightskyblue;
+}
+
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;
