@@ -11,7 +11,7 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
-    // fill me in with an HTTP Request to `localhost:5000/api/movies`
+    // fill me in with an HTTP Request to `localhost:3333/api/movies`
     this.setState({ movies: [] });
   }
 
