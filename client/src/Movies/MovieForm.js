@@ -66,7 +66,7 @@ class MovieForm extends Component {
         <div>
           <input
             title={"stars"}
-            placeholder={"Stars separated by comma"}
+            placeholder={"Actors separated by comma"}
             value={this.state.stars}
             onChange={this.handleTextInput}
           />
