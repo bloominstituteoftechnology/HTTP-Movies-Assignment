@@ -9,9 +9,35 @@ export default class MovieCreate extends Component {
   };
 
   render() {
-    var styles = {
-      backgroundColor: "yellow"
-    };
-    return <div style={styles}>This the MovieCreate Component </div>;
+    
+    return (
+      <div>
+        <input
+          type="text"
+          placeholder="Title"
+          value={this.state.title}
+          onChange={}
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={this.state.title}
+          onChange={}
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={this.state.title}
+          onChange={}
+        />
+        <input
+          type="text"
+          placeholder="Title"
+          value={this.state.title}
+          onChange={}
+        />
+      </div>
+      
+    )
   }
 }
