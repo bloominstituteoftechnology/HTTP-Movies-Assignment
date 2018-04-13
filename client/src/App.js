@@ -31,7 +31,7 @@ export default class App extends Component {
             return <Movie {...props} addToSavedList={this.addToSavedList} />;
           }}
         />
-        <Route path="/movie/create" component={MovieCreate} />
+        <Route path="/movie/add" component={MovieCreate} />
       </div>
     );
   }
