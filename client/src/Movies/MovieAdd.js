@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 
 export default class MovieAdd extends Component {
-  state = {
-    movieTitle: '',
-    director: '',
-    metascore: '',
-    stars: '',
-    starsArr: [],
+  constructor(props) {
+    super(props);
+    this.state = {
+      movieTitle: '',
+      director: '',
+      metascore: '',
+      stars: '',
+      starsArr: [],
+    }
   }
 
   // setInputVal
@@ -35,23 +38,15 @@ export default class MovieAdd extends Component {
       stars: [ ...starsStringSplit ],
     })
       .then(({ data }) => {
-        console.log(data);
-        // clear all text input of any values
-        for (let inputVal in this.state) {
-          // condition specifically for `this.state.starsArr`
-          if (this.state[ inputVal ].constructor === Array) {
-            this.setState({ inputVal: [] })
-          }
-          else {
-            this.setState({ inputVal: '' });
-          }
-        }
+        // routes user to home page
+        this.props.history.push('/');
       })
       .catch(err => console.log('ERR', err));
   }
 
   // render
   render() {
+    console.log(this.props)
     return (
       <div className='movie-form-wrapper'>
         <form>
@@ -98,7 +93,7 @@ export default class MovieAdd extends Component {
             onClick={ this.submitNewMovie }
             value='Submit New Movie'
           />
-          
+
         </form>
       </div>
     )
