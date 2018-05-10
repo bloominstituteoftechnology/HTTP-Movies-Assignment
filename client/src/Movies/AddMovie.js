@@ -51,7 +51,7 @@ class AddMovie extends Component {
             stars.length > 0
         ) {
             axios.post('http://localhost:5000/api/movies', newMovie)
-            .then( res => alert(`Your new movie was POSTED with an ${res.status}`))
+            .then( res => alert(`Your new movie was POSTED with a ${res.status}. Yuhuuu!`))
             .catch( e => console.log(e) );
         } else { alert('To add a new Movie, all fields are required.')}
 
