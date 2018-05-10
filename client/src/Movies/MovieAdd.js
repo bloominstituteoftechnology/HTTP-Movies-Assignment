@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 
+// styles
+import './movieadd.css';
+
 export default class MovieAdd extends Component {
   constructor(props) {
     super(props);
@@ -46,13 +49,13 @@ export default class MovieAdd extends Component {
 
   // render
   render() {
-    console.log(this.props)
     return (
       <div className='movie-form-wrapper'>
-        <form>
+        <form className='movie-form-wrapper__form'>
 
           {/* Movie Title */}
           <input
+            className='form__text-input'
             name='movieTitle'
             onChange={ this.setInputVal }
             placeholder='Movie Title'
@@ -62,6 +65,7 @@ export default class MovieAdd extends Component {
 
           {/* Director */}
           <input
+            className='form__text-input'
             name='director'
             onChange={ this.setInputVal }
             placeholder='Director'
@@ -71,6 +75,7 @@ export default class MovieAdd extends Component {
 
           {/* Metascore */}
           <input
+            className='form__text-input'
             name='metascore'
             onChange={ this.setInputVal }
             placeholder='Metascore'
@@ -80,6 +85,7 @@ export default class MovieAdd extends Component {
 
           {/* Stars */}
           <input
+            className='form__text-input'
             name='stars'
             onChange={ this.setInputVal }
             placeholder='Starring'
@@ -89,6 +95,7 @@ export default class MovieAdd extends Component {
 
           {/* Submit */}
           <input
+            className='form__button-input'
             type='submit'
             onClick={ this.submitNewMovie }
             value='Submit New Movie'
