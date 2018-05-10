@@ -22,11 +22,11 @@ class MovieCreate extends Component {
       title: this.state.title,
       director: this.state.director,
       metascore: this.state.metascore,
-      stars: this.state.stars.split(", ")
+      stars: this.state.stars.split[(", ")]
     };
 
     axios
-      .post(`http://localhost:3333/api/movies`, movie)
+      .post(`http://localhost:5000/api/movies`, movie)
       .then(movie => {
         this.props.updateMovies();
       })
