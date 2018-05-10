@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
-import { Col, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Col, Label, FormText, Button } from 'reactstrap';
+    import { AvForm, AvField, AvGroup, AvInput, AvFeedback, AvRadioGroup, AvRadio } from 'availity-reactstrap-validation';
 import axios from 'axios';
 
 class AddMovie extends Component {
@@ -12,6 +13,7 @@ class AddMovie extends Component {
             stars: [],
             newStar: ''
         }
+
     }
     
     handleChange = e => {
@@ -41,12 +43,17 @@ class AddMovie extends Component {
             director,
             metascore,
             stars} = this.state;
-        
         const newMovie = { title, director, metascore, stars };
         // console.log(newMovie);
-        axios.post('http://localhost:5000/api/movies', newMovie)
-        .then( res => alert(`Your new movie was POSTED with an ${res.status}`))
-        .catch( e => console.log(e) );
+        if (title !== '' &&
+            director !== '' &&
+            metascore !== '' &&
+            stars.length > 0
+        ) {
+            axios.post('http://localhost:5000/api/movies', newMovie)
+            .then( res => alert(`Your new movie was POSTED with an ${res.status}`))
+            .catch( e => console.log(e) );
+        } else { alert('To add a new Movie, all fields are required.')}
 
 
     }
@@ -62,28 +69,28 @@ class AddMovie extends Component {
             metascore,
             newStar);
         return (
-            <Form onChange={this.handleChange} className="movie-card custom-form">
-                <FormGroup row>
+            <AvForm onChange={this.handleChange} className="movie-card custom-form">
+                <AvGroup row>
                     {/* <Label for="title">Add movie title: </Label> */}
                     <Col sm="9" >
-                        <Input value={title} bsSize="lg" type="text" name="title" id="title" placeholder="Movie Title" />
+                        <AvInput required value={title} bsSize="lg" type="text" name="title" id="title" placeholder="Movie Title" />
                     </Col>
-                </FormGroup>
+                </AvGroup>
                 {/* <div className="movie-director">
                     Director: <em>{director}</em>
                 </div> */}
-                <FormGroup row>
+                <AvGroup row>
                     <Label sm={2} for="director">Director:</Label>
                     <Col>
-                    <Input value={director} sm={10} bsSize="sm" type="text" name="director" id="director" placeholder="Pepito Gutierrez" />
+                    <AvInput required value={director} sm={10} bsSize="sm" type="text" name="director" id="director" placeholder="Pepito Gutierrez" />
                     </Col>
-                </FormGroup>
-                <FormGroup row>
+                </AvGroup>
+                <AvGroup row>
                     <Label sm={2} for="metascore">Metascore:</Label>
                     <Col>
-                    <Input value={metascore} sm={10} bsSize="" type="number" name="metascore" id="metascore" placeholder="0" />
+                    <AvInput required value={metascore} sm={10} bsSize="" type="number" name="metascore" id="metascore" placeholder="0" />
                     </Col>
-                </FormGroup>
+                </AvGroup>
 
 
                 {/* <div className="movie-metascore">
@@ -96,17 +103,17 @@ class AddMovie extends Component {
                     {star}
                     </div>
                 ))}
-                <FormGroup >
-                    <Input value={newStar} onKeyPress={this.addStar} bsSize="" type="text" name="newStar" id="star" placeholder="Movie star" />
+                <AvGroup >
+                    <AvInput required value={newStar} onKeyPress={this.addStar} bsSize="" type="text" name="newStar" id="star" placeholder="Movie star" />
                     <FormText color="muted">
                     To add a new actor to the list hit "Enter"
                     </FormText>
-                </FormGroup>
-                <div className="save-button" onClick={this.saveMovie}>
+                </AvGroup>
+                <Button className="save-button" onClick={this.saveMovie}>
                     Add Movie
-                </div>
+                </Button>
             {/* </div> */}
-            </Form>
+            </AvForm>
         );
     }
 }
