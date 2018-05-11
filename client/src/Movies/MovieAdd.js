@@ -40,9 +40,13 @@ export default class MovieAdd extends Component {
       metascore: +this.state.metascore,
       stars: [ ...starsStringSplit ],
     })
-      .then(({ data }) => {
-        // routes user to home page
-        this.props.history.push('/');
+      .then(() => {
+        const movieForm = document.querySelector('.movie-form-wrapper__form');
+        movieForm.classList.add('movie-form-wrapper__form--hide');
+
+        setTimeout(() => {
+          this.props.history.push('/');
+        }, 800);
       })
       .catch(err => console.log('ERR', err));
   }
