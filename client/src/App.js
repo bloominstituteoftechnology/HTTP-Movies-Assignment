@@ -36,8 +36,11 @@ export default class App extends Component {
     this.setState({ savedList });
   }
 
-  handleSetData = data => {
-    this.setState({ movies: data });
+  handleSetData = (data, id) => {
+    const savedList = this.state.savedList
+      .filter(saved => saved.id !== id);
+
+    this.setState({ movies: data, savedList });
   }
 
   render() {

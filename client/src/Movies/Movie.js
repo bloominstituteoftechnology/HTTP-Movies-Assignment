@@ -38,7 +38,7 @@ export default class Movie extends React.Component {
       .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
       .then(response => {
         this.setState({ movie: null })
-        this.props.handleSetData(response.data);
+        this.props.handleSetData(response.data, Number(this.props.match.params.id));
         this.props.history.push('/');
       })
       .catch(err => console.log(err));
