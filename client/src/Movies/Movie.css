@@ -1,0 +1,50 @@
+.create-movie {
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  align-items: center;
+  font-size: 26px;
+}
+
+.create-movie input {
+  width: 500px;
+  height: 30px;
+  font-size: 18px;
+  border-radius: 5px;
+  padding: 5px 10px;
+  border: 1px solid gray;
+}
+.create-movie label {
+  margin: 10px 0;
+}
+
+.create-movie textarea {
+  height: 100px;
+  width: 500px;
+  border-radius: 5px;
+  padding: 10px;
+  border: 1px solid gray;
+  font-size: 18px;
+}
+.create-movie button {
+  height: 50px;
+  width: 200px;
+  font-size: 26px;
+  border-radius: 5px;
+  padding: 5px;
+  margin: 10px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightcoral;
+}
+.create-movie button:hover {
+  color: lightcoral;
+  background: #fff;
+}
+.add-button {
+  background: lightcoral;
+  padding: 5px 10px;
+  text-decoration: none;
+  margin: 5px;
+  text-align: center;
+}

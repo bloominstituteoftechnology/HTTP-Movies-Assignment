@@ -4,7 +4,12 @@ body {
   font-family: sans-serif;
   background-color: #f2f2f2;
 }
-
+a {
+  text-decoration: none;
+}
+a:hover {
+  cursor: pointer;
+}
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -69,6 +74,9 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  text-decoration: none;
+  margin: 5px;
+  text-align: center;
 }
 
 .movie-warning {
