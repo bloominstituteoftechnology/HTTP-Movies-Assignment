@@ -14,7 +14,6 @@ export default class MovieList extends Component {
 
   
   componentDidMount() {
-    console.log(URL)
     // fill me in with an HTTP Request to `localhost:5000/api/movies`
     axios
     .get(URL)
