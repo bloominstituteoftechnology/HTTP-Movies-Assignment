@@ -1,4 +1,4 @@
-# HTTP Movies - Stretch Assignment
+# HTTP Movies - Stretch Assignment 
 
 * The good news here is that you've seen this all before!
 * Everything should be working the way you previously had built this project, with one major difference, we are no longer sending out HTTP requests for you.
