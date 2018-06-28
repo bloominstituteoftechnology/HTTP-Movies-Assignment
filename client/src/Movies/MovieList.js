@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import styled from 'styled-components';
 
 const MovieList = props => {
   const movies = props.movies.slice().reverse();
@@ -14,11 +15,20 @@ const MovieList = props => {
   );
 }
 
+const StyledLink = styled(Link)`
+  text-decoration: none;
+
+  &:focus, &:hover, &:visited, &:link, &:active {
+    text-decoration: none;
+    color: #000;
+  }
+`
+
 function MovieDetails({ movie }) {
   return (
-    <Link to={`/movies/${movie.id}`}>
+    <StyledLink to={`/movies/${movie.id}`}>
       <MovieCard movie={movie} />
-    </Link>
+    </StyledLink>
   );
 }
 
