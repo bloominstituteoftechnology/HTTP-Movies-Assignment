@@ -3,6 +3,7 @@ import { Route } from 'react-router-dom';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
+import axios from 'axios';
 
 export default class App extends Component {
   constructor(){
@@ -11,7 +12,15 @@ export default class App extends Component {
       savedList: []
     }
   }
-
+  componentDidMount() {
+    axios
+    .get('http://localhost:5000/api/movies')
+    .then(response =>{
+        console.log(response)
+        this.setState({ savedList: response.data })
+    })
+   
+  }
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
     const savedList = this.state.savedList;
