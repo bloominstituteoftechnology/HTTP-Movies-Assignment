@@ -16,6 +16,11 @@ class MovieCreate extends React.Component {
     }
 
     handleInput = event => {
+        if (event.target.name === 'metascore') {
+            if (isNaN(event.target.value) || event.target.value.includes('.')) {
+                return;
+            }
+        }
         this.setState({ [event.target.name]: event.target.value });
     }
 
@@ -51,6 +56,7 @@ class MovieCreate extends React.Component {
                 <MovieCard title={this.state.title} director={this.state.director} metascore={this.state.metascore} stars={this.state.stars} />
 
                 <form onSubmit={event => event.preventDefault()}>
+
                     <input value={this.state.title} onChange={this.handleInput} type='text' placeholder='Title' name='title' />
                     <input value={this.state.director} onChange={this.handleInput} type='text' placeholder='Director' name='director' />
                     <input value={this.state.metascore} onChange={this.handleInput} type='text' placeholder='Metascore' name='metascore' />
@@ -58,6 +64,7 @@ class MovieCreate extends React.Component {
 
                     <button onClick={this.handleAddMovie}>Submit</button>
                     <button onClick={this.handleAddStars}>Add actor</button>
+
                 </form>
 
             </div>
