@@ -24,7 +24,7 @@ class MovieCreate extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-
+        if(!(this.state.title || this.state.director || this.state.metascore)){return;}
         const movie = ({
             title: this.state.title,
             director: this.state.director,
