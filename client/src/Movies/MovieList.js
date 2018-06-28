@@ -12,7 +12,16 @@ export default class MovieList extends Component {
 
   componentDidMount() {
     // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    axios
+    .get('http://localhost:5000/api/movies')
+    .then(res => {
+      console.log(res)
+      this.setState({ movies: res.data });
+    })
+    .catch(err => {
+      console.log(err)
+    })
+    
   }
 
   render() {

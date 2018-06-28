@@ -13,12 +13,12 @@ export default class App extends Component {
     }
   }
   componentDidMount() {
-    axios
-    .get('http://localhost:5000/api/movies')
-    .then(response =>{
-        console.log(response)
-        this.setState({ savedList: response.data })
-    })
+    // axios
+    // .get('http://localhost:5000/api/movies')
+    // .then(response =>{
+    //     console.log(response)
+    //     this.setState({ savedList: response.data })
+    // })
    
   }
   addToSavedList = (movie) => {
