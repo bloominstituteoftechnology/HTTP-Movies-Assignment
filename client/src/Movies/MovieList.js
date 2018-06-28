@@ -61,15 +61,15 @@ export default class MovieList extends Component {
 
   render() {
     return (
-      <div>
-        
-        <MovieCreate handleSave={this.handleSave} onChange={this.onChange} propsData={this.state} />
-      <div className="movie-list">
-
-        {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
-        ))}
-      </div>
+      <div className='movieField'>
+        <div className='inputField'>
+          <MovieCreate handleSave={this.handleSave} onChange={this.onChange} propsData={this.state} />
+        </div>
+        <div className="movie-list">
+          {this.state.movies.map(movie => (
+            <MovieDetails key={movie.id} movie={movie} />
+          ))}
+        </div>
 
       </div>
     );

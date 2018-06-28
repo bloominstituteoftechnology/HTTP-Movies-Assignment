@@ -75,3 +75,11 @@ body {
   color: red;
   text-align: center;
 }
+.movieField {
+  max-width: 80%;
+  margin: 0 auto;
+}
+
+.inputField input, .inputField button {
+  font-size: 1.1rem;
+}
