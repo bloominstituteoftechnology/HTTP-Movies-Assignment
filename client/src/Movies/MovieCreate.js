@@ -35,10 +35,10 @@ class MovieCreate extends React.Component {
         this.setState({ stars, actor: '' });
     };
 
-
     render() {
         return (
             <div className='save-wrapper'>
+
                 <MovieCard title={this.state.title} director={this.state.director} metascore={this.state.metascore} stars={this.state.stars} />
 
                 <form onSubmit={event => event.preventDefault()}>
@@ -50,6 +50,7 @@ class MovieCreate extends React.Component {
                     <button onClick={this.handleAddMovie}>Submit</button>
                     <button onClick={this.handleAddStars}>Add Actor</button>
                 </form>
+
             </div>
         );
     }
