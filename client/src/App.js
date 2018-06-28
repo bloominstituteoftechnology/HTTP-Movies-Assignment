@@ -12,15 +12,7 @@ export default class App extends Component {
       savedList: []
     }
   }
-  componentDidMount() {
-    // axios
-    // .get('http://localhost:5000/api/movies')
-    // .then(response =>{
-    //     console.log(response)
-    //     this.setState({ savedList: response.data })
-    // })
-   
-  }
+  
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
     const savedList = this.state.savedList;
