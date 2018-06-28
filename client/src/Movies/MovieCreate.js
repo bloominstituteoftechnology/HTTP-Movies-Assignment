@@ -1,6 +1,6 @@
 import React from 'react';
 import axios from 'axios';
-import MovieCard from './MovieCard';
+import '../index.css'
 const URL = `http://localhost:5000/api/movies`;
 
 class MovieCreate extends React.Component {
@@ -16,7 +16,7 @@ class MovieCreate extends React.Component {
     }
     addStars = (num) => {
         let person = [];
-        for(let i = 0; i < num; ++i){
+        for (let i = 0; i < num; ++i) {
             person[i] = prompt(`Please enter Actor#${i + 1}`)
         }
         return person;
@@ -24,23 +24,28 @@ class MovieCreate extends React.Component {
 
     handleSubmit = e => {
         e.preventDefault();
-        this.state.stars =  this.addStars(this.state.starAmount);
-        const movie = ({ title: this.state.title, director: this.state.director, metascore: this.state.metascore, stars: this.state.stars });
+
+        const movie = ({
+            title: this.state.title,
+            director: this.state.director,
+            metascore: this.state.metascore,
+            stars: this.addStars(this.state.starAmount)
+        });
         axios
             .post(URL, movie)
-            .then(this.setState({title: '', director: '', metascore: '', stars: '',starAmount: ''}))
-           .catch(err => {
-               console.log(err);
-           })
+            .then(this.setState({ title: '', director: '', metascore: '', stars: '', starAmount: '' }))
+            .catch(err => {
+                console.log(err);
+            })
     }
-   
+
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
 
     render() {
         return (
-            <form onSubmit={this.handleSubmit}>
+            <form className="add-form" onSubmit={this.handleSubmit}>
                 <input
                     type="text"
                     placeholder="Title"
@@ -63,11 +68,11 @@ class MovieCreate extends React.Component {
                     value={this.state.metascore}
                 />
                 <input
-                type="number"
-                placeholder="How many actors"
-                name='starAmount'
-                onChange={this.handleChange}
-                value={this.state.starAmount}
+                    type="number"
+                    placeholder="How many actors"
+                    name='starAmount'
+                    onChange={this.handleChange}
+                    value={this.state.starAmount}
                 />
                 <button>Submit</button>
             </form>

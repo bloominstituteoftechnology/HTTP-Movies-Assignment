@@ -75,3 +75,8 @@ body {
   color: red;
   text-align: center;
 }
+
+.add-form {
+  margin: 0 auto;
+  display:flex;
+}
