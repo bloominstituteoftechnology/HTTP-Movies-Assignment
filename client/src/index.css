@@ -78,5 +78,13 @@ body {
 
 .add-form {
   margin: 0 auto;
-  display:flex;
+  width: 20%;
+  height: 300px;
+  display: flex;
+  flex-flow: column wrap;
+  justify-content: space-between;
+}
+
+.input-form {
+  height: 30px;
 }

@@ -14,7 +14,7 @@ class MovieCreate extends React.Component {
             starAmount: ''
         };
     }
-    addStars = (num) => {
+    addStars(num) {
         let person = [];
         for (let i = 0; i < num; ++i) {
             person[i] = prompt(`Please enter Actor#${i + 1}`)
@@ -47,6 +47,7 @@ class MovieCreate extends React.Component {
         return (
             <form className="add-form" onSubmit={this.handleSubmit}>
                 <input
+                    className="input-form"
                     type="text"
                     placeholder="Title"
                     name="title"
@@ -54,6 +55,7 @@ class MovieCreate extends React.Component {
                     value={this.state.title}
                 />
                 <input
+                    className="input-form"
                     type="text"
                     placeholder="Director"
                     name="director"
@@ -61,6 +63,7 @@ class MovieCreate extends React.Component {
                     value={this.state.director}
                 />
                 <input
+                    className="input-form"
                     type="number"
                     placeholder="Metascore"
                     name="metascore"
@@ -68,13 +71,14 @@ class MovieCreate extends React.Component {
                     value={this.state.metascore}
                 />
                 <input
+                    className="input-form"
                     type="number"
                     placeholder="How many actors"
                     name='starAmount'
                     onChange={this.handleChange}
                     value={this.state.starAmount}
                 />
-                <button>Submit</button>
+                <button  className="input-form">Submit</button>
             </form>
         );
     }
