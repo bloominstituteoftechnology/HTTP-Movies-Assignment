@@ -20,7 +20,7 @@ export default class App extends Component {
 
   handleMovieSubmit = () => {
     const newMovie = { title: this.state.title,
-                       director: this.state.age,
+                       director: this.state.director,
                        metascore: this.state.metascore,
                        stars: this.state.stars.split(", ") };
 
