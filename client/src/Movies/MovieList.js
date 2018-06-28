@@ -3,9 +3,11 @@ import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
 const MovieList = props => {
+  const movies = props.movies.slice().reverse();
+
   return (
     <div className="movie-list">
-      {props.movies.map(movie => (
+      {movies.map(movie => (
         <MovieDetails key={movie.id} movie={movie} />
       ))}
     </div>
