@@ -127,3 +127,9 @@ body {
   padding: 5px 10px;
   background-color: lightskyblue; 
 }
+
+.checkbox {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 20px;
+}

@@ -1,6 +1,7 @@
 import React from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
+import { Label, Input } from 'reactstrap';
 
 class MovieCreate extends React.Component {
     constructor(props) {
@@ -8,6 +9,7 @@ class MovieCreate extends React.Component {
 
         this.state = {
             movie: null,
+            stayInPage: false,
             title: '',
             director: '',
             actor: '',
@@ -49,7 +51,7 @@ class MovieCreate extends React.Component {
         const { title, director, stars } = this.state;
         const metascore = Number(this.state.metascore);
         const movie = { title, director, metascore, stars }
-
+        console.log(this.props);
         if (title === '' || director === '' || metascore === '' || stars.length === 0) {
             alert('You forgot to input a value!');
             return;
@@ -60,6 +62,7 @@ class MovieCreate extends React.Component {
             .then(response => {
                 this.setState({ title: '', director: '', metascore: '', stars: [] })
                 this.props.handleSetData(response.data);
+                this.state.stayInPage ? null : this.props.history.push('/');
             })
             .catch(err => console.log(err));
     }
@@ -76,7 +79,10 @@ class MovieCreate extends React.Component {
 
         axios
             .put(`http://localhost:5000/api/movies/${this.props.movie}`, movie)
-            .then(response => this.props.handleSetData(response.data))
+            .then(response => {
+                this.props.handleSetData(response.data);
+                this.state.stayInPage ? null : this.props.history.push('/');
+            })
             .catch(err => console.log(err));
     }
 
@@ -87,7 +93,7 @@ class MovieCreate extends React.Component {
     };
 
     render() {
-
+        console.log(this.state.stayInPage);
         return (
             <div className='save-wrapper'>
 
@@ -104,6 +110,13 @@ class MovieCreate extends React.Component {
                     <button className='add-buttons' onClick={this.state.movie ? this.handleEditMovie : this.handleAddMovie}>{this.state.movie ? 'Save' : 'Submit'}</button>
 
                 </form>
+
+                <div className='checkbox'>
+                    <Label check>
+                        <Input type="checkbox" onChange={() => this.setState({ stayInPage: !this.state.stayInPage })} />
+                        Stay in page?
+                    </Label>
+                </div>
 
             </div>
         );
