@@ -53,6 +53,7 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
+
 .save-button {
   position: absolute;
   top: 25px;
@@ -88,4 +89,18 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.add-form {
+  display: flex;
+  justify-content: space-between;
+}
+
+.input-field {
+  width: 20%;
+}
+
+.add-buttons {
+  padding: 5px 10px;
+  background-color: lightskyblue; 
 }

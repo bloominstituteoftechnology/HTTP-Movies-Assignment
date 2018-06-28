@@ -55,15 +55,15 @@ class MovieCreate extends React.Component {
 
                 <MovieCard title={this.state.title} director={this.state.director} metascore={this.state.metascore} stars={this.state.stars} />
 
-                <form onSubmit={event => event.preventDefault()}>
+                <form className='add-form' onSubmit={event => event.preventDefault()}>
 
-                    <input value={this.state.title} onChange={this.handleInput} type='text' placeholder='Title' name='title' />
-                    <input value={this.state.director} onChange={this.handleInput} type='text' placeholder='Director' name='director' />
-                    <input value={this.state.metascore} onChange={this.handleInput} type='text' placeholder='Metascore' name='metascore' />
-                    <input value={this.state.actor} onChange={this.handleInput} type='text' placeholder='Actor' name='actor' />
-
-                    <button onClick={this.handleAddMovie}>Submit</button>
-                    <button onClick={this.handleAddStars}>Add actor</button>
+                    <input className='input-field' value={this.state.title} onChange={this.handleInput} type='text' placeholder='Title' name='title' />
+                    <input className='input-field' value={this.state.director} onChange={this.handleInput} type='text' placeholder='Director' name='director' />
+                    <input className='input-field' value={this.state.metascore} onChange={this.handleInput} type='text' placeholder='Metascore' name='metascore' />
+                    <input className='input-field' value={this.state.actor} onChange={this.handleInput} type='text' placeholder='Actor' name='actor' />
+                    
+                    <button className='add-buttons' onClick={this.handleAddStars}>Add actor</button>
+                    <button className='add-buttons' onClick={this.handleAddMovie}>Submit</button>
 
                 </form>
 
