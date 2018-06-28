@@ -38,7 +38,7 @@ const movies = [{
   {
     id: 4,
     title: 'Dumb and Dumber',
-    director: 'The Farely Brothers',
+    director: 'The Farrelly Brothers',
     metascore: 76,
     stars: ['Jim Carrey', 'Jeff Daniels', 'Lauren Holly']
   },
