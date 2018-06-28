@@ -1,6 +1,10 @@
 import React from 'react';
-import axios from 'axios';
+import { get } from 'axios';
 import MovieCard from './MovieCard';
+
+const URL = 'http://localhost:5000/api/movies'
+const { log: l } = console
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -22,6 +26,11 @@ export default class Movie extends React.Component {
   fetchMovie = id => {
     // this function needs to fire off a get request to localhost:5000/api/movies/:id
     // note that the id is dynamic.
+
+    get(`${URL}/${id}`)
+      .then(({ data: movie }) => this.setState({movie})) 
+      .catch(e => l('uh oh', e))
+
   };
 
   saveMovie = () => {

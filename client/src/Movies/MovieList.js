@@ -1,7 +1,11 @@
 import React, { Component } from 'react';
-import axios from 'axios';
+import { get } from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+
+const URL = 'http://localhost:5000/api/movies'
+const { log: l } = console
+
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +16,9 @@ export default class MovieList extends Component {
 
   componentDidMount() {
     // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    get(URL)
+      .then(({ data: movies }) => this.setState({movies}))
+      .catch(e => l('uh oh', e))
   }
 
   render() {
