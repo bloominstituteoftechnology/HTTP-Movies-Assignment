@@ -22,10 +22,29 @@ export default class MovieList extends Component {
     this.setState({ newMovie: e.target.value })
   }
 
+  handleSubmit = (e) => {
+    e.preventDefault()
+    const newMovie = {
+      title: this.state.newMovie,
+      director: 'George P. Cosmatos',
+      metascore: 89,
+      stars: [ 'Kurt Russell', 'Bill Paxton', 'Sam Elliot' ]
+    }
+    axios
+      .post('http://localhost:5000/api/movies/', newMovie)
+      .then((res) =>
+        this.setState({
+          movies: res.data,
+          newMovie: ''
+        })
+      )
+      .catch((err) => console.log(err))
+  }
+
   render () {
     return (
       <div>
-        <form>
+        <form onSubmit={this.handleSubmit}>
           <input
             placerholder='add new movie'
             value={this.state.newMovie}
