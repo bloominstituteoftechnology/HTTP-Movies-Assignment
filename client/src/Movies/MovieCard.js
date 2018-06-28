@@ -14,7 +14,7 @@ const MovieCard = props => {
       <h3>Actors</h3>
 
       {stars.map((star, index) => (
-        <div key={star + index} className="movie-star">
+        <div onClick={() => props.deleteActor ? props.deleteActor(index) : null} key={star + index} className="movie-star">
           {star}
         </div>
       ))}

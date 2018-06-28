@@ -91,12 +91,20 @@ class MovieCreate extends React.Component {
         this.setState({ stars, actor: '' });
     };
 
+    deleteActor = index => {
+        console.log(index);
+        const stars = this.state.stars.slice();
+
+        stars.splice(index, 1);
+
+        this.setState({ stars })
+    }
+
     render() {
-        console.log(this.state.stayInPage);
         return (
             <div className='save-wrapper'>
 
-                <MovieCard title={this.state.title} director={this.state.director} metascore={this.state.metascore} stars={this.state.stars} />
+                <MovieCard deleteActor={this.deleteActor} title={this.state.title} director={this.state.director} metascore={this.state.metascore} stars={this.state.stars} />
 
                 <form className='add-form' onSubmit={event => event.preventDefault()}>
 
