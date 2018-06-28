@@ -29,7 +29,9 @@ export default class App extends Component {
     this.setState({ savedList });
   }
 
-
+  handleSetData = data => {
+    this.setState({ movies: data });
+  }
 
   render() {
     return (
@@ -37,7 +39,7 @@ export default class App extends Component {
         <SavedList list={this.state.savedList} />
         <Route exact path="/" render={props => <MovieList {...props} movies={this.state.movies} />} />
         <Route path="/movies/:id" render={(props) => {
-          return (<Movie {...props} addToSavedList={this.addToSavedList} />)
+          return (<Movie {...props} addToSavedList={this.addToSavedList} handleSetData={this.handleSetData} />)
         }} />
         <Route path='/movie/add' component={MovieCreate} />
       </div>
