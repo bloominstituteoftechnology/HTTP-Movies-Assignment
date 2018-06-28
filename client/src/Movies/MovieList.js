@@ -6,13 +6,15 @@ export default class MovieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      movies: [],
     };
   }
 
   componentDidMount() {
-    // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    axios
+      .get('http://localhost:5000/api/movies')
+      .then(response => this.setState({ movies: response.data }))
+      .catch(err => console.log('ERR getting:', err));
   }
 
   render() {
