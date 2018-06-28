@@ -11,20 +11,29 @@ class MovieCreate extends React.Component {
             director: '',
             metascore: '',
             stars: [],
+            starAmount: ''
         };
+    }
+    addStars = (num) => {
+        let person = [];
+        for(let i = 0; i < num; ++i){
+            person[i] = prompt(`Please enter Actor#${i + 1}`)
+        }
+        return person;
     }
 
     handleSubmit = e => {
         e.preventDefault();
-        const movie = ({ title: this.state.title, director: this.state.director, metascore: this.state.director, stars: ['a','b','c'] });
+        this.state.stars =  this.addStars(this.state.starAmount);
+        const movie = ({ title: this.state.title, director: this.state.director, metascore: this.state.metascore, stars: this.state.stars });
         axios
             .post(URL, movie)
-            .then(this.setState({title: '', director: '', metascore: '', stars: ''}))
+            .then(this.setState({title: '', director: '', metascore: '', stars: '',starAmount: ''}))
            .catch(err => {
                console.log(err);
            })
     }
-
+   
     handleChange = e => {
         this.setState({ [e.target.name]: e.target.value })
     }
@@ -52,6 +61,13 @@ class MovieCreate extends React.Component {
                     name="metascore"
                     onChange={this.handleChange}
                     value={this.state.metascore}
+                />
+                <input
+                type="number"
+                placeholder="How many actors"
+                name='starAmount'
+                onChange={this.handleChange}
+                value={this.state.starAmount}
                 />
                 <button>Submit</button>
             </form>
