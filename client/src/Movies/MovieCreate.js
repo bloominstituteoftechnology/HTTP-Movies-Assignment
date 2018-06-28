@@ -7,12 +7,33 @@ class MovieCreate extends React.Component {
         super(props);
 
         this.state = {
+            movie: null,
             title: '',
             director: '',
             actor: '',
             metascore: '',
             stars: [],
         }
+    }
+
+    componentDidMount() {
+        if (this.props.movie) {
+            this.getMovieInfo(this.props.movie);
+        }
+    }
+
+    getMovieInfo = id => {
+        axios
+            .get(`http://localhost:5000/api/movies/${id}`)
+            .then(response => this.setState({
+                movie: response.data,
+                title: response.data.title,
+                director: response.data.director,
+                metascore: response.data.metascore,
+                stars: response.data.stars
+            }))
+            .catch(err => console.log(err));
+
     }
 
     handleInput = event => {
@@ -43,6 +64,22 @@ class MovieCreate extends React.Component {
             .catch(err => console.log(err));
     }
 
+    handleEditMovie = () => {
+        const { title, director, stars } = this.state;
+        const metascore = Number(this.state.metascore);
+        const movie = { title, director, metascore, stars }
+
+        if (title === '' || director === '' || metascore === '' || stars.length === 0) {
+            alert('You forgot to input a value!');
+            return;
+        }
+
+        axios
+            .put(`http://localhost:5000/api/movies/${this.props.movie}`, movie)
+            .then(response => this.props.handleSetData(response.data))
+            .catch(err => console.log(err));
+    }
+
     handleAddStars = () => {
         const stars = this.state.stars.slice();
         stars.push(this.state.actor);
@@ -50,6 +87,7 @@ class MovieCreate extends React.Component {
     };
 
     render() {
+
         return (
             <div className='save-wrapper'>
 
@@ -61,9 +99,9 @@ class MovieCreate extends React.Component {
                     <input className='input-field' value={this.state.director} onChange={this.handleInput} type='text' placeholder='Director' name='director' />
                     <input className='input-field' value={this.state.metascore} onChange={this.handleInput} type='text' placeholder='Metascore' name='metascore' />
                     <input className='input-field' value={this.state.actor} onChange={this.handleInput} type='text' placeholder='Actor' name='actor' />
-                    
+
                     <button className='add-buttons' onClick={this.handleAddStars}>Add actor</button>
-                    <button className='add-buttons' onClick={this.handleAddMovie}>Submit</button>
+                    <button className='add-buttons' onClick={this.state.movie ? this.handleEditMovie : this.handleAddMovie}>{this.state.movie ? 'Save' : 'Submit'}</button>
 
                 </form>
 

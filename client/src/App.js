@@ -4,6 +4,7 @@ import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
 import MovieCreate from './Movies/MovieCreate';
+import MovieEdit from './Movies/MovieEdit';
 import axios from 'axios';
 
 export default class App extends Component {
@@ -52,6 +53,7 @@ export default class App extends Component {
           return (<Movie {...props} addToSavedList={this.addToSavedList} handleSetData={this.handleSetData} />)
         }} />
         <Route path='/movie/add' render={props => <MovieCreate {...props} handleSetData={this.handleSetData} />} />
+        <Route path='/:id/edit' render={props => <MovieEdit {...props} handleSetData={this.handleSetData} />} />
       </div>
     )
   }

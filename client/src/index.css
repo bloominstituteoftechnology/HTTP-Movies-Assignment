@@ -61,16 +61,29 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  cursor: pointer;
+}
+
+.edit-button {
+  position: absolute;
+  top: 67px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  cursor: pointer;
 }
 
 .delete-button {
     position: absolute;
-    top: 67px;
+    top: 109px;
     right: 25px;
     border: 1px solid grey;
     padding: 5px 10px;
     background-color: red;
+    cursor: pointer;
 }
+
 .save-button:hover {
   background-color: green;
   color: white;
