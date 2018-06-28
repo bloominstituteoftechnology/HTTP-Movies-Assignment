@@ -35,7 +35,6 @@ class MovieCreate extends React.Component {
                 stars: response.data.stars
             }))
             .catch(err => console.log(err));
-
     }
 
     handleInput = event => {
@@ -51,7 +50,7 @@ class MovieCreate extends React.Component {
         const { title, director, stars } = this.state;
         const metascore = Number(this.state.metascore);
         const movie = { title, director, metascore, stars }
-        console.log(this.props);
+
         if (title === '' || director === '' || metascore === '' || stars.length === 0) {
             alert('You forgot to input a value!');
             return;
