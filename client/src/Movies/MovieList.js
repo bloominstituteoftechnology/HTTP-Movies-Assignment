@@ -6,7 +6,8 @@ export default class MovieList extends Component {
   constructor (props) {
     super(props)
     this.state = {
-      movies: []
+      movies: [],
+      newMovie: ''
     }
   }
   componentDidMount () {
@@ -17,12 +18,25 @@ export default class MovieList extends Component {
       .catch((err) => console.log(err))
   }
 
+  handleChange = (e) => {
+    this.setState({ newMovie: e.target.value })
+  }
+
   render () {
     return (
-      <div className='movie-list'>
-        {this.state.movies.map((movie) => (
-          <MovieDetails key={movie.id} movie={movie} />
-        ))}
+      <div>
+        <form>
+          <input
+            placerholder='add new movie'
+            value={this.state.newMovie}
+            onChange={this.handleChange}
+          />
+        </form>
+        <div className='movie-list'>
+          {this.state.movies.map((movie) => (
+            <MovieDetails key={movie.id} movie={movie} />
+          ))}
+        </div>
       </div>
     )
   }
