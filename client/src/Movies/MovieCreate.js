@@ -1,8 +1,13 @@
 import React from 'react';
 import axios from 'axios';
+import styled from 'styled-components';
 /* prettier-ignore */
 import { Col, Button, Form, FormGroup, Label, Input, } from 'reactstrap';
 
+const StyledForm = styled(Form)`
+  width: 500px;
+  margin-left: 12.8%;
+`;
 export default class MovieCreate extends React.Component {
   constructor() {
     super();
@@ -56,7 +61,7 @@ export default class MovieCreate extends React.Component {
 
   render() {
     return (
-      <Form>
+      <StyledForm>
         <FormGroup row>
           <Label for="Title" sm={2}>
             Title
@@ -109,7 +114,7 @@ export default class MovieCreate extends React.Component {
         <Button color="primary" onClick={this.handleSubmit}>
           Submit
         </Button>
-      </Form>
+      </StyledForm>
     );
   }
 }
