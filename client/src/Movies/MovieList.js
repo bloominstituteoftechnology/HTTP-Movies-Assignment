@@ -44,9 +44,10 @@ export default class MovieList extends Component {
   render () {
     return (
       <div>
-        <form onSubmit={this.handleSubmit}>
+        <form className='form' onSubmit={this.handleSubmit}>
           <input
-            placerholder='add new movie'
+            className='movie-input'
+            placeholder='add new movie'
             value={this.state.newMovie}
             onChange={this.handleChange}
           />

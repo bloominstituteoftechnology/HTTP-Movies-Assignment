@@ -42,6 +42,7 @@ body {
 
 .saved-movie {
   margin: 0 10px;
+  color: black;
 }
 .saved-active {
   color: blue;
@@ -64,14 +65,44 @@ body {
 .save-button:hover {
   background-color: green;
   color: white;
+  cursor: pointer;
+}
+
+.delete-btn {
+  position: absolute;
+  top: 61px;
+  right: 23px;
+  border: 1px solid gray;
+  padding: 4px 6px;
+  background-color: #cd4141;
+}
+
+.delete-btn:hover {
+  background-color: #b45d5d;
+  cursor: pointer;
 }
 
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  cursor: pointer;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.movie-input {
+  align-self: center;
+}
+
+.form {
+  display: flex;
+  justify-content: center;
+}
+
+a {
+  color: black;
+  text-decoration: none;
 }
