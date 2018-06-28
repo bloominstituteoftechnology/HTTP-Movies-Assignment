@@ -92,11 +92,8 @@ class MovieCreate extends React.Component {
     };
 
     deleteActor = index => {
-        console.log(index);
         const stars = this.state.stars.slice();
-
         stars.splice(index, 1);
-
         this.setState({ stars })
     }
 
