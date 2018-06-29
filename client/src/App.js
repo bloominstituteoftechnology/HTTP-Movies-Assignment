@@ -30,6 +30,13 @@ export default class App extends Component {
     console.log("title is: ", this.state.title)
     console.log("director is: ", this.state.directors)
   }
+
+  changeStars = event => {
+    let arrayEvent = event.target.value.split(", ");
+    this.setState({[event.target.name]: arrayEvent})
+    console.log("title is: ", this.state.title)
+    console.log("director is: ", this.state.directors)
+  }
   
   addmovie = () => {
     const movie = { title: this.state.title, director: this.state.director, metascore: this.state.metascore, stars: this.state.stars }
@@ -45,7 +52,7 @@ export default class App extends Component {
       <div>
         <SavedList list={this.state.savedList} />
         <Link to="/movies/addMovieForm"><button>Add New Movie</button></Link>    
-        <Route exact path="/movies/addMovieForm" render={props => <AddMovieForm {...props} change={this.change} addmovie={this.addmovie} />} /> 
+        <Route exact path="/movies/addMovieForm" render={props => <AddMovieForm {...props} changeStars={this.changeStars} change={this.change} addmovie={this.addmovie} />} /> 
         <Route exact path="/" component={MovieList} />
         <Route path="/movies/:id" render={ (props) => {
           return(<Movie {...props} addToSavedList={this.addToSavedList}/>)

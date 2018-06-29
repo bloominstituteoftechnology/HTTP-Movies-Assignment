@@ -20,7 +20,7 @@ const AddMovieForm = props => {
             />
             <input 
                 placeholder="stars" 
-                onChange={props.change}
+                onChange={props.changeStars}
                 name="stars"
             />
             <button onClick={props.addmovie}>Add</button>
