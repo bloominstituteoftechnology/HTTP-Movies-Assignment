@@ -41,10 +41,15 @@ export default class App extends Component {
     this.setState({ [e.target.name]: e.target.value });
   }
 
+  handleSetData = (data, id) => {
+    const savedList = this.state.savedList.filter(saved => saved.id !== id);
+    this.setState({ movies: data, savedList });
+  }
+
   addToSavedList = (movie) => {
     const savedList = this.state.savedList;
     savedList.push(movie);
-    this.setState({savedList});
+    this.setState({ savedList });
   }
 
   render(){
@@ -59,19 +64,25 @@ export default class App extends Component {
         </div>
 
         <Switch>
+
           <Route exact path="/" component={MovieList} />
-          <Route path="/movies/add" render={ (props) => {
-            return(<MovieCreate {...props} title={this.state.title}
+
+          <Route path="/movies/add" render={ (props) =>
+            <MovieCreate {...props} title={this.state.title}
                                            director={this.state.director}
                                            metascore={this.state.metascore}
                                            stars={this.state.stars}
                                            handleChange={this.handleChange}
-                                           handleMovieSubmit={this.handleMovieSubmit} />)
-          }} />
-          <Route path="/movies/:id" render={ (props) => {
-            return(<Movie {...props} addToSavedList={this.addToSavedList} />)
-          }} />
+                                           handleMovieSubmit={this.handleMovieSubmit} /> }
+          />
+
+          <Route path="/movies/:id" render={(props) => {
+            return ( <Movie {...props} addToSavedList={this.addToSavedList} 
+                                      handleSetData={this.handleSetData} /> )}}
+          />
+
         </Switch>
+
       </div>
     )
   }

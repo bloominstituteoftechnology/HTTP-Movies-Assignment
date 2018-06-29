@@ -24,7 +24,6 @@ export default class Movie extends React.Component {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(response => {
-        console.log("Movie: ", response);
         this.setState({ movie: response.data });
       })
       .catch(error => {
@@ -35,6 +34,19 @@ export default class Movie extends React.Component {
   saveMovie = () => {
     const addToSavedList = this.props.addToSavedList;
     addToSavedList(this.state.movie);
+  };
+
+  handleDelete = () => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
+      .then(response => {
+        console.log(response.data);
+        this.setState({ movie: null });
+        this.props.handleSetData(response.data, Number(this.props.match.params.id));
+      })
+      .catch(err => {
+        console.log(err);
+      });
   };
 
   render() {
@@ -48,6 +60,9 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+        <button className="delete-button" onClick={this.handleDelete}>
+          Delete
+        </button>
       </div>
     );
   }
