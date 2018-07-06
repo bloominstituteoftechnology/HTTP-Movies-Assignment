@@ -30,12 +30,12 @@ export default class Movie extends React.Component {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(response => {
-        console.log("Fetching: ", response.data);
+        console.log("Fetch: ", response.data);
         this.setState({ movie: response.data,
                         title: response.data.title,
                         director: response.data.director,
                         metascore: response.data.metascore,
-                        stars: response.data.stars });
+                        stars: response.data.stars.toString(" ") });
       })
       .catch(error => {
         console.error("Server error: ", error);
@@ -74,14 +74,14 @@ export default class Movie extends React.Component {
     const editedMovie = { title: this.state.title,
                        director: this.state.director,
                        metascore: this.state.metascore,
-                       stars: this.state.stars };
+                       stars: this.state.stars.split(", ") };
 
     axios
       .put(`http://localhost:5000/api/movies/${this.props.match.params.id}`, editedMovie)
       .then(response => {
         console.log("Edit: ", response);
-        this.setState({ isEditing: false });
-        this.props.handleSetData(response.data)
+        const movie = response.data.find(movie => movie.id === Number(this.props.match.params.id));
+        this.setState({ isEditing: false, movie });
       })
       .catch(error => console.log(error));
   }

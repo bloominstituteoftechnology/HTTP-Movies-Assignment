@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import { Route, Switch, withRouter, Link } from 'react-router-dom';
 import axios from 'axios';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
@@ -51,21 +51,23 @@ class App extends React.Component {
   }
 
   addToSavedList = (movie) => {
-    const savedList = this.state.savedList;
-    savedList.push(movie);
-    this.setState({ savedList });
+    if (!this.state.savedList.find(savedMovie => savedMovie.id === movie.id)) {
+      const savedList = this.state.savedList;
+      savedList.push(movie);
+      this.setState({ savedList });
+    }
   }
 
   render(){
     return (
-      <div>
-        <SavedList list={this.state.savedList} />
+      <div className="container">
         <div className="home-button">
           <Link to="/">Home</Link>
         </div>
         <div className="home-button">
           <Link to="/movies/add">Add</Link>
         </div>
+        <SavedList list={this.state.savedList} />
 
         <Switch>
 

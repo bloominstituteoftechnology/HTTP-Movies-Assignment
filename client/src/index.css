@@ -1,8 +1,20 @@
+* {
+  border: 1px solid black;
+}
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background-color: #f2f2f2;
+}
+
+.container {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  margin: 0 auto;
+  width: 1000px;
 }
 
 .movie-card {
@@ -23,15 +35,9 @@ body {
 
 .saved-list {
   background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
-  cursor: pointer;
-  position: relative;
-  margin: 1rem auto;
-  width: 75%;
+  width: 250px;
   display: flex;
+  flex-direction: column;
   align-items: center;
   justify-content: space-between;
 }
@@ -69,9 +75,4 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
-}
-
-.movie-warning {
-  color: red;
-  text-align: center;
 }
