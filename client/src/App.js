@@ -61,34 +61,42 @@ class App extends React.Component {
   render(){
     return (
       <div className="container">
-        <div className="home-button">
-          <Link to="/">Home</Link>
+        <div className="header">
+          <h1>Movies</h1>
+          <div className="header-buttons-container">
+            <div className="home-button">
+              <Link to="/">Home</Link>
+            </div>
+            <div className="home-button">
+              <Link to="/movies/add">Add</Link>
+            </div>
+          </div>
         </div>
-        <div className="home-button">
-          <Link to="/movies/add">Add</Link>
+
+        <div className="saved-list-and-movie-list-container">
+          <SavedList list={this.state.savedList} />
+
+          <Switch>
+
+            <Route exact path="/" component={MovieList} />
+
+            <Route path="/movies/add" render={ (props) =>
+              <MovieForm {...props} title={this.state.title}
+                                    director={this.state.director}
+                                    metascore={this.state.metascore}
+                                    stars={this.state.stars}
+                                    handleChange={this.handleChange}
+                                    handleMovieSubmit={this.handleMovieSubmit} /> }
+            />
+
+            <Route path="/movies/:id" render={(props) => {
+              return ( <Movie {...props} addToSavedList={this.addToSavedList}
+                                        handleSetData={this.handleSetData} /> )}}
+            />
+
+          </Switch>
+
         </div>
-        <SavedList list={this.state.savedList} />
-
-        <Switch>
-
-          <Route exact path="/" component={MovieList} />
-
-          <Route path="/movies/add" render={ (props) =>
-            <MovieForm {...props} title={this.state.title}
-                                  director={this.state.director}
-                                  metascore={this.state.metascore}
-                                  stars={this.state.stars}
-                                  handleChange={this.handleChange}
-                                  handleMovieSubmit={this.handleMovieSubmit} /> }
-          />
-
-          <Route path="/movies/:id" render={(props) => {
-            return ( <Movie {...props} addToSavedList={this.addToSavedList}
-                                      handleSetData={this.handleSetData} /> )}}
-          />
-
-        </Switch>
-
       </div>
     )
   }
