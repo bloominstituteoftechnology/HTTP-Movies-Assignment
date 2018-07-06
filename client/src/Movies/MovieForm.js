@@ -1,6 +1,6 @@
 import React from 'react';
 
-const MovieCreate = props => {
+const MovieForm = props => {
   return(
     <div>
       <form>
@@ -42,4 +42,4 @@ const MovieCreate = props => {
   );
 }
 
-export default MovieCreate;
+export default MovieForm;

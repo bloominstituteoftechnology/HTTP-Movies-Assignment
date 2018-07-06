@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(CORS());
 
-const movies = [{
+let movies = [{
     id: 0,
     title: 'The Godfather',
     director: 'Francis Ford Coppola',
@@ -72,6 +72,25 @@ app.post('/api/movies', (req, res) => {
   }
   ++movieId;
   res.status(201).json(movies);
+});
+
+app.put('/api/movies/:id', (req, res) => {
+  const { id } = req.params;
+  let movieIndex = movies.findIndex(movie => movie.id == id);
+
+  if (movieIndex >= 0) {
+    movies[movieIndex] = { ...movies[movieIndex], ...req.body };
+    res.status(200).json(movies);
+  } else {
+    res
+      .status(404)
+      .json({ message: `The movie with id ${id} does not exist.` });
+  }
+});
+
+app.delete('/api/movies/:id', (req, res) => {
+  movies = movies.filter(movie => movie.id != req.params.id);
+  res.status(200).json(movies);
 });
 
 app.listen(5000, () => {

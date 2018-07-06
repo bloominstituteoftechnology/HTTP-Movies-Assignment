@@ -1,14 +1,14 @@
-import React, { Component } from 'react';
-import { Route, Switch, Link } from 'react-router-dom';
+import React from 'react';
+import { Route, Switch, Link, withRouter } from 'react-router-dom';
+import axios from 'axios';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie';
-import MovieCreate from './Movies/MovieCreate';
-import axios from 'axios';
+import MovieForm from './Movies/MovieForm';
 
-export default class App extends Component {
-  constructor(){
-    super()
+class App extends React.Component {
+  constructor(props){
+    super(props)
     this.state = {
       savedList: [],
       title: "",
@@ -18,7 +18,9 @@ export default class App extends Component {
     }
   }
 
-  handleMovieSubmit = () => {
+  handleMovieSubmit = e => {
+    e.preventDefault();
+
     const newMovie = { title: this.state.title,
                        director: this.state.director,
                        metascore: this.state.metascore,
@@ -28,11 +30,11 @@ export default class App extends Component {
       .post("http://localhost:5000/api/movies", newMovie)
       .then(response => {
         console.log("Submit: ", response);
-        this.setState({ savedList: response.data,
-                        title: "",
+        this.setState({ title: "",
                         director: "",
                         metascore: "",
                         stars: "" });
+        this.props.history.push('/');
       })
       .catch(error => console.log(error));
   }
@@ -43,7 +45,9 @@ export default class App extends Component {
 
   handleSetData = (data, id) => {
     const savedList = this.state.savedList.filter(saved => saved.id !== id);
+    console.log("Data: ", data);
     this.setState({ movies: data, savedList });
+    if (id) { this.props.history.push('/') }
   }
 
   addToSavedList = (movie) => {
@@ -68,16 +72,16 @@ export default class App extends Component {
           <Route exact path="/" component={MovieList} />
 
           <Route path="/movies/add" render={ (props) =>
-            <MovieCreate {...props} title={this.state.title}
-                                           director={this.state.director}
-                                           metascore={this.state.metascore}
-                                           stars={this.state.stars}
-                                           handleChange={this.handleChange}
-                                           handleMovieSubmit={this.handleMovieSubmit} /> }
+            <MovieForm {...props} title={this.state.title}
+                                  director={this.state.director}
+                                  metascore={this.state.metascore}
+                                  stars={this.state.stars}
+                                  handleChange={this.handleChange}
+                                  handleMovieSubmit={this.handleMovieSubmit} /> }
           />
 
           <Route path="/movies/:id" render={(props) => {
-            return ( <Movie {...props} addToSavedList={this.addToSavedList} 
+            return ( <Movie {...props} addToSavedList={this.addToSavedList}
                                       handleSetData={this.handleSetData} /> )}}
           />
 
@@ -87,3 +91,5 @@ export default class App extends Component {
     )
   }
 }
+
+export default withRouter(App);

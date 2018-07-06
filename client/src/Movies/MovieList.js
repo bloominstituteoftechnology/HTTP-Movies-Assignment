@@ -14,7 +14,6 @@ export default class MovieList extends Component {
     axios
       .get("http://localhost:5000/api/movies")
       .then(response => {
-        console.log(response);
         this.setState({ movies: response.data });
       })
       .catch(error => {
@@ -27,7 +26,7 @@ export default class MovieList extends Component {
     return (
       <div className="movie-list">
         {movies.map(movie => (
-          <Link to={`/movies/${movie.id}`}>
+          <Link to={`/movies/${movie.id}`} key={movie.id}>
             {movie.title}
           </Link>
         ))}
