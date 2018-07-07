@@ -9,21 +9,33 @@ body {
   background-color: #f2f2f2;
 }
 
+button {
+  margin: 0;
+  padding: 0;
+  font-size: inherit;
+}
+
 a {
   text-decoration: none;
+}
+
+a:visited {
+  color: inherit;
 }
 
 .container {
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
   margin: 0 auto;
   width: 1000px;
+  height: 600px;
 }
 
 .header {
   display: flex;
   flex-direction: column;
+  height: 160px;
+  margin-top: 20px;
 }
 
 .header h1 {
@@ -39,44 +51,79 @@ a {
   margin: 10px 0;
 }
 
-.home-button {
-  padding: 5px 10px;
-  margin: 0 10px;
-  background-color: lightskyblue;
+.button {
+  padding: 5px 0;
+  text-align: center;
+  width: 75px;
+  margin: 0 15px 0 0;
+  border: 1px solid black;
+  color: white;
+  background: black;
 }
 
 .saved-list-and-movie-list-container {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  height: 100%;
 }
 
 .movie-list {
-  width: 750px;
+  width: 730px;
+  margin-left: 20px;
   display: flex;
   flex-direction: column;
-  justify-content: center;
   align-items: center;
+  box-sizing: border-box;
+  background: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 25px;
+}
+
+.movie-list h3 {
+  text-decoration: underline;
 }
 
 .movie-list-link {
   margin: 10px 0;
 }
 
-.movie-card {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
-  cursor: pointer;
-  position: relative;
-  margin: 1rem auto;
+.movie-container {
+  font-size: 20px;
+  width: 730px;
+  margin-left: 20px;
+  background: white;
+  border: 2px solid black;
+  border-radius: 4px;
+  background-color: white;
+  padding: 0 20px 20px 20px;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.movie-card h2 {
+  text-decoration: underline;
+}
+
+.movie-card h3 {
+  text-decoration: underline;
 }
 
 .movie-director {
   padding: 4px 0;
-  font-size: 0.8rem;
+  margin-bottom: 20px;
+}
+
+.movie-star {
+  margin-bottom: 5px;
+}
+
+.movie-buttons-container {
+  font-size: 16px;
+  margin-top: 20px;
 }
 
 .saved-list {
@@ -85,34 +132,67 @@ a {
   display: flex;
   flex-direction: column;
   align-items: center;
+  padding: 20px 0;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
 }
 
 .saved-list h3 {
-  margin-right: 10px;
+  font-size: 25px;
+  text-decoration: underline;
+  margin: 0 0 5px 0;
 }
 
 .saved-movie {
-  margin: 0 10px;
+  text-align: center;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  width: 220px;
+  margin-top: 10px;
+  display: block;
+  overflow: hidden;
 }
-.saved-active {
-  color: blue;
-  border: 1px solid grey;
-  padding: 5px;
+
+.form-container {
+  width: 730px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-sizing: border-box;
+  border: 2px solid black;
+  border-radius: 4px;
+  background: white;
 }
-.save-wrapper {
-  position: relative;
-  width: 75%;
-  margin: 1rem auto;
+
+.form-container h2 {
+  text-align: center;
+  text-decoration: underline;
+  margin-bottom: 35px;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
+
+form {
+  width: 730px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 10px;
 }
-.save-button:hover {
-  background-color: green;
-  color: white;
+
+form input {
+  box-sizing: border-box;
+  width: 200px;
+  height: 50px;
+  padding: 0 15px;
+  margin-bottom: 10px;
+  border: 2px solid black;
+  border-radius: 4px;
+  font-size: 15px;
+}
+
+form .button {
+  margin-top: 10px;
+  margin-right: 0;
 }

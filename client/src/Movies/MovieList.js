@@ -25,6 +25,7 @@ export default class MovieList extends Component {
     const movies = this.state.movies.slice().reverse();
     return (
       <div className="movie-list">
+        <h3>Movie List:</h3>
         {movies.map(movie => (
           <Link to={`/movies/${movie.id}`} key={movie.id} className="movie-list-link">
             {movie.title}

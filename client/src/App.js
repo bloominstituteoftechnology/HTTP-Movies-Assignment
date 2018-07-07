@@ -62,12 +62,12 @@ class App extends React.Component {
     return (
       <div className="container">
         <div className="header">
-          <h1>Movies</h1>
+          <h1>Lambda Movie Selector</h1>
           <div className="header-buttons-container">
-            <div className="home-button">
+            <div className="button">
               <Link to="/">Home</Link>
             </div>
-            <div className="home-button">
+            <div className="button">
               <Link to="/movies/add">Add</Link>
             </div>
           </div>

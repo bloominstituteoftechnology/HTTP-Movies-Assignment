@@ -1,6 +1,5 @@
 import React from 'react';
 import axios from 'axios';
-import MovieCard from './MovieCard';
 import MovieForm from './MovieForm';
 
 export default class Movie extends React.Component {
@@ -53,7 +52,7 @@ export default class Movie extends React.Component {
       .then(response => {
         this.setState({ movie: null });
         console.log("Delete: ", response.data);
-        this.props.handleSetData(response.data, this.props.match.params.id);
+        this.props.handleSetData(response.data, Number(this.props.match.params.id));
       })
       .catch(err => {
         console.log(err);
@@ -101,17 +100,31 @@ export default class Movie extends React.Component {
     }
 
     return (
-      <div className="save-wrapper">
-        <MovieCard movie={this.state.movie} />
-        <div className="save-button" onClick={this.saveMovie}>
-          Save
+      <div className="movie-container">
+        <h2>{this.state.movie.title}</h2>
+        <div className="movie-director">
+          <b>Director:</b> {this.state.movie.director}
         </div>
-        <button className="delete-button" onClick={this.handleDelete}>
-          Delete
-        </button>
-        <button onClick={this.handleEdit}>
-          Edit
-        </button>
+        <div className="movie-metascore">
+          <b>Metascore: </b><strong>{this.state.movie.metascore}</strong>
+        </div>
+        <h3>Actors</h3>
+        {this.state.movie.stars.map(star => (
+          <div key={star} className="movie-star">
+            {star}
+          </div>
+        ))}
+        <div className="movie-buttons-container">
+          <button className="button" onClick={this.saveMovie}>
+            Save
+          </button>
+          <button className="button" onClick={this.handleDelete}>
+            Delete
+          </button>
+          <button className="button" onClick={this.handleEdit}>
+            Edit
+          </button>
+        </div>
       </div>
     );
   }

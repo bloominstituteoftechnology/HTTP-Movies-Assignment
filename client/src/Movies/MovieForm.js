@@ -2,7 +2,8 @@ import React from 'react';
 
 const MovieForm = props => {
   return(
-    <div>
+    <div className="form-container">
+      <h2>Add new movie:</h2>
       <form>
         <input
           autoComplete="off"
@@ -36,7 +37,7 @@ const MovieForm = props => {
           onChange={props.handleChange}
           value={props.stars}
         />
-        <button onClick={props.handleMovieSubmit}>Submit</button>
+        <button className="button" onClick={props.handleMovieSubmit}>Submit</button>
       </form>
     </div>
   );
