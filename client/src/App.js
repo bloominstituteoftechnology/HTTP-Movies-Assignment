@@ -46,7 +46,7 @@ class App extends React.Component {
   handleSetData = (data, id) => {
     const savedList = this.state.savedList.filter(saved => saved.id !== id);
     console.log("Data: ", data);
-    this.setState({ movies: data, savedList });
+    this.setState({ savedList });
     if (id) { this.props.history.push('/') }
   }
 
