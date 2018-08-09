@@ -14,6 +14,7 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  text-transform: capitalize;
 }
 
 .movie-director {
@@ -74,4 +75,12 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.new-movie-form {
+  margin: 10px auto;
+  width: 75%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }

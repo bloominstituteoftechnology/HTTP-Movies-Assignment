@@ -3,11 +3,13 @@ import axios from 'axios';
 import MovieCard from './MovieCard';
 
 const URL = 'http://localhost:5000/api/movies'
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
-      movie: null
+      movie: null,
+      added: false
     };
   }
 
@@ -28,8 +30,8 @@ export default class Movie extends React.Component {
   };
 
   saveMovie = () => {
-    const addToSavedList = this.props.addToSavedList;
-    addToSavedList(this.state.movie);
+    this.props.addToSavedList(this.state.movie);
+    this.setState({added: true})
   };
 
   render() {
@@ -40,9 +42,9 @@ export default class Movie extends React.Component {
     return (
       <div className="save-wrapper">
         <MovieCard movie={this.state.movie} />
-        <div className="save-button" onClick={this.saveMovie}>
+        {!this.state.added && <div className="save-button" onClick={this.saveMovie}>
           Save
-        </div>
+        </div>}
       </div>
     );
   }
