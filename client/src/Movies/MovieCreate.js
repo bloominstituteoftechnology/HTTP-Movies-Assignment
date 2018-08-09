@@ -34,11 +34,12 @@ class MovieCreate extends Component {
     render() { 
         return ( 
             <div className="movie-form">
+                <h2>Add a movie!</h2>
                 <form onSubmit={this.handleSubmit}>
-                    <input onChange={this.handleChange} type="text" name="title" value={this.state.title} placeholder="Title"></input>
-                    <input onChange={this.handleChange} type="text" name="director" value={this.state.director} placeholder="Director"></input>
-                    <input onChange={this.handleChange} type="number" name="metascore" value={this.state.metascore} placeholder="Metascore"></input>
-                    <input onChange={this.handleChange} type="text" name="stars" value={this.state.stars} placeholder="Stars"></input>
+                    <input onChange={this.handleChange} type="text" name="title" value={this.state.title} placeholder="Title" required></input>
+                    <input onChange={this.handleChange} type="text" name="director" value={this.state.director} placeholder="Director" required></input>
+                    <input onChange={this.handleChange} type="number" name="metascore" value={this.state.metascore} placeholder="Metascore" required></input>
+                    <input onChange={this.handleChange} type="text" name="stars" value={this.state.stars} placeholder="Stars" required></input>
                     <button> Add </button>
                 </form>
             </div>
