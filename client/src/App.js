@@ -40,7 +40,6 @@ export default class App extends Component {
 				<Route
 					path="/movies/:id"
 					render={props => {
-            console.log(props);
 						return (
 							<Movie
 								{...props}

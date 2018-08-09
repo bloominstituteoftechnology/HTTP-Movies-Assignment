@@ -8,16 +8,18 @@ class MovieForm extends React.Component {
 		stars: [],
 	};
 
-	handleChange = event =>
+	handleChange = event => {
+		let value = "";
+
+		if (event.target.name === 'stars') {
+			value = [event.target.value];
+		} else {
+			value = event.target.value
+		}
 		this.setState({
-			[event.target.name]: event.target.value
-        });
+			[event.target.name]: value
+        })};
         
-    handStarsChange = event => {
-        this.this.setState({
-            [event.tartet.name] : event.target.value.split(",")
-        })
-    }
         
 
 	render() {
@@ -64,11 +66,11 @@ class MovieForm extends React.Component {
 				</div>
 				<div>
 					<input
-						onChange={this.handleStarsChange}
+						onChange={this.handleChange}
 						type="text"
 						placeholder="stars"
 						name="stars"
-						value={this.state.stars.join(",")}
+						value={this.state.stars}
 					/>
 				</div>
                 <button>Submit</button>
