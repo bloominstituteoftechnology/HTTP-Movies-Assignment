@@ -1,9 +1,10 @@
 import React, { Component } from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import axios from 'axios';
 import SavedList from './Movies/SavedList';
 import MovieList from './Movies/MovieList';
 import Movie from './Movies/Movie'
+import MovieCreate from './Movies/MovieCreate';
 
 
 export default class App extends Component {
@@ -25,11 +26,13 @@ export default class App extends Component {
   render(){
     return (
       <div>
+        <button><Link to ='/movie/add'>Add Movie To List</Link></button>
         <SavedList list={this.state.savedList} />
         <Route exact path="/" component={MovieList} />
         <Route path="/movies/:id" render={ (props) => {
           return(<Movie {...props} addToSavedList={this.addToSavedList}/>)
         }} />
+        <Route exact path ='/movie/add' component={MovieCreate}/>
       </div>
     )
   }

@@ -16,6 +16,11 @@ body {
   margin: 1rem auto;
 }
 
+.formCard {
+  display: flex;
+  justify-content: center;
+}
+
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;
