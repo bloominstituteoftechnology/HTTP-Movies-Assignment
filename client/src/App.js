@@ -47,7 +47,6 @@ export default class App extends Component {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        <MovieCreate onSubmit={this.addMovie} />
         <Route
           exact
           path="/"
@@ -58,6 +57,11 @@ export default class App extends Component {
           render={props => {
             return <Movie {...props} addToSavedList={this.addToSavedList} />;
           }}
+        />
+        <Route
+          exact
+          path="/movie/add"
+          render={() => <MovieCreate onSubmit={this.addMovie} />}
         />
       </div>
     );
