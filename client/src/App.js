@@ -11,6 +11,9 @@ export default class App extends Component {
       savedList: []
     }
   }
+  componentDidMount () {
+    console.log(this.state.savedList); 
+  }
 
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
