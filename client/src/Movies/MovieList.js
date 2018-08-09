@@ -14,23 +14,30 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
+    console.log('mounted')
     axios.get(URL)
       .then(response => {
       this.setState({
         movies: response.data,
         loading: false,
-      });
+      }, () => this.movieCheck());
       })
       .catch(response => {
         console.log(`error ${response}`);
       });
 
+    
+  }
+
+  movieCheck = () => {
     if (this.props.newMovie) {
+      console.log(this.state.movies)
       if (
         !this.state.movies.some(
-          movie => movie.name === this.props.newMovie.name
+          movie => movie.title === this.props.newMovie.title
         )
       ) {
+        console.log('there isnt one')
         axios
         .post(URL, this.props.newMovie)
         .then(response => {
