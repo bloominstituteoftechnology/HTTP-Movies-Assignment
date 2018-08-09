@@ -30,7 +30,34 @@ class MovieCreate extends React.Component {
     }
     validate = event => {
         event.preventDefault()
-        this.props.addMovie(this.state.movie);
+        const title = this.state.title.slice();
+        const stars = this.state.stars.slice();
+        const director = this.state.director.slice(); 
+        const metaScore = this.state.metaScore.slice(); 
+        const movie = {};
+        if(title.length > 4){
+            movie.title = title; 
+        }
+        else {
+            alert('Please add a valid movie title')
+        }
+        if(stars.length){
+            movie.stars = stars; 
+        } else {
+            alert('Please add a list one star to the list of stars. When added the star should show up on the screen under Add Star')
+        }
+        if (director.length > 4){
+            movie.director = director; 
+        } else {
+            alert('Please enter a valid director name')
+        }
+        if (Number(metaScore) && Number(metaScore) < 101 && Number(metaScore) > 0){
+            movie.metaScore = metaScore; 
+        } else {
+            alert('MetaScore should be a number between 1- 100 and not feature any other characters')
+        }
+        this.props.addMovie(movie);
+        
 
     }
 
