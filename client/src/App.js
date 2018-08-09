@@ -44,7 +44,7 @@ export default class App extends Component {
   render(){
     return (
       <div>
-        <button><Link to ='/movie/add'>Add Movie To List</Link></button>
+        <div className = "save-button"><Link to ='/movie/add'>Add Movie To List</Link></div>
         <SavedList list={this.state.savedList} />
         <Route exact path="/" render={ (props) => <MovieList {...props} movies={this.state.movies} />} />
         <Route path="/movies/:id" render={ (props) => {

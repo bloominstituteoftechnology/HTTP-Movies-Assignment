@@ -52,7 +52,7 @@ class MovieCreate extends React.Component {
             alert('Please enter a valid director name')
         }
         if (Number(metaScore) && Number(metaScore) < 101 && Number(metaScore) > 0){
-            movie.metaScore = metaScore; 
+            movie.metascore = Number(metaScore); 
         } else {
             alert('MetaScore should be a number between 1- 100 and not feature any other characters')
         }
