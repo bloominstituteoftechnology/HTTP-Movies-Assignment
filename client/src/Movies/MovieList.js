@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import { API_URL } from '../App';
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -10,9 +11,15 @@ export default class MovieList extends Component {
     };
   }
 
-  componentDidMount() {
+  async componentDidMount() {
     // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    try {
+      let response = await axios.get(`${API_URL}/movies`);
+
+      this.setState({ movies: response.data });
+    } catch (err) {
+      console.log(err);
+    }
   }
 
   render() {
