@@ -7,7 +7,7 @@ const app = express();
 app.use(bodyParser.json());
 app.use(CORS());
 
-const movies = [{
+let movies = [{
     id: 0,
     title: 'The Godfather',
     director: 'Francis Ford Coppola',
@@ -63,6 +63,13 @@ app.get('/api/movies/:id', (req, res) => {
   )[0];
   res.status(200).json(movie);
 });
+app.delete('/api/movies/:id', (req, res) => {
+   movies = movies.filter(
+    movie => movie.id != req.params.id
+  );
+  res.status(200).json(movies);
+});
+
 
 app.post('/api/movies', (req, res) => {
   if (req.body.title !== undefined) {
