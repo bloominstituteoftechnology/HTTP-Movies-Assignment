@@ -1,3 +1,9 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
 body {
   margin: 0;
   padding: 0;
@@ -68,10 +74,65 @@ body {
 
 .home-button {
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: skyblue;
+
+
+}
+.home-button a {
+  text-decoration: none;
+  color: #fff;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.form {
+  padding: 30px;
+  margin: 50px auto;
+  width: 100%;
+  max-width: 400px;
+  background-color: #fff;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.form__group {
+  padding: 10px 0;
+}
+
+.form__input {
+  width: 100%;
+  padding: 5px 10px;
+  border: none;
+  border-radius: 2px;
+  border-bottom: 1px solid skyblue;
+  font-size: inherit;
+  font-family: inherit;
+}
+
+.form__input:focus {
+  outline: none;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+.form__button {
+  font-size: inherit;
+  font-family: inherit;
+  padding: 10px 20px;
+  margin-top: 20px;
+  cursor: pointer;
+  background-color: skyblue;
+  border: 1px solid skyblue;
+  color: #fff;
+  border-radius: 2px;
+  transition: all .2s;
+}
+
+.form__button:hover {
+  box-shadow:
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  transform: translateY(-1px);
 }

@@ -18,6 +18,7 @@ class MovieCreate extends Component {
     stars = stars.join(',');
     return (
       <form
+        className="form"
         onSubmit={e => {
           e.preventDefault();
           this.props.onSubmit(this.state);
@@ -29,8 +30,9 @@ class MovieCreate extends Component {
           });
         }}
       >
-        <div>
+        <div className="form__group">
           <input
+            className="form__input"
             onChange={this.handleChange}
             type="text"
             name="title"
@@ -38,8 +40,9 @@ class MovieCreate extends Component {
             value={title}
           />
         </div>
-        <div>
+        <div className="form__group">
           <input
+            className="form__input"
             onChange={this.handleChange}
             type="text"
             onChange={this.handleChange}
@@ -48,8 +51,9 @@ class MovieCreate extends Component {
             value={director}
           />
         </div>
-        <div>
+        <div className="form__group">
           <input
+            className="form__input"
             onChange={this.handleChange}
             type="number"
             name="metascore"
@@ -57,8 +61,9 @@ class MovieCreate extends Component {
             value={metascore}
           />
         </div>
-        <div>
+        <div className="form__group">
           <input
+            className="form__input"
             type="text"
             onChange={this.handleChange}
             name="stars"
@@ -66,7 +71,7 @@ class MovieCreate extends Component {
             value={stars}
           />
         </div>
-        <button>Submit</button>
+        <button className="form__button">Submit</button>
       </form>
     );
   }
