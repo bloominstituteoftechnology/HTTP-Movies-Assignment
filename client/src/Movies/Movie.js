@@ -1,6 +1,8 @@
 import React from 'react';
 import axios from 'axios';
 import MovieCard from './MovieCard';
+
+let API_URL ="http://localhost:5000/api/movies"
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -20,6 +22,12 @@ export default class Movie extends React.Component {
   }
 
   fetchMovie = id => {
+    axios.get(`${API_URL}/${id}`).then(response => {
+      console.log(response);
+      this.setState({
+        movie: response.data,
+      })
+    })
     // this function needs to fire off a get request to localhost:5000/api/movies/:id
     // note that the id is dynamic.
   };
