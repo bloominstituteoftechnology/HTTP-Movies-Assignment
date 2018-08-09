@@ -4,7 +4,9 @@ import { Button, Form, Input, FormText } from "reactstrap";
 const MovieForm = props => {
   return (
     <div className="movie-form">
-      <h2 className="form-header">Add your very own movie!</h2>
+      <h2 className="form-header">
+        &darr; &nbsp; Add your very own movie below! &nbsp; &darr;
+      </h2>
       <Form onSubmit={props.addMovie}>
         <Input
           type="text"
@@ -14,9 +16,7 @@ const MovieForm = props => {
           required
           autoComplete="off"
         />
-        <FormText>
-          &nbsp;Nothing too lengthy, please.
-        </FormText>
+        <FormText>&nbsp;Nothing too lengthy, please.</FormText>
         <Input
           type="text"
           name="director"
@@ -25,9 +25,7 @@ const MovieForm = props => {
           required
           autoComplete="off"
         />
-        <FormText>
-          &nbsp;One only.
-        </FormText>
+        <FormText>&nbsp;One only.</FormText>
         <Input
           type="number"
           name="metascore"
@@ -38,9 +36,7 @@ const MovieForm = props => {
           required
           autoComplete="off"
         />
-        <FormText>
-          &nbsp;On a scale of 1 - 100.
-        </FormText>
+        <FormText>&nbsp;On a scale of 1 - 100.</FormText>
         <Input
           type="text"
           name="stars"
@@ -50,8 +46,10 @@ const MovieForm = props => {
           autoComplete="off"
         />
         <FormText>
-          &nbsp;Like this: '<em>Eric Suave, Erica Star, Erikson Eriksen</em>', AKA,
-          comma-separated w/ a space!
+          &nbsp;Separate with commas, like this:
+          <strong>
+            <em> Eric Suave, Erica Star, Erikson Eriksen</em>
+          </strong>
         </FormText>
         <Input
           type="text"

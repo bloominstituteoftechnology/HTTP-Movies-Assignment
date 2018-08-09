@@ -146,11 +146,11 @@ a:hover {
 .movie-form .form-header {
   background: #6c757d;
   border: 1px solid whitesmoke;
-  border-radius: 2px;
+  border-radius: 3px;
   color: whitesmoke;
   padding: 10px 0;
   width: 90%;
-  margin: 0 auto;
+  margin: 0 auto 25px;
   text-align: center;
 }
 
