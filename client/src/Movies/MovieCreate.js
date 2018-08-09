@@ -25,12 +25,12 @@ class MovieCreate extends React.Component {
     }
     render() {
         return (
-        <form>
+        <form className='newMovieForm'>
             <input type='text' name='title' value={this.state.title} placeholder='Enter a title' onChange={this.onInputChange}/>
             <input type='text' name='director' value={this.state.director} placeholder='Enter a director name' onChange={this.onInputChange}/>
             <input type='number' name='metascore' value={this.state.metascore} placeholder='Enter a metascore' onChange={this.onInputChange}/>
             <input type='text' name='stars' value={this.state.stars} placeholder='Enter star names separated with commas' onChange={this.onInputChange}/>            
-            <button type='button' onClick={this.submitMovie}>Submit New Movie</button>
+            <button type='button' className='btn waves-effect waves-light' onClick={this.submitMovie}>Submit New Movie</button>
         </form>
         )
     }

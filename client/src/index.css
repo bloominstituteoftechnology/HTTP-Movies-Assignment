@@ -32,8 +32,9 @@ body {
   margin: 1rem auto;
   width: 75%;
   display: flex;
+  flex-direction: column;
   align-items: center;
-  justify-content: space-between;
+  justify-content: flex-start;
 }
 
 .saved-list h3 {
@@ -66,12 +67,18 @@ body {
   color: white;
 }
 
-.home-button {
+.addMovie-button,.home-button{
   padding: 5px 10px;
   background-color: lightskyblue;
+  margin-top: 10px;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+.newMovieForm {
+  width: 75%;
+  margin: 0 auto;
+  margin-top: 20px;
 }
