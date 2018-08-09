@@ -33,6 +33,12 @@ export default class App extends Component {
 
   addMovieToList = (movie) => {
     console.log(movie); 
+    axios.post('http://localhost:5000/api/movies', movie)
+      .then(response => {
+        console.log(response)
+        this.setState({movies:response.data})
+      })
+      .catch(error => console.log(error))
   }
 
   render(){

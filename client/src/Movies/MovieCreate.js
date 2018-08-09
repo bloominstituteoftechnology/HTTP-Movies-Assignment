@@ -1,5 +1,5 @@
 import React from 'react'; 
-
+import {Link} from 'react-router-dom'; 
 
 class MovieCreate extends React.Component {
     constructor(){
@@ -56,6 +56,7 @@ class MovieCreate extends React.Component {
         } else {
             alert('MetaScore should be a number between 1- 100 and not feature any other characters')
         }
+        this.setState({stars: [], title: '', director: '', metaScore: ''})
         this.props.addMovie(movie);
         
 
@@ -79,7 +80,7 @@ class MovieCreate extends React.Component {
                 <input type="text" placeholder = "add star to list of stars" onChange ={this.onChange} name = 'star' value = {this.state.star}/>
                 <button onClick = {this.addStar}>Add star to stars</button>
                 <h1>Submit</h1>
-                <button onClick = {this.validate}>Submit Movie</button>
+                <button onClick = {this.validate}><Link to ="/">Submit Movie</Link></button>
               </form>
             </div>
             
