@@ -10,6 +10,13 @@ a {
   text-decoration: none;
 }
 
+a:hover {
+  color: inherit;
+  text-decoration: none;
+}
+
+/* Movie styling */
+
 .movie-card-wrapper {
   display: flex;
   background-color: #fff;
@@ -30,11 +37,18 @@ a {
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;
+  margin-top: 5px;
+}
+
+.movie-metascore {
+  margin: 15px 0;
 }
 
 .movie-stars {
   list-style-type: square;
 }
+
+/* Saved styling */
 
 .saved-list {
   background-color: #fff;
@@ -87,22 +101,33 @@ a {
   color: white;
 }
 
-.home-button {
+/* Misc. styling */
+
+.custom-button {
   padding: 5px 10px;
   background-color: lightskyblue;
   border-radius: 5px;
   border: 1px solid whitesmoke;
 }
-.home-button:hover {
+.custom-button:hover {
   background-color: darkblue;
   color: whitesmoke;
   border: 1px solid lightskyblue;
 }
 
+.movie-warning {
+  color: red;
+  text-align: center;
+}
+
+/* Image styling */
+
 .movie-img {
   display: inline-block;
   width: 20%;
+  max-width: 220px;
   height: 20%;
+  max-height: 320px;
 }
 
 .saved-img {
@@ -111,7 +136,43 @@ a {
   height: 80px;
 }
 
-.movie-warning {
-  color: red;
+/* Movie Form styling */
+
+.movie-form {
+  width: 90%;
+  margin: 50px auto 0;
+}
+
+.movie-form .form-header {
+  background: #6c757d;
+  border: 1px solid whitesmoke;
+  border-radius: 2px;
+  color: whitesmoke;
+  padding: 10px 0;
+  width: 90%;
+  margin: 0 auto;
   text-align: center;
+}
+
+.movie-form input {
+  margin: 10px 0;
+}
+
+.movie-form button {
+  display: block;
+  margin: 0 auto;
+  width: 150px;
+}
+
+.movie-form input[type="number"] {
+  -webkit-appearance: textfield;
+  -moz-appearance: textfield;
+  appearance: textfield;
+}
+
+.movie-form input[type="number"]::-webkit-inner-spin-button,
+.movie-form input[type="number"]::-webkit-outer-spin-button {
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
 }
