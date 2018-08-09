@@ -2,7 +2,7 @@
 
 * The good news here is that you've seen this all before!
 * Everything should be working the way you previously had built this project, with one major difference, we are no longer sending out HTTP requests for you.
-* You are now tasked to fix this very problem.
+* You are now tasked to fix this very problem. 
 
 ## Instructions
 
