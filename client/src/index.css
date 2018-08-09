@@ -5,15 +5,26 @@ body {
   background-color: #f2f2f2;
 }
 
-.movie-card {
+a {
+  color: darkslategray;
+  text-decoration: none;
+}
+
+.movie-card-wrapper {
+  display: flex;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
-  position: relative;
   margin: 1rem auto;
+  cursor: pointer;
+}
+
+.movie-card {
+  display: flex;
+  flex-direction: column;
+  margin-left: 50px;
 }
 
 .movie-director {
@@ -21,9 +32,14 @@ body {
   font-size: 0.8rem;
 }
 
+.movie-stars {
+  list-style-type: square;
+}
+
 .saved-list {
   background-color: #fff;
   border: 0;
+  border-radius: 5px;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
@@ -43,23 +59,28 @@ body {
 .saved-movie {
   margin: 0 10px;
 }
+
 .saved-active {
   color: blue;
   border: 1px solid grey;
   padding: 5px;
 }
+
 .save-wrapper {
   position: relative;
   width: 75%;
   margin: 1rem auto;
 }
+
 .save-button {
   position: absolute;
-  top: 25px;
+  bottom: 25px;
   right: 25px;
   border: 1px solid grey;
+  border-radius: 5px;
   padding: 5px 10px;
   background-color: lightseagreen;
+  cursor: pointer;
 }
 .save-button:hover {
   background-color: green;
@@ -69,6 +90,25 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  border-radius: 5px;
+  border: 1px solid whitesmoke;
+}
+.home-button:hover {
+  background-color: darkblue;
+  color: whitesmoke;
+  border: 1px solid lightskyblue;
+}
+
+.movie-img {
+  display: inline-block;
+  width: 20%;
+  height: 20%;
+}
+
+.saved-img {
+  display: inline-block;
+  width: 60px;
+  height: 80px;
 }
 
 .movie-warning {
