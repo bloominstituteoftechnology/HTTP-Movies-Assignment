@@ -75,3 +75,13 @@ body {
   color: red;
   text-align: center;
 }
+form{
+  display:flex;
+  flex-direction: column;
+}
+
+input{
+  width: 50%;
+  font-size: 20px;
+  margin: 20px 0;
+}
