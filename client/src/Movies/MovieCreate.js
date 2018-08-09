@@ -9,7 +9,8 @@ class MovieCreate extends React.Component {
             director : '', 
             metaScore : '',
             stars : [],
-            star : ''
+            star : '',
+            movie: {}
         }
     }
 
@@ -27,12 +28,18 @@ class MovieCreate extends React.Component {
             alert("Enter the full name of the star you wish to add");
         }
     }
+    validate = event => {
+        event.preventDefault()
+        this.props.addMovie(this.state.movie);
+
+    }
 
     render() {
+        
 
         return (
             <div className="movie-card formCard">
-              <form onSubmit = {this.addStar}>
+              <form onSubmit = {this.test}>
                 <h1>Title</h1>
                 <input type="text" placeholder = "title goes here" onChange ={this.onChange} name = 'title' value = {this.state.title}/>
                 <h1>Director</h1>
@@ -45,7 +52,7 @@ class MovieCreate extends React.Component {
                 <input type="text" placeholder = "add star to list of stars" onChange ={this.onChange} name = 'star' value = {this.state.star}/>
                 <button onClick = {this.addStar}>Add star to stars</button>
                 <h1>Submit</h1>
-                <button>Submit Movie</button>
+                <button onClick = {this.validate}>Submit Movie</button>
               </form>
             </div>
             

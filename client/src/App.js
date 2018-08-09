@@ -11,10 +11,18 @@ export default class App extends Component {
   constructor(){
     super()
     this.state = {
-      savedList: []
+      savedList: [],
+      movies: []
     }
   }
-  
+  componentDidMount () {
+    console.log(this.state.savedList); 
+    axios.get('http://localhost:5000/api/movies')
+      .then(response => {
+        this.setState({movies: response.data})
+      })
+      .catch(error =>  console.log(error));
+  }
 
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
@@ -23,16 +31,20 @@ export default class App extends Component {
     this.setState({savedList});
   }
 
+  addMovieToList = (movie) => {
+    console.log(movie); 
+  }
+
   render(){
     return (
       <div>
         <button><Link to ='/movie/add'>Add Movie To List</Link></button>
         <SavedList list={this.state.savedList} />
-        <Route exact path="/" component={MovieList} />
+        <Route exact path="/" render={ (props) => <MovieList {...props} movies={this.state.movies} />} />
         <Route path="/movies/:id" render={ (props) => {
           return(<Movie {...props} addToSavedList={this.addToSavedList}/>)
         }} />
-        <Route exact path ='/movie/add' component={MovieCreate}/>
+        <Route exact path ='/movie/add' render={(props) => <MovieCreate {...props} addMovie = {this.addMovieToList}/>}/>
       </div>
     )
   }
