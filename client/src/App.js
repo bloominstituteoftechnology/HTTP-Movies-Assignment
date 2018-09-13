@@ -16,10 +16,17 @@ export default class App extends Component {
     }
   }
 
-  addToSavedList = (movie) => {
+  addToSavedList = movie => {
     const savedList = this.state.savedList;
     savedList.push(movie);
     this.setState({savedList});
+  }
+
+  deleteFromSavedList = id => {
+    const newState = this.state;
+    newState.savedList = newState.savedList.filter(movie => movie.id != id);
+    
+    this.setState(newState);
   }
 
   render(){
@@ -28,7 +35,7 @@ export default class App extends Component {
         <SavedList list={this.state.savedList} />
         <Route exact path="/" component={MovieList} />
         <Route path="/movies/:id" render={ (props) => {
-          return(<Movie {...props} addToSavedList={this.addToSavedList}/>)
+          return(<Movie {...props} deleteFromSavedList = { this.deleteFromSavedList } addToSavedList={this.addToSavedList}/>)
         }} />
         <Route path = '/movie/add' component = { MovieCreate } />
       </div>
