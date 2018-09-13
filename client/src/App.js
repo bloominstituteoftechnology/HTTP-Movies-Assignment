@@ -24,7 +24,7 @@ export default class App extends Component {
 
   deleteFromSavedList = id => {
     const newState = this.state;
-    newState.savedList = newState.savedList.filter(movie => movie.id != id);
+    newState.savedList = newState.savedList.filter(movie => movie.id !== id);
     
     this.setState(newState);
   }
