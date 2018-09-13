@@ -76,3 +76,34 @@ body {
   color: red;
   text-align: center;
 }
+
+.movie-create-form {
+  text-align: center;
+}
+
+.movie-create-form * {
+  margin: 5px 10px;
+}
+
+.stars-list {
+  display: flex;
+  justify-content: center;
+}
+
+.movie-create-form .stars-list ul {
+  list-style: none;
+  width: fit-content;
+}
+
+.movie-create-form .stars-list ul li:hover:after {
+  content: ' X';
+  color: red;
+}
+
+.add-star-button {
+  display: inline-block;
+  padding: 5px 10px;
+  background-color: lightskyblue;
+  text-align: center;
+  width: auto;
+}
