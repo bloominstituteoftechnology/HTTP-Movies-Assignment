@@ -1,12 +1,12 @@
 import React, { Component } from "react";
-import { Route, Link, Switch } from "react-router-dom";
+import { Route, Link, Switch, withRouter } from "react-router-dom";
 import axios from "axios";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import AddMovie from "./Movies/AddMovie";
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -37,6 +37,7 @@ export default class App extends Component {
           metascore: "",
           stars: ""
         });
+        this.props.history.push('/');
       })
       .catch(error => console.log(error));
   };
@@ -44,6 +45,13 @@ export default class App extends Component {
   handleChange = event => {
     this.setState({ [event.target.name]: event.target.value });
   };
+
+  handleSetData = (data, id) => {
+    const savedList = this.state.savedList.filter(saved => saved.id !== id);
+    console.log("Data: ", data);
+    this.setState({ savedList });
+    if (id) { this.props.history.push('/') }
+  }
 
   addToSavedList = movie => {
     console.log(this.state.savedList);
@@ -88,3 +96,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withRouter(App);
