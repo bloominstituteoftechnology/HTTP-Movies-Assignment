@@ -72,6 +72,10 @@ body {
   text-align: center;
 }
 
+.home-button:hover {
+  background-color: lightgreen;
+}
+
 .movie-warning {
   color: red;
   text-align: center;
