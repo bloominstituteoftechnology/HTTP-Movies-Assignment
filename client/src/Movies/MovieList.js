@@ -25,9 +25,15 @@ export default class MovieList extends Component {
   componentDidUpdate() {
     axios
       .get('http://localhost:5000/api/movies')
-      .then(res => this.setState({
-        movies: res.data
-      }))
+      .then(res => {
+        // if number of movies in the database !== number of movies in the state, then
+        // update the state
+        if (res.data.length !== this.state.movies.length) {
+          this.setState({
+            movies: res.data
+          })
+        }
+      })
       .catch(err => console.log(err))
   }
 
@@ -42,10 +48,10 @@ export default class MovieList extends Component {
   }
 }
 
-function MovieDetails({ movie }) {
+function MovieDetails(props) {
   return (
-    <Link to={`/movies/${movie.id}`}>
-      <MovieCard movie={movie} />
+    <Link to={`/movies/${props.movie.id}`}>
+      <MovieCard movie={props.movie} />
     </Link>
   );
 }

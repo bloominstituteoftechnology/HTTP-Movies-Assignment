@@ -19,6 +19,19 @@ export default class Movie extends React.Component {
     }
   }
 
+  // componentDidUpdate() {
+  //   if (this.state.movie) {
+  //     axios
+  //       .get(`http://localhost:5000/api/movies/${this.state.movie.id}`)
+  //       .then(res => {
+  //         if (res.data.id == this.state.movie.id) {
+  //           console.log(res.data.id)
+  //         }
+  //       })
+  //       .catch(err => console.log(err))
+  //   }
+  // }
+
   fetchMovie = id => {
     // this function needs to fire off a get request to localhost:5000/api/movies/:id
     // note that the id is dynamic.
@@ -35,6 +48,13 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  deleteMovie = () => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
+      .then(() => this.props.history.push('/'))
+      .catch(err => console.log(err));
+  }
+
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
@@ -43,9 +63,12 @@ export default class Movie extends React.Component {
     return (
       <div className="save-wrapper">
         <MovieCard movie={this.state.movie} />
+        
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+
+        <div className = 'delete-button' onClick = { this.deleteMovie }>Delete { this.state.movie.title }</div>
       </div>
     );
   }
