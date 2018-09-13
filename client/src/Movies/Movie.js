@@ -19,19 +19,6 @@ export default class Movie extends React.Component {
     }
   }
 
-  // componentDidUpdate() {
-  //   if (this.state.movie) {
-  //     axios
-  //       .get(`http://localhost:5000/api/movies/${this.state.movie.id}`)
-  //       .then(res => {
-  //         if (res.data.id == this.state.movie.id) {
-  //           console.log(res.data.id)
-  //         }
-  //       })
-  //       .catch(err => console.log(err))
-  //   }
-  // }
-
   fetchMovie = id => {
     // this function needs to fire off a get request to localhost:5000/api/movies/:id
     // note that the id is dynamic.
