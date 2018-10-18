@@ -5,6 +5,17 @@ body {
   background-color: #f2f2f2;
 }
 
+  a {
+  text-decoration: none;
+  color: black;
+}
+
+.app {
+  border: 1px solid black;
+  margin: 0 auto;
+}
+
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -14,6 +25,8 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  width: 70%;
+  text-align: center;
 }
 
 .movie-director {
@@ -69,6 +82,14 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+}
+
+.add-button {
+  padding: 5px 10px;
+  background-color: lightseagreen;
+  width: 100px;
+  position: relative;
+  left: 100px; 
 }
 
 .movie-warning {
