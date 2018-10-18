@@ -14,6 +14,8 @@ export default class App extends Component {
     }
   }
 
+
+
   addToSavedList = (movie) => {
     console.log(this.state.savedList)
     const savedList = this.state.savedList;
@@ -30,9 +32,11 @@ export default class App extends Component {
       };
       axios
         .post('http://localhost:5000/api/movies', newMovie)
-        .then(response => {
-          this.setState(() => ({ movies: response.data }));
-        })
+        // .then(response => {
+        //   this.setState(() => ({
+        //     movies: response.data }));
+        // })
+        .then(window.location.reload())
         .catch(error => {
           console.error('Sorry ', error);
         })

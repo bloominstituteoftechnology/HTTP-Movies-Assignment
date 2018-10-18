@@ -1,5 +1,5 @@
 import React from 'react';
-import { Redirect } from 'react-router-dom'; 
+import { Redirect } from 'react-router-dom';
 
 class AddMovieForm extends React.Component {
   constructor(props){
@@ -9,7 +9,7 @@ class AddMovieForm extends React.Component {
       director: '',
       metascore: '',
       stars: [],
-      redirect: false,
+      // redirect: false,
     }
   }
 
@@ -23,12 +23,13 @@ class AddMovieForm extends React.Component {
         director: '',
         metascore: '',
         stars: [],
-        redirect: true,
-      })
 
+      })
+      this.props.history.push('/'); 
     } else {
       alert('All fields must be filled out');
     }
+
   }
 
   handleInput = event => {
@@ -38,11 +39,11 @@ class AddMovieForm extends React.Component {
   }
 
   render(){
-    if (this.state.redirect) {
-      return (
-        <Redirect to='/' />
-      )
-    }
+    // if (this.state.redirect) {
+    //   return (
+    //     <Redirect to='/' />
+    //   )
+    // }
     return(
     <div className='add-movie-form'>
     <h1>Add a movie</h1>

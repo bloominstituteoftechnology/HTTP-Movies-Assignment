@@ -22,6 +22,10 @@ export default class MovieList extends Component {
       });
   }
 
+  componentWillReceiveProps(){
+    window.location.reload(); 
+  }
+
 
   render() {
     return (
