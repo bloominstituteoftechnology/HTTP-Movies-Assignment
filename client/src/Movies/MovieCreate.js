@@ -7,24 +7,34 @@ export default class MovieCreate extends Component {
       title: '',
       director: '',
       metascore: '',
-      stars: ''
+      stars: []
     }
   }
 
   handleChange = event => {
-    this.setState({
-      newMovie: {
-        ...this.state.newMovie,
-        [event.target.name]: event.target.value
-      }
-    })
+    if (event.target.name === 'stars') {
+      this.setState({
+        newMovie: {
+          ...this.state.newMovie,
+          stars: event.target.value.split(',')
+        }
+      })
+    } else {
+      this.setState({
+        newMovie: {
+          ...this.state.newMovie,
+          [event.target.name]: event.target.value
+        }
+      })
+    }
   }
 
-  addMovie = () => {
+  addMovie = event => {
+    event.preventDefault()
     axios
       .post(`/api/movies`, this.state.newMovie)
       .then(res => console.log(res))
-      .cathc(err => console.log(err))
+      .catch(err => console.log(err))
   }
 
   render() {
@@ -32,7 +42,15 @@ export default class MovieCreate extends Component {
     const { handleChange, addMovie } = this
 
     return (
-      <form>
+      <form
+        onSubmit={addMovie}
+        style={{
+          display: 'flex',
+          flexDirection: 'column',
+          width: '300px',
+          margin: '0 auto'
+        }}
+      >
         <label>Title</label>
         <input value={title} name="title" onChange={handleChange} />
         <label>Director</label>
@@ -41,6 +59,7 @@ export default class MovieCreate extends Component {
         <input value={metascore} name="metascore" onChange={handleChange} />
         <label>stars</label>
         <input value={stars} name="stars" onChange={handleChange} />
+        <button type="submit">submit</button>
       </form>
     )
   }
