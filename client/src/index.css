@@ -75,3 +75,68 @@ body {
   color: red;
   text-align: center;
 }
+
+.addbutton {
+  position: fixed;
+  height: 25px;
+  width: 25px;
+  text-align: center;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  font-size: 20px;
+  font-weight: bold;
+  border-radius: 50%;
+  background: lightskyblue;
+  right: 15px;
+  bottom: 30px;
+}
+
+.header {
+  display: flex;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+}
+
+form {
+  display: flex;
+  width: 75%;
+  flex-flow: column nowrap;
+  justify-content: center;
+  align-items: center;
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+}
+
+input {
+  width: 80%;
+  border: none;
+  background: lightgrey;
+  margin: 20px;
+  padding: 10px;
+  font-size: 15px;
+  outline: none;
+}
+
+input[type="submit"] {
+  text-align: center;
+  width: 20%;
+  background: lightskyblue;
+  padding: 10px;
+  color: black;
+  text-decoration: none;
+  border-radius: 5px;
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.3s cubic-bezier(.25,.8,.25,1);
+}
+
+input[type="submit"]:hover {
+  box-shadow: 0 13px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
