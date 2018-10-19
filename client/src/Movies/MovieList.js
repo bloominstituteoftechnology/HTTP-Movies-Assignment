@@ -2,12 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import { EventEmitter } from '../event';
+
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
       movies: []
     };
+    EventEmitter.subscribe('addMovie', (newMovie) => this.addMovie(newMovie))
   }
 
   componentDidMount() {
@@ -19,6 +22,18 @@ export default class MovieList extends Component {
     .catch(error => {
       console.error('Error', error)
     })
+  }
+  
+  addMovie = (newMovie) => {
+    axios
+      .post('http://localhost:5000/api/movies', newMovie) 
+      .then(response => {
+          this.setState({ movies: response.data });
+          alert('Movie added! Click the home link above to see the full movie list');
+      })
+      .catch(error => {
+          alert('Error: we\'re sorry, your movie could not added', error);
+      });
   }
 
   render() {
