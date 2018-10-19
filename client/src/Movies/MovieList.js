@@ -18,6 +18,10 @@ export default class MovieList extends Component {
       .catch(err => console.log(err));
   }
 
+  componentWillReceiveProps() {
+    window.location.reload();
+  }
+
   render() {
     return (
       <div className="movie-list">

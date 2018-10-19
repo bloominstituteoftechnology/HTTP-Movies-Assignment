@@ -34,7 +34,6 @@ export default class App extends Component {
     })
     .then(res => this.setState({ movies: res.data, title: '', director: '', metascore: undefined, 'stars[0]': '', 'stars[1]': '', 'stars[2]': '' }))
     .catch(err => console.log(err));
-    window.location.reload();
   }
 
   addToSavedList = movie => {
