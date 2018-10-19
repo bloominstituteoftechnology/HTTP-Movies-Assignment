@@ -7,7 +7,8 @@ export default class MovieList extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      movies: []
+      movies: [],
+      updated: false,
     };
   }
 
@@ -23,7 +24,11 @@ export default class MovieList extends Component {
   }
 
   componentWillReceiveProps(){
-    window.location.reload(); 
+    window.location.reload();
+  }
+
+  componentDidUpdate(){
+
   }
 
 

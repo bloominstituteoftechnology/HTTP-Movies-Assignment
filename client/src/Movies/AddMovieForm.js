@@ -25,7 +25,7 @@ class AddMovieForm extends React.Component {
         stars: [],
 
       })
-      this.props.history.push('/'); 
+      // this.props.history.push('/');
     } else {
       alert('All fields must be filled out');
     }

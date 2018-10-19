@@ -28,7 +28,7 @@ export default class Movie extends React.Component {
         this.setState(() => ({ movie: response.data }));
       })
       .catch(error => {
-        console.error('Sorry', error); 
+        console.error('Sorry', error);
       })
   };
 
