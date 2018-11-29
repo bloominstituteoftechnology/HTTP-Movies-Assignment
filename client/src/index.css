@@ -86,30 +86,45 @@ a:hover {
   margin: 1rem auto;
 }
 
-.save-button {
+.save-button, .unsave-button {
   position: absolute;
   bottom: 25px;
   right: 25px;
   border: 1px solid grey;
   border-radius: 5px;
   padding: 5px 10px;
-  background-color: lightseagreen;
   cursor: pointer;
 }
+
+.save-button {
+  background-color: lightseagreen;
+}
+
+.unsave-button {
+  background-color: lightcoral;
+}
+
+.save-button:hover, .unsave-button:hover {
+  color: white;
+}
+
 .save-button:hover {
   background-color: green;
-  color: white;
+}
+
+.unsave-button:hover {
+  background-color: darkred;
 }
 
 /* Misc. styling */
 
-.custom-button {
+.nav-button {
   padding: 5px 10px;
   background-color: lightskyblue;
   border-radius: 5px;
   border: 1px solid whitesmoke;
 }
-.custom-button:hover {
+.nav-button:hover {
   background-color: darkblue;
   color: whitesmoke;
   border: 1px solid lightskyblue;

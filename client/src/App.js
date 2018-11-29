@@ -1,12 +1,12 @@
-import React, { Component } from "react";
-import { Route } from "react-router-dom";
-import axios from "axios";
-import SavedList from "./Movies/SavedList";
-import MovieList from "./Movies/MovieList";
-import Movie from "./Movies/Movie";
-import MovieForm from "./Movies/MovieForm";
+import React, { Component } from 'react';
+import { Route, withRouter } from 'react-router-dom';
+import axios from 'axios';
+import SavedList from './Movies/SavedList';
+import MovieList from './Movies/MovieList';
+import Movie from './Movies/Movie';
+import MovieForm from './Movies/MovieForm';
 
-export default class App extends Component {
+class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -15,37 +15,40 @@ export default class App extends Component {
     };
   }
 
-  addToSavedList = movie => {
-    const savedList = this.state.savedList;
-    if (savedList.filter(saved => saved.id === movie.id).length === 0) {
-      savedList.push(movie);
-      this.setState({ savedList });
+  addToSaved = movie => {
+    const { savedList } = this.state;
+    if (!savedList.find(({ id }) => id === movie.id)) {
+      this.setState({ savedList: [ ...savedList, movie ] })
     }
   };
 
-  handleInputChange = e => {
+  removeFromSaved = movie => {
+    const savedList = this.state.savedList.filter(({ id }) => id !== movie.id);
+    this.setState({ savedList });
+  };
+
+  handleInputChange = ({ target: { name, value } }) => {
     this.setState({
-      [e.target.name]: e.target.value
+      [name]: value
     });
   };
 
   addMovie = e => {
+    const { title, director, metascore, stars, src } = this.state;
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/movies", {
-        title: this.state.title,
-        director: this.state.director,
-        metascore: this.state.metascore,
-        stars: this.state.stars.slice().split(', '),
-        src: this.state.src
+      .post('http://localhost:5000/api/movies', {
+        title,
+        director,
+        metascore,
+        stars: stars.split(', '),
+        src
       })
-      .then(res => {
-        this.setState({
-          movies: res.data
-        }, () => window.location="/");
+      .then(({ data }) => {
+        this.setState({ movies: data }, () => this.props.history.push('/'));
       })
       .catch(err => {
-        console.error("Server Post", err);
+        console.error('Server Post', err);
       });
   };
 
@@ -53,12 +56,12 @@ export default class App extends Component {
 
   componentDidMount() {
     axios
-      .get("http://localhost:5000/api/movies")
-      .then(res => {
-        this.setState(() => ({ movies: res.data }));
+      .get('http://localhost:5000/api/movies')
+      .then(({ data }) => {
+        this.setState(() => ({ movies: data }));
       })
-      .catch(error => {
-        console.error("Server Error", error);
+      .catch(err => {
+        console.error('Server Error', err);
       });
   }
 
@@ -66,12 +69,11 @@ export default class App extends Component {
     return (
       <div>
         <SavedList list={this.state.savedList} />
-        <Route exact path="/" render={props => (
-          <MovieList 
-            {...props}
-            movies={this.state.movies}
-          />
-        )} />
+        <Route
+          exact
+          path="/"
+          render={props => <MovieList {...props} movies={this.state.movies} />}
+        />
         <Route
           path="/add"
           render={props => (
@@ -87,7 +89,8 @@ export default class App extends Component {
           render={props => (
             <Movie
               {...props}
-              addToSavedList={this.addToSavedList}
+              addToSaved={this.addToSaved}
+              removeFromSaved={this.removeFromSaved}
               savedList={this.state.savedList}
             />
           )}
@@ -96,3 +99,5 @@ export default class App extends Component {
     );
   }
 }
+
+export default withRouter(App);
