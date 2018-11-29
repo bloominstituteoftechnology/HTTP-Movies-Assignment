@@ -61,12 +61,22 @@ class MovieForm extends Component {
 	}
 
 	handleChange = (event) => {
-		this.setState({
-			movie: {
-				...this.state.movie,
-				[event.target.name]: event.target.value
-			}
-		});
+		if(event.target.name !== 'stars'){
+			this.setState({
+				movie: {
+					...this.state.movie,
+					[event.target.name]: event.target.value
+				}
+			});
+		} else {
+			this.setState({
+				movie: {
+					...this.state.movie,
+					[event.target.name]: [event.target.value]
+				}
+			});
+		}
+		
     };
     
     addMovie = (event) => {
@@ -107,7 +117,7 @@ class MovieForm extends Component {
 					Stars
 					<input
 						type="text"
-						name="metascore"
+						name="stars"
 						value={this.state.movie.stars}
 						onChange={this.handleChange}
 					/>

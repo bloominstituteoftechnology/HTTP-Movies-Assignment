@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import MovieForm from './MovieForm'
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -21,13 +22,26 @@ export default class MovieList extends Component {
     
   }
 
+  addMovie = (movie) => {
+    axios
+			.post(`http://localhost:5000/api/movies`, movie)
+			.then((response) => {
+				this.setState({
+					movies: response.data
+				});
+			})
+			.catch((err) => console.log(err));
+  }
   render() {
     return (
+      <React.Fragment>
       <div className="movie-list">
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}
       </div>
+      <MovieForm addMovie={this.addMovie}/>
+      </React.Fragment>
     );
   }
 }
