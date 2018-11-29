@@ -24,7 +24,7 @@ body {
 }
 
 .saved-list {
-  background-color: lightcoral;
+  background-color: grey;
   border: 2px solid #cfc7d2;
   border-radius: 5px;
   color: white;
@@ -70,7 +70,6 @@ body {
 }
 .save-button:hover {
   background-color: lightcoral;
-  color: white;
   border: 2px solid white;
 }
 
@@ -82,8 +81,7 @@ body {
   border: 2px solid black;
 }
 .home-button:hover {
-  background-color: grey;
-  color: white;
+  background-color: lightcoral;
   border: 2px solid white;
 }
 

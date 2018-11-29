@@ -2,7 +2,7 @@ form {
 	width: 50%;
 	border: 2px solid #cfc7d2;
 	border-radius: 10px;
-	background: grey;
+	background: lightcoral;
 	display: flex;
 	flex-flow: row nowrap;
 	padding: 1%;
@@ -51,6 +51,7 @@ button {
 	padding: 1% 5%;
 	margin: 1% 10%;
 	width: 15%;
+	border: 2px solid black;
 	background: white;
 	color: black;
 	font-weight: bold;
