@@ -17,7 +17,7 @@ class App extends Component {
 
   addToSaved = movie => {
     const { savedList } = this.state;
-    if (!savedList.find(({ id }) => id === movie.id)) {
+    if (!savedList.some(({ id }) => id === movie.id)) {
       this.setState({ savedList: [ ...savedList, movie ] })
     }
   };
