@@ -1,4 +1,5 @@
 import React, {Component} from 'react';
+import './form.css';
 
 
 
@@ -43,42 +44,52 @@ class MovieForm extends Component {
     render() {
 		return (
 			<form onSubmit={this.addMovie} style={{display:'flex' }}>
+				<div className='labels'>
 				<label>
 					Title
-					<input
+				</label>
+				<label>
+					Director
+					
+				</label>
+				<label>
+					Metascore
+					
+				</label>
+                <label>
+					Stars
+				
+				</label>
+				</div>
+				
+				<div className='inputs'>
+				<input
 						type="text"
 						name="title"
 						value={this.state.movie.title}
 						onChange={this.handleChange}
 					/>
-				</label>
-				<label>
-					Director
 					<input
 						type="text"
 						name="director"
 						value={this.state.movie.director}
 						onChange={this.handleChange}
 					/>
-				</label>
-				<label>
-					Metascore
 					<input
 						type="number"
 						name="metascore"
 						value={this.state.movie.metascore}
 						onChange={this.handleChange}
 					/>
-				</label>
-                <label>
-					Stars
 					<input
 						type="text"
 						name="stars"
 						value={this.state.movie.stars}
 						onChange={this.handleChange}
 					/>
-				</label>
+				</div>
+				
+				
 				<button type="submit">Add Movie</button>
 			</form>
 		);
