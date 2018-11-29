@@ -1,7 +1,7 @@
-import React from "react";
+import React from 'react';
 
-const MovieCard = props => {
-  const { title, director, metascore, stars, src } = props.movie;
+const MovieCard = ({ movie }) => {
+  const { title, director, metascore, stars, src } = movie;
   return (
     <div className="movie-card-wrapper">
       <img className="movie-img" src={src} alt="" />

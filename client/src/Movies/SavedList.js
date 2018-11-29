@@ -1,26 +1,26 @@
-import React from "react";
-import { NavLink, Link } from "react-router-dom";
+import React from 'react';
+import { NavLink, Link } from 'react-router-dom';
 
-const SavedList = props => {
+const SavedList = ({ list }) => {
   return (
     <div className="saved-list">
       <h3>Saved Movies:</h3>
-      {props.list.map(movie => (
+      {list.map(({ src, id }) => (
         <NavLink
-          key={movie.src}
-          to={`/movies/${movie.id}`}
+          key={src}
+          to={`/movies/${id}`}
           activeClassName="saved-active"
           className="saved-movie"
         >
-          <img className="saved-img" src={movie.src} alt="" />
+          <img className="saved-img" src={src} alt="" />
         </NavLink>
       ))}
       <div>
-        <Link to="/add" className="custom-button">
+        <Link to="/add" className="nav-button">
           Add
         </Link>
         &nbsp;
-        <Link to="/" className="custom-button">
+        <Link to="/" className="nav-button">
           Home
         </Link>
       </div>

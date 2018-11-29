@@ -1,18 +1,18 @@
-import React from "react";
-import { Button, Form, Input, FormText } from "reactstrap";
+import React from 'react';
+import { Button, Form, Input, FormText } from 'reactstrap';
 
-const MovieForm = props => {
+const MovieForm = ({ addMovie, onChange }) => {
   return (
     <div className="movie-form">
       <h2 className="form-header">
         &darr; &nbsp; Add your very own movie below! &nbsp; &darr;
       </h2>
-      <Form onSubmit={props.addMovie}>
+      <Form onSubmit={addMovie}>
         <Input
           type="text"
           name="title"
           placeholder="Title..."
-          onChange={props.onChange}
+          onChange={onChange}
           required
           autoComplete="off"
         />
@@ -21,7 +21,7 @@ const MovieForm = props => {
           type="text"
           name="director"
           placeholder="Director..."
-          onChange={props.onChange}
+          onChange={onChange}
           required
           autoComplete="off"
         />
@@ -30,7 +30,7 @@ const MovieForm = props => {
           type="number"
           name="metascore"
           placeholder="Metascore..."
-          onChange={props.onChange}
+          onChange={onChange}
           min="0"
           max="100"
           required
@@ -41,7 +41,7 @@ const MovieForm = props => {
           type="text"
           name="stars"
           placeholder="Stars..."
-          onChange={props.onChange}
+          onChange={onChange}
           required
           autoComplete="off"
         />
@@ -55,7 +55,7 @@ const MovieForm = props => {
           type="text"
           name="src"
           placeholder="Image URL..."
-          onChange={props.onChange}
+          onChange={onChange}
           required
           autoComplete="off"
         />
