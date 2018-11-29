@@ -6,14 +6,16 @@ body {
 }
 
 .movie-card {
-  background-color: #fff;
-  border: 0;
+  background-color: grey;
+  border: 2px solid #cfc7d2;
+  border-radius: 5px;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 1rem 1%;
+  color: white;
 }
 
 .movie-director {
@@ -22,8 +24,10 @@ body {
 }
 
 .saved-list {
-  background-color: #fff;
-  border: 0;
+  background-color: lightcoral;
+  border: 2px solid #cfc7d2;
+  border-radius: 5px;
+  color: white;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
@@ -44,8 +48,9 @@ body {
   margin: 0 10px;
 }
 .saved-active {
-  color: blue;
+  color: white;
   border: 1px solid grey;
+  border-radius: 5px;
   padding: 5px;
 }
 .save-wrapper {
@@ -59,16 +64,27 @@ body {
   right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
-  background-color: lightseagreen;
+  background-color: white;
+  border-radius: 5px;
+  border: 2px solid black;
 }
 .save-button:hover {
-  background-color: green;
+  background-color: lightcoral;
   color: white;
+  border: 2px solid white;
 }
 
 .home-button {
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: white;
+  color: black;
+  border-radius: 5px;
+  border: 2px solid black;
+}
+.home-button:hover {
+  background-color: grey;
+  color: white;
+  border: 2px solid white;
 }
 
 .movie-warning {

@@ -19,7 +19,7 @@ export default class SavedList extends Component {
           );
         })}
         <div className="home-button">
-          <Link to="/">Home</Link>
+          <Link to="/" style={{textDecoration:'none'}}>Home</Link>
         </div>
       </div>
     );
