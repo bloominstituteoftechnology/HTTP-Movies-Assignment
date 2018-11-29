@@ -1,50 +1,7 @@
 import React, {Component} from 'react';
 
 
-// const Form = styled.form`
-// 	width: 50%;
-// 	border: 2px solid grey;
-// 	border-radius: 10px;
-// 	background: white;
-// 	display: flex;
-// 	flex-flow: column nowrap;
-// 	padding: 2.5%;
-// 	margin: 5% 33%;
-// 	justify-content: space-around;
-// 	align-items: space-between;
-// `;
-// const Input = styled.input`
-// 	border: 1px solid black;
-// 	border-radius: 5px;
-// 	margin: 5% 5% 0;
-// 	font-size: 1.5rem;
-// 	width: 80%;
-// 	text-align: center;
-// 	align-self: center;
-// `;
 
-// const Label = styled.label`
-// 	font-size: 1.8rem;
-// 	margin: 1% 5% 2%;
-// 	color: #272932;
-// 	text-align: center;
-// `;
-
-// const Button = styled.button`
-// 	border-radius: 10px;
-// 	padding: 1% 5%;
-// 	margin: 1% 25%;
-// 	width: 50%;
-// 	background: #8ba6a9;
-// 	color: #272932;
-// 	font-weight: bold;
-// 	border: 2px solid #272932;
-// 	:hover {
-// 		border: 2px solid #cfc7d2;
-// 		background: #272932;
-// 		color: #cfc7d2;
-// 	}
-// `;
 
 
 class MovieForm extends Component {
@@ -72,7 +29,7 @@ class MovieForm extends Component {
 			this.setState({
 				movie: {
 					...this.state.movie,
-					[event.target.name]: [event.target.value]
+					stars: event.target.value.split(',')
 				}
 			});
 		}
@@ -85,7 +42,7 @@ class MovieForm extends Component {
     };
     render() {
 		return (
-			<form onSubmit={this.addMovie}>
+			<form onSubmit={this.addMovie} style={{display:'flex' }}>
 				<label>
 					Title
 					<input
