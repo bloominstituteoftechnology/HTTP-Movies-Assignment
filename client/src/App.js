@@ -1,12 +1,13 @@
 import React, { Component } from "react";
-import { Route } from "react-router-dom";
+import { Route, withRouter } from "react-router-dom";
+import axios from "axios";
 
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import MovieCreate from "./Movies/MovieCreate";
 
-export default class App extends Component {
+class App extends Component {
   constructor() {
     super();
     this.state = {
@@ -23,10 +24,19 @@ export default class App extends Component {
   reveal = () => {
     this.setState({ reveal: !this.state.reveal });
   };
+  addMovie = movie => {
+    axios.post(`http://localhost:5000/api/movies`, movie);
+    // .then(res => console.log(res))
+    // .catch(err => console.error(err));
+  };
 
   render() {
+    console.log(this.props);
     const button = !this.state.reveal && (
-      <div className="button" onClick={this.reveal}>
+      <div
+        className="button"
+        onClick={() => this.props.history.push("/movie/add")}
+      >
         Add Movie
       </div>
     );
@@ -42,11 +52,13 @@ export default class App extends Component {
           }}
         />
         <Route
-          path="movies/add"
-          render={props => <MovieCreate {...props} submit={this.submit} />}
+          path="/movie/add"
+          render={props => <MovieCreate {...props} addMovie={this.addMovie} />}
         />
         {button}
       </div>
     );
   }
 }
+
+export default withRouter(App);
