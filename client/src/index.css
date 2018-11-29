@@ -66,7 +66,8 @@ body {
   color: white;
 }
 
-.home-button {
+.home-button a {
+  margin-left: 10px;
   padding: 5px 10px;
   background-color: lightskyblue;
 }
@@ -74,4 +75,31 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+form {
+
+  display: flex;
+  flex-direction: column;
+
+}
+
+form ul {
+
+  margin: auto;
+
+}
+
+form input {
+
+  width: 20%;
+  margin: auto;
+
+}
+
+form button {
+
+  margin: auto;
+  width: 20%;
+
 }

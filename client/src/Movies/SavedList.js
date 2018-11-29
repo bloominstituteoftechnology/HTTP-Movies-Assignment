@@ -20,8 +20,9 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div className="home-button">
-          <Link to="/">Home</Link>
+        <div className='home-button'>
+          <NavLink activeStyle={{fontWeight: 'bold'}} exact to="/">Home</NavLink>
+          <NavLink activeStyle={{fontWeight: 'bold'}} to="/movie/add">Add Movie</NavLink>
         </div>
       </div>
     );
