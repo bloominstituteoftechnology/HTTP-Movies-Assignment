@@ -11,8 +11,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      savedList: [],
-      reveal: false
+      savedList: []
     };
   }
 
@@ -21,17 +20,12 @@ class App extends Component {
     savedList.push(movie);
     this.setState({ savedList });
   };
-  reveal = () => {
-    this.setState({ reveal: !this.state.reveal });
-  };
+
   addMovie = movie => {
     axios.post(`http://localhost:5000/api/movies`, movie);
-    // .then(res => console.log(res))
-    // .catch(err => console.error(err));
   };
 
   render() {
-    console.log(this.props);
     const button = !this.state.reveal && (
       <div
         className="button"
