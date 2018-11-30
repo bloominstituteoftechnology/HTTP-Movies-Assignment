@@ -1,3 +1,7 @@
+## Setup to run
+1. Run `yarn && yarn start` at the root directory.
+1. Open a new terminal, navigate back to the root of the project, and then `cd client` and run `yarn && yarn start` again (or `cd client && yarn && yarn start`)
+
 # HTTP Movies - Stretch Assignment
 
 * The good news here is that you've seen this all before!
