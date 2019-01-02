@@ -75,3 +75,31 @@ body {
   color: red;
   text-align: center;
 }
+
+.movie-list {
+  position: relative;
+  padding-top: 20px;
+}
+
+.add-movie-icon {
+  position: absolute;
+  font-size: 20px;
+  top: 10px;
+  right: 10px;
+  text-decoration: none;
+  color: #222;
+}
+
+.add-movie-icon:active {
+  transform: translateY(1px);
+}
+
+.new-movie-form {
+  display: flex;
+  flex-direction: column;
+  width: 50%;
+  margin: 0 auto;
+  border: 2px solid black;
+  background: #eee;
+  padding: 20px;
+}

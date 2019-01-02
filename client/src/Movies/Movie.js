@@ -20,8 +20,9 @@ export default class Movie extends React.Component {
   }
 
   fetchMovie = id => {
-    // this function needs to fire off a get request to localhost:5000/api/movies/:id
-    // note that the id is dynamic.
+    axios(`http://localhost:5000/api/movies/${id}`)
+      .then(res => this.setState({ movie: res.data }) )
+      .catch(err => { throw new Error(err) });
   };
 
   saveMovie = () => {

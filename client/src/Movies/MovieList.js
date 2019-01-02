@@ -11,14 +11,16 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
-    // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    axios('http://localhost:5000/api/movies')
+      .then(res => this.setState({ movies: res.data }) )
+      .catch(err => { throw new Error(err) });
   }
 
   render() {
     return (
       <div className="movie-list">
-        {this.state.movies.map(movie => (
+          <Link to="/add-movie" className="far fa-plus-square add-movie-icon"></Link>
+          {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}
       </div>
