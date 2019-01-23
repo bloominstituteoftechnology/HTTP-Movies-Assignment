@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { NavLink } from 'react-router-dom';
 import MovieCard from './MovieCard';
 export default class MovieList extends Component {
   constructor(props) {
@@ -11,8 +11,14 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
-    // fill me in with an HTTP Request to `localhost:5000/api/movies`
-    this.setState({ movies: [] });
+    axios
+      .get('http://localhost:5000/api/movies')
+      .then(response => {
+        this.setState(() => ({ movies: response.data }));
+      })
+      .catch(error => {
+        console.error('Server Error', error);
+      });
   }
 
   render() {
@@ -27,9 +33,11 @@ export default class MovieList extends Component {
 }
 
 function MovieDetails({ movie }) {
+  const { title, director, metascore, stars, id } = movie;
+  
   return (
-    <Link to={`/movies/${movie.id}`}>
+    <NavLink to={`/movies/${id}`}>
       <MovieCard movie={movie} />
-    </Link>
+    </NavLink>
   );
 }
