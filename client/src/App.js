@@ -14,8 +14,6 @@ export default class App extends Component {
   }
 
   addToSavedList = (movie) => {
-    console.log(movie);
-    console.log(this.state.savedList);
     if (!this.state.savedList.some(x => x.title === movie.title)){ // .includes(movie) will not work because they will be two separate objects.
       this.setState((prevState) => {
         return {
