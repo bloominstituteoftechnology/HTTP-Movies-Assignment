@@ -36,6 +36,10 @@ body {
   justify-content: space-between;
 }
 
+.saved-list .links {
+  display: flex;
+}
+
 .saved-list h3 {
   margin-right: 10px;
 }
@@ -74,4 +78,33 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+form {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+form input {
+  margin-bottom: 10px;
+  padding: 10px;
+  font-size: 16px;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+
+form button {
+  width: 20%;
+  margin: auto;
+  padding: 5px 10px;
+  font-size: 16px;
+  background-color: lightskyblue;
+}
+
+form button:disabled {
+  cursor: not-allowed; 
 }

@@ -1,7 +1,9 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { Link } from 'react-router-dom';
+import { Route, Link } from 'react-router-dom';
 import MovieCard from './MovieCard';
+import MovieCreate from './MovieCreate';
+
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -21,12 +23,35 @@ export default class MovieList extends Component {
     })
   }
 
+  createMovie = (event, movie) => {
+    event.preventDefault();
+    axios.post('http://localhost:5000/api/movies', movie)
+    .then(res => {
+      this.setState({movies: res.data});
+    })
+    .catch(err => {
+      console.log(err);
+    })
+    this.props.history.push("/");
+  }
+
   render() {
     return (
-      <div className="movie-list">
-        {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
-        ))}
+      <div>
+        <Route 
+          path="/movies/add" 
+          render={() => 
+            <MovieCreate createMovie={this.createMovie}/>}
+        />
+        <Route exact   
+          path="/"
+          render={() => 
+            <div className="movie-list">
+              {this.state.movies.map(movie => (
+                <MovieDetails key={movie.id} movie={movie} />
+              ))}
+            </div>}
+        /> 
       </div>
     );
   }
