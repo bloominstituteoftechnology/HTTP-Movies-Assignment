@@ -90,3 +90,30 @@ a {
   color: red;
   text-align: center;
 }
+
+.form {
+  margin: auto;
+  width: 100%;
+}
+
+form {
+  width: 50%;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+}
+
+input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  margin: 0.25rem;
+}
+
+button {
+  display: inline-block;
+  margin: 0.25rem;
+  padding: 0.5rem;
+  background-color: lightskyblue;
+  border: 1px solid #ccc;
+}
