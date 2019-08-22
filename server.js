@@ -92,7 +92,7 @@ app.put("/api/movies/:id", (req, res) => {
       return req.body;
     }
     return movie;
-  })[0];
+  });
   res.status(200).send(req.body);
 });
 
