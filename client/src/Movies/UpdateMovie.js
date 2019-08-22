@@ -1,42 +1,44 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 
-const initialItem = {
-    title: "",
-    director: "",
-    metascore: "",
-    stars: []
-};
 
 const UpdateMovie = props => {
+    const initialItem = {
+        id: props.match.params.id,
+        title: "",
+        director: "",
+        metascore: "",
+    };
+
+    const [stars, setStars] =useState([]);
     const [update, setUpdate] = useState(initialItem);
-
-    useEffect(()=>{///component did mount
-        const id = props.match.params.id
-    })
-
-    
-    setUpdate({
-        ...update,
-        [ev.target.name]: value
-      });
+    console.log('update',update)
 
   const changeHandler = e => {
       e.preventDefault();
       setUpdate({...update, [e.target.name]: e.target.value })
   }
 
+  const changeHandlerStars = e => {
+    e.preventDefault();
+    setStars({...stars, [e.target.name]: [e.target.value] })
+}
+
+const data={
+    ...update,
+    ...stars
+}
+console.log('data', data)
+
   const handleSubmit = e => {
     e.preventDefault();
     axios
-    .put(`http://localhost:5000/update-movie/${props.match.params.id}`, update )
-    .then(res => {
-        console.log(res)
-    })
+    .put(`http://localhost:5000/api/movies/${props.match.params.id}`, data )
     .catch(err => {
         console.log(err.response)
     })
     props.history.push('/')
+    window.location.href = window.location.href
   }
 
   return (
@@ -64,7 +66,7 @@ const UpdateMovie = props => {
         <input
           type="array"
           name="stars"
-          onChange={changeHandler}
+          onChange={changeHandlerStars}
           value={update.stars}
         />
         <button className="form-button">Update Movie</button>
