@@ -1,5 +1,7 @@
 import React from 'react';
 import axios from 'axios'
+import { Link } from "react-router-dom";
+
 
 
 const MovieCard = props => {
@@ -14,6 +16,7 @@ const MovieCard = props => {
       .then(res => console.log(res.data))
       .catch(err => console.log(err.response))
   }
+
 
   return (
     <div className="movie-card">
@@ -31,8 +34,12 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
-      <button type="button">Edit</button>
+      <div className="buttons">
+        <Link to={`/edit-movie/${id}`}>
+        <button type="button">Edit</button>
+      </Link>
       <button type="button" onClick={deleteMovie}>Delete</button>
+      </div>
     </div>
   );
 };
