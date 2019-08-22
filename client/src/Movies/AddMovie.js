@@ -1,8 +1,9 @@
 import React, { useState } from 'react'
 import axios from 'axios'
+import { Redirect } from 'react-router-dom'
 
-const MovieForm = (props) => {
-
+const AddMovie = (props) => {
+  console.log('addmovieprops', props);
   const id = props.match.params.id
   // console.log('id', id);
 
@@ -30,7 +31,6 @@ const MovieForm = (props) => {
     console.log('movieStars', movieStars);
   }
 
-
   const submitMovie = (e) => {
     e.preventDefault();
     console.log('movieUpdate', movieUpdate);
@@ -39,13 +39,20 @@ const MovieForm = (props) => {
     const newMovie = {...movieUpdate, ...movieStars}
 
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, newMovie)
-      .catch(error => console.log(error.response))
+      .post('http://localhost:5000/api/movies', newMovie)
+      .then(response => {
+        console.log(response);
+        props.history.push("/")
+      })
+      .catch(e => {
+        console.log(e.response.data);
+      })
   }
+
 
   return(
     <div className="movie-form-container">
-      <p>Movie Form</p>
+      <p>Add a Movie!</p>
       <form className="update-form">
         <label>Movie Name</label>
         <input
@@ -80,4 +87,4 @@ const MovieForm = (props) => {
     </div>
     )
   }
-export default MovieForm
+export default AddMovie
