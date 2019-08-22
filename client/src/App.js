@@ -26,6 +26,8 @@ const App = () => {
         }}
       />
 
+      <Route path="/add-movie" component={MovieForm}/>
+
       <Route
         path="/update-movie/:id"
         render={props => {

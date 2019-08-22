@@ -12,7 +12,7 @@ const MovieForm = (props) => {
     const [movieToUpdate, setMovieToUpdate] = useState(initialMovie)
 
     useEffect(() => {
-        setMovieToUpdate(props.location.state)
+        if (props.location.state !== undefined) setMovieToUpdate(props.location.state)
     }, [props.location.state])
 
     const changeHandler = event => {
@@ -28,11 +28,23 @@ const MovieForm = (props) => {
 
     const handleSubmit = event => {
         event.preventDefault()
-
-        axios
-            .put(`http://localhost:5000/api/movies/${movieToUpdate.id}`, movieToUpdate)
-            .then(res => props.history.push('/'))
+        if (props.location.state !== undefined) {
+            axios
+                .put(`http://localhost:5000/api/movies/${movieToUpdate.id}`, movieToUpdate)
+                .then(res => {
+                    setMovieToUpdate(initialMovie)
+                    props.history.push('/')
+                })
+                .catch(err => console.log(err))
+        } else {
+            axios
+            .post(`http://localhost:5000/api/movies`, movieToUpdate)
+            .then(res => {
+                setMovieToUpdate(initialMovie)
+                props.history.push('/')
+            })
             .catch(err => console.log(err))
+        }
     }
 
     return (
@@ -71,7 +83,7 @@ const MovieForm = (props) => {
                     value={movieToUpdate.stars.toString()}
                 />
 
-                <button type='submit'>Update</button>
+                <button type='submit'>{props.location.state !== undefined ? 'Update' : 'Add'}</button>
             </form>
         </div>
     )
