@@ -77,7 +77,7 @@ app.put("/api/movies/:id", (req, res) => {
   if (!req.params.id)
     res.status(400).send("Your request is missing the movie id");
   if (
-    !req.body.id ||
+    req.body.id === undefined ||
     !req.body.title ||
     !req.body.director ||
     !req.body.metascore ||
