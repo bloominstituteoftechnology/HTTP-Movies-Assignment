@@ -75,3 +75,18 @@ body {
   color: red;
   text-align: center;
 }
+
+.movie-form-container {
+  margin: 5px auto;
+  text-align: center;
+}
+
+.update-form {
+  display: flex;
+  flex-direction: column;
+  width: 500px;
+}
+
+.update-form * {
+  margin: 5px auto;
+}
