@@ -13,9 +13,15 @@ export default class Movie extends React.Component {
     this.fetchMovie(this.props.match.params.id);
   }
 
-  componentWillReceiveProps(newProps) {
+  UNSAFE_componentWillReceiveProps(newProps) {
     if (this.props.match.params.id !== newProps.match.params.id) {
       this.fetchMovie(newProps.match.params.id);
+    }
+  }
+
+  componentDidUpdate(prevProps) {
+    if (this.props.match.params.id !== prevProps.match.params.id) {
+      this.fetchMovie(prevProps.match.params.id);
     }
   }
 
@@ -37,6 +43,15 @@ export default class Movie extends React.Component {
       .then(res => {
         console.log(res);
         this.props.history.push('/')
+      })
+      .catch(err => console.log(err.response));
+  };
+
+  editMovie = id => {
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, this.state.movie)
+      .then(res => {
+        console.log(res);
       })
       .catch(err => console.log(err.response));
   };
