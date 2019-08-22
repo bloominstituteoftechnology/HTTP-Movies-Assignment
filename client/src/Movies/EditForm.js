@@ -1,15 +1,23 @@
-import React, {useState} from "react";
+import React, {useState, useEffect } from "react";
+import axios from "axios";
 
-export default MovieForm = () => {
+const EditForm = (props) => {
 
-const { title, director, metascore, stars } = props.movie
+const paramID = props.match.params.id
 
 const [entry, setEntry] = useState({
     title: "",
     director: "",
-    metascore: "",
-    stars: ""
+    metascore: ""
 })
+
+useEffect(() =>  {
+    axios
+.get(`http://localhost:5000/api/movies/${paramID}`)
+.then(res => setEntry(res.data))
+.catch(err => console.log(err.response))
+}, [paramID])
+   
 
 const handleChange = ev => {
     ev.preventDefault();
@@ -19,9 +27,20 @@ const handleChange = ev => {
     });
   };
 
+const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${paramID}`, entry)
+      .then(res => {
+        console.log(res);
+        props.history.push('/');
+      })
+      .catch(err => console.log(err.response));
+  };
+
 return (
     <div className="edit-form">
-        <form onSubmit={props.handleSubmit}>
+        <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
@@ -43,17 +62,11 @@ return (
           placeholder="metascore"
           value={entry.metascore}
         />
-
-<input
-          type="text"
-          name="stars"
-          onChange={handleChange}
-          placeholder="stars"
-          value={entry.stars}
-        />
         <button>Update</button>
         </form>
     </div>
 )
 
 }
+
+export default EditForm;

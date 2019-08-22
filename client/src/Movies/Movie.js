@@ -1,23 +1,25 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       movie: null
     };
+    
   }
 
   componentDidMount() {
     this.fetchMovie(this.props.match.params.id);
   }
 
-  UNSAFE_componentWillReceiveProps(newProps) {
+ /*  UNSAFE_componentWillReceiveProps(newProps) {
     if (this.props.match.params.id !== newProps.match.params.id) {
       this.fetchMovie(newProps.match.params.id);
     }
-  }
+  } */
 
   componentDidUpdate(prevProps) {
     if (this.props.match.params.id !== prevProps.match.params.id) {
@@ -39,7 +41,7 @@ export default class Movie extends React.Component {
 
   deleteMovie = id => {
     axios
-      .delete(`http://localhost:5000/api/movies/${id}`)
+      .delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
       .then(res => {
         console.log(res);
         this.props.history.push('/')
@@ -47,14 +49,6 @@ export default class Movie extends React.Component {
       .catch(err => console.log(err.response));
   };
 
-  editMovie = id => {
-    axios
-      .put(`http://localhost:5000/api/movies/${id}`, this.state.movie)
-      .then(res => {
-        console.log(res);
-      })
-      .catch(err => console.log(err.response));
-  };
 
   render() {
     if (!this.state.movie) {
@@ -67,12 +61,14 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
-        <div className="edit-button" onClick={this.editMovie}>
+        <div className="edit-button" onClick={() => {
+          this.props.history.push(`/update/${this.props.match.params.id}`)}}>
           Edit
         </div>
         <div className="delete-button" onClick={this.deleteMovie}>
           Delete
         </div>
+        
       </div>
     );
   }
