@@ -5,6 +5,7 @@ import { Link } from "react-router-dom";
 
 
 const MovieCard = props => {
+  // console.log('moviecardprops', props);
 
   const { title, director, metascore, stars, id } = props.movie;
 
@@ -13,7 +14,10 @@ const MovieCard = props => {
     console.log('Delete Movie');
     axios
       .delete(`http://localhost:5000/api/movies/${id}`)
-      .then(res => console.log(res.data))
+      .then(res => {
+        console.log(res);
+        // props.history.push("/")
+      })
       .catch(err => console.log(err.response))
   }
 
@@ -35,9 +39,11 @@ const MovieCard = props => {
         </div>
       ))}
       <div className="buttons">
+      <div>
         <Link to={`/edit-movie/${id}`}>
         <button type="button">Edit</button>
-      </Link>
+        </Link>
+      </div>
       <button type="button" onClick={deleteMovie}>Delete</button>
       </div>
     </div>
