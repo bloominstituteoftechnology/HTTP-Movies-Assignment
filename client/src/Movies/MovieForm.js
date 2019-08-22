@@ -11,12 +11,12 @@ const MovieForm = (props) => {
     title: "",
     director: "",
     metascore:"",
-    stars: []
+
   });
   const [movieStars, setMovieStars] = useState ({
     stars: []
   })
-  const newMovie = {...movieUpdate}
+  const newMovie = {...movieUpdate, ...movieStars}
   console.log('newMovie',newMovie);
 
   const handleChange = (e) => {
@@ -67,17 +67,6 @@ const MovieForm = (props) => {
           value={movieStars.stars}
           onChange={handleStars}/>
 
-        <label>Supporting Actor</label>
-        <input type="text"
-          name="stars"
-          value={movieStars.stars}
-          onChange={handleStars}/>
-
-        <label>Who played the baddie?</label>
-        <input type="text"
-          name="stars"
-          value={movieStars.stars}
-          onChange={handleStars}/>
 
         <button type="button" onClick={submitMovie}>Submit Movie!</button>
       </form>
