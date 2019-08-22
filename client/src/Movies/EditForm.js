@@ -8,7 +8,8 @@ const paramID = props.match.params.id
 const [entry, setEntry] = useState({
     title: "",
     director: "",
-    metascore: ""
+    metascore: "",
+    stars: []
 })
 
 useEffect(() =>  {
@@ -26,6 +27,16 @@ const handleChange = ev => {
       [ev.target.name]: ev.target.value
     });
   };
+
+const handleStar = (i,e) => {
+    e.preventDefault();
+    const newStars = [...entry.stars]
+    newStars[i] = e.target.value
+    setEntry({
+        ...entry,
+        stars: newStars
+      });
+}
 
 const handleSubmit = e => {
     e.preventDefault();
@@ -62,6 +73,11 @@ return (
           placeholder="metascore"
           value={entry.metascore}
         />
+
+        {entry.stars.map((star, i) => {
+        return <input key={i} type="text" name={star} value={entry.stars[i]} onChange={e => handleStar(i, e)} ></input>
+        })}
+
         <button>Update</button>
         </form>
     </div>
