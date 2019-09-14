@@ -4,7 +4,11 @@ import axios from 'axios';
 const UpdateMovie = (props) => {
 
     useEffect(()=>{
-
+        const id = props.match.params.id;
+        axios
+        .get(`http://localhost:5000/api/movies/${id}`)
+        .then(res=>console.log(res))
+        .catch(err=>console.log(err));
     },[])
 
     const handleSubmit = e =>{
