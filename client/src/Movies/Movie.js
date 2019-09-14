@@ -2,6 +2,7 @@ import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import {Button} from 'semantic-ui-react';
+import {Link} from 'react-router-dom';
 
 export default class Movie extends React.Component {
   constructor(props) {
@@ -35,7 +36,7 @@ export default class Movie extends React.Component {
   };
 
   render() {
-    console.log(this.props);
+    const id =this.props.match.params.id;
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
@@ -44,7 +45,7 @@ export default class Movie extends React.Component {
       <div className="save-wrapper">
         
         <MovieCard movie={this.state.movie} />
-        <Button color="blue">Edit</Button>
+        <Link to={`/update-movie/${id}`}><Button color="blue">Edit</Button></Link>
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
