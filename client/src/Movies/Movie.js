@@ -11,6 +11,18 @@ export default class Movie extends React.Component {
       movie: null
     };
   }
+
+  handleDelete(){
+    const id = this.props.match.params.id;
+    console.log('deleting: ', id);
+    axios
+    .delete(`http://localhost:5000/api/movies/${id}`)
+    .then(res=>{
+      this.props.history.push('/')
+    })
+    .catch(err=>console.log(err));
+  }
+  
   
 
   componentDidMount() {
@@ -46,6 +58,7 @@ export default class Movie extends React.Component {
         
         <MovieCard movie={this.state.movie} />
         <Link to={`/update-movie/${id}`}><Button color="blue">Edit</Button></Link>
+        <Button onClick={()=>this.handleDelete()}color="red">Delete</Button>
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>

@@ -57,7 +57,7 @@ const UpdateMovie = props => {
             axios
             .put(`http://localhost:5000/api/movies/${props.match.params.id}`, newMovie)
             .then(res=>{
-                console.log(res);
+                // console.log(res);
                 props.history.push('/')
             })
             .catch(err=>{
@@ -66,11 +66,11 @@ const UpdateMovie = props => {
 
             
         } else {
-            console.log('running else');
+            // console.log('running else');
             axios
             .put(`http://localhost:5000/api/movies/${props.match.params.id}`, movie)
             .then(res=>{
-                console.log(res);
+                // console.log(res);
                 props.history.push('/')
             })
             .catch(err=>{
