@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import {Button} from 'semantic-ui-react';
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -8,6 +10,7 @@ export default class Movie extends React.Component {
       movie: null
     };
   }
+  
 
   componentDidMount() {
     this.fetchMovie(this.props.match.params.id);
@@ -32,6 +35,7 @@ export default class Movie extends React.Component {
   };
 
   render() {
+    console.log(this.props);
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
@@ -40,7 +44,7 @@ export default class Movie extends React.Component {
       <div className="save-wrapper">
         
         <MovieCard movie={this.state.movie} />
-        <button>Edit</button>
+        <Button color="blue">Edit</Button>
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
