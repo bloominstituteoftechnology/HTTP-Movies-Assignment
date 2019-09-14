@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import {Input, TextArea, Button, Form} from 'semantic-ui-react';
 
 const AddMovie = props => {
   const [movie, setMovie] = useState({
@@ -9,9 +10,7 @@ const AddMovie = props => {
     stars: ""
   });
 
-  useEffect(() => {
-
-  }, []);
+  useEffect(() => {}, []);
 
   const handleChange = e => {
     setMovie({
@@ -37,10 +36,7 @@ const AddMovie = props => {
         };
 
         axios
-          .post(
-            `http://localhost:5000/api/movies`,
-            newMovie
-          )
+          .post(`http://localhost:5000/api/movies`, newMovie)
           .then(res => {
             props.history.push("/");
           })
@@ -49,10 +45,7 @@ const AddMovie = props => {
           });
       } else {
         axios
-          .post(
-            `http://localhost:5000/api/movies`,
-            movie
-          )
+          .post(`http://localhost:5000/api/movies`, movie)
           .then(res => {
             props.history.push("/");
           })
@@ -63,33 +56,33 @@ const AddMovie = props => {
     }
   };
   return (
-    <form onSubmit={handleSubmit}>
-      <input
+    <Form onSubmit={handleSubmit} className="special-form">
+      <Input
         onChange={handleChange}
         value={movie.title}
         name="title"
         placeholder="Title"
-      />
-      <input
+      /><br />
+      <Input
         onChange={handleChange}
         value={movie.director}
         name="director"
         placeholder="Director"
-      />
-      <input
+      /> <br />
+      <Input
         onChange={handleChange}
         value={movie.metascore}
         name="metascore"
         placeholder="Metascore"
       />
-      <textarea
+      <TextArea
         onChange={handleChange}
         value={movie.stars}
         name="stars"
         placeholder="Stars - Seperate by commas"
       />
-      <button>Add Movie</button>
-    </form>
+      <Button color="green">Add Movie</Button>
+    </Form>
   );
 };
 

@@ -4,8 +4,8 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovie from './Movies/UpdateMovie';
-import {Button} from 'semantic-ui-react';
 import AddMovie from './Movies/AddMovie';
+
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
