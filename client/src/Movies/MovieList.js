@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import {Button} from 'semantic-ui-react';
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -20,6 +21,7 @@ export default class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
+        <Link to="/add-movie"><Button color="green">Add Movie</Button></Link>
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}
