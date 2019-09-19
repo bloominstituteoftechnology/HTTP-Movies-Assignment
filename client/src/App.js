@@ -5,12 +5,13 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovie from "./Movies/UpdateMovie";
 
-const App = () => {
+const App = (props) => {
   const [savedList, setSavedList] = useState([]);
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
+
 
   return (
     <>
@@ -25,7 +26,7 @@ const App = () => {
       <Route
       path="/update-movie/:id"
       render={props => {
-        return <MovieForm {...props} updateMovie={UpdateMovie} />;
+        return <UpdateMovie {...props} />;
         }}
       />
     </>
