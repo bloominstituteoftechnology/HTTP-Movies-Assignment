@@ -1,4 +1,4 @@
-# HTTP Movies - Stretch Assignment
+# HTTP Movies
 
 ## Instructions
 
