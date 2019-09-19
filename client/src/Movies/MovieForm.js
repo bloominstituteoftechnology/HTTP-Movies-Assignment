@@ -30,19 +30,20 @@ const MovieForm = props => {
         const movieToUpdate = movies.find(movie => movie.id == id); // template literal or var types won't match
         
         if (movieToUpdate) { // If we don't write this "if statement," code will run before axios call finishes, creating a bug
-            console.log(movieToUpdate);
+            console.log('Is it this?', movieToUpdate);
             setMovie(movieToUpdate);
         }
     }, [match, movies]); // Without a dependency array containing relevant props, code will run and run inside console (infinite loop)
 
     const handleSubmit = e => {
+        // console.log('Clicked');
         e.preventDefault();
         axios
             .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
             .then(res => {
+                console.log(res);
+                props.history.push(`/movies/${movie.id}`); // redirect to movie page after edit -- DO THIS ONE BEFORE SET!!!!!
                 props.setMovie(res.data);
-                props.history.push(`/movies/${movie.id}`); // redirect to movie page after edit
-                setMovie(initialMovie); // repopulates form with blank spaces like at top
             })
             .catch(err => console.log(err.response))
     }
@@ -82,7 +83,7 @@ const MovieForm = props => {
                     onChange={handleChange}
                     placeholder="Movie metascore..."
                 />
-                {movie.stars.map((star, index) => {
+                {movie.stars && movie.stars.map((star, index) => {
                     return <input type="text"
                                   name="star"
                                   key={index}

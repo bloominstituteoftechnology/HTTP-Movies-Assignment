@@ -56,7 +56,7 @@ const App = () => {
       />
 
       <Route 
-        path="/update-movie:id/"
+        path="/update-movie/:id/"
         render={props => (
           <MovieForm {...props} movies={movies} updateMovies={setMovies} />
         )}
