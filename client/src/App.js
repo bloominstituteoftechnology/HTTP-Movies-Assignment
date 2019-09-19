@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
+import MovieForm from "./Movies/MovieForm";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
 
@@ -37,16 +38,33 @@ const App = () => {
   return (
     <>
       <SavedList list={savedList} />
+
       <Route 
         exact path="/" 
         render={props => <MovieList {...props} movies={movies} />}
       />
+
       <Route
         path="/movies/:id"
         render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} />;
+          const movie = movies.find(movie => movie.id == props.match.params.id);
+          if (!movie) {
+            return <div>Loading movie details...</div>
+          }
+          return <Movie {...props} movie={movie} addToSavedList={addToSavedList} removeMovie={removeMovie} />;
         }}
       />
+
+      <Route 
+        path="/update-movie:id/"
+        render={props => {
+          const movie = movies.find(movie => movie.id == props.match.params.id);
+          if (!movie) {
+            return <div>Loading movie form...</div>
+          }
+          return <MovieForm {...props} movie={movie} updateMovie={updateMovie}  />
+        }}
+        />
     </>
   );
 };
