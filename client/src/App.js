@@ -25,11 +25,11 @@ const App = () => {
       setMovies(movies.filter(movie => movie.id != id))
   };
 
-  const updateMovie = updatedMovie => {
-    setMovies(movies.map(movie => (
-      movie.id === updatedMovie.id ? updatedMovie: movie
-    )));
-  };
+  // const updateMovie = updatedMovie => {
+  //   setMovies(movies.map(movie => (
+  //     movie.id === updatedMovie.id ? updatedMovie: movie
+  //   )));
+  // };
 
   useEffect(() => {
     getMovies();
@@ -57,13 +57,9 @@ const App = () => {
 
       <Route 
         path="/update-movie:id/"
-        render={props => {
-          const movie = movies.find(movie => movie.id == props.match.params.id);
-          if (!movie) {
-            return <div>Loading movie form...</div>
-          }
-          return <MovieForm {...props} movie={movie} updateMovie={updateMovie}  />
-        }}
+        render={props => (
+          <MovieForm {...props} movies={movies} updateMovies={setMovies} />
+        )}
         />
     </>
   );
