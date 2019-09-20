@@ -16,7 +16,7 @@ export default class MovieList extends Component {
       .then(res => this.setState({ movies: res.data }))
       .catch(err => console.log(err.response));
   }
-
+ 
   render() {
     return (
       <div className="movie-list">
@@ -33,5 +33,6 @@ function MovieDetails({ movie }) {
     <Link to={`/movies/${movie.id}`}>
       <MovieCard movie={movie} />
     </Link>
+    
   );
 }

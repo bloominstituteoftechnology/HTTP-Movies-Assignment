@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+import { Link } from 'react-router-dom';
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -31,6 +32,10 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  editMovie =() => {
+    this.props.updateMovie(this.state.Movie)
+    this.props.history.push(`/update-movie/${this.state.movie.id}`)
+  }
 
   render() {
     if (!this.state.movie) {
@@ -43,9 +48,9 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
-        <button className="update-button" onClick={() => this.props.history.push(`/update-movie/${this.state.movie.id}`)}>
-          Update
-        </button>
+        <Link to={{ pathname: `/update-movie/${this.state.movie.id}`, state: {movie: this.state.movie }}}><button className='update-button'>Update</button></Link>
+    
+        
       </div>
     );
   }

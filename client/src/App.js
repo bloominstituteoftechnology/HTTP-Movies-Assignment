@@ -12,6 +12,10 @@ const App = (props) => {
     setSavedList([...savedList, movie]);
   };
 
+  const updateMovie = movie=> {
+    
+    console.log(movie)
+  }
 
   return (
     <>
@@ -20,13 +24,13 @@ const App = (props) => {
       <Route
         path="/movies/:id"
         render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} />;
+          return <Movie {...props} addToSavedList={addToSavedList} updateMovie={updateMovie}/>;
         }}
       />
       <Route
       path="/update-movie/:id"
       render={props => {
-        return <UpdateMovie {...props} />;
+        return <UpdateMovie {...props} updateMovie={updateMovie} />;
         }}
       />
     </>

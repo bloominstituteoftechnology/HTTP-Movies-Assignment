@@ -65,7 +65,7 @@ body {
   background-color: green;
   color: white;
 }
-.update-button {
+a .update-button {
   position: absolute;
   top: 60px;
   right: 25px;
@@ -73,7 +73,7 @@ body {
   padding: 5px 10px;
   background-color: lightsalmon;
 }
-.update-button:hover {
+a .update-button:hover {
   background-color: green;
   color: white;
 }
@@ -85,4 +85,13 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  width: 75%;
+  margin: 1rem auto;
+  padding: 1rem;
+  align-items: center;
 }
