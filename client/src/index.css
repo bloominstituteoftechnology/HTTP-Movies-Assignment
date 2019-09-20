@@ -65,7 +65,7 @@ body {
   background-color: green;
   color: white;
 }
-a .update-button {
+.update-button {
   position: absolute;
   top: 60px;
   right: 25px;
@@ -73,8 +73,21 @@ a .update-button {
   padding: 5px 10px;
   background-color: lightsalmon;
 }
-a .update-button:hover {
-  background-color: green;
+.update-button:hover {
+  background-color: orange;
+  color: white;
+}
+.delete-button {
+  position: absolute;
+  top: 100px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: darkred;
+  color: white
+}
+.delete-button:hover {
+  background-color: red;
   color: white;
 }
 .home-button {
