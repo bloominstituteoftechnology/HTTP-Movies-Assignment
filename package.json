@@ -4,6 +4,7 @@
   "description": "",
   "main": "server.js",
   "scripts": {
+    "build": "my-framework build --output public",
     "start": "node server.js"
   },
   "repository": {
