@@ -56,7 +56,7 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 150px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
@@ -74,4 +74,29 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.edit-button {
+  position: absolute;
+  top: 25px;
+  right: 95px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.edit-button:hover {
+  background-color: green;
+  color: white;
+}
+.delete-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid white;
+  padding: 5px 10px;
+  background-color: red;
+}
+.delete-button:hover {
+  background-color: red;
+  color: white;
 }
