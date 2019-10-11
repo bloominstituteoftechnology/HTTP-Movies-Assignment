@@ -3,7 +3,7 @@ import axios from "axios";
 
 const UpdateMovie = props => {
   const [movie, setMovie] = useState({
-    id: "null",
+    // id: "null",
     title: "",
     director: "",
     metascore: "",
@@ -27,10 +27,10 @@ const UpdateMovie = props => {
   const handleSubmit = e => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/movies/${props.match.params.id}, movie`)
+      .put(`http://localhost:5000/api/movies/${props.match.params.id}`, movie)
       .then(res => {
         setMovie({
-          id: "null",
+          // id: "null",
           title: "",
           director: "",
           metascore: "",
@@ -70,7 +70,7 @@ const UpdateMovie = props => {
         <input
           type="text"
           name="stars"
-          value={movie.stars.toString()}
+          value={movie.stars}
           onChange={handleChange}
         />
         <button type="submit">Update</button>
