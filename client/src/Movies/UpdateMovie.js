@@ -28,7 +28,6 @@ export default function UpdateMovie({onFormSubmit, form}) {
                 <Field name='stars' type='text' placeholder='stars' />
                 </label>
                 
-
                 <Button color='primary' type='submit' >Submit</Button>
             </StyledForm>
         }}
