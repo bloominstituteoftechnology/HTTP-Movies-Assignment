@@ -5,10 +5,10 @@ import styled from "styled-components";
 import { Button, Card, Heading, Content } from "react-bulma-components";
 
 
-export default function UpdateMovie(props) {
+export default function UpdateMovie({onFormSubmit, form}) {
     return <Formik
-        initialValues = {{}}
-        onSubmit = {() => {}}
+        initialValues = {form}
+        onSubmit = {onFormSubmit}
         render = {props => {
             return <StyledForm>
                 <Field name='title' type='text' placeholder='Title' />
