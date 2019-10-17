@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldArray } from "formik";
 
 export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
   const movieToUpdate = listMovies.find(item => {

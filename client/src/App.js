@@ -1,9 +1,8 @@
 import React, { useState, useEffect } from "react";
 
 // DEPENDENCIES
-import { Route, Redirect, withRouter, Link } from "react-router-dom";
+import { Route, withRouter, Link } from "react-router-dom";
 import axios from "axios";
-import uuid from "uuid";
 
 // COMPONENTS
 import SavedList from "./Movies/SavedList";
