@@ -2,6 +2,9 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+//import UpdateForm from "./UpdateForm";
+
+
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -30,8 +33,13 @@ export default class MovieList extends Component {
 
 function MovieDetails({ movie }) {
   return (
+    <>
     <Link to={`/movies/${movie.id}`}>
       <MovieCard movie={movie} />
     </Link>
+    {/* <Link to={`/update-movie/${movie.id}`}>
+      <UpdateForm movie={movie} />
+    </Link> */}
+    </>
   );
 }
