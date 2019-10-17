@@ -11,7 +11,6 @@ export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
         initialValues={movieToUpdate}
         onSubmit={updateMovie}
         render={props => {
-          debugger
           return (
             <Form>
               <label>
