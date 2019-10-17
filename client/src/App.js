@@ -29,7 +29,7 @@ const App = ({history}) => {
       title: formValues.title,
       director: formValues.director,
       metascore: formValues.metascore,
-      stars: ['Kurt Russell', 'Bill Paxton', 'Sam Elliot'],
+      stars: formValues.stars.split(','),
     })
     .then(({data}) => {
       console.log(data);

@@ -11,9 +11,23 @@ export default function UpdateMovie({onFormSubmit, form}) {
         onSubmit = {onFormSubmit}
         render = {props => {
             return <StyledForm>
+                <label>
+                    <p>Name</p>
                 <Field name='title' type='text' placeholder='Title' />
-                <Field name='metascore' type='number' placeholder='Metascore' />
+                </label>
+               <label>
+                   <p>Metascore</p>
+               <Field name='metascore' type='number' placeholder='Metascore' />
+               </label>
+                <label>
+                    <p>Director</p>
                 <Field name='director' type='text' placeholder='Director' />
+                </label>
+                <label>
+                    <p>Comma separated list of stars</p>
+                <Field name='stars' type='text' placeholder='stars' />
+                </label>
+                
 
                 <Button color='primary' type='submit' >Submit</Button>
             </StyledForm>
@@ -30,6 +44,7 @@ const StyledForm = styled(Form)`
 
     input {
         width: 23rem;
+        height: 2.3rem;
         margin: 0.6rem auto;
     }
 
