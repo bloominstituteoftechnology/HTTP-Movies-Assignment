@@ -19,16 +19,14 @@ const App = () => {
       <Route
         path="/movies/:id"
         render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} />;
+          return <Movie {...props} addToSavedList={addToSavedList} updateSavedList={setSavedList}/>;
         }}
       />
       {/* props brings, for history, match, location.  Needs  to find my id.
       use render, when need more than just props. we also want savedList. */}
       <Route
         path="/update-movie/:id"
-        render={props => {
-          return <UpdateForm {...props} savedList={savedList} />;
-        }}
+       render= {props => <UpdateForm {...props} savedList={savedList} updateSavedList={setSavedList}/>}
       />
     </>
   );

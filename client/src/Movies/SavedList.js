@@ -4,7 +4,7 @@ import { NavLink, Link } from 'react-router-dom';
 
 export default class SavedList extends Component {
   constructor(props) {
-    console.log(props)
+    console.log(`savedlist props`,props)
     super(props);
   }
 
