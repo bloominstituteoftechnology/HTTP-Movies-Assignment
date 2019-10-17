@@ -9,10 +9,20 @@ import UpdateMovie from "./Movies/UpdateMovie";
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
+  const [id, setId] = useState(0)
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
+
+  const beginEdit = (editId) => {
+    setId(editId)
+  }
+
+  const performEdit = (formValues, actions) =>  {
+
+    actions.resetForm();
+  }
 
   return (
     <>
