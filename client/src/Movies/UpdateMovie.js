@@ -47,6 +47,12 @@ const StyledForm = styled(Form)`
         margin: 0.6rem auto;
     }
 
+    label {
+        width: 23rem;
+        height: 3.5rem;
+        margin: 0.6rem auto;
+    }
+
     button {
         width: 8rem;
         margin: 1rem auto;
