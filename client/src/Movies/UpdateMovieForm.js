@@ -1,17 +1,17 @@
 import React from "react";
-import { Formik, Form, Field, ErrorMessage } from "formik";
+import { Formik, Form, Field, FieldArray, ErrorMessage } from "formik";
 
 export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
   const movieToUpdate = listMovies.find(item => {
     return item.id === Number(match.params.id);
   });
-
   return (
     <div>
       <Formik
         initialValues={movieToUpdate}
         onSubmit={updateMovie}
         render={props => {
+          debugger
           return (
             <Form>
               <label>
@@ -22,6 +22,22 @@ export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
                 Title
                 <Field name="title" type="text" />
               </label>
+              <label>
+                Metascore
+                <Field name="metascore" type="text" />
+              </label>
+              <FieldArray
+                name="stars"
+                render={arrayHelpers => {
+                  return (
+                    <div>
+                      {props.values.stars.map((star, index) => {
+                        return <Field name={`stars.${index}`} />;
+                      })}
+                    </div>
+                  );
+                }}
+              />
               <button type="submit">Submit</button>
             </Form>
           );
