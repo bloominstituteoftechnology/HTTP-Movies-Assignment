@@ -1,9 +1,10 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovieForm from "./Movies/UpdateMovieForm";
+import axios from "axios";
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -16,6 +17,30 @@ const App = () => {
   const setMovieList = data => {
     setListMovies(data);
   };
+
+  const updateMovie = movie => {
+    axios
+      .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+      .then(res => {
+        fetchMovies();
+      })
+      .catch(error => {
+        debugger;
+      });
+  };
+
+  const fetchMovies = () => {
+    axios
+      .get("http://localhost:5000/api/movies")
+      .then(res => {
+        setListMovies(res.data);
+      })
+      .catch(err => alert(err.response));
+  };
+
+  useEffect(() => {
+    fetchMovies();
+  }, []);
 
   return (
     <>
@@ -42,7 +67,13 @@ const App = () => {
       <Route
         path="/update-movie/:id"
         render={props => {
-          return <UpdateMovieForm {...props} listMovies={listMovies} />;
+          return (
+            <UpdateMovieForm
+              {...props}
+              listMovies={listMovies}
+              updateMovie={updateMovie}
+            />
+          );
         }}
       />
     </>

@@ -7,15 +7,15 @@ export default class MovieList extends Component {
     super(props);
   }
 
-  componentDidMount() {
-    axios
-      .get("http://localhost:5000/api/movies")
-      .then(res => {
-        this.props.setMovieList(res.data)
-        // this.setState({ movies: res.data })
-      })
-      .catch(err => console.log(err.response));
-  }
+  // componentDidMount() {
+  //   axios
+  //     .get("http://localhost:5000/api/movies")
+  //     .then(res => {
+  //       this.props.setMovieList(res.data)
+  //       // this.setState({ movies: res.data })
+  //     })
+  //     .catch(err => console.log(err.response));
+  // }
 
   render() {
 
