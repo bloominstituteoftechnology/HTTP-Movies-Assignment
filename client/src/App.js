@@ -7,6 +7,8 @@ import UpdateMovieForm from "./Movies/UpdateMovieForm";
 import AddMovieForm from "./Movies/AddMovieForm"
 import axios from "axios";
 
+// I never feel more at home than when I'm manipulating strings
+
 
 const App = props => {
   const [savedList, setSavedList] = useState([]);
