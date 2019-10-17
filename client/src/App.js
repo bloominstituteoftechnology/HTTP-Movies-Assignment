@@ -9,10 +9,17 @@ import axios from "axios";
 import { withRouter } from "react-router-dom";
 
 
+const initialForm = {
+  title: "",
+  metascore: "",
+  director: "",
+  stars: ""
+}
+
 const App = ({history}) => {
   const [savedList, setSavedList] = useState([]);
   const [id, setId] = useState(0)
-  const [formValues, setFormValues] = useState({})
+  const [formValues, setFormValues] = useState(initialForm)
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
@@ -33,10 +40,27 @@ const App = ({history}) => {
     })
     .then(({data}) => {
       console.log(data);
+      setFormValues(initialForm)
       history.push('/')
     })
     .catch(err => console.log(err))
     // actions.resetForm();
+  }
+
+  const addNewMovie = (formValues, actions) => {
+    axios.post(`http://localhost:5000/api/movies`, {
+      title: formValues.title,
+      director: formValues.director,
+      metascore: formValues.metascore,
+      stars: formValues.stars.split(','),
+    })
+    .then(({data}) => {
+      console.log(data);
+      setFormValues(initialForm)
+      history.push('/')
+    })
+    .catch(err => console.log(err)) 
+    actions.resetForm();
   }
 
   const performDelete = (doomedMovieId) =>  {
@@ -63,6 +87,12 @@ const App = ({history}) => {
         path="/update-movie/:id"
         render={props => {
           return <UpdateMovie {...props} onFormSubmit={performEdit} form={formValues} />;
+        }}
+      />
+      <Route
+        path="/new-movie"
+        render={props => {
+          return <UpdateMovie {...props} onFormSubmit={addNewMovie} form={initialForm} />;
         }}
       />
     </>

@@ -1,5 +1,8 @@
 import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+
+import { Button } from "react-bulma-components";
+import styled from "styled-components";
 export default class SavedList extends Component {
   constructor(props) {
     super(props);
@@ -20,10 +23,23 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div className="home-button">
-          <Link to="/">Home</Link>
-        </div>
+        <SpacedDiv>
+       <NavLink to='/'>
+          <Button color='dark' >Home</Button>
+        </NavLink>
+        <NavLink to='/new-movie'>
+          <Button color='primary' >New Movie</Button>
+        </NavLink>
+        </SpacedDiv>
       </div>
     );
   }
 }
+
+const SpacedDiv = styled.div`
+  display: flex;
+
+  button {
+    margin: 0 1.5rem;
+  }
+`
