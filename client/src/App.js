@@ -39,6 +39,16 @@ const App = ({history}) => {
     // actions.resetForm();
   }
 
+  const performDelete = (doomedMovieId) =>  {
+    axios.delete(`http://localhost:5000/api/movies/${doomedMovieId}`)
+    .then(({data}) => {
+      console.log(data);
+      history.push('/')
+    })
+    .catch(err => console.log(err))
+    // actions.resetForm();
+  }
+
   return (
     <>
       <SavedList list={savedList} />
@@ -46,7 +56,7 @@ const App = ({history}) => {
       <Route
         path="/movies/:id"
         render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} beginEdit={beginEdit} />;
+          return <Movie {...props} addToSavedList={addToSavedList} beginEdit={beginEdit} performDelete={performDelete} />;
         }}
       />
       <Route

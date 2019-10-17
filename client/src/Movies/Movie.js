@@ -49,10 +49,15 @@ export default class Movie extends React.Component {
           Save
         </div>
         <StyledLink to={`/update-movie/${this.props.match.params.id}`}>
-          {" "}
+         
+        <Button onClick={() => this.props.performDelete(this.state.movie.id)} color="danger">
+            Delete
+          </Button>
+
           <Button onClick={() => this.props.beginEdit(this.state.movie)} color="success">
             Edit
-          </Button>{" "}
+          </Button>
+
         </StyledLink>
       </div>
     );
@@ -63,4 +68,8 @@ const StyledLink = styled(NavLink)`
   position: absolute;
   top: 70px;
   right: 25px;
+  
+  button {
+    margin-left: 1.1rem;
+  }
 `;
