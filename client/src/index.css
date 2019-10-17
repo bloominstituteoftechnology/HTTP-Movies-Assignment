@@ -52,11 +52,9 @@ body {
   position: relative;
   width: 75%;
   margin: 1rem auto;
+  border: 2px solid yellow;
 }
 .save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
@@ -73,5 +71,17 @@ body {
 
 .movie-warning {
   color: red;
+  text-align: center;
+}
+
+.save-update-btns {
+  border: 2px solid green;
+  position: absolute;
+  top: 25px;
+  right: 25px;
+}
+
+.update-movie-form-container {
+  border: 2px solid yellow;
   text-align: center;
 }
