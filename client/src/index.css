@@ -1,17 +1,27 @@
 body {
   margin: 0;
-  padding: 0;
+  padding: 0 0 80px;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  /* background-color: #f2f2f2; */
+  background-image: url('https://www.stargatecinema.com/images/T/Showtime1-04.jpg')
+}
+
+a {
+  text-decoration: none;
+  color: black;
+}
+
+button {
+  cursor: pointer;
 }
 
 .movie-card {
+  width: 75%;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
   position: relative;
   margin: 1rem auto;
 }
@@ -27,7 +37,6 @@ body {
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
   position: relative;
   margin: 1rem auto;
   width: 75%;
@@ -53,25 +62,80 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
+.movie-btn {
+  border: none;
   padding: 5px 10px;
+  width: 70px;
   background-color: lightseagreen;
+  position: absolute;
+  right: 15px;
+  font-size: 16px;
+  border: 1px solid lightseagreen;
 }
-.save-button:hover {
-  background-color: green;
-  color: white;
+.save-button {
+  top: -250px;
+}
+
+.edit-button {
+  top: -200px;
+}
+
+.delete-button {
+  top: -150px;
+}
+
+.save-button:hover, .edit-button:hover, .delete-button:hover {
+  background-color: white;
+  color: lightseagreen;
 }
 
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  border: none;
+  font-size: 16px;
+  margin-left: 15px;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.update-form {
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 40px;
+}
+
+.update-form form {
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+}
+
+.update-form form * {
+  margin-bottom: 15px;
+}
+
+.update-form input {
+  width: 300px;
+  padding: 10px;
+  border: 1px solid gray;
+}
+
+.update-form button {
+  height: 36px;
+  color: white;
+  background-color: lightseagreen;
+  border: none;
+  font-weight: bold;
+  font-size: 16px;
+  border: 1px solid lightseagreen;
+}
+
+.update-form button:hover {
+  background-color: white;
+  color: lightseagreen;
+  cursor: pointer;
 }
