@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
-import { Route } from "react-router-dom";
+import { Route, Redirect, withRouter } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovieForm from "./Movies/UpdateMovieForm";
 import axios from "axios";
 
-const App = () => {
+const App = (props) => {
   const [savedList, setSavedList] = useState([]);
   const [listMovies, setListMovies] = useState([]);
 
@@ -23,9 +23,10 @@ const App = () => {
       .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
       .then(res => {
         fetchMovies();
+        props.history.push('/');
       })
       .catch(error => {
-        debugger;
+        alert(error.message)
       });
   };
 
@@ -80,4 +81,4 @@ const App = () => {
   );
 };
 
-export default App;
+export default withRouter(App);
