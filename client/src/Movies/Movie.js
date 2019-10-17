@@ -1,6 +1,12 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
+import { NavLink } from "react-router-dom";
+
+import { Button, Card, Heading, Content } from "react-bulma-components";
+import styled from "styled-components";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -42,7 +48,16 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+        <StyledLink to={`/update-movie/${this.props.match.params.id}`} > <Button color='success' >Edit</Button> </StyledLink>
       </div>
     );
   }
 }
+
+
+const StyledLink = styled(NavLink)`
+  position: absolute;
+  top: 70px;
+  right: 25px;
+
+`
