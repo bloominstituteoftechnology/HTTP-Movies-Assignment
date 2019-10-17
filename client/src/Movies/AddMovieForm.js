@@ -8,11 +8,7 @@ const initialForm = {
   stars: []
 };
 
-export default function AddMovieForm() {
-  const addMovie = (values, actions) => {
-    debugger
-    alert(values)
-  };
+export default function AddMovieForm({ addMovie }) {
   return (
     <Formik
       initialValues={initialForm}

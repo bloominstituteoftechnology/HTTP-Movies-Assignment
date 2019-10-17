@@ -1,11 +1,16 @@
 import React, { useState, useEffect } from "react";
+
+// DEPENDENCIES
 import { Route, Redirect, withRouter, Link } from "react-router-dom";
+import axios from "axios";
+import uuid from "uuid";
+
+// COMPONENTS
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovieForm from "./Movies/UpdateMovieForm";
-import AddMovieForm from './Movies/AddMovieForm';
-import axios from "axios";
+import AddMovieForm from "./Movies/AddMovieForm";
 
 const App = props => {
   const [savedList, setSavedList] = useState([]);
@@ -49,7 +54,20 @@ const App = props => {
       .delete(`http://localhost:5000/api/movies/${id}`)
       .then(res => {
         fetchMovies();
-        props.history.push('/');
+        props.history.push("/");
+      })
+      .catch(error => {
+        alert(error);
+      });
+  };
+
+  const addMovie = values => {
+    debugger;
+    axios
+      .post("http://localhost:5000/api/movies", values)
+      .then(res => {
+        fetchMovies();
+        props.history.push("/");
       })
       .catch(error => {
         alert(error)
@@ -59,7 +77,7 @@ const App = props => {
   return (
     <>
       <SavedList list={savedList} />
-      <Link to='/add-movie'>Add movie</Link>
+      <Link to="/add-movie">Add movie</Link>
       <Route
         exact
         path="/"
@@ -97,7 +115,12 @@ const App = props => {
           );
         }}
       />
-      <Route path='/add-movie' component={AddMovieForm}/>
+      <Route
+        path="/add-movie"
+        render={props => {
+          return <AddMovieForm {...props} addMovie={addMovie} />;
+        }}
+      />
     </>
   );
 };
