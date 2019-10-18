@@ -16,6 +16,9 @@ body {
   margin: 1rem auto;
 }
 
+.add-movie-card {
+}
+
 .movie-director {
   padding: 4px 0;
   font-size: 0.8rem;
@@ -84,4 +87,18 @@ body {
 .update-movie-form-container {
   border: 2px solid yellow;
   text-align: center;
+}
+
+.add-movie-form {
+  background: rgba(0, 0, 0, 0.5);
+}
+
+form {
+  display: flex;
+  justify-content: center;
+}
+
+form input {
+  margin-right: 20px;
+  width: 300px;
 }

@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import MovieCard from './MovieCard';
+import AddMoviePreview from './AddMoviePreview';
 
 export default function AddMovieForm(props) {
   const [newMovie, setNewMovie] = useState({
@@ -9,8 +9,9 @@ export default function AddMovieForm(props) {
     metascore: '',
     stars: []
   });
+  const [newStar, setNewStar] = useState('');
   /* console.log('AddMovie.js newMovie: ', newMovie); */
-  console.log('AddMovieFrom.js props: ', props);
+  /* console.log('AddMovieFrom.js props: ', props); */
   const handleChanges = e => {
     e.preventDefault();
 
@@ -20,29 +21,43 @@ export default function AddMovieForm(props) {
     });
   };
 
+  const handleStar = e => {
+    e.preventDefault();
+    setNewStar(e.target.value);
+  };
+
+  const setStar = str => {
+    setNewMovie({
+      ...newMovie,
+      stars: [...newMovie.stars, str]
+    });
+    setNewStar('');
+  };
+
   const submitNewMovie = (e, obj) => {
     e.preventDefault();
     axios
       .post(`http://localhost:5000/api/movies`, obj)
       .then(res => {
-        console.log('AddMovieForm.js .post res:', res.data);
-        props.setNewMovie({ movies: res.data });
+        console.log('AddMovieForm.js .post res.data:', res.data);
+        props.addNewMovie(res.data);
+        setNewMovie({
+          title: '',
+          director: '',
+          metascore: '',
+          stars: []
+        });
       })
       .catch(err => {
-        console.log('AddMovieForm.js err', err.response);
+        console.log('AddMovieForm.js err', err);
       });
   };
 
   return (
     <div>
-      <h1>Add Move Form</h1>
+      <h1>Add Movie: </h1>
       <div className='add-movie-form'>
-        <form
-          onSubmit={e => {
-            submitNewMovie(e, newMovie);
-          }}
-          action=''
-        >
+        <form action=''>
           <input
             required
             name='title'
@@ -62,14 +77,39 @@ export default function AddMovieForm(props) {
           <input
             required
             name='metascore'
+            min='0'
+            max='100'
             onChange={handleChanges}
             placeholder='Metascore'
             type='number'
             value={newMovie.metascore}
           />
-          <button>Add Movie</button>
+          <button
+            onClick={() => {
+              setStar(newStar);
+            }}
+            type='button'
+          >
+            +
+          </button>
+          <input
+            onChange={handleStar}
+            placeholder='Actor'
+            name='stars'
+            type='text'
+            value={newStar}
+          />
+
+          <button
+            onClick={e => {
+              submitNewMovie(e, newMovie);
+            }}
+            type='submit'
+          >
+            Add Movie
+          </button>
         </form>
-        <MovieCard movie={newMovie} />
+        <AddMoviePreview className='add-movie-card' movie={newMovie} />
       </div>
     </div>
   );

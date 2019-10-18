@@ -9,6 +9,8 @@ export default class MovieList extends Component {
     this.state = {
       movies: []
     };
+
+    this.addNewMovie = this.addNewMovie.bind(this);
   }
 
   componentDidMount() {
@@ -21,20 +23,19 @@ export default class MovieList extends Component {
       .catch(err => console.log(err.response));
   }
 
-  /*  componentWillUpdate() {
-    axios
-      .get('http://localhost:5000/api/movies')
-      .then(res => {
-        console.log('MovieList.js cdm .get res: ', res);
-        this.setState({ movies: res.data });
-      })
-      .catch(err => console.log(err.response));
-  } */
+  componentDidUpdate() {
+    console.log('MovieList.js cdu UPDATED!');
+  }
+
+  addNewMovie(moviesObj) {
+    console.log('MovieList.js addNewMovie');
+    this.setState({ movies: moviesObj });
+  }
 
   render() {
     return (
       <div className='movie-list'>
-        <AddMovieForm setNewMovie={this.setState} />
+        <AddMovieForm addNewMovie={this.addNewMovie} />
         {console.log('MoviesList.js this.state.movies: ', this.state.movies)}
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
