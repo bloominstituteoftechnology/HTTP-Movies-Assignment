@@ -9,10 +9,11 @@ export default function UpdateMovieForm(props) {
     metascore: '',
     stars: []
   });
-  console.log('UpdateMovieForm.js props: ', props);
-
+  /* console.log('UpdateMovieForm.js props: ', props); */
+  console.log('Upd.MovieForm.js movieEdit', movieEdit);
+  let id = props.match.params.id;
   useEffect(() => {
-    fetchMovie(props.match.params.id);
+    fetchMovie(id);
   }, []);
 
   const fetchMovie = id => {
@@ -34,11 +35,29 @@ export default function UpdateMovieForm(props) {
     });
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    // make a PUT request to edit the item
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, movieEdit)
+      .then(res => {
+        // needs to call setItems
+        console.log('Ud.MovieForm.js res ', res);
+        props.history.push(`/movies`);
+      })
+      .catch(err => console.log(err.response));
+  };
+
+  const submitNewMovie = (e, obj) => {
+    e.preventDefault();
+    axios.post(`http://localhost:5000/api/movies`, obj);
+  };
+
   return (
     <div className='update-movie-form-container'>
       <h1>Update Movie Form</h1>
-      <MovieCard movie={movieEdit} />
-      <form>
+
+      <form onSubmit={handleSubmit}>
         <input
           type='text'
           name='title'
@@ -55,7 +74,6 @@ export default function UpdateMovieForm(props) {
           placeholder='Director'
           value={movieEdit.director}
         />
-        <div className='baseline' />
         <input
           type='number'
           name='metascore'
@@ -65,7 +83,10 @@ export default function UpdateMovieForm(props) {
         />
         <div className='baseline' />
 
-        <button className='save-button'>Update</button>
+        <button type='submit' className='save-button'>
+          Update
+        </button>
+        <MovieCard movie={movieEdit} />
       </form>
     </div>
   );

@@ -13,6 +13,7 @@ export default class Movie extends React.Component {
 
   componentDidMount() {
     this.fetchMovie(this.props.match.params.id);
+    console.log('Movie.js cdm props: ', this.props);
   }
 
   componentWillReceiveProps(newProps) {
@@ -31,6 +32,16 @@ export default class Movie extends React.Component {
   saveMovie = () => {
     const addToSavedList = this.props.addToSavedList;
     addToSavedList(this.state.movie);
+  };
+
+  deleteMovie = id => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then(res => {
+        console.log('Movie.js DELETE res: ', res);
+        this.props.history.push('/movies');
+      })
+      .catch(err => console.log('Movie.js DELETE err: ', err));
   };
 
   render() {
@@ -52,6 +63,12 @@ export default class Movie extends React.Component {
             className='save-button'
           >
             Update Movie
+          </button>
+          <button
+            onClick={() => this.deleteMovie(this.props.match.params.id)}
+            className='save-button'
+          >
+            Delete
           </button>
         </div>
       </div>
