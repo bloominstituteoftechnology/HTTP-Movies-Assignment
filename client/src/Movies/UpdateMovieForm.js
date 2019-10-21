@@ -11,58 +11,68 @@ const initialMovie = {
 const UpdateMovieForm = props => {
 
     const[movie, setMovie] = useState(initialMovie)
+    
+    const fetchMovies = id => {
+        axios
+        .get(`http://localhost:5000/api/movies/${id}`)
+        .then(res => setMovie(res.data))
+        .catch(err => console.log(ErrorEvent))
+    }
 
     useEffect(()=> {
-        const id = props.match.params.id;
-        const movieToUpdate = props.savedList.find(movie => `${movie.id}` === id)
-        if(movieToUpdate) setMovie(movieToUpdate)
-    }, [props.savedList, props.match.params.id])
+        fetchMovies(props.match.params.id)
+    }, [props.match.params.id]);
 
-    const changeHandler = e => {
-        e.persist();
-        let value = e.target.value;
-        if(e.target.name === 'metascore'){
-            value = parseInt(value, 10)
-        }
-        setMovie({...movie, [e.target.name]: e.target.value})
-    }
+    const handleChange = e => setMovie({...movie, [e.target.name]: e.target.value});
+
+    const handleStar = index => e => {
+        setMovie({...movie, stars: movie.stars.map((star, index2) => {
+            return index2 === index ? e.target.value: star; 
+        })});
+    };
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios
-        .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+        axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
         .then(res => {
-            props.setSavedList([...setMovie, res.data])
-            props.history.push('/')
+            props.history.push('/');
         })
         .catch(err => console.log(err))
     }
 
+    const addStar = e => {
+        e.preventDefault();
+        setMovie({...movie, stars: [...movie.stars, ""]});
+      };
+  
     return(
         <div>
-            <h1>HELLO</h1>
             <form onSubmit={handleSubmit}>
-
-                <input type="text" name="movie-title" placeholder="Movie Title"
-                onChange={changeHandler}
-                value={movie.title} />
-
-                <input type="text" name="movie-director" placeholder="Movie Director"
-                onChange={changeHandler}
-                value={movie.director} />
-
-                <input type="number" name="movie-metascpre" placeholder="Metascore"
-                onChange={changeHandler}
-                value={movie.metascore} />
-
-                <input type="text" name="movie-actors" placeholder="Actors"
-                onChange={changeHandler}
-                value={movie.actors} />
-                
-                <button type="submit">
-                    Update
-                </button>
-            </form>
+      <input type="text"
+             name="title"
+             placeholder="title"
+             value={movie.title}
+             onChange={handleChange} />
+      <input type="text"
+             name="director"
+             placeholder="director"
+             value={movie.director}
+             onChange={handleChange} />
+      <input type="text"
+             name="metascore"
+             placeholder="metascore"
+             value={movie.metascore}
+             onChange={handleChange} />
+      {movie.stars.map((starName, index) => {
+        return <input type="text"
+                      placeholder="star"
+                      value={starName}
+                      key={index}
+                      onChange={handleStar(index)} />;
+      })}
+      <button onClick={addStar}>Add Star</button>
+      <button type="submit">Update</button>
+    </form>
         </div>
     )
 }

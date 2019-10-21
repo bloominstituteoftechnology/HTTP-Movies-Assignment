@@ -31,14 +31,14 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
-  deleteMovie = e => {
-    e.preventDefault();
+  deleteMovie = id => {
     axios
-    .delete(`http://localhost:5000/api/movies/${this.state.movie.id}`)
-    .then(res => {
-      console.log(res)
-    })
-    .catch(err => console.log(err))
+    .delete(`http://localhost:5000/api/movies/${id}`)
+    .catch(err => {
+      console.log(err.response)
+  })
+  this.props.history.push('/')
+  window.location.href = window.location.href
   }
 
 

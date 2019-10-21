@@ -22,10 +22,7 @@ const App = () => {
           return <Movie {...props} addToSavedList={addToSavedList} setSavedList={setSavedList}/>;
         }}
       />
-      <Route path="/update-movie/:id" 
-      render={props => {
-      return <UpdateMovieForm {...props} savedList={savedList} setSavedList={setSavedList}  />
-      }} />
+       <Route path="/update-movie/:id" component={UpdateMovieForm}/>
     </>
   );
 };
