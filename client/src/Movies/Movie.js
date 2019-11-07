@@ -1,5 +1,6 @@
 import React from "react";
-import axios from "axios";
+import { Link } from 'react-router-dom'
+import api from '../utils/api'
 import MovieCard from "./MovieCard";
 export default class Movie extends React.Component {
   constructor(props) {
@@ -20,7 +21,7 @@ export default class Movie extends React.Component {
   }
 
   fetchMovie = id => {
-    axios
+    api()
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(res => this.setState({ movie: res.data }))
       .catch(err => console.log(err.response));
@@ -41,6 +42,9 @@ export default class Movie extends React.Component {
         <MovieCard movie={this.state.movie} />
         <div className="save-button" onClick={this.saveMovie}>
           Save
+        </div>
+        <div className="edit-button" onClick={this.UpdateMovie}>
+        <Link to={`/update-movie/${this.state.movie.id}`}>Edit</Link>
         </div>
       </div>
     );

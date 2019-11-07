@@ -18,6 +18,8 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+
+      
     </div>
   );
 };
