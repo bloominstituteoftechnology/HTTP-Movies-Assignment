@@ -41,6 +41,21 @@ a {
   justify-content: space-between;
 }
 
+.edit-button {
+  position: absolute;
+  top: 59px;
+  right: 25px;
+  border: 1px solid black;
+  padding: 6px 17px;
+  color: mintcream;
+  background-color: orange;
+}
+
+.edit-button:hover {
+  background-color: purple;
+  color: lightpink;
+}
+
 .saved-list {
   background-color: #fff;
   border: 0;
