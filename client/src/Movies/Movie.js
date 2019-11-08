@@ -85,7 +85,10 @@ export default function Movie(props){
   }
 
   const deleteMovie = () =>{
-    axios.delete(`http://localhost:5000/api/movies/${props.match.params.id}`)
+    axios
+    .delete(`http://localhost:5000/api/movies/${props.match.params.id}`, movie)
+    .then((res)=> props.history.push('/'))
+    .catch((err)=> console.log(err))
   }
 
   return(
