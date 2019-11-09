@@ -25,7 +25,7 @@ export default function UpdateMovie(props) {
             stars: [event.target.value]
         })
     }
-    
+
     const handleChange = (event) => {
         console.log(event.target.value, "<-- handleChange")
         setMovie({
