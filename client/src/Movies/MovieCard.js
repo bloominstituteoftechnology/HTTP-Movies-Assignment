@@ -11,7 +11,7 @@ const MovieCard = props => {
       <div className="movie-metascore">
         Metascore: <strong>{metascore}</strong>
       </div>
-      <h3>Actors</h3>
+      <h3>Actors:</h3>
 
       {stars.map(star => (
         <div key={star} className="movie-star">

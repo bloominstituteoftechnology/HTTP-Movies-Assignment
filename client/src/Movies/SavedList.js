@@ -20,9 +20,9 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div className="home-button">
+        <button className="home-button">
           <Link to="/">Home</Link>
-        </div>
+        </button>
       </div>
     );
   }
