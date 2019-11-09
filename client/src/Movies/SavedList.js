@@ -1,11 +1,15 @@
-import React from 'react';
+import React, { Component } from 'react';
 import { NavLink, Link } from 'react-router-dom';
+export default class SavedList extends Component {
+  constructor(props) {
+    super(props);
+  }
 
-export default function SavedList(props){
+  render() {
     return (
       <div className="saved-list">
         <h3>Saved Movies:</h3>
-        {props.list.map(movie => {
+        {this.props.list.map(movie => {
           return (
             <NavLink
               to={`/movies/${movie.id}`}
@@ -21,4 +25,5 @@ export default function SavedList(props){
         </div>
       </div>
     );
+  }
 }

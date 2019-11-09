@@ -1,8 +1,8 @@
-import React, { useState, Fragment } from "react";
+import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
-import UpdateMovie from './Movies/UpdateMovie'
+import UpdateMovie from './Movies/UpdateMovie';
 import Movie from "./Movies/Movie";
 
 const App = () => {
@@ -13,7 +13,7 @@ const App = () => {
   };
 
   return (
-    <Fragment>
+    <>
       <SavedList list={savedList} />
       <Route exact path="/" component={MovieList} />
       <Route
@@ -23,7 +23,7 @@ const App = () => {
         }}
       />
       <Route exact path={`/update-movie/:id`} component={UpdateMovie} />
-    </Fragment>
+    </>
   );
 };
 

@@ -1,16 +1,16 @@
-import React, { useState, useEffect } from 'react'
-import api from '../utils/api'
+import React, { useState, useEffect } from 'react';
+import axios from 'axios';
 
 export default function UpdateMovie(props) {
     const [movie, setMovie] = useState({
         title: '',
         director: '',
         metaScore: 0,
-        stars: [],
+        stars: []
     })
-    
+
     useEffect(() => {
-        api().get(`/movies/${props.match.params.id}`)
+        axios.get(`http://localhost:5000/api/movies/${props.match.params.id}`)
             .then(result => {
                 setMovie(result.data)
             })
@@ -19,18 +19,25 @@ export default function UpdateMovie(props) {
             })
     }, [props.match.params.id])
 
-    const handleChange = event => {
+    const handleStars = (event) => {
+        setMovie({
+            ...movie,
+            stars: [event.target.value]
+        })
+    }
+    
+    const handleChange = (event) => {
         console.log(event.target.value, "<-- handleChange")
         setMovie({
             ...movie,
-            [event.target.name]: event.target.value
+            [event.target.name]: event.target.value,
         })
     }
 
     const handleSubmit = event => {
         event.preventDefault()
-        
-        api().put(`/movies/${movie.id}`, movie)
+
+        axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
             .then(result => {
                 console.log(result.data, "<-- Data Submitted in Put Request")
                 props.history.push(`/movies/${movie.id}`)
@@ -74,17 +81,17 @@ export default function UpdateMovie(props) {
                     onChange={handleChange}
                 />
 
-                {/* <label>Stars</label>
+                <label>Stars</label>
                 <h3>{movie.stars}</h3>
                 <input 
                     type='text'
                     name='stars'
                     placeholder='New Stars'
                     value={movie.stars}
-                    onChange={handleChange}
-                /> */}
+                    onChange={handleStars}
+                />
 
-                <button className='save-button'>Save</button>
+                <button className='save-button'>Save Changes</button>
             </form>
         </div>
     )
