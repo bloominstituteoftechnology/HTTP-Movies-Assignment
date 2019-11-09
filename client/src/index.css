@@ -49,16 +49,31 @@ label {
 .edit-button {
   position: absolute;
   top: 59px;
-  right: 25px;
-  border: 1px solid black;
-  padding: 6px 17px;
-  color: mintcream;
-  background-color: orange;
+  right: 24.5px;
+  border: 1px solid grey;
+  padding: 4px 17px;
+  padding-bottom: 5px;
+  background-color: lightseagreen;
 }
 
 .edit-button:hover {
-  background-color: purple;
-  color: lightpink;
+  background-color: blue;
+  color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: 211px;
+  right: 24px;
+  border: 1px solid grey;
+  padding: 7px 10px;
+  background-color: black;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: crimson;
+  color: white;
 }
 
 .saved-list {
