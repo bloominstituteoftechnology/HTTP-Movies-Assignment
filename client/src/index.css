@@ -51,7 +51,7 @@ label {
   top: 59px;
   right: 24.5px;
   border: 1px solid grey;
-  padding: 4px 17px;
+  padding: 7px 17px;
   padding-bottom: 5px;
   background-color: lightseagreen;
 }
@@ -63,7 +63,7 @@ label {
 
 .delete-button {
   position: absolute;
-  top: 211px;
+  top: 90px;
   right: 24px;
   border: 1px solid grey;
   padding: 7px 10px;

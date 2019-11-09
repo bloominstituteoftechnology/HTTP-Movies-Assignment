@@ -20,9 +20,10 @@ export default function UpdateMovie(props) {
     }, [props.match.params.id])
 
     const handleStars = (event) => {
+        console.log(event.target.value)
         setMovie({
             ...movie,
-            stars: [event.target.value]
+            stars: [event.target.value.split(",")]
         })
     }
 
