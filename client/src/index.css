@@ -5,6 +5,23 @@ body {
   background-color: #f2f2f2;
 }
 
+h1 {
+  text-align: center;
+  font-size: 2.1rem;
+  color: #222;
+}
+
+h4 {
+  text-align: center;
+  font-size: 1.5rem;
+  color: #444;
+}
+
+a {
+text-decoration: none;
+color: #555;
+}
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -14,6 +31,8 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  width: 90%;
+  border-radius: 4px;
 }
 
 .movie-director {
@@ -43,16 +62,19 @@ body {
 .saved-movie {
   margin: 0 10px;
 }
+
 .saved-active {
   color: blue;
   border: 1px solid grey;
   padding: 5px;
 }
+
 .save-wrapper {
   position: relative;
   width: 75%;
   margin: 1rem auto;
 }
+
 .save-button {
   position: absolute;
   top: 25px;
@@ -60,18 +82,79 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  color: white;
+  border-radius: 4px;
 }
+
 .save-button:hover {
   background-color: green;
   color: white;
+  cursor: pointer;
 }
 
 .home-button {
-  padding: 5px 10px;
-  background-color: lightskyblue;
+  background: black;
+  color: white;
+  width: 80px;
+  height: 39px;
+  border-radius: 8px;
+  cursor: pointer;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.submit-btn {
+  background: blue;
+  color: white;
+  width: 80px;
+  height: 39px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.delete-btn {
+  background: darkred;
+  color: white;
+  width: 80px;
+  height: 39px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.update-btn {
+  background: #444;
+  color: white;
+  width: 80px;
+  height: 39px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.add-movie {
+  background: darkblue;
+  color: white;
+  width: 80px;
+  height: 39px;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+form {
+  display: flex;
+  flex-flow: column wrap;
+  padding: 15px;
+}
+
+
+form input {
+  width: 100px;
+  height: 25px;
+  margin: 15px;
+  border-radius: 4px;
+  background: whitesomke;
+  border: 1px #aaa solid;
+  padding: 10px;
 }
