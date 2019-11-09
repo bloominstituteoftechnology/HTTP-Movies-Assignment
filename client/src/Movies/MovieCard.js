@@ -5,9 +5,7 @@ const MovieCard = props => {
   return (
     <div className="movie-card">
       <h2>{title}</h2>
-      <div>
-        <button>Edit</button>
-      </div>
+      
       <div className="movie-director">
         Director: <em>{director}</em>
       </div>
