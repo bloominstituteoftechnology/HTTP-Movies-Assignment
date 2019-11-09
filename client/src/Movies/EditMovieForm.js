@@ -1,5 +1,5 @@
 import React from "react";
-import { Formik, Form, Field, FieldArray } from "formik";
+import { Formik, Form, Field } from "formik";
 
 export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
   const movieToUpdate = listMovies.find(item => {
@@ -23,19 +23,13 @@ export default function UpdateMovieForm({ listMovies, match, updateMovie }) {
                 <Field name="title" type="text" />
               </label>
               <label>
+                Actors
+                <Field name="actors" type="text" />
+              </label>
+                <label>
                 Metascore
                 <Field name="metascore" type="text" />
               </label>
-              <FieldArray
-                name="stars"
-                render={arrayHelpers => {
-                  return (
-                    <div>
-                      {props.values.stars.map((star, index) => {
-                        return <Field key={index} name={`stars.${index}`} />;
-                      })}
-                    </div>
-                  );
                 }}
               />
               <button className="submit-btn" type="submit">Submit</button>
