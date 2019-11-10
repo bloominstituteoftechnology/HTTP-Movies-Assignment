@@ -20,9 +20,10 @@ export default class SavedList extends Component {
             </NavLink>
           );
         })}
-        <div className="home-button">
-          <Link to="/">Home</Link>
-        </div>
+        <div className="home-button" style={{textAlign:'center'}}>
+          <Link to="/">Home</Link><br /><hr />
+          <Link to="/add-movie">Add Movie</Link>
+        </div>        
       </div>
     );
   }

@@ -40,7 +40,7 @@ export default function UpdateForm(props) {
    }
    console.log(movie)
    return (
-    <div>
+    <div className="save-wrapper">
       <h2 style={{textAlign:'center'}}>Update your Movie Details here</h2>
       <form onSubmit={handleSubmit}> 
        <label>Title:</label>
