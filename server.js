@@ -15,19 +15,20 @@ let movies = [
     metascore: 100,
     stars: ["Marlon Brando", "Al Pacino", "Robert Duvall"]
   },
+ 
   {
     id: 1,
-    title: "Star Wars",
-    director: "George Lucas",
-    metascore: 92,
-    stars: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"]
-  },
-  {
-    id: 2,
     title: "The Lord of the Rings: The Fellowship of the Ring",
     director: "Peter Jackson",
     metascore: 92,
     stars: ["Elijah Wood", "Ian McKellen", "Orlando Bloom"]
+  },
+  {
+    id: 2,
+    title: "Star Wars",
+    director: "George Lucas",
+    metascore: 92,
+    stars: ["Mark Hamill", "Harrison Ford", "Carrie Fisher"]
   },
   {
     id: 3,

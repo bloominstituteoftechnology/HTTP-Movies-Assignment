@@ -16,8 +16,12 @@ export default class MovieList extends Component {
       .then(res => this.setState({ movies: res.data }))
       .catch(err => console.log(err.response));
   }
-
+  
+  
   render() {
+    if(this.state.movies.lenght === 0) {
+      return <p>Loading...</p>
+    }
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
