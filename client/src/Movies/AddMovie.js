@@ -17,6 +17,7 @@ function AddMovie(props) {
   const handleSubmit = (event) => {
      event.preventDefault();
      console.log(newMovie);
+     if(newMovie.title && newMovie.director && newMovie.metascore && newMovie.stars.lenght > 0) {
      axios.post(`http://localhost:5000/api/movies/`, newMovie)
           .then (res => {
              console.log(res);
@@ -26,6 +27,7 @@ function AddMovie(props) {
           .catch( err => {
              console.log(err);
           })
+        }    
   }
 
   return (
@@ -38,7 +40,7 @@ function AddMovie(props) {
               name="title"
               placeholder="Title"
               value={newMovie.title}
-              require="required"
+              required
        /></label><br />
        <label>Movie Director:{" "}
        <input type="text"
@@ -46,7 +48,7 @@ function AddMovie(props) {
               name="director"
               placeholder="Director"
               value={newMovie.director}
-              require="required"
+              required
        /></label><br />
        <label>Movie Score:{" "}
        <input type="text"
@@ -54,7 +56,7 @@ function AddMovie(props) {
               name="metascore"
               placeholder="Meta Score"
               value={newMovie.metascore}
-              require="required"
+              required
        /></label><br />
        <div>
          <p>Movie Stars:</p>
@@ -63,21 +65,21 @@ function AddMovie(props) {
               name="index-0"
               placeholder="star-0"
               value={stars[0]}
-              require="required"
+              required
           /><br />
           <input type="text"
               onChange={(event) =>handleStars(event)}
               name="index-1"
               placeholder="star-1"
               value={stars[1]}
-              require="required"
+              required
           /><br />
           <input type="text"
               onChange={(event) =>handleStars(event)}
               name="index-2"
               placeholder="star-2"
               value={stars[2]}
-              require="required"
+              required
           /><br />
        </div>
        <div>
