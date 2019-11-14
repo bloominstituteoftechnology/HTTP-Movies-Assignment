@@ -1,6 +1,8 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -14,6 +16,7 @@ export default class Movie extends React.Component {
   }
 
   componentWillReceiveProps(newProps) {
+  console.log('Movie.js -> %cnewProps:', 'color: indigo', newProps)
     if (this.props.match.params.id !== newProps.match.params.id) {
       this.fetchMovie(newProps.match.params.id);
     }
@@ -31,6 +34,11 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  routeToEdit = () => {
+    console.log(this.props)
+    this.props.history.push(`/update-movie/${this.state.movie.id}`)
+  }
+
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
@@ -41,6 +49,9 @@ export default class Movie extends React.Component {
         <MovieCard movie={this.state.movie} />
         <div className="save-button" onClick={this.saveMovie}>
           Save
+        </div>
+        <div className="edit-button" onClick={this.routeToEdit}>
+          Edit/Delete
         </div>
       </div>
     );
