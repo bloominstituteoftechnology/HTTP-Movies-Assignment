@@ -13,11 +13,23 @@ export default class MovieList extends Component {
   componentDidMount() {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => this.setState({ movies: res.data }))
-      .catch(err => console.log(err.response));
+      .then(res => this.setState({ movies: res.data },
+      this.props.setMovies(res.data)
+    ))
+    .catch(err => console.log(err.response));
+  }
+
+  componentDidUpdate(prevProps, prevState) {
+    if(prevState.movies !== this.props.movies){
+      this.setState({
+      movies: this.props.movies
+      })
+    }
   }
 
   render() {
+
+   
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
