@@ -1,15 +1,16 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
-export default class SavedList extends Component {
-  constructor(props) {
-    super(props);
-  }
 
-  render() {
+
+export default function SavedList (props) {
+  console.log('saved', props)
+  const clearSavedList = () => {
+    props.setSavedList('');
+   }  
     return (
       <div className="saved-list">
         <h3>Saved Movies:</h3>
-        {this.props.list.map(movie => {
+        {props.list && props.list.length >0 ?props.list.map(movie => {
           return (
             <NavLink
               to={`/movies/${movie.id}`}
@@ -19,11 +20,14 @@ export default class SavedList extends Component {
               <span className="saved-movie">{movie.title}</span>
             </NavLink>
           );
-        })}
+        }):null }
         <div className="home-button">
-          <Link to="/">Home</Link>
-        </div>
+          <Link to="/">Home</Link>      
+          <hr/>  
+        <div className="clear-saved" onClick={clearSavedList}>Clear</div>
+      </div>
       </div>
     );
   }
-}
+
+

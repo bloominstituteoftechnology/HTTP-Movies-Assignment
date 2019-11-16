@@ -66,10 +66,12 @@ body {
   color: white;
 }
 
-.home-button {
+.home-button, .clear-saved {
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: lightskyblue;  
 }
+
+
 
 .movie-warning {
   color: red;
