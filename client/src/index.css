@@ -71,9 +71,14 @@ body {
   background-color: lightskyblue;  
 }
 
-
-
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+input{
+  width: fit-content;
+}
+.movie-star{
+  width: fit-content;
 }

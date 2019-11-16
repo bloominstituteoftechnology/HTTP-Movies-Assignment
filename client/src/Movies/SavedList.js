@@ -3,7 +3,6 @@ import { NavLink, Link } from 'react-router-dom';
 
 
 export default function SavedList (props) {
-  console.log('saved', props)
   const clearSavedList = () => {
     props.setSavedList('');
    }  

@@ -9,8 +9,7 @@ const UpdateMovie = (props) => {
         director:"",
         metascore: null
     })
-    console.log("TCL: UpdateMovie -> movie", movie)
-    
+        
     useEffect(() => {
         axios
         .get(`http://localhost:5000/api/movies/${props.match.params.id}`)
@@ -48,12 +47,8 @@ const UpdateMovie = (props) => {
                 <input type="text" name="title" placehold="Movie Title" value={movie.title} onChange={handleChange}/>
                 <input type="text" name="director" placehold="Movie Director" value={movie.director} onChange={handleChange}/>
                 <input type="number" name="metascore" placehold="Movie Metascore" value={movie.metascore} onChange={handleChange}/>
-                {movie.stars.map(star=> {
-                console.log("TCL: UpdateMovie -> movie.stars", movie.stars)
-                    return (
-                        <input type="text" name="title" placehold="Movie Title" value={movie.title} onChange={handleChange}/>
-                    )
-                })}
+                <input type="text" name="stars" placehold="Movie Stars" value={movie.stars} onChange={handleChange}/>
+                  
                 <button className="update-save" type="submit">Save</button>
                
             </form>
