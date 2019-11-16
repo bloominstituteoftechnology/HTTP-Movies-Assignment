@@ -24,6 +24,18 @@ export default function Movie(props) {
     addToSavedList(movie);
   };
 
+  const deleteMovie = e => {
+    e.preventDefault();
+    axios
+    .delete(`http://localhost:5000/api/movies/${movie.id}`)
+    .then(() => {
+     props.history.push("/");
+    })
+    .catch(error => {
+      console.log(error);
+    })
+  }
+
   
 
   
@@ -36,7 +48,10 @@ export default function Movie(props) {
         <MovieCard movie={movie} />
         <div className="save-button" onClick={saveMovie}>
           Save
-        </div>       
+        </div>  
+        <div className="delete-button" onClick={deleteMovie}>
+          Delete Movie
+        </div>      
       </div>
     );
   }
