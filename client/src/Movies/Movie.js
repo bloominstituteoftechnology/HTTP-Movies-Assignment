@@ -2,7 +2,9 @@ import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
 import UpdateForm from './update';
-export default class Movie extends React.Component {
+import {Link} from 'react-router-dom';
+import history from './history';
+ export default class Movie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -44,12 +46,13 @@ export default class Movie extends React.Component {
 
   
   editMovie = id => {
-   	   this.props.history.push(`update-movie/${this.props.match.params.id}`)
+   	   history.push(`update-movie/${id}`)
   }
 
-  render() {
-    console.log("MOVIE", this.state.movie)
 
+
+  render() {
+ 
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
     }
@@ -62,8 +65,10 @@ export default class Movie extends React.Component {
         </div>
 
 
-		<button onClick={()=> this.editMovie(this.state.movie.id)} >EDIT </button>
-
+	 <button   > 
+		 <Link to={`/update-movie/${this.state.movie.id}`}>
+		 EDIT
+     </Link> </button> 
 		<button onClick ={this.deleteMovie}> DELETE</button>
 		 
       </div>

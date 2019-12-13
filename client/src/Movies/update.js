@@ -1,14 +1,15 @@
 import React from 'react';
 import axios from 'axios';
 import {useState, useEffect}from 'react';
+import history from './history';
 
 
-const UpdateForm =(props)=> {
-console.log("PROPS", props)
+const UpdateForm =({id})=> {
+console.log("PROPS", id)
  const [movie, setMovie] =useState({});
 
 
- const id = props.history.match.params.id
+ //const id = props.match.params.id
  useEffect(()=> {
  	 axios.get(`http://localhost:5000/api/movies/${id}`)
 	 .then(res=> setMovie(res.data))
@@ -37,17 +38,14 @@ const onSubmit = e => {
 	axios.put(`http://localhost:5000/api/movies/${movieUpdate.id}`, movieUpdate)
 	.then(res => {
 		console.log(res);
-		props.history.push('/');
+		 history.push('/movies/${id}');
 	})
 	.catch(err=> console.log(err))
 }
 
 return (
  <div> 
-<h1> 888</h1>
  
-console.log("MOVIE TO UPDATE", movie)
-
 <form type = 'submit' onSubmit = {onSubmit}> 
 <input 
 type = 'text'
