@@ -4,15 +4,16 @@ import {useState, useEffect}from 'react';
 import history from './history';
 
 
-const UpdateForm =({id})=> {
-console.log("PROPS", id)
+const UpdateForm =(props)=> {
+console.log("PROPS", props)
  const [movie, setMovie] =useState({});
 
-
- //const id = props.match.params.id
- useEffect(()=> {
+ const id = props.match.params.id;
+  useEffect(()=> {
  	 axios.get(`http://localhost:5000/api/movies/${id}`)
-	 .then(res=> setMovie(res.data))
+ 	 .then(res=> setMovie(res.data))
+	 	 .then(res=> console.log("RES", res.data))
+
 	 .catch(err => console.log(err))
 	 console.log("###MOVIE", movie)
  }, []);
@@ -20,7 +21,7 @@ console.log("PROPS", id)
 
 
  const [movieUpdate, setMovieUpdate]= useState({
-	title: '',
+ 	title: '',
 	director: '',
 	metascore: ' ',
 	stars: []
@@ -28,17 +29,19 @@ console.log("PROPS", id)
 
 const handleInput = (e)=> {
 	e.preventDefault();
-	setMovieUpdate({ 
+	setMovie({ 
+	...movie,
 		[e.target.name]:e.target.value
 	})
 }
 
 const onSubmit = e => {
+e.preventDefault();
 //const id = props.params.match.id
-	axios.put(`http://localhost:5000/api/movies/${movieUpdate.id}`, movieUpdate)
+	axios.put(`http://localhost:5000/api/movies/${movie.id}`, movie)
 	.then(res => {
 		console.log(res);
-		 history.push('/movies/${id}');
+		 history.push(`/movies/`);
 	})
 	.catch(err=> console.log(err))
 }
@@ -50,7 +53,7 @@ return (
 <input 
 type = 'text'
 name = 'title'
-value = {movieUpdate.title}
+value = {movie.title}
 onChange ={handleInput}
 placeholder = 'title'
 
@@ -60,26 +63,25 @@ placeholder = 'title'
 <input
 type = 'text'
 name = 'metascore'
-value = {movieUpdate.metascore}
+value = {movie.metascore}
 onChange = {handleInput}
 placeholder = 'title'
 />
 <input
 type = 'text'
 name = 'director'
-value = {movieUpdate.director}
+value = {movie.director}
 onChange = {handleInput}
 placeholder = 'director'
 />
 <input
 type = 'stars'
 name = 'metascore'
-value = {movieUpdate.stars}
+value = {movie.stars}
 onChange = {handleInput}
 placeholder = 'stars'
 />
-
-<button type = 'submit'>Enter </button>
+ <button type = 'submit'>Enter </button>
 </form>
 </div>
 )

@@ -3,8 +3,7 @@ import axios from "axios";
 import MovieCard from "./MovieCard";
 import UpdateForm from './update';
 import {Link} from 'react-router-dom';
-import history from './history';
- export default class Movie extends React.Component {
+  export default class Movie extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
@@ -45,9 +44,7 @@ import history from './history';
 
 
   
-  editMovie = id => {
-   	   history.push(`update-movie/${id}`)
-  }
+  
 
 
 
