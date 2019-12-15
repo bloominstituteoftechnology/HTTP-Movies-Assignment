@@ -1,3 +1,5 @@
+// Add a route at the path `/update-movie/:id`
+
 import React, { useState } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
