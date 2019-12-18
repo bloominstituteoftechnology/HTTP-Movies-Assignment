@@ -64,6 +64,7 @@ app.get("/api/movies/:id", (req, res) => {
 });
 
 app.post("/api/movies", (req, res) => {
+  
   if (req.body.title !== undefined) {
     const newMovie = req.body;
     newMovie["id"] = movieId;
@@ -74,6 +75,7 @@ app.post("/api/movies", (req, res) => {
 });
 
 app.put("/api/movies/:id", (req, res) => {
+  console.log(req);
   if (!req.params.id)
     res.status(400).send("Your request is missing the movie id");
   if (
