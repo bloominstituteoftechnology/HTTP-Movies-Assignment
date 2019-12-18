@@ -6,7 +6,7 @@ const [addMovie, setAddMovie] = useState ({
     title:"",
     director:"",
     metascore:"",
-    stars:"",
+    stars:[],
 })
 
 
@@ -36,6 +36,7 @@ return (
             <input name='director' value={addMovie.director} onChange={handleChange} />
             <input name='title'value={addMovie.title} onChange={handleChange} />
             <input name='metascore' value={addMovie.metascore} onChange={handleChange} />
+            <input type='text'  name='stars'placeholder='stars'value={addMovie.stars} onChange={handleChange}/>
             <button type='submit'>Add new movie</button>
     </form>
 )
