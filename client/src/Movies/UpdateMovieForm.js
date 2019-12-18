@@ -24,7 +24,7 @@ const UpdateMovieForm = (props) => {
         //.then(responce => console.log("responce", responce.data))
         .catch(error =>(error))
         console.log(movie)
-    }, []);
+    },[]);
 
 
 const changeHandler = (e) => {
