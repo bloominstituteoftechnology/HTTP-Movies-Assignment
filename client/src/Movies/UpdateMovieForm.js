@@ -6,8 +6,9 @@ import axios from 'axios';
 
 
 const UpdateMovieForm = (props) => {
+    console.log('props', props)
     const [movie, setMovie] = useState({
-        
+            id: '',
             title: '',
             director: '',
             metascore: '',
@@ -18,10 +19,11 @@ const UpdateMovieForm = (props) => {
     const id = props.match.params.id;
 
     useEffect(()=>{
-        axios.get('http://localhost:5000/api/movies/${id}')
+        axios.get(`http://localhost:5000/api/movies/${id}`)
         .then(responce => setMovie(responce.data))
         //.then(responce => console.log("responce", responce.data))
         .catch(error =>(error))
+        console.log(movie)
     }, []);
 
 
@@ -29,7 +31,8 @@ const changeHandler = (e) => {
     e.preventDefault();
     setMovie({
       ...movie,
-      [e.target.name]: e.target.value
+      [e.target.name]: e.target.value,
+      id:id
       
     });
     console.log(movie);
@@ -40,9 +43,9 @@ const changeHandler = (e) => {
     axios
       .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
       .then(responce => {
-        console.log(responce.data);
+        console.log('movie',responce);
         setMovie(responce.data);
-        props.history.push(`/movies/${movie.id}`);
+        props.history.push(`/movies/${movie.id}`); //`${id}`
       })
       .catch(err => {
         console.error(err);
