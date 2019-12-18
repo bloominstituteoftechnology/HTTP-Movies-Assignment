@@ -1,4 +1,4 @@
-import React,{useState,useEffect} from "react"
+import React,{useState} from "react"
 import axios from "axios"
 
 const AddMovie = props => {
@@ -26,16 +26,22 @@ const handleSubmit = e => {
 }
 
 return (
-    <form onSubmit={handleSubmit}>
-    <h1>{add.title}</h1>
-    <h3>{add.director}</h3>
-    <h3>{add.metascore}</h3>
-    <h3>{add.stars}</h3>
-        <input name="title" placeholder="Title" value={add.title} onChange={handleChange} /> 
-        <input name="director" placeholder="Director" value={add.director} onChange={handleChange} /> 
-        <input name="metascore" placeholder="score" value={add.metascore} onChange={handleChange} />
-        <input name="stars" placeholder="actors" value={add.stars} onChange={handleChange} /> 
-    <button>Submit</button>
+    <form onSubmit={handleSubmit} className="add">
+        <h1 className="title">Add Card Info</h1>
+        <div  className="addForum">
+            <input name="title" placeholder="Title" value={add.title} onChange={handleChange} /> 
+            <input name="director" placeholder="Director" value={add.director} onChange={handleChange} /> 
+            <input name="metascore" placeholder="score" value={add.metascore} onChange={handleChange} />
+            <input name="stars" placeholder="actors" value={add.stars} onChange={handleChange} />
+            <button>Submit</button>
+        </div> 
+        <h1 className="title">Card Preview</h1>
+        <div className="cardPreview">
+            <h1>Title: {add.title}</h1>
+            <h3>Director: {add.director}</h3>
+            <h3>Metascore: {add.metascore}</h3>
+            <h3>Actors:{add.stars}</h3>
+        </div>
     </form>
 )
 

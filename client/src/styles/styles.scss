@@ -1,0 +1,56 @@
+.addForum {
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: auto;
+}
+
+.cardPreview {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    border: solid 3px seagreen;
+    background: lightgoldenrodyellow;
+    border-radius: 15px;
+    margin: 2% auto;
+    padding: 2%;
+}
+
+.movieCard {
+    display: flex;
+    flex-direction: column;
+    border: solid 3px seagreen;
+    background: lightgoldenrodyellow;
+    border-radius: 15px;
+    width: 200px;
+    padding: 3%;
+}
+
+.movieList {
+    display: flex;
+    flex-flow: wrap row;
+    justify-content: space-evenly;
+}
+
+input,
+textarea {
+  margin-top: 32px;
+  padding: 0.5rem;
+  font-size: 16px;
+  width: 100%;
+  display: block;
+  color: black;
+  border: 2px solid seagreen;
+}
+
+button {
+    width: 75px;
+    margin: 2% auto;
+    border: solid 2px seagreen;
+    background: lightgoldenrodyellow ;
+    font-weight: bold;
+}
+
+.title{
+    text-align: center;
+}

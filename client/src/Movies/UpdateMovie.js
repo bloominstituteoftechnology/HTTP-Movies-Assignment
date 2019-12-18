@@ -3,6 +3,7 @@ import Axios from 'axios';
 
 const UpdateMovie = props => {
 
+
     const [movie, setMovie] = useState({id: props.match.params.id});
 
     const handleChange = e => {
@@ -41,6 +42,9 @@ const UpdateMovie = props => {
     <div className="movie-card">
 
         <p>Edit the forum for the movie </p>
+
+        <form>
+        </form>
 
         <form onSubmit={handleSubmit}>
             <input

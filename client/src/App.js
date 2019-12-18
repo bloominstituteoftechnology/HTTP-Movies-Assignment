@@ -5,6 +5,7 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import UpdateMovie from "./Movies/UpdateMovie";
 import AddMovie from "./Movies/addMovie";
+import './styles/styles.scss'
 
 
 const App = () => {
