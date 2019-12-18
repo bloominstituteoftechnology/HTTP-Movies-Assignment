@@ -6,7 +6,7 @@ const [add ,setAdd] = useState({
     title:"",
     director:"",
     metascore:"",
-    stars: ""
+    stars: ''
 })
 
 
@@ -40,7 +40,7 @@ return (
             <h1>Title: {add.title}</h1>
             <h3>Director: {add.director}</h3>
             <h3>Metascore: {add.metascore}</h3>
-            <h3>Actors:{add.stars}</h3>
+            <h3>Actors: {add.stars}</h3>
         </div>
     </form>
 )

@@ -55,7 +55,7 @@ export default class Movie extends React.Component {
           Save
         </div>
         <Link to={`/update-movie/${this.props.match.params.id}`} >Update Movie</Link>
-        <button onClick={this.handleDelete}>Delete Movie</button>
+        <button onClick={this.handleDelete} className='delete'>Delete Movie</button>
       </div>
     );
   }

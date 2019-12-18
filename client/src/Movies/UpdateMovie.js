@@ -1,5 +1,6 @@
 import React, { useState} from 'react';
 import Axios from 'axios';
+import MovieCard from './MovieCard';
 
 const UpdateMovie = props => {
 
@@ -39,12 +40,10 @@ const UpdateMovie = props => {
     };
 
   return (
-    <div className="movie-card">
+    <div className="Update">
 
         <p>Edit the forum for the movie </p>
 
-        <form>
-        </form>
 
         <form onSubmit={handleSubmit}>
             <input
