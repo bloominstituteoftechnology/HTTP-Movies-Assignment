@@ -19,6 +19,15 @@ export default class Movie extends React.Component {
       this.fetchMovie(newProps.match.params.id);
     }
   }
+  
+  handleDelete = () => {
+    axios
+    .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
+    .then(response => { 
+      console.log(response)
+      this.props.history.push("/") })
+    .catch( err => console.log(err));
+  }
 
   fetchMovie = id => {
     axios
@@ -44,6 +53,7 @@ export default class Movie extends React.Component {
           Save
         </div>
         <Link to={`/update-movie/${this.props.match.params.id}`} >Update Movie</Link>
+        <button onClick={this.handleDelete}>Delete Movie</button>
       </div>
     );
   }
