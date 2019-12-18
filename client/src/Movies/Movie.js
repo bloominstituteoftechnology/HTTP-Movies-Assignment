@@ -29,6 +29,8 @@ export default class Movie extends React.Component {
     .catch( err => console.log(err));
   }
 
+
+
   fetchMovie = id => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
