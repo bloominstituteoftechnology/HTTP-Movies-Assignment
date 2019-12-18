@@ -38,7 +38,7 @@ export default class Movie extends React.Component {
 
     const handleEditClick = e => {
       e.preventDefault();
-      this.props.history.push(`/update-movie/&{movie.id}`)
+      this.props.history.push(`/update-movie/${this.state.movie.id}`)
     }
 
     return (
