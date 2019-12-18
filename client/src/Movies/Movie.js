@@ -36,10 +36,10 @@ export default class Movie extends React.Component {
   handleDelete = e => {
     e.preventDefault();
     axios
-      .delete(``)
+      .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
       .then(res => {
         console.log("res", res);
-        
+        this.props.history.push("/");
       })
       .catch(err => console.log(err));
   };
@@ -58,7 +58,7 @@ export default class Movie extends React.Component {
           Save
         </div>
         <button > <Link to={`/update-movie/${this.state.movie.id}`} >Update Movie</Link></button>
-        <button>delete</button>
+        <button onClick={this.handleDelete}>delete</button>
       </div>
     );
   }
