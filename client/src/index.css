@@ -1,18 +1,31 @@
 body {
-    margin: 0;
+    margin: 0.5rem 1rem;
     padding: 0;
     font-family: sans-serif;
-    background-color: #f2f2f2;
+    background-color: black;
+    color: white;
 }
 
 .movie-card {
+    color: white;
     background-color: #fff;
     border: 0;
     box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     padding: 1rem;
     cursor: pointer;
     position: relative;
-    margin: 1rem auto;
+    margin: 1rem;
+    border: 2px solid gold;
+    background: black;
+    border-radius: 2rem;
+    width: 30vw;
+    height: 30vh;
+}
+
+.movie-card p {
+    font-size: 0.6rem;
+    text-align: center;
+    color: gold;
 }
 
 .movie-director {
@@ -21,9 +34,7 @@ body {
 }
 
 .saved-list {
-    background-color: #fff;
     border: 0;
-    box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12), 0 2px 4px rgba(0, 0, 0, 0.24);
     padding: 1rem;
     cursor: pointer;
     position: relative;
@@ -32,6 +43,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: space-between;
+    background: black;
+    border: 2px solid gold;
 }
 
 .saved-list h3 {
@@ -49,58 +62,81 @@ body {
 }
 
 .save-wrapper {
-    position: relative;
+    display: flex;
     width: 75%;
     margin: 1rem auto;
 }
 
+.movie-list {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+}
+
 .save-button {
-    position: absolute;
-    top: 25px;
-    right: 25px;
-    border: 1px solid grey;
-    padding: 5px 10px;
-    background-color: lightseagreen;
+    border: 1px solid green;
+    padding: 5px;
+    background-color: green;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .save-button:hover {
-    background-color: green;
-    color: white;
+    background-color: white;
+    color: green;
 }
 
 .delete-button {
     color: white;
-    position: absolute;
-    top: 75px;
-    right: 25px;
     border: 2px solid red;
     padding: 5px 10px;
     background-color: red;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: space-around;
 }
 
 .delete-button:hover {
-    background-color: yellow;
+    background-color: white;
     color: red;
 }
 
 .update-button {
     color: black;
-    position: absolute;
-    top: 125px;
-    right: 25px;
     border: 2px solid blue;
     padding: 5px 10px;
     background-color: blue;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: space-around;
+    align-content: center;
 }
 
 .update-button:hover {
-    background-color: black;
+    background-color: white;
     color: blue;
 }
 
 .home-button {
     padding: 5px 10px;
-    background-color: lightskyblue;
+    background-color: gold;
+    margin: 1rem;
+    height: 2rem;
+    border-radius: 5rem;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.home-button:hover {
+    background-color: white;
+    color: green;
 }
 
 .movie-warning {
