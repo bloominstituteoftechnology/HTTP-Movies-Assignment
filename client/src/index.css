@@ -75,3 +75,28 @@ body {
   color: red;
   text-align: center;
 }
+
+.update-form,
+h2 {
+  margin-left: 5rem;
+}
+
+input,
+.btn-update {
+  font-size: 1rem;
+  padding: 0.8rem 1.2rem;
+}
+.btn-update{
+  border-radius: 5px;
+  background-color: rgb(27, 6, 141);
+  color: white;
+}
+
+.btns{
+  font-size: 1.3rem;
+  margin-right: 1rem;
+  border-radius: 5px;
+  padding: 0.5rem .8rem;
+  background-color: rgb(3, 74, 133);
+  color: white;
+}
