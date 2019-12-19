@@ -16,7 +16,6 @@ const App = () => {
   return (
     <>
       <img src={logo} alt="Blockbuster Logo Copyright THEM. NOT ME!" />
-      <h2>Selected Movies:</h2>
       <SavedList list={savedList} />{" "}
       <Route exact path="/" component={MovieList} />{" "}
       <Route
