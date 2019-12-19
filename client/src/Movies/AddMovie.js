@@ -16,13 +16,17 @@ const AddMovie = props => {
     setMovieData({ ...movieData, [e.target.name]: e.target.value });
   };
 
+  const handleStringChanges = e => {
+      setMovieData({ ...movieData, [e.target.name]: e.target.value.split() });
+  }
+
   const handleSubmit = e => {
     console.log(movieData)
     e.preventDefault();
     axios
       .post("http://localhost:5000/api/movies", movieData)
       .then(res => {
-        setMovieData(res.data);
+        // setMovieData(res.data);
         props.history.push(`/`);
       })
       .catch(err => console.log(err));
@@ -57,10 +61,10 @@ const AddMovie = props => {
         />
 
         <input
-          type="text"
+          type={[]}
           name="stars"
           placeholder="Stars"
-          onChange={handleInputChanges}
+          onChange={handleStringChanges}
           value={movieData.stars}
         />
 
