@@ -6,10 +6,10 @@ const newMovie = {
   title: "",
   director: "",
   metascore: "",
-  stars: ""
+  stars: []
 };
 
-const AddMovie = () => {
+const AddMovie = props => {
   const [movieData, setMovieData] = useState(newMovie);
 
   const handleInputChanges = e => {
@@ -17,13 +17,13 @@ const AddMovie = () => {
   };
 
   const handleSubmit = e => {
-    //   console.log(movieData)
+    console.log(movieData)
     e.preventDefault();
     axios
-      .post("http://localhost:5000/api/", movieData)
+      .post("http://localhost:5000/api/movies", movieData)
       .then(res => {
         setMovieData(res.data);
-        // props.history.push(`/`);
+        props.history.push(`/`);
       })
       .catch(err => console.log(err));
   };
@@ -31,7 +31,7 @@ const AddMovie = () => {
   return (
     <div>
       <h2>Add New Movie</h2>
-      <form>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
@@ -64,7 +64,7 @@ const AddMovie = () => {
           value={movieData.stars}
         />
 
-        <button type="submit" onClick={() => handleSubmit(movieData)}>Add New Movie</button>
+        <button>Add New Movie</button>
       </form>
     </div>
   );
