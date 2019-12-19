@@ -83,6 +83,21 @@ body {
     color: red;
 }
 
+.update-button {
+    color: black;
+    position: absolute;
+    top: 125px;
+    right: 25px;
+    border: 2px solid blue;
+    padding: 5px 10px;
+    background-color: blue;
+}
+
+.update-button:hover {
+    background-color: black;
+    color: blue;
+}
+
 .home-button {
     padding: 5px 10px;
     background-color: lightskyblue;
