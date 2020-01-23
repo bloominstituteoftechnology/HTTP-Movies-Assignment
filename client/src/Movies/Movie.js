@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import MovieCard from "./MovieCard";
+
 export default class Movie extends React.Component {
   constructor(props) {
     super(props);
@@ -18,6 +19,7 @@ export default class Movie extends React.Component {
       this.fetchMovie(newProps.match.params.id);
     }
   }
+
 
   fetchMovie = id => {
     axios
