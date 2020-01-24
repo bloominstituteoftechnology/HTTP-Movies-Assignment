@@ -1,5 +1,6 @@
 import React, {useState, useEffect} from 'react';
 import axios from 'axios';
+import MovieList from './MovieList';
 
 export default function UpdateForm(props) {
    const {id} = props.match.params;
@@ -21,13 +22,13 @@ export default function UpdateForm(props) {
    const handleStars = (event) => {
       setMovie({
           ...movie,
-           stars: [event.target.value]
+           stars: event.target.value
       })
    }
    const handleSubmit = (event) => {
        event.preventDefault();
        console.log(movie)
-       axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+       axios.put(`http://localhost:5000/api/movies/${id}`, { ...movie, stars: movie.stars.split(",")  })
             .then(res => {
                console.log(res);
                setMovie(defaultMovie);
