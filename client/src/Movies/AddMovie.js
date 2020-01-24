@@ -64,7 +64,7 @@ const AddMovie = (props) => {
                    Metascore: <input type="number" value={newMovie.metascore} name="metascore" onChange={handleChange} />
                 </label>
                 <label>
-                    Stars: <input type="text" value={[newMovie.stars]} name="stars" onChange={handleChange} />
+                    Stars: <input type="text" value={newMovie.stars} name="stars" onChange={handleChange} />
                 </label>
                 <button>Add Movie</button>
             </form>
