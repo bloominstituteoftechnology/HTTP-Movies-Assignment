@@ -35,9 +35,7 @@ Movie object format:
 
 ### Part 3 (Stretch) - Adding A Movie:
 
-- Add a route at the path `/add-movie`
-- Create a component with a form to add a new movie
-- Each created movie should have the following format (notice the array of strings - this will test your JS skills, so work through it methodically)
+- Addfollowing format (notice the array of strings - this will test your JS skills, so work through it methodically)
 - The form should make a POST request to the server when submitted
 - When the call comes back successfully, reset your form state and route the user to `/movies`
 
