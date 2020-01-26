@@ -61,6 +61,42 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+
+.update-button {
+  color: white;
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: blue;
+}
+
+.update-form {
+  width: 500px;
+  margin: 20px auto;
+  padding: 20px;
+  height: 600px;
+  justify-content: space-between;
+  display: flex;
+  flex-direction: column;
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+}
+
+input, textarea {
+  font-size: 20px;
+  border: none;
+  border-bottom: black 1px solid;
+}
+
+label {
+  text-decoration: underline;
+}
+
 .save-button:hover {
   background-color: green;
   color: white;
