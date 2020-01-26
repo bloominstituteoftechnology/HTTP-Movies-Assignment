@@ -54,6 +54,7 @@ body {
   margin: 1rem auto;
 }
 .save-button {
+  cursor: pointer;
   position: absolute;
   top: 25px;
   right: 25px;
@@ -63,6 +64,7 @@ body {
 }
 
 .update-button {
+  cursor: pointer;
   color: white;
   position: absolute;
   top: 65px;
@@ -70,6 +72,17 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: blue;
+}
+
+.delete-button {
+  cursor: pointer;
+  color: white;
+  position: absolute;
+  top: 105px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: red;
 }
 
 .update-form {
@@ -87,7 +100,8 @@ body {
   padding: 1rem;
 }
 
-input, textarea {
+input,
+textarea {
   font-size: 20px;
   border: none;
   border-bottom: black 1px solid;
@@ -102,6 +116,15 @@ label {
   color: white;
 }
 
+.update-button:hover {
+  background-color: lightblue;
+  color: white;
+}
+
+.delete-button:hover {
+  background-color: pink;
+  color: white;
+}
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
