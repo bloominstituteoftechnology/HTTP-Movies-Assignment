@@ -33,7 +33,8 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
-  handleDelete = () => {
+  handleDelete = e => {
+    e.preventDefault();
     axios
       .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
       .then(res => {

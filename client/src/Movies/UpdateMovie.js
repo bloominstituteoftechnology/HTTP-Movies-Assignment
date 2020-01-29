@@ -56,6 +56,6 @@ const handleSubmit = e => {
       </form>
     </div>
   );
-}
+};
 
 export default UpdateMovie;

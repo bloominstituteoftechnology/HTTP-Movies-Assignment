@@ -11,15 +11,20 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
+    console.log("Mounted");
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => this.setState({ movies: res.data }))
+      .then(res => {
+        console.log(res);
+        this.setState({ movies: res.data });
+      })
       .catch(err => console.log(err.response));
   }
 
   render() {
+    console.log("render Movie List");
     return (
-      <div className="movie-list">
+      <div className='movie-list'>
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}
