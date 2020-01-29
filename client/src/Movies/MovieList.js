@@ -13,6 +13,7 @@ export default class MovieList extends Component {
   }
 
   componentDidMount() {
+    console.log('moveList did mount')
     axios
       .get("http://localhost:5000/api/movies")
       .then(res => this.setState({ movies: res.data }))
@@ -22,6 +23,7 @@ export default class MovieList extends Component {
   render() {
     return (
       <div className="movie-list">
+        <button onClick={() => this.props.history.push('/')}>Add Movie</button>
         {this.state.movies.map(movie => (
           <MovieDetails key={movie.id} movie={movie} />
         ))}
