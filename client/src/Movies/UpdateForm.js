@@ -1,23 +1,26 @@
-/* jshint esversion: 6 */
+/* jshint esversion: 9 */
 
 import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 
 const initialMovie = {
-  title: "",
-  director: "",
-  metascore: "",
-  stars: []
+  title: " ",
+  director: " ",
+  metascore: " ",
+  stars: " "
 };
 
 const UpdateForm = props => {
   const [movie, setMovie] = useState(initialMovie);
   const { id } = useParams();
 
+  // const editedMovie = props.match.params.id;
+  // const movieToUpdate = props.movies.find(thing => `${thing.id}` === id);
   useEffect(() => {
+    console.log(props.movies);
     const movieToUpdate = props.movies.find(thing => `${thing.id}` === id);
-
+    console.log(movieToUpdate);
     if (movieToUpdate) {
       setMovie(movieToUpdate);
     }
@@ -26,13 +29,13 @@ const UpdateForm = props => {
   const changeHandler = ev => {
     ev.persist();
     let value = ev.target.value;
-    if (ev.target.name === "title") {
+    if (ev.target.name === "metascore") {
       value = parseInt(value, 10);
     }
 
     setMovie({
       ...movie,
-      [ev.target.title]: value
+      [ev.target.name]: value
     });
   };
 
@@ -40,13 +43,40 @@ const UpdateForm = props => {
     e.preventDefault();
     // make a PUT request to edit the item
     axios
-      .put(`http://localhost:5000/movies/${id}`, movie)
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
       .then(res => {
         // res.data is the FULL array with the updated item
         // That's not always the case. Sometimes you need to build your
         // own updated array
-        props.setItems(res.data);
-        props.history.push(`/movie-list/${id}`);
+        const newList = props.movies.map(item => {
+          if (item.id === movie.id) {
+            return (item = res.data);
+          } else {
+            return item;
+          }
+        });
+        props.setMovies(newList);
+
+        props.history.push(`/`);
+      })
+      .catch(err => console.log(err));
+  };
+
+  //delete
+  const handleDelete = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(res => {
+        const newListTwo = props.movies.map(item => {
+          if (item.id === movie.id) {
+            return (item = res.data);
+          } else {
+            return item;
+          }
+        });
+        props.setMovies(newListTwo);
+        props.history.push("/");
       })
       .catch(err => console.log(err));
   };
@@ -66,7 +96,7 @@ const UpdateForm = props => {
         <div className="baseline" />
 
         <input
-          type="number"
+          type="text"
           name="director"
           onChange={changeHandler}
           placeholder="Director"
@@ -75,7 +105,7 @@ const UpdateForm = props => {
         <div className="baseline" />
 
         <input
-          type="string"
+          type="number"
           name="metascore"
           onChange={changeHandler}
           placeholder="Metascore"
@@ -84,7 +114,7 @@ const UpdateForm = props => {
         <div className="baseline" />
 
         <input
-          type="string"
+          type="text"
           name="stars"
           onChange={changeHandler}
           placeholder="Stars"
@@ -92,9 +122,10 @@ const UpdateForm = props => {
         />
         <div className="baseline" />
 
-        <div className="baseline" />
-
         <button className="md-button form-button">Update</button>
+        <button onClick={handleDelete} className="md-button form-button">
+          Delete
+        </button>
       </form>
     </div>
   );
