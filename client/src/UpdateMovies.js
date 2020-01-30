@@ -1,57 +1,91 @@
-import React from "react";
+import React, {useEffect, useState} from "react";
 import axios from "axios";
 
-const movieStuff = {
-    id: Date.now,
-    title: '',
-    director: '',
-    metascore: '',
-    stars: [],
-}
-
 const UpdateMovies = props => {
-    const [updateMovie, setUpdateMovie] = usestate(movieStuff)
+  const { id } = props.match.params;
+  const movieStuff = {
+    id: Date.now(),
+    title: "",
+    director: "",
+    metascore: "",
+    stars: []
+  };
+const [updateMovie, setUpdateMovie] = useState(movieStuff);
+  
+  useEffect(() => {
+    axios.get(`http://localhost:5000/api/movies/${id}`).then(res => {
+      console.log(res.data, "the .get worked");
+      setUpdateMovie(res.data);
+    });
+  }, [id]);
 
-    
-  const handleSubmit = e => {
-    useEffect(() => {
-      const itemToUpdate = props.items.find(thing => `${thing.id}` === id);
-
-      if (itemToUpdate) {
-        setItem(itemToUpdate);
-      }
-    }, [props.items, id]);
-
-    const changeHandler = ev => {
-      ev.persist();
-      let value = ev.target.value;
-      
-
-      setItem({
-        ...item,
-        [ev.target.name]: value
-      });
-    };
-
-    e.preventDefault();
-    // make a PUT request to edit the item
-    axios
-      .put(`http://localhost:3333/items/${id}`, item)
-      .then(res => {
-        // res.data is the FULL array with the updated item
-        // That's not always the case. Sometimes you need to build your
-        // own updated array
-        props.setItems(res.data);
-        props.history.push(`/item-list/${id}`);
-      })
-      .catch(err => console.log(err));
+ const handleChange = event => {
+    console.log("changes were handled");
+    setUpdateMovie({ ...updateMovie, [event.target.name]: event.target.value });
   };
 
+  const handleStars = event => {
+    setUpdateMovie({
+      ...updateMovie,
+      stars: [event.target.value]
+    });
+  };
 
-  return(
-      <div>
+  const handleSubmit = event => {
+    event.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
+      .then(res => {
+        console.log("we got the movie!", res);
+        setUpdateMovie(movieStuff);
+        props.history.push(`/movies/${id}`);
+      })
+      .catch(err => {
+        console.log("Err");
+      });
+  };
 
+  return (
+    <div>
+      <h2>Update Your Saved Movie Details</h2>
+      <form onSubmit={handleSubmit}>
+        <label>Title: </label>
+        <input
+          type="text"
+          placeholder="Title"
+          name="title"
+          value={updateMovie.title}
+          onChange={handleChange}
+        />
+        <label>Stars: </label>
+        <input
+          type="text"
+          name="stars"
+          placeholder="Stars"
+          value={updateMovie.stars}
+          onChange={handleStars}
+        />
+        <label>Director: </label>
+        <input
+          type="text"
+          placeholder="Director"
+          name="director"
+          value={updateMovie.director}
+          onChange={handleChange}
+        />
+        <label>Meta-Score: </label>
+        <input
+          type="text"
+          placeholder="Meta-score"
+          name="metascore"
+          value={updateMovie.metascore}
+          onChange={handleChange}
+        />
 
-      </div>
-  )
+        <button>Update Movie Info</button>
+      </form>
+    </div>
+  );
 };
+
+export default UpdateMovies;
