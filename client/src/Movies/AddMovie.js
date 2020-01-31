@@ -55,7 +55,7 @@ const AddMovie = props => {
           value={add.stars}
           onChange={handleChange}
         />
-        <button>Submit</button>
+        <button>Submit!</button>
       </div>
       <h1 className='title'>Card Preview</h1>
       <div className='cardPreview'>
