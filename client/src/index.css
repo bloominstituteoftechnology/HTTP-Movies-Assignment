@@ -2,50 +2,47 @@
   from {
     box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
       0 2px 4px rgba(0, 0, 0, 0.24);
-
   }
 
-  50%{
+  50% {
     box-shadow: 10px -10px 0 #19c2ae, 0 0 2px rgba(0, 0, 0, 0.12),
       0 2px 4px rgba(0, 0, 0, 0.24);
-
-
   }
   to {
     box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
       0 2px 4px rgba(0, 0, 0, 0.24);
   }
-
 }
 
-
 body {
+  background-image: url(https://images.unsplash.com/photo-1518676590629-3dcbd9c5a5c9?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80);
+  background-position: center;
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #2d2d37
+  background-color: goldenrod;
 }
-a{
-    text-decoration: none;
+
+a {
+  text-decoration: none;
 }
+
 .movie-card {
-  background-color: #19c2ae;
+  background-color: black;
   border: 0;
-  box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
+  box-shadow: -10px -10px 0 goldenrod, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 15px;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
   color: #2d2d37;
-  width:30%;
+  width: 30%;
 }
-
 
 .movie-card:hover {
   background-color: #2d2d37;
   border: 0;
-
   padding: 15px;
   cursor: pointer;
   position: relative;
@@ -54,12 +51,25 @@ a{
   animation-duration: 6s;
   animation-name: hoverslide;
   animation-iteration-count: infinite;
-
 }
 
+p {
+  color: whitesmoke;
+}
 
+em {
+  color: whitesmoke;
+}
 
-.movie-star:last-child{
+div {
+  color: whitesmoke;
+}
+
+h3 {
+  color: red;
+}
+
+.movie-star:last-child {
   padding-bottom: 20px;
 }
 
@@ -69,10 +79,10 @@ a{
 }
 
 .saved-list {
-  background-color: #362b52;
-  border: 2px dashed grey;
-
-  padding: 1rem;
+  background-color: black;
+  color: red;
+  border: 3px dashed grey;
+  padding: 1.5rem;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
@@ -108,9 +118,8 @@ a{
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: #733970;
-  color:white;
+  color: white;
 }
-
 
 .edit-button {
   position: absolute;
@@ -134,14 +143,14 @@ a{
   right: 145px;
   border: 1px solid grey;
   padding: 5px 10px;
-  background-color:  #470012;
-  color: #850323
+  background-color: #470012;
+  color: #850323;
 }
 .delete-button:hover {
   background-color: darkred;
   border: 2px solid white;
   color: white;
-  cursor:pointer;
+  cursor: pointer;
 }
 .save-button:hover {
   background-color: #913f8d;
@@ -152,41 +161,63 @@ a{
 }
 
 .home-button {
-  padding: 5px 10px;
-  background-color: lightskyblue;
-}
-.home-button:hover {
-
-  border: 1px dashed lightskyblue;
-  padding: 5px 10px;
-  background-color: #362b52;
-
-  a{text-decoration: none;
-    color:lightskyblue;}
-}
-
-.movie-warning {
-  color: red;
-  text-align: center;
-}
-form > input {
   background-color: #2d2d37;
   border: 0;
   padding: 6px 0;
   font-size: 1rem;
   outline: 0;
   color: white;
-  border-bottom: 1px solid #6a9c9c;
+  border: 1px solid goldenrod;
+  position: relative;
+}
+.home-button:hover {
+  border: 1px dashed lightskyblue;
+  padding: 5px 10px;
+  background-color: #362b52;
+}
+
+a {
+  color: whitesmoke;
+}
+
+.movie-warning {
+  color: red;
+  text-align: center;
+}
+
+input {
+  background-color: #2d2d37;
+  border: 0;
+  padding: 6px 0;
+  font-size: 1rem;
+  outline: 0;
+  color: white;
+  border-bottom: 1px solid goldenrod;
   margin-right: 8px;
 }
 button {
-  background-color: #6a9c9c;
-  border: 1px solid #6a9c9c;
-  color: white;
+  background-color: black;
+  border: 1px dotted goldenrod;
+  color: whitesmoke;
   font-size: 16px;
   padding: 6px 14px;
 }
 input::placeholder {
-  color: #6a9c9c;
+  color: whitesmoke;
   opacity: 1;
+}
+form {
+  padding-left: 6rem;
+}
+
+div.cardPreview {
+  background-color: black;
+  border: 0;
+  box-shadow: -10px -10px 0 goldenrod, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 15px;
+  cursor: pointer;
+  margin: 1rem;
+  color: whitesmoke;
+  width: 30%;
 }
