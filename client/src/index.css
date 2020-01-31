@@ -202,6 +202,11 @@ button {
   font-size: 16px;
   padding: 6px 14px;
 }
+
+button :hover {
+  cursor: pointer;
+}
+
 input::placeholder {
   color: whitesmoke;
   opacity: 1;
