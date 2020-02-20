@@ -15,6 +15,11 @@ body {
   position: relative;
   margin: 1rem auto;
 }
+.movie-card-wrapper a {
+  color:black; 
+  font-size: 12px;
+  text-decoration: none 
+}
 
 .movie-director {
   padding: 4px 0;
@@ -35,11 +40,25 @@ body {
   align-items: center;
   justify-content: space-between;
 }
+.movie-list, .movie-edit-wrapper, .movie-add-wrapper, .loading-info-wrap{
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+  width: 75%;
+}
 
 .saved-list h3 {
   margin-right: 10px;
 }
-
+.saved-list a{
+font-size: 9px;
+text-decoration: none;
+}
 .saved-movie {
   margin: 0 10px;
 }
@@ -69,7 +88,9 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+  margin: 0 3px;
 }
+
 
 .movie-warning {
   color: red;

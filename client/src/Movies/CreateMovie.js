@@ -36,7 +36,7 @@ class CreateMovie extends Component {
 
   render() {
     return (
-      <div>
+      <div className="movie-add-wrapper">
         <input
           type="text"
           placeholder="Movie Title"

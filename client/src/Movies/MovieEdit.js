@@ -45,7 +45,7 @@ const MovieEdit = props => {
       };
 
     return (
-        <div>
+        <div className="movie-edit-wrapper">
             <h3>Update Movie</h3>
             <form onSubmit={handleSubmit}>
                 <input

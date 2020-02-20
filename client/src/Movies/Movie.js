@@ -39,7 +39,7 @@ export default class Movie extends React.Component {
 
   deleteMovie = id => {
     console.log("id in delete", id)
-   // e.preventDefault();
+   //e.preventDefault();
     axios
       .delete(`http://localhost:5000/api/movies/${id}`)
       .then(res => {
@@ -56,7 +56,7 @@ export default class Movie extends React.Component {
   
   render() {
     if (!this.state.movie) {
-      return <div>Loading movie information...</div>;
+      return <div className="loading-info-wrap">Loading movie information...</div>;
     }
 
     return (
