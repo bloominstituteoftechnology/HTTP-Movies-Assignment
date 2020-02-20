@@ -17,7 +17,7 @@ const App = () => {
   
   useEffect(() => {
     axios
-      .get("http://localhost:3333/savedList")
+      .get("http://localhost:5000/api/movies")
       .then(res => setSavedList(res.data))
       .catch(error => console.log(error));
   }, []);
@@ -27,10 +27,11 @@ const App = () => {
       <SavedList list={savedList} />
       <Route exact path="/" component={MovieList} />
       <Route path="/movies/:id" render={props => {
-          return <Movie {...props} addToSavedList={addToSavedList} /> }}
+          return <Movie {...props} addToSavedList={addToSavedList} /> }
+        }
       />
        <Route  path="/movies/:id" render={props => {
-          return <MovieEdit {...props} savedList={savedList} setSavedList={setSavedList}/>}}
+          return <MovieEdit {...props} list={savedList} setSavedList={setSavedList}/>}}
       />
       <Route path="/movie/create" component={CreateMovie} />
 

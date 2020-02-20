@@ -24,9 +24,9 @@ class CreateMovie extends Component {
     const { stars, title, metaScore, director } = this.state;
     const newMovie = { stars, title, metaScore, director };
     const saveMovie = axios
-      .post('http://localhost:3333/api/movies', newMovie)
+      .post('http://localhost:5000/api/movies', newMovie)
       .then(response => {
-          console.log ("res", response)
+          console.log ("Response in the POST request CreateMovie", response)
         this.props.history.push('/');
       })
       .catch(err => {

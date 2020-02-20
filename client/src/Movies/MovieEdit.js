@@ -5,14 +5,17 @@ const initialMovie = {
   id: Number,
   title: '',
   director: '',
-  metascore: Number,
+  metascore: 0,
+  actor: '',
   stars:[]
 };
 
 const MovieEdit = props => {
+
     const [film, setFilm] = useState(initialMovie);
+
     useEffect (() => {
-        const selectedMovie = props.savedList.find(item => {
+        const selectedMovie = props.list.find(item => {
             return `${item.id}`=== props.match.params.id;
         });
         if(selectedMovie){
@@ -22,25 +25,19 @@ const MovieEdit = props => {
 
     const changeHandler = ev => {
         ev.persist();
-        let value = ev.target.value;
-        if (ev.target.name === "price") {
-          value = parseInt(value, 10);
-        }
-    
-        setFilm({
-          ...film,
-          [ev.target.name]: value
-        });
+        setFilm({...film, [ev.target.name]: ev.target.value });
       };
     
       const handleSubmit = e => {
-        console.log (film)
+        console.log ("Put film in handle submit", film)
         e.preventDefault();
         axios
-          .put(`http://localhost:3333/movies/${film.id}`, film)
+          .put(`http://localhost:5000/api/movies/${film.id}`, film)
           
           .then(res => {
-            props.setSavedList(res.data);
+            console.log ("Response in the PUT request MovieEdit", res)
+            props.history.push('/')
+            // props.setSavedList(res.data);
           })
           .catch(err => {
             console.log(err);
@@ -55,28 +52,28 @@ const MovieEdit = props => {
                    type="text"
                    name="title"
                    onChange={changeHandler}
-                   placeholder="title"
+                   placeholder="Movie Title"
                    value={film.title}
                 />
                   <input
                    type="text"
                    name="director"
                    onChange={changeHandler}
-                   placeholder="director"
+                   placeholder="Director"
                    value={film.director}
                 />
                   <input
                    type="number"
                    name="metascore"
                    onChange={changeHandler}
-                   placeholder="metascore"
+                   placeholder="Meta Score"
                    value={film.metascore}
                 />
                   <input
                    type="text"
                    name="name"
                    onChange={changeHandler}
-                   placeholder="stars"
+                   placeholder="Add actor"
                    value={film.stars}
                 />
                 <button>Update</button>
