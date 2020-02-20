@@ -2,6 +2,10 @@ import React, { Component } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import { Route } from "react-router-dom";
+
+import UpdateForm from './UpdateForm';
+
 export default class MovieList extends Component {
   constructor(props) {
     super(props);
@@ -21,7 +25,7 @@ export default class MovieList extends Component {
     return (
       <div className="movie-list">
         {this.state.movies.map(movie => (
-          <MovieDetails key={movie.id} movie={movie} />
+          <MovieDetails key={movie.id} movie={movie} addToSavedList={this.props.addToSavedList}/>
         ))}
       </div>
     );
@@ -30,8 +34,15 @@ export default class MovieList extends Component {
 
 function MovieDetails({ movie }) {
   return (
+    <>
     <Link to={`/movies/${movie.id}`}>
       <MovieCard movie={movie} />
     </Link>
+    {/* <Route path='/update-movie/:id'
+    render={props => {
+      return <UpdateForm {...props} addToSavedList={props.addToSavedList} movie={movie} />
+    }}
+    /> */}
+    </>
   );
 }
