@@ -1,5 +1,6 @@
 import React from "react";
 import axios from "axios";
+import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 export default class Movie extends React.Component {
   constructor(props) {
@@ -30,6 +31,10 @@ export default class Movie extends React.Component {
     const addToSavedList = this.props.addToSavedList;
     addToSavedList(this.state.movie);
   };
+  handelDelete = id =>{
+    axios .delete(`http://localhost:5000/api/movies/${this.props.match.params.id}`)
+    .then(res => this.props.history.push('/'))
+  }
 
   render() {
     if (!this.state.movie) {
@@ -42,6 +47,9 @@ export default class Movie extends React.Component {
         <div className="save-button" onClick={this.saveMovie}>
           Save
         </div>
+        <button> <Link to={`/update-movies/this.state.movie.id`}>Edit Movie</Link></button>
+        <button onClick={this.handelDelete}>Delete Movie</button>
+      
       </div>
     );
   }
