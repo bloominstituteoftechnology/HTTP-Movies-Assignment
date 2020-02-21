@@ -1,15 +1,21 @@
-import React from 'react';
+import React, { useState } from 'react';
+import axios from 'axios';
 
-const MovieUpdate = () => {
+const MovieUpdate = (props) => {
 
-  updatedMovie = (id, updateMovie) => {
-    axios
-    .put(`http://localhost:5000/ap/movie/${id}`, updateMovie)
-    .then(res => console.log(res))
-    .catch(err => console.log(err))
-  }
+  console.log("movie stuff", props)
 
-  return null
+  const [update, setUpdate] = useState({
+    
+  });
+
+
+
+  return (
+    <div>
+      <button>Update</button>
+    </div>
+  )
 }
 
 export default MovieUpdate;
