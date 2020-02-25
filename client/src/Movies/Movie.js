@@ -3,7 +3,7 @@ import axios from 'axios';
 import { useRouteMatch } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
-export default function Movie({ addToSavedList }) {
+function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const match = useRouteMatch();
 
@@ -36,3 +36,5 @@ export default function Movie({ addToSavedList }) {
     </div>
   );
 }
+
+export default Movie;

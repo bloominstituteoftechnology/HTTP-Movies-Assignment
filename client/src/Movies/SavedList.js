@@ -1,7 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
-export default function SavedList({ list }) {
+function SavedList({ list }) {
   return (
     <div className="saved-list">
       <h3>Saved Movies:</h3>
@@ -22,3 +22,5 @@ export default function SavedList({ list }) {
     </div>
   );
 }
+
+export default SavedList;

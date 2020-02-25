@@ -2,7 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-export default function MovieList({ movies }) {
+function MovieList({ movies }) {
   return (
     <div className="movie-list">
       {
@@ -15,3 +15,5 @@ export default function MovieList({ movies }) {
     </div>
   );
 }
+
+export default MovieList;
