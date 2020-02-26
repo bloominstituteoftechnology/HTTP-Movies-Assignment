@@ -2,11 +2,11 @@
 
 ## Instructions
 
-- **Fork** this repository, then clone your fork.
-- Run `npm install` to download dependencies.
-- Run the server using `npm start`.
-- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
-- Still inside the `client` folder run `npm start` to run the client application.
+- **Fork** this repository, then clone your fork. X
+- Run `npm install` to download dependencies. X
+- Run the server using `npm start`. X
+- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies. X
+- Still inside the `client` folder run `npm start` to run the client application. X
 
 ### Part 1 - Updating A Movie:
 
