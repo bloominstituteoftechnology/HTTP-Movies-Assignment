@@ -1,84 +1,109 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect } from "react";
 import { useParams } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
-const initialMovie = {
+const initialData = {
   title: "",
   director: "",
-  metascore: "",
+  metascore: null,
   stars: []
-}
+};
 
 const UpdateMovie = props => {
-  const [movie, setMovie] = useState(initialMovie)
+
+  const [movie, setMovie] = useState(initialData);
+  const [starToAdd, setStarToAdd] = useState("");
   const { id } = useParams();
 
-  useEffect(() => {
-    const movieToUpdate = props.savedList.find( movie => `${movie.id}` === id)
-    if(movieToUpdate){
-      setMovie(movieToUpdate)
-    }
-  }, [props.savedList, id])
-
-  const handleSubmit = e => {
-    e.preventDefault()
-
-    axios.put(`http://localhost:5000/api/movies/${id}`, movie)
-      .then(res => {
-        console.log(res);
-        props.savedList([res.data]);
-        props.history.push(`/movies`);
-        setMovie(initialMovie);
-      })
-      .catch(err => {
-        console.log(err);
-        props.history.push('/');
-      })
-  }
-
-  const handleChanges = e => {
+  const handleChange = e => {
     setMovie({
       ...movie,
       [e.target.name]: e.target.value
-    })
-  }
+    });
+  };
+
+  const starFilterHandle = itemName => {
+    setMovie({
+      ...movie,
+      stars: movie.stars.filter(item => item !== itemName)
+    });
+  };
+
+  const starAddHandle = e => {
+    e.preventDefault();
+    setMovie({
+      ...movie,
+      stars: [...movie.stars, starToAdd]
+    });
+  };
+
+  const starToAddHandle = e => {
+    setStarToAdd(e.target.value);
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/movies/${id}`)
+      .then(res => setMovie(res.data))
+      .catch(err => console.log(err.response));
+  }, []);
+
+  const handlePut = e => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .then(res => {
+        props.history.push(`/movies/${id}`);
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
 
   return (
     <div>
-      <h1>Update Movie</h1>
-      <form onSubmit={handleSubmit}>
+      <form onSubmit={handlePut}>
+        <label htmlFor="title">Title:</label>
         <input
-          type="text"
-          name="title"
-          placeholder="Title"
-          onChange={handleChanges}
+          onChange={handleChange}
           value={movie.title}
-        />
-        <input
+          name="title"
           type="text"
-          name="director"
-          placeholder="Director"
-          onChange={handleChanges}
+          placeholder="Title"
+        />
+        <label htmlFor="director">Director:</label>
+        <input
+          onChange={handleChange}
           value={movie.director}
-        />
-        <input
+          name="director"
           type="text"
-          name="metascore"
-          placeholder="Score"
-          onChange={handleChanges}
+          placeholder="Director"
+        />
+        <label htmlFor="metascore">Metascore:</label>
+        <input
+          onChange={handleChange}
           value={movie.metascore}
-        />
-        <input
+          name="metascore"
           type="text"
-          name="stars"
-          placeholder="Stars separated by commas ( , )"
-          onChange={handleChanges}
-          value={movie.stars}
+          placeholder="metascore"
         />
-        <button>Update</button>
+        {movie.stars.map(item => (
+          <button onClick={() => starFilterHandle(item)} key={item}>
+            {item} x
+          </button>
+        ))}
+        <input
+          onChange={starToAddHandle}
+          value={starToAdd}
+          placeholder="add more stars"
+        />
+        <button onClick={starAddHandle}>add</button>
+        <br />
+        <br />
+        <button>Submit Edit</button>
       </form>
     </div>
-  )
-}
+  );
+};
 
 export default UpdateMovie;
