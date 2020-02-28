@@ -15,31 +15,43 @@ const UpdateMovieForm = props => {
     const {id} = useParams();
     console.log(props);
 
-    // useEffect(()=>{
-    //     let dataToUpdate = props.movieList.find(e => `${e.id}`=== id);
-    //     dataToUpdate && setMovie(dataToUpdate);
-    // },[props.movieList,id]);
+   
 
       useEffect(()=>{
         let dataToUpdate = props.movieList.find(e => `${e.id}`=== id);
-        dataToUpdate && setMovie(dataToUpdate);
+        console.log(dataToUpdate,'data update in useEffect');
+        if (dataToUpdate)  {setMovie(dataToUpdate)};
     },[props.movieList,id]);
 
     
 
     const handleSubmit = e => {
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/movies/${(movie.id)}`,movie)
+        axios.put(`http://localhost:5000/api/movies/${movie.id}`,movie)
         .then(res => {
-            props.setMovie(res.data)
+            console.log(res,'response put then');
+            const updatedMovie = props.movieList.map(v => {
+                if (v.id === res.data.id){
+                    return res.data;
+                } else {
+                    return v;
+                }
+            });
+            props.setMovieList(updatedMovie);
+
+            
             props.history.push('/');
             console.log(res)})
         .catch(err => console.log(err,'error posting data'))
     }
 
     const handleChange = e => {
-        e.persist();
-        setMovie({...movie, [e.target.name]: e.target.value})
+       e.persist(); 
+       let starsvalue = e.target.value;
+       if (e.target.name === 'stars')  {starsvalue = [starsvalue] }
+        
+        
+        setMovie({...movie, [e.target.name]: starsvalue})
       }
 
     return (
