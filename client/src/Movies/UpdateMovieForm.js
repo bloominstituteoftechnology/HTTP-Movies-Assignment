@@ -23,17 +23,17 @@ useEffect(() => {
     }
 }, [props.movieList, id])
 
-const handleChange = ev => {
-    let value =ev.target.value;
-    if (ev.taraget.name === 'metascore') {
+const handleChange = event => {
+    let value =event.target.value;
+    if (event.target.name === 'metascore') {
         value = parseInt(value)
-    } else if (ev.target.name ==='stars') {
+    } else if (event.target.name ==='stars') {
         value = value.split (',')
         console.log(value)
     }
     setItem({
         ...item,
-        [ev.target.name]: value
+        [event.target.name]: value
     })
 }
 const handleSubmit =e => {
@@ -42,20 +42,20 @@ const handleSubmit =e => {
     .then(res => {
         console.log(res.data)
         props.setMovieList([res.data]);
-        props.hisotry.push(`/movies/${id}`)
+        props.history.push(`/movies/${id}`)
     })
    .catch(err => console.log('error!!', err))
 }
 
 return (
     <div className='update-movie'>
-    <h2>Update Movie</h2>
+    <h2>Update The Movie</h2>
 
     <form onSubmit={handleSubmit}>
         <input
             type='text'
             name='title'
-            placeholder='Title..'
+            placeholder='Title'
             onChange={handleChange}
             value={item.title}
             />
@@ -64,7 +64,7 @@ return (
         <input
             type='text'
             name='director'
-            placeholder='Director..'
+            placeholder='Director'
             onChange={handleChange}
             value={item.director}
             />
@@ -73,7 +73,7 @@ return (
         <input
             type='number'
             name='metascore'
-            placeholder='Metascore Rating..'
+            placeholder='Metascore Rating'
             onChange={handleChange}
             value={item.metascore}
             />
@@ -82,13 +82,13 @@ return (
         <input
             type='text'
             name='stars'
-            placeholder='Stars..'
+            placeholder='Stars'
             onChange={handleChange}
             value={item.stars}
             />
         <div className='split'/>
 
-        <button>Update Movie</button>
+        <button>Update The Movie</button>
             
     </form>
     </div>

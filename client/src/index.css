@@ -13,7 +13,7 @@ body {
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 0 auto;
 }
 
 .movie-director {
