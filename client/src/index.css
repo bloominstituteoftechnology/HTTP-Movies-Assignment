@@ -66,10 +66,26 @@ body {
   color: white;
 }
 
+.update-button {
+  position: absolute;
+  bottom: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: darkslategray;
+}
+
+.update-button:hover {
+  background-color: green;
+  color: white;
+}
+
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
+
+
 
 .movie-warning {
   color: red;

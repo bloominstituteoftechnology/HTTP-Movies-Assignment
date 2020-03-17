@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
@@ -6,8 +6,8 @@ import Movie from "./Movies/Movie";
 import axios from 'axios';
 
 const App = () => {
-  const [savedList, setSavedList] = useState([]);
-  const [movieList, setMovieList] = useState([]);
+  const [savedList, setSavedList] = React.useState([]);
+  const [movieList, setMovieList] = React.useState([]);
 
   const getMovieList = () => {
     axios
@@ -20,7 +20,7 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
-  useEffect(() => {
+  React.useEffect(() => {
     getMovieList();
   }, []);
 
