@@ -3,7 +3,8 @@ import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
-import axios from 'axios';
+import axios from "axios";
+import UpdateList from "./Movies/UpdateList";
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -35,6 +36,14 @@ const App = () => {
       <Route path="/movies/:id">
         <Movie addToSavedList={addToSavedList} />
       </Route>
+      {/* <Route
+        path="/movies/:id"
+        render={props => <Movie {...props} addToSavedList={addToSavedList} />}
+      /> */}
+      <Route
+        path="/update-movie/:id"
+        render={props => <UpdateList {...props} movies={movieList} />}
+      />
     </>
   );
 };
