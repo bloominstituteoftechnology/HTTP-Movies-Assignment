@@ -26,6 +26,13 @@ function Movie(props) {
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
+  const removeMovie = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/api/movies/${props.match.params.id}`)
+      .then(res => props.history.push("/"))
+      .catch(err => console.log(err));
+  };
 
   return (
     <div className="save-wrapper">
@@ -40,6 +47,7 @@ function Movie(props) {
       >
         Edit movie
       </button>
+      <button onClick={removeMovie}>Delete</button>
     </div>
   );
 }
