@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
+import { Link } from "react-router-dom";
 import { useRouteMatch, useHistory } from 'react-router-dom';
 import MovieCard from './MovieCard';
 
@@ -28,7 +29,7 @@ function Movie({ addToSavedList }) {
   }
 
   const deleteMovie = () => {
-   
+
     const id = (match.params.id)
     console.log(id)
 
@@ -36,7 +37,6 @@ function Movie({ addToSavedList }) {
       .delete(`http://localhost:5000/api/movies/${id}`)
       .then(res => {
         console.log(res);
-        // setMovie(res.data);
 
         console.log("going to push to new url");
         history.push("/item-list");
@@ -50,9 +50,12 @@ function Movie({ addToSavedList }) {
   return (
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
-
       <div className='save-button' onClick={saveMovie}>Save</div>
-      <div className = 'edit-button' onClick= {() => history.push(`/update-movie/${match.params.id}`)}>Edit</div>
+      <Link to={`/update-movie/${match.params.id}`}>
+          <div className="edit-button">
+              Edit
+          </div>
+      </Link>
       <div className = 'delete-button' onClick={deleteMovie}>Delete</div>
     </div>
   );
