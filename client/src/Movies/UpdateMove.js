@@ -1,13 +1,15 @@
 import React, { useState, useEffect } from "react";
+import axios from "axios";
 
 function UpdateMove(props) {
-  console.log("this is the props from update movie", props);
+  console.log("this is the prtops from UPDATE", props);
+  let id = props.match.params.id;
   const [movie, setMovie] = useState({
-    id: 5,
-    title: "Tombstone",
-    director: "George P. Cosmatos",
-    metascore: 89,
-    stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"]
+    id: Date.now(),
+    title: "",
+    director: "",
+    metascore: "",
+    stars: []
   });
 
   const handleChange = e => {
@@ -26,9 +28,31 @@ function UpdateMove(props) {
     setPreviewState(true);
   };
 
+  const handleSubmit = e => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .then(res => {
+        props.addToSavedList(res.data);
+        props.history.push("/");
+      })
+      .catch(err => console.log(err));
+  };
+
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/movies/${id}`)
+      .then(res => setMovie({ ...res.data, stars: res.data.stars.join(" ,") }))
+      .catch(err => console.log(err));
+  }, [id]);
   return (
-    <form onSubmit={previewState ? null : handlePreview}>
-      <input name="title" type="text" value={movie} onChange={handleChange} />
+    <form onSubmit={previewState ? handleSubmit : handlePreview}>
+      <input
+        name="title"
+        type="text"
+        value={movie.title}
+        onChange={handleChange}
+      />
       <input
         name="director"
         type="text"
@@ -41,6 +65,7 @@ function UpdateMove(props) {
         value={movie.metascore}
         onChange={handleChange}
       />
+      <p></p>
       Stars:{" "}
       {previewState ? (
         movie.stars
@@ -53,6 +78,7 @@ function UpdateMove(props) {
           onChange={handleChange}
         />
       )}
+      <button type="submit">Save</button>
     </form>
   );
 }
