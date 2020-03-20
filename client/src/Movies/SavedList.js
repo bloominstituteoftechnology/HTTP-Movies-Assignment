@@ -1,5 +1,5 @@
-import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import React from "react";
+import { NavLink, Link } from "react-router-dom";
 
 function SavedList({ list }) {
   return (

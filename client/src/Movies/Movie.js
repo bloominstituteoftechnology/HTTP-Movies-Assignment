@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
-import axios from 'axios';
-import { useRouteMatch } from 'react-router-dom';
-import MovieCard from './MovieCard';
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useRouteMatch } from "react-router-dom";
+import MovieCard from "./MovieCard";
 
 function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
@@ -11,7 +11,7 @@ function Movie({ addToSavedList }) {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then(res => setMovie(res.data))
-      .catch(err => console.log(err.response));
+      .catch(err => console.log("this is from catch", err.response));
   };
 
   const saveMovie = () => {
@@ -27,10 +27,10 @@ function Movie({ addToSavedList }) {
   }
 
   return (
-    <div className='save-wrapper'>
+    <div className="save-wrapper">
       <MovieCard movie={movie} />
 
-      <div className='save-button' onClick={saveMovie}>
+      <div className="save-button" onClick={saveMovie}>
         Save
       </div>
     </div>
