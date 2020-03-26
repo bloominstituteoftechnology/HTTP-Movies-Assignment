@@ -20,27 +20,27 @@ function Movie(props) {
     props.addToSavedList(movie);
   };
 
-  // const routeToEditForm = e => {
-  //   e.preventDefault();
-  //   props.history.push(`/update-movie/${movie.id}`)
-  // }
+  const routeToEditForm = e => {
+    e.preventDefault();
+    history.push(`/update-movie/${movie.id}`)
+  };
 
-  const deleteMovie = id => {
-    //e.preventDefault();
+  const deleteMovie = e => {
+    e.preventDefault();
     axios
-    .delete(`http://localhost:5000/api/movies/${id}`)
+    .delete(`http://localhost:5000/api/movies/${movie.id}`)
     .then(res => {
       console.log(res);
-      props.setMovie(res.data);
+      props.setMovieList(res.data);
       props.history.push('/');
     })
     .catch(err => console.log(err));
   };
 
-  const handleUpdate = id => {
-    //e.preventDefault();
-    history.push(`/update-movie/${movie.id}`);
-  };
+  // const handleUpdate = id => {
+  //   //e.preventDefault();
+  //   history.push(`/update-movie/${movie.id}`);
+  // };
 
   useEffect(() => {
     fetchMovie(match.params.id);
@@ -55,7 +55,7 @@ function Movie(props) {
       <MovieCard movie={movie} />
 
       <div className='save-button' onClick={saveMovie}> Save </div>
-      <div onClick={handleUpdate}> Edit </div>
+      <div onClick={routeToEditForm}> Edit </div>
       <div onClick={deleteMovie}>Delete</div>
     </div>
   );

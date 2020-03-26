@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 
-import { useParams, useHistory } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 
@@ -8,7 +8,7 @@ function UpdateForm(props) {
     console.log("Update", props);
     
     const { id } = useParams();
-    const { push } = useHistory();
+    //const { push } = useHistory();
     
     const [updateMovie, setUpdateMovie] = useState({
         id: Date.now(),
@@ -17,6 +17,23 @@ function UpdateForm(props) {
         metascore: '',
         stars: []
     });
+
+    useEffect(() => {
+    //    axios
+    //    .get(`http://localhost:5000/api/movies/${id}`)
+    //    .then(res => {
+    //        setUpdateMovie(res.data)
+    //        console.log(res.data, "useeffect console");
+    //    })
+    //    .catch(err => console.log(err));
+
+        const itemToUpdate = props.movies.find(movie => `${movie.id}` === id)
+
+        if (itemToUpdate){
+            setUpdateMovie(itemToUpdate)
+        }
+
+    }, [props.movies, id]);
 
     const changeHandler = ev => {
         ev.preventDefault();
@@ -33,27 +50,26 @@ function UpdateForm(props) {
 
     };
 
-
-    useEffect(() => {
-       axios
-       .get(`http://localhost:5000/api/movies/${id}`)
-       .then(res => {
-           setUpdateMovie(res.data)
-           console.log(res.data, "useeffect console");
-       })
-       .catch(err => console.log(err));
-    }, [id]);
-
     const handleSubmit = e => {
         e.preventDefault();
 
         axios
         .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
         .then(res => {
-            props.setMovie(res.data);
-            push("/");
+            // props.setMovie(res.data);
+            // push("/");
+            props.setMovieList(res.data);
+            props.history.push('/');
+         
         })
         .catch( err => console.log(err));
+        setUpdateMovie({
+            id: '',
+            title: '',
+            director: '',
+            metascore: '',
+            stars: []
+        })
     }
 
   return (
