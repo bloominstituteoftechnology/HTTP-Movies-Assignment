@@ -1,12 +1,14 @@
 import React, { useState, useEffect } from 'react';
 
-//import { useParams, useHistory } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
 function UpdateForm(props) {
     console.log("Update", props);
-    let id = props.match.params.id;
+    
+    const { id } = useParams();
+    const { push } = useHistory();
     
     const [updateMovie, setUpdateMovie] = useState({
         id: Date.now(),
@@ -18,31 +20,27 @@ function UpdateForm(props) {
 
     const changeHandler = ev => {
         ev.preventDefault();
-        // ev.persist();
-        // let value = ev.target.value;
-        // if(ev.target.name === 'metascore') {
-        //     value = parseInt(value, 10);
-        // }
+        ev.persist();
+        let value = ev.target.value;
+        if(ev.target.name === 'metascore') {
+            value = parseInt(value, 10);
+        }
 
         setUpdateMovie({
             ...updateMovie,
-            [ev.target.name]: ev.target.value
+            [ev.target.name]: value
         });
 
-    };
-
-    const [starState, setStarState] = useState(false);
-    const handleStar = e => {
-        e.preventDefault();
-        setUpdateMovie({...updateMovie, stars: updateMovie.stars.split(", ") });
-        setStarState(true);
     };
 
 
     useEffect(() => {
        axios
        .get(`http://localhost:5000/api/movies/${id}`)
-       .then(res => setUpdateMovie({ ...res.data, stars: res.data.stars.join(" ,")}))
+       .then(res => {
+           setUpdateMovie(res.data)
+           console.log(res.data, "useeffect console");
+       })
        .catch(err => console.log(err));
     }, [id]);
 
@@ -50,10 +48,10 @@ function UpdateForm(props) {
         e.preventDefault();
 
         axios
-        .put(`http://localhost:5000/movies/${id}`, updateMovie)
+        .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
         .then(res => {
-            props.addToSavedList(res.data);
-            props.history.push("/");
+            props.setMovie(res.data);
+            push("/");
         })
         .catch( err => console.log(err));
     }
@@ -83,23 +81,14 @@ function UpdateForm(props) {
               placeholder="Metascore"
               value={updateMovie.metascore}
               />
-              <p></p>
-                  Stars: {" "}
-                  {starState ? (
-                      updateMovie.stars 
-                  ) : (
-                <input
-                type="text"
-                name="stars"
-                onChange={changeHandler}
-                placehodler="Stars"
-                value={updateMovie.stars}
-                />
-                )}
-              
-              
-            
-            <button type="submit" >Update</button>
+            <input
+            type="text"
+            name="stars"
+            onChange={changeHandler}
+            placehodler="Stars"
+            value={updateMovie.stars}
+            />
+            <button>Update</button>
           </form>
       </div>
     );  
