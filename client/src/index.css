@@ -65,7 +65,22 @@ body {
   background-color: green;
   color: white;
 }
-
+.edit-button{
+  position: absolute;
+  top: 25px;
+  right: 100px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightblue;
+}
+.delete-button{
+  position: absolute;
+  top: 25px;
+  right: 175px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: pink;
+}
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -74,4 +89,23 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.back-button {
+  background-color: black;
+  color: white;
+  width: 100px;
+  line-height: 1.8rem;
+  margin: 0px auto;
+  text-align: center;
+}
+
+form{
+  margin: 25px auto;
+  height: 300px;
+  width: 400px;
+  text-align: center;
+  line-height: 1.8rem;
+  background-color: rgba(125,125,125,0.6);
+  border-radius: 20px;
 }
