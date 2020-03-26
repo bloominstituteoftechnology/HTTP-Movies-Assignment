@@ -1,28 +1,30 @@
 // the form is use to update the chosen movie
-import React, { useEffect } from 'react';
-import { useParams, useHistory } from 'react-router-dom';
+import React, { useEffect, useState } from 'react';
+import { useParams } from 'react-router-dom';
 import axios from 'axios';
 
 const initialMovie = {
     id: '',
     title: '',
     director: '',
-    metascore: '',//? it should be a number type
-    starts: "" //? it should be an array
+    metascore: 0,
+    stars: []
 };
 
-const updateForm = props => {
+const UpdateForm = props => {
     // get the params and history objects
     const { id } = useParams();
-    const { push } = useHistory();
 
     const [movie, setMovie] = useState(initialMovie);
 
     const changeHandler = event => {
-        event.persisit();
+        event.persist();
         let value = event.target.value;
-        if (event.target,name === 'title') {//not sure the 'title' ?
-            value = parseInt(value, 10);//not sure '10' ?
+        if (event.target.name === 'metascore') {
+            value = parseInt(value, 10);
+        }
+        if (event.target.name === 'stars') {
+            value = value.split(',');
         }
 
         setMovie({
@@ -36,7 +38,7 @@ const updateForm = props => {
     //loop through the movie list to find the item
     //set the movie to state to pre-populate the form\
     useEffect(() => {
-        const movieToUpdate = props.movies.find(element => `{element.id}` === id);
+        const movieToUpdate = props.movies.find(element => `${element.id}` === id);
         if (movieToUpdate) {
             setMovie(movieToUpdate);
         }
@@ -44,17 +46,19 @@ const updateForm = props => {
     //****** Find the item and set it to state ******//
 
     const handleSubmit = e => {
+        console.log("Submit was clicked");
         e.preventDefault();
 
         //****** Make the PUT request to the server when submit *********/
         axios
-            .put(`http://localhost:5000/movies/${id}`, movie)
+            .put(`http://localhost:5000/api/movies/${id}`, movie)
             .then(res => {
+                console.log("Axios call worked");
                 //update state in App through the setter function
                 //navigate user to the movie page (or to the shop)
                 // (Potentially, you could just show a success message without navigating)
                 props.setMovie(res.data);
-                push(`/movie-list/${id}`);
+                props.history.push("/");
             })
             .catch(err => console.log(err));
             //*******make the PUT request*********/
@@ -63,11 +67,12 @@ const updateForm = props => {
     return (
         <div>
             <h2>Update Movie</h2>
-            <form onSubmit={handleSubmit}>
-                <input type="text" name="title" placeholder="title" onChange={changeHandler} value={movie.title} />
-                <input type="text" name="name" placeholder="name" onChange={changeHandler} value={movie.name} />
-                <inpit type="text" name="metascore" placeholder="metascore" onChange={changeHandler} value={movie.metascore} />
-                <input type="text" name="starts" placeholder="starts" onChange={changeHandler} value={movie.starts} />
+            <form onSubmit={handleSubmit} className="form">
+                <span>Title:</span> <input type="text" name="title" placeholder="title" onChange={changeHandler} value={movie.title} />
+                <span>Name: </span><input type="text" name="director" placeholder="name" onChange={changeHandler} value={movie.director} />
+                <span>Metascore:</span> <input type="text" name="metascore" placeholder="metascore" onChange={changeHandler} value={movie.metascore} />
+                <span>Stars:</span> <input type="text" name="stars" placeholder="stars" onChange={changeHandler} value={movie.stars} />
+                <span></span><input type="submit"  />
                 
             </form>
         </div>
@@ -75,5 +80,5 @@ const updateForm = props => {
 
 };
 
-export default updateForm;
+export default UpdateForm;
 
