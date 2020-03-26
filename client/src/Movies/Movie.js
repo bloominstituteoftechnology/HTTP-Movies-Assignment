@@ -26,12 +26,29 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
+    // ********** Add the function to delete movie ********** //
+    const deleteMovie = e => {
+      e.preventDefault();
+      //make an axios delete request
+      //in the .then, updata with props.setMovies and navigate to the shop
+      axios.delete('http://localhost:5000/api/movies/${id}').then(res => {
+        //res.data
+        props.setMovies(res.data);
+        Props.history.push('/movie-list');
+      });
+    };
+    // ********** Add the function to delete movie ********** //
+
+
   return (
     <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
       <div className='save-button' onClick={saveMovie}>
         Save
+      </div>
+      <div className='delete-button' onClick={deleteMovie}>
+        Delete
       </div>
     </div>
   );
