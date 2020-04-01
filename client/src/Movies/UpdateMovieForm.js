@@ -15,20 +15,44 @@ const UpdateMovieForm = props => {
     e.preventDefault();
 
     setUpdateMovie({ ...updateMovie, [e.target.name]: e.target.value });
-    console.log(updateMovie);
+    // console.log(updateMovie);
+  };
+
+  const submitHandler = e => {
+    e.preventDefault();
   };
 
   return (
     <div>
       <h2>Update Movie</h2>
-      <form>
-        <input type="text" name="title" placeholder="Title" />
+      <form onSubmit={submitHandler}>
+        <input
+          type="text"
+          name="title"
+          placeholder="Title"
+          onChange={changeHandler}
+        />
         <br />
-        <input type="text" name="director" placeholder="Director" />
+        <input
+          type="text"
+          name="director"
+          placeholder="Director"
+          onChange={changeHandler}
+        />
         <br />
-        <input type="text" name="metascore" placeholder="Metascore" />
+        <input
+          type="text"
+          name="metascore"
+          placeholder="Metascore"
+          onChange={changeHandler}
+        />
         <br />
-        <input type="text" name="stars" placeholder="Stars" />
+        <input
+          type="text"
+          name="stars"
+          placeholder="Stars"
+          onChange={changeHandler}
+        />
         <br />
       </form>
       <button type="submit">Update Movie</button>
