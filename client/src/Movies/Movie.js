@@ -31,7 +31,6 @@ function Movie({ addToSavedList }) {
     e.preventDefault();
 
     history.push(`/update-movie/${movie.id}`);
-    // console.log(props);
   };
 
   return (
