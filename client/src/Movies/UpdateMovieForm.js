@@ -10,13 +10,12 @@ const initialItem = {
 
 const UpdateMovieForm = props => {
   const [updateMovie, setUpdateMovie] = useState(initialItem);
-
+  console.log(updateMovie);
   useEffect(() => {
     const editingMovie = props.movies.find(film => {
       return film.id === Number(props.match.params.id);
     });
 
-    console.log("The Movie", editingMovie);
     if (editingMovie) {
       setUpdateMovie(editingMovie);
     }
@@ -28,19 +27,16 @@ const UpdateMovieForm = props => {
     setUpdateMovie({ ...updateMovie, [e.target.name]: e.target.value });
   };
 
-  const submitHandler = (e, id) => {
+  const handleSubmit = e => {
     e.preventDefault();
-
-    // axios
-    //   .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
-    //   .then(res => console.log(res))
-    //   .catch(err => console.log(err));
+    const id = Number(props.match.params.id);
+    props.updateMovieList(id, updateMovie);
   };
 
   return (
     <div className="update-form">
       <h2>Update Movie</h2>
-      <form onSubmit={submitHandler}>
+      <form onSubmit={handleSubmit}>
         <input
           type="text"
           name="title"
@@ -58,7 +54,7 @@ const UpdateMovieForm = props => {
         />
         <br />
         <input
-          type="text"
+          type="number"
           name="metascore"
           placeholder="Metascore"
           onChange={changeHandler}
@@ -66,15 +62,15 @@ const UpdateMovieForm = props => {
         />
         <br />
         <input
-          type="text"
+          type="array"
           name="stars"
           placeholder="Stars"
           onChange={changeHandler}
           value={updateMovie.stars}
         />
         <br />
+        <button type="submit">Update Movie</button>
       </form>
-      <button type="submit">Update Movie</button>
     </div>
   );
 };
