@@ -20,8 +20,10 @@ const App = () => {
   };
 
   const updateMovieList = (id, updateMovie) => {
+    const splitMovies = { ...updateMovie, stars: updateMovie.stars.split(",") };
+
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
+      .put(`http://localhost:5000/api/movies/${id}`, splitMovies)
       .then(res => {
         const movieMatch = movieList.map(movie => {
           if (movie.id === res.data.id) {
@@ -30,7 +32,7 @@ const App = () => {
             return movie;
           }
         });
-
+        // console.log(movieMatch);
         setMovieList(movieMatch);
       })
       .catch(err => console.log(err));
