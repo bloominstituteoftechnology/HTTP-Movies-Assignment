@@ -20,16 +20,17 @@ const App = () => {
   };
 
   const updateMovieList = (id, updateMovie) => {
-    const splitMovies = { ...updateMovie, stars: updateMovie.stars.split(",") };
+    const splitMovies = { ...updateMovie, stars: updateMovie.stars.split(",") }; // uses .split() method to turn updateMovie data back into an array
 
     axios
       .put(`http://localhost:5000/api/movies/${id}`, splitMovies)
       .then(res => {
         const movieMatch = movieList.map(movie => {
+          // maps over movieList array and matches movie id's with PUT response data id's
           if (movie.id === res.data.id) {
-            return res.data;
+            return res.data; // returns PUT response data if id's match
           } else {
-            return movie;
+            return movie; // returns current movie if PUT response id and movie id's DO NOT match
           }
         });
         // console.log(movieMatch);
