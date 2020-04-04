@@ -23,7 +23,15 @@ const App = () => {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, updateMovie)
       .then(res => {
-        setMovieList(res);
+        const movieMatch = movieList.map(movie => {
+          if (movie.id === res.data.id) {
+            return res.data;
+          } else {
+            return movie;
+          }
+        });
+
+        setMovieList(movieMatch);
       })
       .catch(err => console.log(err));
   };
