@@ -1,18 +1,20 @@
 import React, { useState, useEffect } from "react";
+import { Route } from "react-router-dom";
 import axios from "axios";
+import MovieList from "./MovieList";
 
 const initialItem = {
   title: "",
   director: "",
   metascore: "",
-  stars: []
+  stars: [],
 };
 
-const UpdateMovieForm = props => {
+const UpdateMovieForm = (props) => {
   const [updateMovie, setUpdateMovie] = useState(initialItem);
   console.log(updateMovie);
   useEffect(() => {
-    const editingMovie = props.movies.find(film => {
+    const editingMovie = props.movies.find((film) => {
       return film.id === Number(props.match.params.id);
     });
 
@@ -21,16 +23,17 @@ const UpdateMovieForm = props => {
     }
   }, [props.movies, props.match.params]);
 
-  const changeHandler = e => {
+  const changeHandler = (e) => {
     e.preventDefault();
 
     setUpdateMovie({ ...updateMovie, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = e => {
+  const handleSubmit = (e) => {
     e.preventDefault();
     const id = Number(props.match.params.id);
     props.updateMovieList(id, updateMovie);
+    props.history.push("/");
   };
 
   return (

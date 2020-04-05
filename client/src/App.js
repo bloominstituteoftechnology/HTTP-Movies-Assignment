@@ -15,8 +15,8 @@ const App = () => {
   const getMovieList = () => {
     axios
       .get("http://localhost:5000/api/movies")
-      .then(res => setMovieList(res.data))
-      .catch(err => console.log(err.response));
+      .then((res) => setMovieList(res.data))
+      .catch((err) => console.log(err.response));
   };
 
   const updateMovieList = (id, updateMovie) => {
@@ -24,8 +24,8 @@ const App = () => {
 
     axios
       .put(`http://localhost:5000/api/movies/${id}`, splitMovies)
-      .then(res => {
-        const movieMatch = movieList.map(movie => {
+      .then((res) => {
+        const movieMatch = movieList.map((movie) => {
           // maps over movieList array and matches movie id's with PUT response data id's
           if (movie.id === res.data.id) {
             return res.data; // returns PUT response data if id's match
@@ -36,10 +36,10 @@ const App = () => {
         // console.log(movieMatch);
         setMovieList(movieMatch);
       })
-      .catch(err => console.log(err));
+      .catch((err) => console.log(err));
   };
 
-  const addToSavedList = movie => {
+  const addToSavedList = (movie) => {
     setSavedList([...savedList, movie]);
   };
 
@@ -61,7 +61,7 @@ const App = () => {
 
       <Route
         path="/update-movie/:id"
-        render={props => (
+        render={(props) => (
           <UpdateMovieForm
             {...props}
             movies={movieList}
