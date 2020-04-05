@@ -6,7 +6,7 @@ import Movie from "./Movies/Movie";
 import axios from "axios";
 import UpdateMovieForm from "./Movies/UpdateMovieForm";
 
-const App = () => {
+const App = (props) => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
 
@@ -35,6 +35,18 @@ const App = () => {
         });
         // console.log(movieMatch);
         setMovieList(movieMatch);
+        props.history.push(`/movies/${id}`);
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const deleteMovie = (id) => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then((res) => {
+        // console.log(res);
+        setMovieList(res);
+        props.history.replace("/");
       })
       .catch((err) => console.log(err));
   };
@@ -56,7 +68,7 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie addToSavedList={addToSavedList} deleteMovie={deleteMovie} />
       </Route>
 
       <Route

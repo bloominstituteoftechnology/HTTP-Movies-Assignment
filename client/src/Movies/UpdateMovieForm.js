@@ -33,7 +33,6 @@ const UpdateMovieForm = (props) => {
     e.preventDefault();
     const id = Number(props.match.params.id);
     props.updateMovieList(id, updateMovie);
-    props.history.push("/");
   };
 
   return (
