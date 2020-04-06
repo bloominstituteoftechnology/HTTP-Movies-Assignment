@@ -9,6 +9,19 @@ const initialItem = {
 
 const AddMovieForm = (props) => {
   const [addNewMovie, setAddNewMovie] = useState(initialItem);
+  console.log(addNewMovie);
+
+  const changeHandler = (e) => {
+    e.preventDefault();
+
+    setAddNewMovie({ ...addNewMovie, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+
+    props.addMovie(addNewMovie);
+  };
 
   return (
     <div className="add-new-movie">
@@ -19,7 +32,7 @@ const AddMovieForm = (props) => {
           name="title"
           placeholder="Title"
           onChange={changeHandler}
-          value={updateMovie.title}
+          value={addNewMovie.title}
         />
         <br />
         <input
@@ -27,7 +40,7 @@ const AddMovieForm = (props) => {
           name="director"
           placeholder="Director"
           onChange={changeHandler}
-          value={updateMovie.director}
+          value={addNewMovie.director}
         />
         <br />
         <input
@@ -35,7 +48,7 @@ const AddMovieForm = (props) => {
           name="metascore"
           placeholder="Metascore"
           onChange={changeHandler}
-          value={updateMovie.metascore}
+          value={addNewMovie.metascore}
         />
         <br />
         <input
@@ -43,10 +56,10 @@ const AddMovieForm = (props) => {
           name="stars"
           placeholder="Stars"
           onChange={changeHandler}
-          value={updateMovie.stars}
+          value={addNewMovie.stars}
         />
         <br />
-        <button type="submit">Update Movie</button>
+        <button type="submit">Add Movie</button>
       </form>
     </div>
   );

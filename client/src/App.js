@@ -41,18 +41,40 @@ const App = (props) => {
       .catch((err) => console.log(err));
   };
 
-  const deleteMovie = (id) => {
+  const deleteMovie = (id, updateMovie) => {
+    const splitMovies = {
+      ...updateMovie,
+      stars: updateMovie.stars.split(","),
+    };
+
     axios
-      .delete(`http://localhost:5000/api/movies/${id}`)
+      .delete(`http://localhost:5000/api/movies/${id}`, splitMovies)
       .then((res) => {
         // console.log(res);
-        setMovieList(res);
+        setMovieList(res.data);
         props.history.replace("/");
       })
       .catch((err) => console.log(err));
   };
 
-  const addMovie = () => {};
+  const addMovie = (addNewMovie) => {
+    const splitMovies = { ...addNewMovie, stars: addNewMovie.stars.split(",") };
+
+    axios
+      .post("http://localhost:5000/api/movies", splitMovies)
+      .then((res) => {
+        console.log(res.data);
+        setMovieList(res.data);
+        props.history.push("/");
+      })
+      .catch((err) => console.log(err));
+  };
+
+  const addMovieHandler = (e, id) => {
+    e.preventDefault();
+
+    props.history.push(`/add-movie/${id}`);
+  };
 
   const addToSavedList = (movie) => {
     setSavedList([...savedList, movie]);
@@ -65,7 +87,7 @@ const App = (props) => {
   return (
     <>
       <SavedList list={savedList} />
-      <button>Add Movie</button>
+      <button onClick={addMovieHandler}>Add New Movie</button>
       <Route exact path="/">
         <MovieList movies={movieList} />
       </Route>
