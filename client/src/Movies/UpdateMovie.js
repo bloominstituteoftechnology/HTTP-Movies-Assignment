@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
-import e from 'express';
 
 const someMovie = {
     id: '',
@@ -17,7 +16,7 @@ const UpdateMovie = (props) => {
     const { id } = useParams();
     useEffect(() => {
         axios
-            .get(``)
+            .get(`http://localhost:5000/api/movies/${id}`)
             .then((res) => {
                 console.log(res);
             })
@@ -42,7 +41,7 @@ const UpdateMovie = (props) => {
         e.preventDefault();
 
         axios
-            .put(``, movie)
+            .put(`http://localhost:5000/api/movies/${id}`, movie)
             .then((res) => {
                 console.log(res);
             })
