@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
@@ -10,35 +10,32 @@ const someMovie = {
     stars: [],
 };
 
-const UpdateForm = (props) => {
+const UpdateMovie = (props) => {
     const { push } = useHistory();
-    const [movie, setMovie] = useState(someMovie)
-    const { id } = useParams()
+    const [movie, setMovie] = useState(someMovie);
+    const { id } = useParams();
     useEffect(() => {
-        axios.get(``)
-            .then(res => {
-                console.log(res -)
+        axios
+            .get(``)
+            .then((res) => {
+                console.log(res);
             })
-            .catch(err =>{console.log(err)})
-    }, [id])
-};
+            .catch((err) => {
+                console.log(err);
+            });
+    }, [id]);
+    const handleChanges = (event) => {
+        event.persist();
+        let value = event.target.value;
+        if (event.target.name === 'title') {
+            value = parseInt(value, 10);
+        }
 
-const handleChanges = event => {
-    event.persist()
-    let value = event.target.value;
-    if (event.target.name === 'title') {
-        value = parseInt(value, 10)
-    }
-
-    setMovie({
-        ...movie,
-        [event.target.name]: value
-    })
-}
-
-
-
-const UpdateMovie = () => {
+        setMovie({
+            ...movie,
+            [event.target.name]: value,
+        });
+    };
     return (
         <div>
             <h1>Welcome to the Update Movie Form</h1>
