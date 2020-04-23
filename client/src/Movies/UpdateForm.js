@@ -79,6 +79,7 @@ const UpdateForm = props => {
                 />
                  <input
                     type="number"
+                    max="100"
                     name="metascore"
                     onChange={handleMetascore}
                     placeholder="metascore"
