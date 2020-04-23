@@ -43,11 +43,9 @@ const UpdateForm = props => {
     const handleMetascore = e => {
         setMovie({
             ...movie,
-            [e.target.name]: parseInt(e.target.value)
+            metascore: parseInt(e.target.value)
         })
     }
-
-    
 
     const handleSubmit = e => {
         e.preventDefault();
