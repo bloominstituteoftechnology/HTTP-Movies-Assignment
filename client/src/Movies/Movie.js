@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 
 function Movie({ addToSavedList, deleteMovies }) {
   const [movie, setMovie] = useState(null);
-  const params = useParams();
+  const { id } = useParams();
   const { push } = useHistory();
 
   const fetchMovie = (id) => {
@@ -24,8 +24,8 @@ function Movie({ addToSavedList, deleteMovies }) {
   };
 
   useEffect(() => {
-    fetchMovie(params.id);
-  }, [params.id]);
+    fetchMovie(id);
+  }, [id]);
 
   if (!movie) {
     return <div>Loading movie information...</div>;
@@ -35,6 +35,7 @@ function Movie({ addToSavedList, deleteMovies }) {
     e.preventDefault();
     axios.delete(`http://localhost:5000/api/movies/${movie.id}`)
           .then(res => {
+            console.log(res.data, "A")
             deleteMovies(res.data);
             push('/');
           });

@@ -33,7 +33,10 @@ const App = () => {
   };
 
   const deleteMovies = movieId => {
-    setMovieList(movieList.filter(item => item.id !== movieId));
+    const newMovies = [...movieList];
+    const filteredMovies = newMovies.filter(item => item.id !== movieId)
+    setMovieList(filteredMovies);
+    //rewrote this to solidify understanding of the JS in each function above
   };
 
   return (
