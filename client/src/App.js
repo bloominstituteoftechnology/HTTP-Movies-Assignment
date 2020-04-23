@@ -29,7 +29,7 @@ const App = () => {
     const updatedMovies = [...movieList];
     const index = updatedMovies.findIndex(item => item.id === updatedMovie.id);
     updatedMovies[index] = updatedMovie;
-    setMovieList(newMovies);
+    setMovieList(updatedMovies);
   };
 
   const deleteMovies = deletedMovie => {
