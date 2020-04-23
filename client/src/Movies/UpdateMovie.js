@@ -44,6 +44,7 @@ const UpdateMovie = (props) => {
             .then((res) => {
                 push(`/`);
                 setMovie(res.data);
+                window.location.reload();
                 console.log(res);
             })
             .catch((err) => {
