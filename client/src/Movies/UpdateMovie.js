@@ -27,7 +27,7 @@ const UpdateMovie = (props) => {
             });
     }, [id]);
     const handleChanges = (event) => {
-        event.persist();
+        event.preventDefault();
         let value = event.target.value;
 
         setMovie({
@@ -42,8 +42,9 @@ const UpdateMovie = (props) => {
         axios
             .put(`http://localhost:5000/api/movies/${id}`, movie)
             .then((res) => {
+                push(`/`);
+                setMovie(res.data);
                 console.log(res);
-                push('/');
             })
             .catch((err) => {
                 console.log(err);
