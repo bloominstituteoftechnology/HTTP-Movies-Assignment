@@ -51,7 +51,7 @@ const UpdateForm = props => {
         e.preventDefault();
         axios.put(`http://localhost:5000/api/movies/${id}`, movie)
             .then(res => {
-                console.log(res.data);
+                console.log(res.data, "B");
                 props.setMovie(res.data);
                 push('/');
             })

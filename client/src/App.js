@@ -36,7 +36,6 @@ const App = () => {
     const newMovies = [...movieList];
     const filteredMovies = newMovies.filter(item => item.id !== deletedMovie)
     setMovieList(filteredMovies);
-    //rewrote this to solidify understanding of the JS in each function above
   };
 
   return (
