@@ -56,13 +56,41 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 141px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
 }
 .save-button:hover {
   background-color: green;
+  color: white;
+}
+
+.edit-button {
+  position: absolute;
+  top: 25px;
+  right: 92px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: paleturquoise;
+}
+
+.edit-button:hover {
+  background-color: cyan;
+  color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: yellow;
+}
+
+.delete-button:hover {
+  background-color: red;
   color: white;
 }
 
@@ -74,4 +102,42 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.edit-card {
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 6rem;
+  position: relative;
+  margin: 100px 700px 0px 700px;
+}
+
+.edit-form{
+  display: flex;
+  justify-content: center;
+  text-align: center;
+}
+
+input {
+  width: 300px;
+  padding: 10px;
+  margin-top: 10px;
+  background-color: white;
+  border: 1px solid lightblue;
+  border-radius: 20px;
+  text-align: center;
+}
+
+.update-btn{
+  margin-top: 10px;
+  padding: 10px;
+  background-color: white;
+  border: 1px solid lightblue;
+  border-radius: 10px;
+}
+
+.update-btn:hover{
+  background-color: lightcyan;
 }
