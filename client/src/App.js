@@ -32,9 +32,9 @@ const App = () => {
     setMovieList(newMovies);
   };
 
-  const deleteMovies = movieId => {
+  const deleteMovies = deletedMovie => {
     const newMovies = [...movieList];
-    const filteredMovies = newMovies.filter(item => item.id !== movieId)
+    const filteredMovies = newMovies.filter(item => item.id !== deletedMovie)
     setMovieList(filteredMovies);
     //rewrote this to solidify understanding of the JS in each function above
   };
