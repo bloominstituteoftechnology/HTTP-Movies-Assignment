@@ -26,9 +26,9 @@ const App = () => {
   }, []);
 
   const setMovie = updatedMovie => {
-    const newMovies = [...movieList];
-    const index = newMovies.findIndex(item => item.id === updatedMovie.id);
-    newMovies[index] = updatedMovie;
+    const updatedMovies = [...movieList];
+    const index = updatedMovies.findIndex(item => item.id === updatedMovie.id);
+    updatedMovies[index] = updatedMovie;
     setMovieList(newMovies);
   };
 
