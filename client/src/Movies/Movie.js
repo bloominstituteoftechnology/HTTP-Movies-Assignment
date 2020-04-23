@@ -2,15 +2,20 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import { useHistory } from 'react-router-dom';
 
 function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
+  const { push } = useHistory();
 
   const fetchMovie = (id) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
-      .then((res) => setMovie(res.data))
+      .then((res) => {
+        setMovie(res.data);
+        console.log(res.data);
+      })
       .catch((err) => console.log(err.response));
   };
 
@@ -33,7 +38,12 @@ function Movie({ addToSavedList }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
+
+      <button onClick={() => push(`/update-movie/${movie.id}`)}>
+          Edit
+      </button>
     </div>
+    
   );
 }
 
