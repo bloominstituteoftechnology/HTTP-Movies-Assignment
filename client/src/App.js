@@ -5,10 +5,12 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
 import UpdateForm from "./Movies/UpdateForm"
+import { useHistory } from 'react-router-dom';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+  const { push } = useHistory();
 
   const getMovieList = () => {
     axios
@@ -25,6 +27,17 @@ const App = () => {
     getMovieList();
   }, []);
 
+  const setMovie = updatedMovie => {
+    const newMovies = [...movieList];
+    const index = newMovies.findIndex(item => item.id === updatedMovie.id);
+    newMovies[index] = updatedMovie;
+    setMovieList(newMovies);
+  };
+
+  const deleteMovies = movieId => {
+    setMovieList(movieList.filter(item => item.id !== movieId));
+  };
+
   return (
     <>
       <SavedList list={savedList} />
@@ -33,15 +46,12 @@ const App = () => {
         <MovieList movies={movieList} />
       </Route>
 
-      <Route
-        path="/movies/:id"
-        render={(props) => {
-          return <Movie {...props} addToSavedList={addToSavedList} />;
-        }}
-      />
+      <Route path="/movies/:id">
+        <Movie addToSavedList={addToSavedList} deleteMovies={deleteMovies} />
+      </Route>
 
-      <Route path="/update-movie/:id" render={(props) => <UpdateForm {...props} />}
-      />
+      <Route exact path="/update-movie/:id"
+          render={props => <UpdateForm {...props} movies={movieList} setMovie={setMovie} /> } />
     </>
   );
 };

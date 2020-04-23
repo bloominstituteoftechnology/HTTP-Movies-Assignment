@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
+
 const UpdateForm = props => {
     const { push } = useHistory();
     const [movie, setMovie] = useState({
@@ -17,7 +18,6 @@ const UpdateForm = props => {
             .then(res => {
                 console.log(res.data);
                 setMovie(res.data)
-                props.setMovie(res.data)
             })
             .catch(err => console.log(err));
     }, [id]);
@@ -54,7 +54,8 @@ const UpdateForm = props => {
         axios.put(`http://localhost:5000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res.data);
-                push('/')
+                props.setMovie(res.data);
+                push('/');
             })
             .catch(err => console.log(err))
     };
