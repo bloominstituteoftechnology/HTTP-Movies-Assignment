@@ -1,7 +1,22 @@
 import React from "react";
+import { withRouter } from "react-router-dom";
+
+const Button = withRouter(({ history, id }) => (
+  <button
+    type="button"
+    onClick={() => {
+      console.log({ history });
+      history.push(`/edit-movie/${id}`);
+    }}
+  >
+    Edit
+  </button>
+));
 
 const MovieCard = (props) => {
-  const { title, director, metascore, stars } = props.movie;
+  console.log("MoveCard props:", props);
+  const { title, director, metascore, stars, id, setMovie } = props.movie;
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>
@@ -18,7 +33,7 @@ const MovieCard = (props) => {
           {star}
         </div>
       ))}
-      <button>Edit</button>
+      <Button id={id} />
     </div>
   );
 };
