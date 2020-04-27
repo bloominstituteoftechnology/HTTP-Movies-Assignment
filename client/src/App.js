@@ -40,7 +40,13 @@ const App = () => {
 
       <Route
         path="/edit-movie/:id"
-        render={(props) => <EditMovieForm {...props} />}
+        render={(props) => (
+          <EditMovieForm
+            {...props}
+            movies={movieList}
+            setMovieList={setMovieList}
+          />
+        )}
       ></Route>
     </>
   );
