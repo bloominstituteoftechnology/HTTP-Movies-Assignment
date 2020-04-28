@@ -12,8 +12,6 @@ const MovieUpdate = (props) => {
     metascore: '',
     stars: []
   });
-
-  
   
   return (
     <div>
