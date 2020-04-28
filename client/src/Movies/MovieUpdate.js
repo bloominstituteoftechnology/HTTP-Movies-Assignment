@@ -2,9 +2,6 @@ import React, { useState } from 'react';
 import axios from 'axios';
 
 const MovieUpdate = (props) => {
-
-  console.log("movie stuff", props)
-
   const [update, setUpdate] = useState({
     id: '',
     title: '',
@@ -12,9 +9,13 @@ const MovieUpdate = (props) => {
     metascore: '',
     stars: []
   });
-  
+
   return (
     <div>
+      <form>
+
+      </form>
+      
       <button>Update</button>
     </div>
   )
