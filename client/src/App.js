@@ -5,9 +5,10 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
 import UpdateForm from "./Movies/UpdateForm"
+import useLocalStorage from "./hooks/useLocalStorage"
 
 const App = () => {
-  const [savedList, setSavedList] = useState([]);
+  const [savedList, setSavedList] = useLocalStorage({}, []);
   const [movieList, setMovieList] = useState([]);
 
   const getMovieList = () => {
@@ -18,9 +19,9 @@ const App = () => {
   };
 
   const addToSavedList = movie => {
-    setSavedList([...savedList, movie]);
-  };
-
+    setSavedList([...savedList, movie])
+ }
+  
   useEffect(() => {
     getMovieList();
   }, []);
@@ -32,15 +33,27 @@ const App = () => {
     setMovieList(updatedMovies);
   };
 
+  const setSaved = savedMovie => {
+    const savedMovies = [...savedList];
+    const index = savedMovies.findIndex(item => item.id === savedMovie.id);
+    savedMovies[index] = savedMovie;
+    setSavedList(savedMovies);
+  }
+
   const deleteMovies = deletedMovie => {
     const newMovies = [...movieList];
     const filteredMovies = newMovies.filter(item => item.id !== deletedMovie)
     setMovieList(filteredMovies);
   };
 
+  const deleteSaved = deletedMovie => {
+    const savedMovies = [...savedList]
+  }
+
+
   return (
     <>
-      <SavedList list={savedList} />
+      <SavedList list={savedList} addToSavedList={addToSavedList} />
 
       <Route exact path="/">
         <MovieList movies={movieList} />
@@ -51,7 +64,7 @@ const App = () => {
       </Route>
 
       <Route exact path="/update-movie/:id"
-          render={props => <UpdateForm {...props} movies={movieList} setMovie={setMovie} /> } />
+          render={props => <UpdateForm {...props} movies={movieList} setMovie={setMovie} setSaved={setSaved} /> } />
     </>
   );
 };

@@ -4,7 +4,7 @@ import { useParams } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import { useHistory } from 'react-router-dom';
 
-function Movie({ addToSavedList, deleteMovies }) {
+function Movie({ addToSavedList, deleteMovies, deleteSaved }) {
   const [movie, setMovie] = useState(null);
   const { id } = useParams();
   const { push } = useHistory();
@@ -22,6 +22,10 @@ function Movie({ addToSavedList, deleteMovies }) {
   const saveMovie = () => {
     addToSavedList(movie);
   };
+
+  const unsaveMovie = () => {
+    deleteSaved(movie) 
+  }
 
   useEffect(() => {
     fetchMovie(id);
@@ -45,17 +49,24 @@ function Movie({ addToSavedList, deleteMovies }) {
     <div className="save-wrapper">
       <MovieCard movie={movie} />
 
+     
+     <div className="buttonz">
+     <div className="edit-button" onClick={() => push(`/update-movie/${id}`)}>
+          Edit
+      </div>
+
+      <div className="delete-button" onClick={deleteMovie}>
+          Delete
+      </div>
+
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
 
-      <button onClick={() => push(`/update-movie/${id}`)}>
-          Edit
-      </button>
-
-      <button onClick={deleteMovie}>
-          Delete
-      </button>
+      <div onClick={deleteSaved}>
+        unSave
+      </div>
+    </div>
     </div>
     
   );

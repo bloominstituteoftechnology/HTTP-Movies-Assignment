@@ -3,7 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 
-const UpdateForm = props => {
+const UpdateForm = (props)=> {
     const { push } = useHistory();
     const [movie, setMovie] = useState({
         title: "",
@@ -47,16 +47,19 @@ const UpdateForm = props => {
         })
     }
 
-    const handleSubmit = e => {
+ const handleSubmit = e => {
+
         e.preventDefault();
         axios.put(`http://localhost:5000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res.data, "B");
                 props.setMovie(res.data);
+                props.setSaved(res.data);
                 push('/');
             })
             .catch(err => console.log(err))
-    };
+    
+ }
 
     return (
         <div>
