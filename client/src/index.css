@@ -53,25 +53,57 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
-}
+
 .save-button:hover {
   background-color: green;
   color: white;
 }
 
 .home-button {
+  /* position: absolute; */
+  top: 25px;
+  right: 0px;
+  border: 1px solid grey;
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: lightseagreen;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.edit-button {
+  position: absolute;
+  top: 25px;
+  right: 80px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.save-button {
+  position: absolute;
+  top: 25px;
+  right: 140px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.delete-button {
+  position: absolute;
+  top: 25px;
+  right: 0px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+
+.formBody {
+  display: block;
+  margin: 0 auto;
+  margin-top: 20px;
+  width: 400px;
+  border: 1px solid #e7e7e7;
+  border-top-left-radius: 10px;
+  border-top-right-radius: 10px;
 }
