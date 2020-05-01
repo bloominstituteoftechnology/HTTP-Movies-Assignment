@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import axios from 'axios';
-import Movie from './Movie';
 
 const initialMovie = {
   id: '',
@@ -12,6 +11,13 @@ const initialMovie = {
 
 const MovieUpdate = (props) => {
   const [movie, setMovie] = useState(initialMovie);
+
+  useEffect(() => {
+    axios 
+      .get(`http://localhost:5000/api/movies`)
+      .then(res => setMovie(res.data))
+      .catch(err => console.log(err))
+  }, [])
 
   const changeHandler = e => {
     setMovie({
@@ -27,13 +33,6 @@ const MovieUpdate = (props) => {
       .then(() => props.history.push('/'))
       .catch(err => console.log(err))
   }
-
-  useEffect(() => {
-    axios 
-      .get(`http://localhost:5000/api/movies`)
-      .then(res => setMovie(res.data))
-      .catch(err => console.log(err))
-  }, [])
 
   return (
     <div>

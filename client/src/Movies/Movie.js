@@ -34,6 +34,19 @@ export default class Movie extends React.Component {
     addToSavedList(this.state.movie);
   };
 
+  deleteItem = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(res => {
+        this.setState(res.data);
+        this.history.push("/");
+      })
+      .catch(err => {
+        console.log(err);
+      });
+  };
+
   render() {
     if (!this.state.movie) {
       return <div>Loading movie information...</div>;
