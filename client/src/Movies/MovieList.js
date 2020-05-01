@@ -1,5 +1,5 @@
 import React from "react";
-import { Link } from "react-router-dom";
+import { Link, withRouter } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 function MovieList({ movies }) {
@@ -16,4 +16,4 @@ function MovieList({ movies }) {
   );
 }
 
-export default MovieList;
+export default withRouter(MovieList);
