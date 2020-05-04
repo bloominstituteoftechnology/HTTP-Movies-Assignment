@@ -13,8 +13,8 @@ const MovieCard = props => {
       </div>
       <h3>Actors</h3>
 
-      {stars.map(star => (
-        <div key={star} className="movie-star">
+      {stars.map((star,i) => (
+        <div key={`${star}_${i}`} className="movie-star">
           {star}
         </div>
       ))}
