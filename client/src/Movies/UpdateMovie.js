@@ -1,17 +1,30 @@
 import React, { useState } from 'react'
-import { Button, Checkbox, Form } from 'semantic-ui-react'
+import { Button, Form } from 'semantic-ui-react'
+import Axios from 'axios'
+import { useParams, useHistory } from "react-router-dom";
 
 const UpdateMovie = (props) => {
+    const { id } = useParams();
+    console.log("id", id)
+    const { push } = useHistory()
     const [formData, setFormData] = useState({
+        id: `${id}`,
         title: "",
         director: "",
         metascore: "",
-        actors: ""
+        // actors: []
     })
+
 
     const submitHandler = (event) => {
         event.preventDefault()
-        console.log("formData", formData)
+        Axios
+          .put(`http://localhost:5000/api/movies/${id}`, formData)
+          .then(res => console.log(res))
+          .catch(err => console.log(err))
+          push('./')
+          
+          
     }
 
     const changeHandler = (event) => {
@@ -25,7 +38,7 @@ const UpdateMovie = (props) => {
     }
 
     return (
-        <Form onSubmit={submitHandler}>
+        <Form onSubmit={submitHandler} style={{maxWidth:"400px", margin:"0 auto"}}>
             <Form.Field>
                 <label>Title</label>
                 <input
