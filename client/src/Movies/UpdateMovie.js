@@ -13,14 +13,14 @@ const initialMovie = {
 
 const UpdateMovie = props => {
   const { push } = useHistory();
-  const [item, setItem] = useState(initialItem);
+  const [movie, setMovie] = useState(initialMovie);
   const { id } = useParams();
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/api/update-movie/:id${id}`)
+      .get(`http://localhost:5000/api/movies${movie.id}`)
       .then(res => {
         // res.data
-        setItem(res.data);
+        setMovie(res.data);
       })
       .catch(err => console.log(err));
   }, [id]);
@@ -32,8 +32,8 @@ const UpdateMovie = props => {
       value = parseInt(value, 10);
     }
 
-    setItem({
-      ...item,
+    setMovie({
+      ...movie,
       [ev.target.name]: value
     });
   };
@@ -45,7 +45,7 @@ const UpdateMovie = props => {
       .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
       .then(res => {
         // res.data
-        props.setItems(res.data);
+        props.setMovies(res.data);
         push(`/item-list/${id}`);
       })
       .catch(err => console.log(err));
