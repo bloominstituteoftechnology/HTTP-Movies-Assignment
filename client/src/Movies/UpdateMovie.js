@@ -1,27 +1,28 @@
 import React, { useState } from "react";
-import { Button, Form, Header } from "semantic-ui-react";
+import { Button, Form, Header, List } from "semantic-ui-react";
 import Axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
 const UpdateMovie = () => {
   const { id } = useParams();
-  console.log("id", id);
   const { push } = useHistory();
   const [formData, setFormData] = useState({
     id: `${id}`,
     title: "",
     director: "",
     metascore: "",
+    actors:"",
     stars: []
   });
-
+    
   const submitHandler = (event) => {
     event.preventDefault();
     Axios.put(`http://localhost:5000/api/movies/${id}`, formData)
-      .then((res) => console.log(res))
+      .then((res) =>  push("/"))
       .catch((err) => console.log(err));
-    push("./");
+
   };
+
 
   const changeHandler = (event) => {
     const { name, value } = event.target;
@@ -32,6 +33,25 @@ const UpdateMovie = () => {
       };
     });
   };
+
+  const addActorHandler = (event) => {
+    event.preventDefault()
+    const { stars } = formData;
+    stars.push(formData.actors)
+    setFormData(prevState => {
+      return {
+        ...prevState,
+        actors : stars
+      }
+    })
+    setFormData(prevState => {
+      return {
+        ...prevState,
+        actors : ""
+      }
+    })
+  }
+
 
   return (
     <Form
@@ -52,7 +72,7 @@ const UpdateMovie = () => {
       <Form.Field>
         <label>Director</label>
         <input
-          placeholder="Title"
+          placeholder="Director"
           type="text"
           name="director"
           onChange={changeHandler}
@@ -62,7 +82,7 @@ const UpdateMovie = () => {
       <Form.Field>
         <label>Metascore:</label>
         <input
-          placeholder="Title"
+          placeholder="Metascore"
           type="text"
           name="metascore"
           onChange={changeHandler}
@@ -70,16 +90,18 @@ const UpdateMovie = () => {
         />
       </Form.Field>
       <Form.Field>
-        <label>Staring:</label>
+        <label>Add Actors:</label>
         <input
-          placeholder="Title"
+          placeholder="Add Actors"
           type="text"
           name="actors"
           onChange={changeHandler}
           value={formData.actors}
         />
       </Form.Field>
-      <Button type="submit">Submit</Button>
+      <Button type="submit" color="teal" onClick={addActorHandler}>Add Actor</Button>
+      <List items={formData.stars}/>
+      <Button type="submit">Update Movie!</Button>
     </Form>
   );
 };

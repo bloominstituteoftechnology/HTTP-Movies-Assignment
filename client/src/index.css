@@ -89,3 +89,19 @@ body {
   background-color: green;
   color: white;
 }
+
+.delete-button {
+  margin-left: 185px;
+  top: 25px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: rgb(223, 46, 23);
+  margin-top: 50px;
+  color: white;
+  width: 100px;
+}
+.delete-button:hover {
+  background-color: white;
+  color: rgb(223, 46, 23);
+}
