@@ -1,19 +1,66 @@
+@keyframes hoverslide {
+  from {
+    box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.24);
+
+  }
+
+  50%{
+    box-shadow: 10px -10px 0 #19c2ae, 0 0 2px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.24);
+
+
+  }
+  to {
+    box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
+      0 2px 4px rgba(0, 0, 0, 0.24);
+  }
+
+}
+
+
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  background-color: #2d2d37
 }
-
+a{
+    text-decoration: none;
+}
 .movie-card {
-  background-color: #fff;
+  background-color: #19c2ae;
   border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+  box-shadow: -10px -10px 0 #59596e, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
+  padding: 15px;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  color: #2d2d37;
+  width:30%;
+}
+
+
+.movie-card:hover {
+  background-color: #2d2d37;
+  border: 0;
+
+  padding: 15px;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+  color: #19c2ae;
+  animation-duration: 6s;
+  animation-name: hoverslide;
+  animation-iteration-count: infinite;
+
+}
+
+
+
+.movie-star:last-child{
+  padding-bottom: 20px;
 }
 
 .movie-director {
@@ -22,10 +69,9 @@ body {
 }
 
 .saved-list {
-  background-color: #fff;
-  border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
+  background-color: #362b52;
+  border: 2px dashed grey;
+
   padding: 1rem;
   cursor: pointer;
   position: relative;
@@ -38,14 +84,16 @@ body {
 
 .saved-list h3 {
   margin-right: 10px;
+  color: grey;
 }
 
 .saved-movie {
   margin: 0 10px;
+  color: white;
 }
 .saved-active {
-  color: blue;
-  border: 1px solid grey;
+  color: white;
+  border: 1px dashed grey;
   padding: 5px;
 }
 .save-wrapper {
@@ -56,22 +104,90 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 145px;
   border: 1px solid grey;
   padding: 5px 10px;
-  background-color: lightseagreen;
+  background-color: #733970;
+  color:white;
+}
+
+
+.edit-button {
+  position: absolute;
+  top: 85px;
+  right: 145px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: #635e85;
+  color: white;
+}
+.edit-button:hover {
+  background-color: #a9a5c2;
+  text-align: center;
+  font-size: 25px;
+  color: white;
+  cursor: pointer;
+}
+.delete-button {
+  position: absolute;
+  top: 265px;
+  right: 145px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color:  #470012;
+  color: #850323
+}
+.delete-button:hover {
+  background-color: darkred;
+  border: 2px solid white;
+  color: white;
+  cursor:pointer;
 }
 .save-button:hover {
-  background-color: green;
+  background-color: #913f8d;
+  text-align: center;
+  font-size: 25px;
   color: white;
+  cursor: pointer;
 }
 
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
+.home-button:hover {
+
+  border: 1px dashed lightskyblue;
+  padding: 5px 10px;
+  background-color: #362b52;
+}
+  a {
+    text-decoration: none;
+    color:lightskyblue;
+}
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+form > input {
+  background-color: #2d2d37;
+  border: 0;
+  padding: 6px 0;
+  font-size: 1rem;
+  outline: 0;
+  color: white;
+  border-bottom: 1px solid #6a9c9c;
+  margin-right: 8px;
+}
+button {
+  background-color: #6a9c9c;
+  border: 1px solid #6a9c9c;
+  color: white;
+  font-size: 16px;
+  padding: 6px 14px;
+}
+input::placeholder {
+  color: #6a9c9c;
+  opacity: 1;
 }
