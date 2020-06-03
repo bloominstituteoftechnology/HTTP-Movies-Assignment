@@ -13,9 +13,14 @@ const initialMovie = {
 const UpdateMovie = (props) => {
     const [movie, setMovie] = useState(initialMovie)
 
+    const { match, movies } = props;
     useEffect(() => {
+        const id = match.params.id;
         const movieToUpdate = movies.find(movie => `${movie.id}` === id);
-    },[])
+        if (movieToUpdate) {
+            setMovie(movieToUpdate);
+          }
+    },[match, movies])
 
     const handleChange = e => {
         e.persist();
@@ -25,7 +30,8 @@ const UpdateMovie = (props) => {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-          .put('')
+          .put(`http://localhost:5000/api/movies/${movie.id}`, movie)
+          .then(res => props.handleFlag())
           .then(res => { 
               console.log(res)
               props.history.push(`/movies/${movie.id}`)
