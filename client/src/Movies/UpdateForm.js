@@ -1,53 +1,98 @@
-import React,{useState} from 'react';
+import React, { useState, useEffect } from 'react';
 
-const editData = {
-    id: '',
+import { useParams, useHistory } from 'react-router-dom';
+import axios from 'axios';
+
+const initialItem = {
     title: '',
     director: '',
     metascore: '',
-    stars: ''
-}
+    stars: [],
+};
 
-const UpdateForm = (props) =>{
-    //pass an empty data in order to be able to update.
-    const [movie, setMovie]= useState(editData);
+const UpdateForm = props => {
+    const [item, setItem] = useState(initialItem);
+    const { id } = useParams();
+    const { push } = useHistory;
+
+    useEffect(() => {
+        axios
+        .get(`http://localhost:5000/api/movies/${id}`, item)
+        .then(res => setItem(res.data))
+        .catch(err => 
+            console.error(
+                "updateFOrm.js: useEffect: err",
+                err.message,
+                err.response
+            )
+        );
+    }, [id]);
+
+    const changeHandler = e => {
+        e.persist();
+        let value =  e.target.value;
+        if(e.target.name === 'stars') {
+            value = parseInt(value, 10);
+        }
+
+        setItem({
+            ...item,
+            [e.target.name]: value
+        });
+    }
+
+    const handleSubmit = e=> {
+        // e.preventDefault();
+        axios
+        .put(`http://localhost:5000/api/movies/${id}`, item)
+        .then(res => {
+            push('/movies/${id}');
+        })
+        .catch(err => 
+            console.error(
+                "UpdateForm.js: handleSubmit: err",
+                err.message,
+                err.response
+            )
+        );
+    };
+
     return(
         <div>
-            <h1> Testing </h1>
-            <form> 
+            <h2>Update Movie</h2>
+            <form onSubmit={handleSubmit}>
                 <input 
-                    type="text"
-                    name="name"
-                    placeholder="id"
+                    type='text'
+                    name='title'
+                    placeholder='Title'
+                    onChange={changeHandler}
+                    value={item.title}
                 />
-            <div />
                 <input 
-                    type="text"
-                    name="name"
-                    placeholder="title"
+                    type='text'
+                    name='director'
+                    placeholder='Director'
+                    onChange={changeHandler}
+                    value={item.director}
                 />
-            <div />
                 <input 
-                    type="text"
-                    name="name"
-                    placeholder="director"
+                    type='text'
+                    name='metascore'
+                    placeholder='Metascore'
+                    onChange={changeHandler}
+                    value={item.metascore}
                 />
-            <div />
                 <input 
-                    type="text"
-                    name="name"
-                    placeholder="metascore"
+                    type='string'
+                    name='stars'
+                    placeholder='Stars'
+                    onChange={changeHandler}
+                    value={item.stars}
                 />
-            <div />
-                <input 
-                    type="text"
-                    name="name"
-                    placeholder="stars"
-                />
-            <div />
-                <button>Update</button>
+                <button type='submit'>Update</button>
             </form>
         </div>
-    );
+    )
 };
-export default UpdateForm;
+
+export default UpdateForm; 
