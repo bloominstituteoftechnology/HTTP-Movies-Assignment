@@ -42,7 +42,7 @@ const UpdateForm = props => {
     }
 
     const handleSubmit = e=> {
-        e.preventDefault();
+        // e.preventDefault();
         axios
         .put(`http://localhost:5000/api/movies/${id}`, item)
         .then(res => {
