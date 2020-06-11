@@ -4,7 +4,6 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const initialItem = {
-    id: movies.length,
     title: '',
     director: '',
     metascore: '',
@@ -96,4 +95,4 @@ const UpdateForm = props => {
     )
 };
 
-export default UpdateForm;
+export default UpdateForm; 
