@@ -59,12 +59,13 @@ const UpdateForm = props => {
     }
 
     if(!edit){
-        return <button onClick={editButton}>Edit</button>
+        return <div className="editButton" onClick={editButton}>Edit</div>
+    
     }else{
          return(
         
-        <div>
-            <h2>Update Movie</h2>
+        <div className="updateDiv">
+            <h2 className="updateHeader">Update Movie</h2>
             <form onSubmit={handleSubmit}>
                 <input 
                     type='text'
