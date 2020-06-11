@@ -29,15 +29,11 @@ const UpdateForm = props => {
     }, [id]);
 
     const changeHandler = e => {
-        e.persist();
-        let value =  e.target.value;
-        if(e.target.name === 'stars') {
-            value = parseInt(value, 10);
-        }
+       
 
         setItem({
             ...item,
-            [e.target.name]: value
+            [e.target.name]: e.target.value
         });
     }
 
@@ -56,8 +52,17 @@ const UpdateForm = props => {
             )
         );
     };
+    const [edit, setEdit]= useState(false);
 
-    return(
+    const editButton = ()=>{
+        setEdit(!edit)
+    }
+
+    if(!edit){
+        return <button onClick={editButton}>Edit</button>
+    }else{
+         return(
+        
         <div>
             <h2>Update Movie</h2>
             <form onSubmit={handleSubmit}>
@@ -94,5 +99,6 @@ const UpdateForm = props => {
         </div>
     )
 };
+}
 
 export default UpdateForm; 
