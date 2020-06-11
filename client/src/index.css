@@ -91,3 +91,11 @@ body {
   margin: 0 auto;
   padding-bottom: 10px;
 }
+.delete-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 6px;
+  background-color: lightseagreen;
+}
