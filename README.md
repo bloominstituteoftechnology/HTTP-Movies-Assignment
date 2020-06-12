@@ -16,7 +16,7 @@
 - The form should make a PUT request to the server when submitted
 - When the call comes back successfully, reset your form state and route the user to `/movies` where they will see the updated movie in the list
 
-Movie object format:
+Movie object format: 
 
 ```
 {
