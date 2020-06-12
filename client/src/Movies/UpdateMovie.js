@@ -58,7 +58,7 @@ const UpdateForm = props => {
     };
 
     return(
-        <div>
+        <div className="update-form">
             <h2>Update Movie</h2>
             <form onSubmit={handleSubmit}>
                 <input 
@@ -66,28 +66,28 @@ const UpdateForm = props => {
                     name='title'
                     placeholder='Title'
                     onChange={changeHandler}
-                    value={item.title}
+                    // value={item.title}
                 />
                 <input 
                     type='text'
                     name='director'
                     placeholder='Director'
                     onChange={changeHandler}
-                    value={item.director}
+                    // value={item.director}
                 />
                 <input 
                     type='text'
                     name='metascore'
                     placeholder='Metascore'
                     onChange={changeHandler}
-                    value={item.metascore}
+                    // value={item.metascore}
                 />
                 <input 
                     type='string'
                     name='stars'
                     placeholder='Stars'
                     onChange={changeHandler}
-                    value={item.stars}
+                    // value={item.stars}
                 />
                 <button type='submit'>Update</button>
             </form>
