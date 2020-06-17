@@ -26,11 +26,31 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
+  // Add a delete button in the movie component that makes a DELETE request
+  // When the call comes back successfully, route the user to /movies where they will see the updated movie list without the deleted movie
+
+  /*const handleDelete = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/items/${item.id}`)
+      .then(res => {
+        // res.data
+        props.setItems(res.data);
+        push("/item-list");
+      })
+      .catch(err => console.log(err));
+  };
+
+<button className="md-button" onClick={handleDelete}>
+        Delete
+      </button>
+*/
   return (
-    <div className="save-wrapper">
+    <div className='save-wrapper'>
       <MovieCard movie={movie} />
 
-      <div className="save-button" onClick={saveMovie}>
+      {/* Add a button in the movie component that routes you to your new route with the movies's id as the URL param */}
+      <div className='save-button' onClick={saveMovie}>
         Save
       </div>
     </div>
