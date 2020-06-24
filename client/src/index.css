@@ -17,9 +17,26 @@ body {
 }
 
 .movie-director {
-  padding: 4px 0;
-  font-size: 0.8rem;
+  /*padding: 1px 0;*/
+  font-size: 1rem;
 }
+
+.col{
+  float: left;
+  width: 50%;
+}
+.col1{
+  height:100%;
+}
+.col2{
+  height:100%;
+}
+.row{ 
+   display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+ }
 
 .saved-list {
   background-color: #fff;
@@ -34,19 +51,27 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+    display: flex;
+    flex-direction: column;
 }
 
 .saved-list h3 {
-  margin-right: 10px;
+  display: flex;
+    flex-direction: column;
 }
 
 .saved-movie {
+ 
   margin: 0 10px;
 }
 .saved-active {
   color: blue;
   border: 1px solid grey;
   padding: 5px;
+    margin-right: 10px;
+
+
+
 }
 .save-wrapper {
   position: relative;

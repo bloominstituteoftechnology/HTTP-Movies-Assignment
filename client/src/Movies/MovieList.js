@@ -8,7 +8,11 @@ function MovieList({ movies }) {
       {
         movies.map(movie => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <MovieCard movie={movie} />
+  
+            <h1> 
+            {movie.title}          
+            </h1>           
+
           </Link>
         ))
       }

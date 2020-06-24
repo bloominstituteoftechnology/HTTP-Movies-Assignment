@@ -7,13 +7,17 @@ const MovieCard = props => {
   return (
 
     <div className="movie-card">
-      <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
-      </div>
-      <div className="movie-metascore">
+      <center><h2>{title}</h2></center>
+       <center> 
+       <div className="movie-metascore">
         Metascore: <strong>{metascore}</strong>
       </div>
+      </center>
+      <div className="movie-director">
+        <h3>Director</h3>
+         <em>{director}</em>
+      </div>
+    
       <h3>Actors</h3>
 
       {stars.map(star => (
@@ -22,7 +26,6 @@ const MovieCard = props => {
         </div>
       ))}
       <Link to= {`/update-movies/${id}`}> 
-          <button> UPDATE </button> 
       </Link>
     </div>
   );

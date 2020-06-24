@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { Route, withRouter } from "react-router-dom";
+import { Route, Link } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
@@ -21,28 +21,55 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
+  const deleteMov = movie => {
+//     useEffect(()=> {    setSavedList([savedList.filter( m => m.title !== movie.title )])
+// },[])
+    // console.log(savedList)
+    console.log('hello')
+  }
+
   useEffect(() => {
     getMovieList();
-  }, []);
-
+  }, [movieList]);
 
   return (
     <div>
-      <SavedList list={savedList} />
+    <center><h1> My Favorite  Movies </h1>
+     <div className="home-button">
+        <Link to="/">Home</Link>
+      </div>
 
-      <Route exact path="/">
-        <MovieList movies={movieList} />
-      </Route>
+    </center>
+    <div class = 'row'>   
+      
 
-      <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
-      </Route>
+      <div class = "col">
+         <div class = "col2">
 
-       <Route path="/update-movies/:id">
-        <Form  />
-      </Route>
+          <Route exact path="/">
+            <MovieList movies={movieList} />
+          </Route>
+
+          <Route path="/movies/:id">
+            <Movie addToSavedList={addToSavedList} />
+          </Route>
+
+           <Route path="/update-movies/:id">
+            <Form  />
+          </Route>
+        </div>
+        </div>
+         <div class = "col">
+        <div class = "col1">
+
+            <SavedList list={savedList} />
+          </div>
+          </div>
+
     </div>
+    </div>
+
   );
 };
 
-export default withRouter(App);
+export default App;

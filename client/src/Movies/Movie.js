@@ -31,7 +31,6 @@ function Movie({ addToSavedList }) {
   };
 
   useEffect(() => {
-    setMovie('')
     fetchMovie(params.id);
   }, []);
 
@@ -41,18 +40,18 @@ function Movie({ addToSavedList }) {
 
   return (
     <div className="save-wrapper">
-      <MovieCard movie={movie} />
+      <MovieCard movie={movie} /><br/>
       
 
-      <div className="save-button" onClick={saveMovie}>
-        Save
-      </div>
-     <button onClick={deleteMovie}>
-     DELETE 
-     </button> 
+      <button onClick={saveMovie}>
+        ADD
+      </button>
+
+   
        <Link to= {`/update-movies/${params.id}`}> 
           <button> UPDATE </button> 
-      </Link><br/>
+      </Link>
+      <br/>
     </div>
   );
 }
