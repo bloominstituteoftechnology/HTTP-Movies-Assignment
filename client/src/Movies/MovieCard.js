@@ -18,6 +18,10 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+
+      <div className="save-button" >
+        Update
+      </div>
     </div>
   );
 };
