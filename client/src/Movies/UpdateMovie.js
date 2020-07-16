@@ -4,23 +4,22 @@ import axios from 'axios';
 
 const UpdateMovieForm = (props) => {
 
-    const [formState, setFormState] = {
-        id: Date.now(),
+    const [formState, setFormState] = useState({
+        id: "",
         title: "",
         director: "",
         metascore: "",
         stars: ""
-    }
+    });
     
     const { push } = useHistory();
     const { id } = useParams();
-    const [movie, setMovie] = useState(formState);
 
     useEffect(() => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
-                setMovie(res);
+                setFormState(res.data);
             })
             .catch(err => console.log(err));
     }, [id]);
@@ -28,8 +27,8 @@ const UpdateMovieForm = (props) => {
     const onChange = (e) => {
         setFormState({ ...formState, [e.target.name]: e.target.value})
     
-        setMovie({
-            ...movie,
+        setFormState({
+            ...formState,
             [e.target.name]: e.target.value
         })
     
@@ -39,9 +38,9 @@ const UpdateMovieForm = (props) => {
         e.preventDefault();
 
         axios
-            .put(`http://localhost:5000//api/movies/${id}`, movie)
+            .put(`http://localhost:5000/api/movies/${id}`, formState)
             .then(res => {
-                props.setMovie(res);
+                props.setRefresh(true)
                 push(`/movies/${id}`)
             })
     }
@@ -79,7 +78,7 @@ const UpdateMovieForm = (props) => {
           placeholder="stars"
           value={formState.stars}
         />
-
+        <button type="submit">Submit</button>
         </form>
         </div>
     )
