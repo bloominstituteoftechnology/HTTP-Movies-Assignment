@@ -66,7 +66,7 @@ const UpdateForm = props => {
                                 value={movie.metascore}
                                 onChange={handleChange}
                             /></label>
-                        <button>Update Movie</button>
+                        <button className="submit-button">Update Movie</button>
                     </form></div>
         </div>
 
