@@ -32,13 +32,12 @@ const App = () => {
       .then(res => {
         console.log(res)
         history.push("/");
-
-        
-
-
-
         getMovieList();
       })
+  }
+
+  const removeMovie = id => {
+    console.log("in app, remove movie", id);
   }
 
   useEffect(() => {
@@ -50,7 +49,7 @@ const App = () => {
       <SavedList list={savedList} />
 
       <Route exact path="/">
-        <MovieList movies={movieList} />
+        <MovieList removeMovie={removeMovie} movies={movieList} />
       </Route>
 
       <Route exact path="/update-movie/:id">
