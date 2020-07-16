@@ -6,9 +6,10 @@ import { useHistory } from "react-router-dom";
 const MovieCard = props => {
   let history = useHistory();
 
-  const removeMovie =  (id) => {
+  const removeMovie =  () => {
     console.log("remove movie");
     if (window.confirm('Are you sure you want to remove this movie?')) {
+      props.removeMovie(props.movie.id);
 
     }else{
       history.push('/');
