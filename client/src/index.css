@@ -86,9 +86,8 @@ body {
   text-align: center;
 }
 
-.update-from button {
+.submit-button {
   border: 1px solid grey;
-  padding: 5px 10px;
   background-color: lightseagreen;
 }
 
