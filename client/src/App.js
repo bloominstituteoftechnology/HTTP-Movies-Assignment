@@ -38,6 +38,13 @@ const App = () => {
 
   const removeMovie = id => {
     console.log("in app, remove movie", id);
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then(res => {
+        console.log(res)
+        history.push("/");
+        getMovieList();
+      })
   }
 
   useEffect(() => {
