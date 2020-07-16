@@ -28,19 +28,13 @@ function Movie(props) {
 
   return (
     <div className="save-wrapper">
-      {props.save ? 
-      <>
+     
       <MovieCard movie={movie} />
 
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      </>
-      :
-      <div className="save-wrapper">
-        <MovieCard update={true} movie={movie} />
-      </div>
-      }
+     
     </div>
   );
 }
