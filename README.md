@@ -15,6 +15,7 @@
 - Add a button in the movie component that routes you to your new route with the movies's id as the URL param
 - The form should make a PUT request to the server when submitted
 - When the call comes back successfully, reset your form state and route the user to `/movies` where they will see the updated movie in the list
+- (Editing the movie stars can be a stretch problem... don't worry about it now. Move on to the next step, and come back and solve this at the end)
 
 Movie object format:
 
@@ -55,5 +56,6 @@ Movie object format:
 
 ## Stretch Problem
 
+- Add the ability to update the stars of a movie within a single text input field (think about how to change from an array of strings to a single string, then back to an array of strings)
 - See Part 3 above (Adding movies with a POST request)
 - Style the app!
