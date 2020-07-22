@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
+import { Button } from '@material-ui/core'
 import MovieCard from "./MovieCard";
 
 function Movie({ addToSavedList }) {
@@ -31,8 +32,10 @@ function Movie({ addToSavedList }) {
       <MovieCard movie={movie} />
 
       <div className="save-button" onClick={saveMovie}>
-        Save
+        Saved
       </div>
+
+      <Button variant="contained" color="primary">Edit</Button>
     </div>
   );
 }
