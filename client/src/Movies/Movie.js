@@ -3,10 +3,10 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-function Movie({ addToSavedList, setMovieList, movieList }) {
+function Movie({ addToSavedList, setMovieList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
-  const { push } = useHistory()
+  const { push } = useHistory();
 
   const fetchMovie = (id) => {
     axios
@@ -19,6 +19,18 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
     addToSavedList(movie);
   };
 
+  const deleteMovie = e => {
+    e.preventDefault();
+    axios
+      .delete(`http://localhost:5000/api/movies/${params.id}`)
+      .then(res => {
+        console.log(res);
+        // setMovieList(res.data);
+        push('/');
+      })
+      .catch(err => console.log(err))
+  };
+
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
@@ -27,16 +39,6 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
     return <div>Loading movie information...</div>;
   }
 
-  const deleteMovie = e => {
-    e.preventDefault();
-    axios
-      .delete(`http://localhost:5000/api/movies/${params.id}`)
-      .then(res => {
-        push('/');
-      })
-      .catch(err => console.log(err))
-  };
-
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
@@ -44,7 +46,7 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      <div className="edit-button" onClick={() => push(`/update-movie/${movie.id}`, movie)} >
+      <div className="edit-button" onClick={() => push(`/update-movie/${movie.id}`)} >
         Edit
       </div>
       <div className="delete-button" onClick={deleteMovie} >
