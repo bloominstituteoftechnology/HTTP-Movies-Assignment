@@ -65,7 +65,30 @@ body {
   background-color: green;
   color: white;
 }
-
+.edit-button {
+  position: absolute;
+  top: 62px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.edit-button:hover {
+  background-color: green;
+  color: white;
+}
+.delete-button {
+  position: absolute;
+  top: 100px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+.delete-button:hover {
+  background-color: green;
+  color: white;
+}
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
@@ -74,4 +97,8 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+.form {
+  display: flex;
+  flex-direction: column;
 }
