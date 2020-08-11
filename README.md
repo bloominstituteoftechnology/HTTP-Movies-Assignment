@@ -59,3 +59,7 @@ Movie object format:
 - Add the ability to update the stars of a movie within a single text input field (think about how to change from an array of strings to a single string, then back to an array of strings)
 - See Part 3 above (Adding movies with a POST request)
 - Style the app!
+
+
+
+/* comment on readme.md*/
