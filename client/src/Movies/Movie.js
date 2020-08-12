@@ -10,7 +10,7 @@ function Movie(props, { addToSavedList }) {
 
   const editMovie = (e) => {
     e.preventDefault();
-    history.push('/update-movie/:id');
+    history.push(`/update-movie/${params.id}`);
   }
 
   const fetchMovie = (id) => {

@@ -9,8 +9,8 @@ const initialChange = {
     stars: '',
 };
 
-const UpdateForm = props => {
-    console.log('from UpdateForm: props', props);
+const UpdateForm = () => {
+    // console.log('from UpdateForm: props', props);
     const [change, setChange] = useState(initialChange);
     const { id } = useParams();
     console.log('from updateForm: useParams', id);
@@ -22,7 +22,7 @@ const UpdateForm = props => {
                 console.log('UpdateForm: movies/id: res', res)
             })
             .catch(err => console.error('UpdateForm: movies/id failed: err', err.message))
-    }, [])
+    }, []);
 
 
 
@@ -42,7 +42,7 @@ const UpdateForm = props => {
                 className='input'
                 type='text'
                 name='title'
-                value=''
+                value={change.title}
                 placeholder='Title'
                 onChange={handleChanges} />
             <label htmlFor='director' className='label'>Director</label>
@@ -50,7 +50,7 @@ const UpdateForm = props => {
                 className='input'
                 type='text'
                 name='director'
-                value=''
+                value={change.director}
                 placeholder='Director'
                 onChange={handleChanges} />
             <label htmlFor='metascore' className='label'>Meta Score</label>
@@ -58,17 +58,17 @@ const UpdateForm = props => {
                 className='input'
                 type='number'
                 name='metascore'
-                value=''
+                value={change.metascore}
                 placeholder='Metascore'
                 onChange={handleChanges} />
             <label htmlFor='stars' className='label'>Stars</label>
-            <input
+            {/* <input
                 className='input'
                 type='text'
                 name='stars'
                 value=''
                 placeholder='Stars'
-                onChange={handleChanges} />
+                onChange={handleChanges} /> */}
             <button className='edit-movie-btn'>Submit Edit</button>
         </form>
     )
