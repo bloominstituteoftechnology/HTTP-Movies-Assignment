@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import Axios from 'axios';
 
 const initialChange = {
@@ -13,6 +13,7 @@ const UpdateForm = () => {
     // console.log('from UpdateForm: props', props);
     const [change, setChange] = useState(initialChange);
     const { id } = useParams();
+    const { push } = useHistory();
     console.log('from updateForm: useParams', id);
 
     useEffect(() => {
@@ -30,6 +31,7 @@ const UpdateForm = () => {
             .then(res => {
                 console.log('UpdateForm: submit success:res', res);
                 setChange(res.data);
+                push('/movies');
             })
             .catch(err => console.error('UpdateForm: submit failed:err', err))
     }
@@ -38,6 +40,7 @@ const UpdateForm = () => {
 
     const handleChanges = e => {
         setChange({
+            ...change,
             [e.target.name]: e.target.value
         })
 
