@@ -61,6 +61,40 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+
+.edit-movie-btn{
+  margin-right: 75%;
+  margin-left: 2%;
+  background-color: lightseagreen;
+  font-weight: bold;
+}
+
+.edit-movie-btn:hover{
+  background-color: green;
+  color: white;
+}
+
+.delete-movie-btn{
+  background-color: orangered;
+  font-weight: bold;
+}
+
+.delete-movie-btn:hover{
+  background-color: red;
+  color: white;
+}
+
+.edit-star-btn{
+  background-color: yellow;
+  border: none;
+  margin:0.5%
+}
+
+.edit-star-btn:hover{
+  background-color: palegoldenrod;
+  font-weight: bold;
+  box-shadow: 1px 1px darkgoldenrod;
+}
 .save-button:hover {
   background-color: green;
   color: white;
@@ -74,4 +108,23 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.update-form{
+  display: flex;
+  flex-direction: column;
+  width: 80%;
+  margin: 0 auto;
+  align-items: center;
+}
+
+.input{
+  width: 80%;
+ margin-bottom: 1%;
+ text-align: center;
+ border: 2px ridge teal;
+}
+
+.label{
+  font-weight: bold;
 }
