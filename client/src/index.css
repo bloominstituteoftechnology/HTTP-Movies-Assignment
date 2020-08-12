@@ -5,8 +5,13 @@ body {
   background-color: #f2f2f2;
 }
 
+h2,h3, .movie-metascore, .movie-star{
+  color: black;
+  text-decoration: none;
+}
+
 .movie-card {
-  background-color: #fff;
+  background-image: linear-gradient(to top left,rgb(230, 172, 0),#6e5100 ,#fff2cc );
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
@@ -17,6 +22,7 @@ body {
 }
 
 .movie-director {
+  color: black;
   padding: 4px 0;
   font-size: 0.8rem;
 }
@@ -111,6 +117,7 @@ body {
 }
 
 .update-form{
+  background-image: linear-gradient(to top left,rgb(230, 172, 0),#6e5100 ,#fff2cc );
   display: flex;
   flex-direction: column;
   width: 80%;

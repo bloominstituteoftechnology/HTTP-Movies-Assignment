@@ -22,7 +22,17 @@ const UpdateForm = () => {
                 console.log('UpdateForm: movies/id: res', res)
             })
             .catch(err => console.error('UpdateForm: movies/id failed: err', err.message))
-    }, []);
+    }, [id]);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        Axios.put(`http://localhost:5000/api/movies/${id}`, change)
+            .then(res => {
+                console.log('UpdateForm: submit success:res', res);
+                setChange(res.data);
+            })
+            .catch(err => console.error('UpdateForm: submit failed:err', err))
+    }
 
 
 
@@ -36,7 +46,7 @@ const UpdateForm = () => {
 
 
     return (
-        <form className='update-form'>
+        <form className='update-form' onSubmit={handleSubmit}>
             <label htmlFor='title' className='label'>Title</label>
             <input
                 className='input'
@@ -62,13 +72,13 @@ const UpdateForm = () => {
                 placeholder='Metascore'
                 onChange={handleChanges} />
             <label htmlFor='stars' className='label'>Stars</label>
-            {/* <input
+            <input
                 className='input'
                 type='text'
                 name='stars'
                 value=''
                 placeholder='Stars'
-                onChange={handleChanges} /> */}
+                onChange={handleChanges} />
             <button className='edit-movie-btn'>Submit Edit</button>
         </form>
     )
