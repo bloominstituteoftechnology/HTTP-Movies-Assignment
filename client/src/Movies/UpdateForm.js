@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from 'react-router-dom';
-import Axios from 'axios';
+import axios from 'axios';
 
 const initialChange = {
     title: '',
@@ -17,7 +17,7 @@ const UpdateForm = () => {
     console.log('from updateForm: useParams', id);
 
     useEffect(() => {
-        Axios.get(`http://localhost:5000/api/movies/${id}`)
+        axios.get(`http://localhost:5000/api/movies/${id}`)
             .then(res => {
                 setChange(res.data);
                 console.log('UpdateForm: movies/id: res', res)
@@ -27,7 +27,7 @@ const UpdateForm = () => {
 
     const handleSubmit = e => {
         e.preventDefault();
-        Axios.put(`http://localhost:5000/api/movies/${id}`, change)
+        axios.put(`http://localhost:5000/api/movies/${id}`, change)
             .then(res => {
                 console.log('UpdateForm: submit success:res', res);
                 setChange(res.data);
