@@ -13,6 +13,17 @@ function Movie(props, { addToSavedList }) {
     history.push(`/update-movie/${params.id}`);
   }
 
+  const handleDelete = (e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:5000/api/movies/${params.id}`)
+      .then(res => {
+        console.log('from handleDelete: res', res);
+        history.push('/movies');
+
+      })
+      .catch(err => console.error('from handleDelete fail: err', err.message))
+  };
+
   const fetchMovie = (id) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
@@ -38,7 +49,7 @@ function Movie(props, { addToSavedList }) {
       <MovieCard movie={movie} />
 
       <button className='edit-movie-btn' onClick={editMovie}>Edit Movie Info</button>
-      <button className='delete-movie-btn'>Delete Movie</button>
+      <button className='delete-movie-btn' onClick={handleDelete}>Delete Movie</button>
 
 
       <div className="save-button" onClick={saveMovie}>
