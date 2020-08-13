@@ -13,7 +13,7 @@ const UpdateForm = () => {
     // console.log('from UpdateForm: props', props);
     const [change, setChange] = useState(initialChange);
     const { id } = useParams();
-    const { push } = useHistory();
+    const history = useHistory();
     console.log('from updateForm: useParams', id);
 
     useEffect(() => {
@@ -31,7 +31,7 @@ const UpdateForm = () => {
             .then(res => {
                 console.log('UpdateForm: submit success:res', res);
                 setChange(res.data);
-                push('/movies');
+                history.push('/movies');
             })
             .catch(err => console.error('UpdateForm: submit failed:err', err))
     }
