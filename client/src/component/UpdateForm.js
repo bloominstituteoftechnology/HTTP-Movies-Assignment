@@ -47,6 +47,7 @@ const UpdateMovie = () => {
         <input
           type="text"
           name="title"
+          placeholder="Title"
           onChange={handleChange}
           value={movie.title}
         />
@@ -54,6 +55,7 @@ const UpdateMovie = () => {
         <input
           type="text"
           name="director"
+          placeholder="Director"
           onChange={handleChange}
           value={movie.director}
         />
@@ -61,13 +63,15 @@ const UpdateMovie = () => {
         <input
           type="text"
           name="metascore"
+          placeholder="Metascore"
           onChange={handleChange}
           value={movie.metascore}
         />
         <br />
         <input
           type="text"
-          name="star"
+          name="stars"
+          placeholder="Actors"  
           onChange={handleChange}
           value={movie.stars}
         />
