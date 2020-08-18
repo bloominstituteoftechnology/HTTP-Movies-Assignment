@@ -10,6 +10,8 @@
 - In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
 - Still inside the `client` folder run `npm start` to run the client application.
 
+### Task 2a: MVP
+
 #### Updating A Movie:
 
 - Add a route at the path `/update-movie/:id`
