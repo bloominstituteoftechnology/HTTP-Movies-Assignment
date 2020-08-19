@@ -16,7 +16,7 @@ const UpdateForm = (props) => {
     const { id } = useParams(); //gets the variables that are in the url
     useEffect(() => {
         axios
-            .get(`http://localhost:5000/itemById/${id}`) //recommended to get the data in this componenet just incase the items from index.js is to be and takes a longer time to loop through it
+            .get(`http://localhost:5000/api/movies/${id}`) //recommended to get the data in this componenet just incase the items from index.js is to be and takes a longer time to loop through it
             .then((resp) => {
                 setItem(resp.data);
             })
@@ -39,11 +39,21 @@ const UpdateForm = (props) => {
         e.preventDefault();
         // make a PUT request to edit the item
         axios
-            .put(`http://localhost:5000/items/${id}`, item) //updates the server database
+            .put(`http://localhost:5000/api/movies/${id}`, item) //updates the server database
             .then((resp) => {
+                // it returns the item
                 console.log("API response", resp.data);
-                props.setItems(resp.data); //updates the UI. this api sends back the whole list of items so we can just update the index.js state so it updates the GUI in the whole app
-                push(`/item-list/${id}`);
+                // update the changes on a copy of the current UI state
+                const updatedMovieList = props.movieList.map( aMovie => {
+                    const findChangedMovieById = aMovie.id === item.id
+                    if (findChangedMovieById){
+                        aMovie = item
+                    }
+                    return aMovie
+                })
+
+                props.setMovieList(updatedMovieList); //updates the UI. this api sends back the whole list of items so we can just update the index.js state so it updates the GUI in the whole app
+                push(`/movies/${id}`);
             })
             .catch((error) => console.log(`Handle submit error -${error}`));
     };
