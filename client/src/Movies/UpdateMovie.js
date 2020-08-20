@@ -25,7 +25,7 @@ const UpdateForm = (props) => {
     const changeHandler = (ev) => {
         ev.persist();
         let value = ev.target.value;
-        if (ev.target.name === "price") {
+        if (ev.target.type === "number") {
             value = parseInt(value, 10);
         }
 
@@ -81,7 +81,7 @@ const UpdateForm = (props) => {
                 <div className="baseline" />
 
                 <input
-                    type="text"
+                    type="number"
                     name="metascore"
                     onChange={changeHandler}
                     placeholder="Metascore"
