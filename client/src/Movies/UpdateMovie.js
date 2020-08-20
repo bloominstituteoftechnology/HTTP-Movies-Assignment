@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { useParams } from 'react-router-dom'; 
+import { useParams, useHistory } from 'react-router-dom'; 
 import axios from 'axios';
 
 const initialMovie = {
@@ -13,6 +13,7 @@ const initialMovie = {
 const UpdateMovie = (props) => {
     const [movie, setMovie] = useState(initialMovie); 
     const { id } = useParams(); 
+    const { push } = useHistory(); 
 
 useEffect(() => {
     axios
@@ -21,24 +22,25 @@ useEffect(() => {
                 setMovie(res.data)
             })
             .catch((err) => console.log(err))
-}, [id])
+}, [id]);
 
 const onChange = (e) => {
     e.persist(); 
     setMovie({
         ...movie, 
         [e.target.name]: e.target.value
-    })
-}
+    });
+};
 
 const handleSubmit = (e) => {
     e.preventDefault(); 
     axios.put(`http://localhost:5000/api/movies/${id}`, movie)
         .then(res => {
-            console.log(res)
+            props.setMovieList([...props.movies, res.data])
+            push(`/movies/${id}`)
         })
         .catch(err => console.log(err))
-}
+};
 
     return (
         <div>
