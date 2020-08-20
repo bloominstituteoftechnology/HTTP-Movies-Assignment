@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
 
@@ -32,29 +32,16 @@ const changeHandler = (ev) => {
         [ev.target.name]: value
     });
 };
-// const [newStartInput, setNewStartInput] = useState({
-//     input: <>
-//     <input
-//         type="text"
-//         name="stars"
-//         onChange={changeHandler}
-//         placeholder="Add stars separate by commans"
-//         value={item.stars[1]}
-//     />
-//     <div className="baseline" />
-//             </>
-// })
 const handleSubmit = (e) => {
     e.preventDefault();
     // //change the starts string into an array of starts
-    // const startList = item.stars.split(',')
-    // setItem({ ...item, stars: startList })
-    // console.log(item.stars)
-    // debugger
+    const startList = item.stars.split(',')
+    const newMovie = { ...item, stars: startList }
+    debugger
 
     // make a POST request to edit the item
     axios
-        .post(`http://localhost:5000/api/movies`, item) //updates the server database
+        .post(`http://localhost:5000/api/movies`, newMovie) //updates the server database
         .then((resp) => {
             // it returns the item
             console.log(`AddMovie post request -- ${resp.data}`);
@@ -66,24 +53,6 @@ const handleSubmit = (e) => {
         })
         .catch((error) => console.log(`Handle submit error -${error}`));
 };
-useEffect(() => {
-    const addAnotherStart = e => {
-        debugger
-
-        return (
-            <>
-                <input
-                    type="text"
-                    name="stars"
-                    onChange={changeHandler}
-                    placeholder="Add stars separate by commans"
-                    value={item.stars[1]}
-                />
-                <div className="baseline" />
-            </>
-        )
-    }
-}, [addAnotherStart])
 
 return (
     <div>
@@ -121,11 +90,10 @@ return (
                 name="stars"
                 onChange={changeHandler}
                 placeholder="Add stars separate by commans"
-                value={item.stars[0]}
+                value={item.stars}
             />
             <div className="baseline" />
 
-            <button type='button' onClick={''}>Add Another Start</button>
             <button className="md-button form-button">Update</button>
         </form>
     </div>
