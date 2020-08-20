@@ -34,8 +34,8 @@ const changeHandler = (ev) => {
 };
 const handleSubmit = (e) => {
     e.preventDefault();
-    // //change the starts string into an array of starts
-    const startList = item.stars.split(',')
+    //change the starts string into an array of starts
+    const startList = item.stars.split(',') //cannot add this to the state because async makes state, and axios go first, and adding async and wait adds significan boiler plate.
     const newMovie = { ...item, stars: startList }
     debugger
 
