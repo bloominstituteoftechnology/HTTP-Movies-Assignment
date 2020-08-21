@@ -2,17 +2,17 @@ import React, { useState, useEffect } from 'react';
 import { useParams, useHistory } from "react-router-dom";
 import axios from 'axios';
 
-const UpdateForm = props => {
+ const UpdateForm = props => {
   console.log(props)
 
-    const [formState, setFormState] = useState({
-        id: "",
-        title: "",
-        director: "",
-        metascore: "",
-        stars: ""
-    });
-     
+  const intialState = {
+    title: '',
+    director: '',
+    metascore: 0,
+    stars: []
+  }
+  // setting state
+    const [formState, setFormState] = useState(intialState);
     let { push } = useHistory();
     const { id } = useParams();
 
@@ -28,10 +28,8 @@ const UpdateForm = props => {
     
     const onChange = e => {
         setFormState({ ...formState, 
-          [e.target.name]: e.target.value})
-    
-    
-    }
+          [e.target.name]: e.target.value,
+          })}
 
     const handleSubmit = e => {
         e.preventDefault();

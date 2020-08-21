@@ -1,25 +1,12 @@
 import React from 'react';
-import { Link, useParams, useHistory } from 'react-router-dom'
-import axios from 'axios';
 
 const MovieCard = props => {
-  console.log(props)
-  const params = useParams();
-  
-  let history = useHistory();
-  
-  const removeMovie = () => {
-    axios 
-      .delete(`http://localhost:5000/api/movies/${params.id}`)
-      .then(res =>  {history.push("/"); props.setRefresh(true)})
-      .catch(err => console.log(err));
-  }
 
+  console.log(props)
+  
   const { title, director, metascore, stars } = props.movie;
   return (
     <div className="movie-card">
-      <Link to={`/update-movie/${params.id}`}><button>Edit</button></Link>
-      <button onClick ={removeMovie}>Delete</button>
       <h2>{title}</h2>
       <div className="movie-director">
         Director: <em>{director}</em>
