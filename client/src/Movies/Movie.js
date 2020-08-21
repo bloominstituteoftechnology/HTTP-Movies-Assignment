@@ -3,19 +3,20 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-function Movie({ addToSavedList }) {
+function Movie(props) {
+  console.log(props)
   const [movie, setMovie] = useState(null);
   const params = useParams();
 
-  const fetchMovie = (id) => {
+  const fetchMovie = id => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:5500/api/movies/${id}`)
       .then((res) => setMovie(res.data))
       .catch((err) => console.log(err.response));
   };
 
   const saveMovie = () => {
-    addToSavedList(movie);
+    props.addToSavedList(movie);
   };
 
   useEffect(() => {
@@ -28,11 +29,12 @@ function Movie({ addToSavedList }) {
 
   return (
     <div className="save-wrapper">
-      <MovieCard movie={movie} />
+      <MovieCard setRefresh={props.setRefresh} movie={movie} />
 
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
+      
     </div>
   );
 }
