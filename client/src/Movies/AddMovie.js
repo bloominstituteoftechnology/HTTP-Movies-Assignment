@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import axios from "axios";
 import CreatableSelect from "react-select/creatable";
+import { useHistory } from "react-router-dom";
 
 const AddMovie = (props) => {
+  const history = useHistory();
   const starOptions = [
     { value: "Harrison Ford", label: "Harrison Ford" },
     { value: "Danny Devito", label: "Danny Devito" },
@@ -24,7 +26,15 @@ const AddMovie = (props) => {
   const handleSubmit = (e) => {
     axios
       .post(`http://localhost:5000/api/movies`, formInputs)
-      .then((res) => console.log(res.data))
+      .then((res) => {
+        setFormInputs({
+          title: "",
+          director: "",
+          metascore: 0,
+          stars: [],
+        });
+        history.push("/");
+      })
       .catch((err) => console.log(err.response));
   };
 
