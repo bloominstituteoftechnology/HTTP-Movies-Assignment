@@ -1,21 +1,29 @@
 import React, { useState } from "react";
 import axios from "axios";
+import CreatableSelect from "react-select/creatable";
 
 const AddMovie = (props) => {
-  const { title, director, metascore, stars, id } = props.movie;
+  const starOptions = [
+    { value: "Harrison Ford", label: "Harrison Ford" },
+    { value: "Danny Devito", label: "Danny Devito" },
+    { value: "Issa Rae", label: "Issa Rae" },
+  ];
   const [formInputs, setFormInputs] = useState({
-    title: title,
-    director: director,
-    metascore: metascore,
-    stars: stars,
-    id: id,
+    title: "",
+    director: "",
+    metascore: 0,
+    stars: [],
   });
   const handleChange = (e) => {
     setFormInputs({ ...formInputs, [e.target.name]: e.target.value });
   };
+  const handleSelectChange = (newValue, actionMeta) => {
+    const newStars = newValue.map((value) => value.value);
+    setFormInputs({ ...formInputs, stars: newStars });
+  };
   const handleSubmit = (e) => {
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, formInputs)
+      .post(`http://localhost:5000/api/movies`, formInputs)
       .then((res) => console.log(res.data))
       .catch((err) => console.log(err.response));
   };
@@ -48,8 +56,16 @@ const AddMovie = (props) => {
           value={formInputs.metascore}
           onChange={handleChange}
         />
+        <br />
+        <br />
+        <CreatableSelect
+          isMulti
+          onChange={handleSelectChange}
+          options={starOptions}
+          getOptionLabel={(option) => option.value}
+        />
         <div className="save-button" onClick={handleSubmit}>
-          Update Movie
+          Save Movie
         </div>
       </form>
     </div>
