@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useHistory } from "react-router-dom";
 import axios from "axios";
-const AddMovie = ({ length }) => {
+const AddMovie = ({ length, getMovieList }) => {
   const history = useHistory();
   const [movie, setMovie] = useState({
     id: 0,
@@ -39,7 +39,7 @@ const AddMovie = ({ length }) => {
     // Create Post request
     axios
       .post("http://localhost:5000/api/movies", movie)
-      .then((res) => console.log(res.data))
+      .then((res) => getMovieList())
       .catch((err) => console.log(err.response));
 
     history.push("/");

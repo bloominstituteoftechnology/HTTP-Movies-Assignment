@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { Col, Row, Button, Form, FormGroup, Label, Input } from "reactstrap";
 import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
-const UpdateMovie = ({ movies }) => {
+const UpdateMovie = ({ movies, getMovieList }) => {
   const history = useHistory();
   const [movie, setMovie] = useState(null);
   const params = useParams();
@@ -29,7 +29,10 @@ const UpdateMovie = ({ movies }) => {
     e.preventDefault();
     axios
       .put(`http://localhost:5000/api/movies/${params.id}`, movie)
-      .then((res) => console.log(res))
+      .then((res) => {
+        console.log(res);
+        getMovieList();
+      })
       .catch((err) => console.log(err.response));
     // No need to reset form state as this is dont through delcaring move state
 
