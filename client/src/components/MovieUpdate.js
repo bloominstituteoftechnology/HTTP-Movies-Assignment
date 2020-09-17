@@ -17,6 +17,7 @@ const MovieUpdate = ({ setMovieList, movieList }) => {
   const history = useHistory();
 
   useEffect(() => {
+    console.log("mvlist", movieList);
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
@@ -44,7 +45,7 @@ const MovieUpdate = ({ setMovieList, movieList }) => {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movieItem)
       .then((res) => {
-        console.log(res); //returns the item you edited, most likely
+        console.log("handeSubmit", res); //returns the item you edited, most likely
         setMovieList(
           movieList.map((mv) => {
             if (mv.id == id) {

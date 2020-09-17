@@ -27,6 +27,11 @@ function Movie({ addToSavedList, setMovieList }) {
     return <div>Loading movie information...</div>;
   }
 
+  const updateHandler = (e) => {
+    e.preventDefault();
+    history.push(`/update-movie/${params.id}`);
+  };
+
   const handleDelete = (e) => {
     //Getting "movies.map is not a function" - I am guessing this is from put request
     e.preventDefault();
@@ -35,6 +40,7 @@ function Movie({ addToSavedList, setMovieList }) {
       .then((res) => {
         console.log("handledelete", res.data);
         setMovieList(res.data);
+        history.push("/");
       })
       .catch((err) => {
         console.log(err);
@@ -54,7 +60,7 @@ function Movie({ addToSavedList, setMovieList }) {
       <button
         className="save-button"
         style={{ right: "100px" }}
-        onClick={() => history.push(`/update-item/${params.id}`)}
+        onClick={updateHandler}
       >
         Edit
       </button>
