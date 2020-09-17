@@ -1,4 +1,4 @@
-import React, { useState,useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useHistory } from "react-router-dom";
 
@@ -26,10 +26,10 @@ const AddMovie = () => {
     const { value } = e.target;
     setNewMovie({
       ...newMovie,
-      stars: [value],
+      stars: value.split(","),
     });
   };
-  
+
   const submitNewMovie = (e) => {
     e.preventDefault();
     axios

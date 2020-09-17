@@ -19,7 +19,7 @@ const MovieForm = () => {
     e.preventDefault();
     setMovie({
       ...movie,
-      stars: [e.target.value],
+      stars: e.target.value.split(","),
     });
   };
 
@@ -42,8 +42,7 @@ const MovieForm = () => {
     axios
       .put(`http://localhost:5000/api/movies/${params.id}`, movie)
       .then((res) => {
-          console.log(res)
-          res.stars.split(",")
+        console.log(res);
         history.push("/");
       })
       .catch((res) => {
