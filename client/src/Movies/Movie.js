@@ -7,7 +7,7 @@ function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
  
-  const fetchMovie = (id) => {
+  const fetchMovie = (id) => {  
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => setMovie(res.data))
