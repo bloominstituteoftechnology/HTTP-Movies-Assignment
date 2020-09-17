@@ -6,7 +6,7 @@ import MovieCard from "./MovieCard";
 function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
-
+ 
   const fetchMovie = (id) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
