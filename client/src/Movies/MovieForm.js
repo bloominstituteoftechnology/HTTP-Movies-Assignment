@@ -15,6 +15,14 @@ const MovieForm = () => {
     });
   };
 
+  const changeActors = (e) => {
+    e.preventDefault();
+    setMovie({
+      ...movie,
+      stars: [e.target.value],
+    });
+  };
+
   const getMovieDetails = (id) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
@@ -71,10 +79,15 @@ const MovieForm = () => {
             onChange={changeValues}
           />
         </label>
-        {/* <label>
-          Movie Actors:
-          <input type="text" name="title" />
-        </label> */}
+        <label>
+          Movie Stars:
+          <input
+            type="text"
+            name="stars"
+            value={movie.stars}
+            onChange={changeActors}
+          />
+        </label>
         <button>Submit Edits</button>
       </form>
     </div>
