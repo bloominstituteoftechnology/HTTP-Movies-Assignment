@@ -29,7 +29,7 @@ function Movie(props) {
   }
 
   const edit = () => {
-    history.push(`/update-movie/${params.id}`);
+    history.push(`/update-movie/${movie.id}`);
   };
 
   const deleteMovie = (e) => {

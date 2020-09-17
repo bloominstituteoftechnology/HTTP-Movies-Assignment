@@ -1,32 +1,75 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-const initialForm = {
-  director: "",
-  title: "",
-  metascore: "",
-  //   actors: [],
-};
-
 const MovieForm = () => {
-  const [formValues, setFormValues] = useState(initialForm);
+  const params = useParams();
+  const history = useHistory();
   const [movie, setMovie] = useState([]);
+
+  const changeValues = (e) => {
+    e.preventDefault();
+    setMovie({
+      ...movie,
+      [e.target.name]: e.target.value,
+    });
+  };
+
+  const getMovieDetails = (id) => {
+    axios
+      .get(`http://localhost:5000/api/movies/${id}`)
+      .then((res) => {
+        setMovie(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  };
+  useEffect(() => {
+    getMovieDetails(params.id);
+  }, [params.id]);
+
+  const submitChanges = (e) => {
+    e.preventDefault();
+    axios
+      .put(`http://localhost:5000/api/movies/${params.id}`, movie)
+      .then((res) => {
+        history.push("/");
+      })
+      .catch((res) => {
+        console.log(res);
+      });
+  };
 
   return (
     <div>
-      <form>
+      <form onSubmit={submitChanges}>
         <label>
           Movie Title:
-          <input type="text" name="title" />
+          <input
+            type="text"
+            name="title"
+            value={movie.title}
+            onChange={changeValues}
+          />
         </label>
         <label>
           Movie Director:
-          <input type="text" name="director" />
+          <input
+            type="text"
+            name="director"
+            value={movie.director}
+            onChange={changeValues}
+          />
         </label>
         <label>
           Movie MetaScore:
-          <input type="numbers" name="metascore" />
+          <input
+            type="numbers"
+            name="metascore"
+            value={movie.metascore}
+            onChange={changeValues}
+          />
         </label>
         {/* <label>
           Movie Actors:
@@ -34,7 +77,6 @@ const MovieForm = () => {
         </label> */}
         <button>Submit Edits</button>
       </form>
-      <button>Add New Movie</button>
     </div>
   );
 };
