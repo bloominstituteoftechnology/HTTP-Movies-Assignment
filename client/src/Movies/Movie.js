@@ -52,7 +52,7 @@ function Movie(props) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
-      <button onClick={edit}>Edit</button>
+      <button onClick={edit}>Edit</button>&nbsp;
       <button onClick={deleteMovie}>Delete</button>
     </div>
   );

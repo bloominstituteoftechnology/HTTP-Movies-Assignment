@@ -42,6 +42,8 @@ const MovieForm = () => {
     axios
       .put(`http://localhost:5000/api/movies/${params.id}`, movie)
       .then((res) => {
+          console.log(res)
+          res.stars.split(",")
         history.push("/");
       })
       .catch((res) => {
