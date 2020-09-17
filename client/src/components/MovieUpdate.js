@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
+import { useParams, useHistory, Redirect } from "react-router-dom";
 import axios from "axios";
 
 const initialMovie = {
@@ -21,7 +21,7 @@ const MovieUpdate = ({ setMovieList, movieList }) => {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
-        console.log("updateformprops", res);
+        console.log("Mv Update Props", res);
         setMovieItem(res.data);
       })
       .catch((err) => console.log(err));
@@ -30,9 +30,6 @@ const MovieUpdate = ({ setMovieList, movieList }) => {
   const changeHandler = (ev) => {
     ev.persist();
     let value = ev.target.value;
-    // if (ev.target.name === "price") {
-    //   value = parseInt(value, 10);
-    // }
     setMovieItem({
       ...movieItem,
       [ev.target.name]: value,
@@ -45,67 +42,47 @@ const MovieUpdate = ({ setMovieList, movieList }) => {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movieItem)
       .then((res) => {
-        console.log("handeSubmit", res); //returns the item you edited, most likely
         setMovieList(
           movieList.map((mv) => {
             if (mv.id == id) {
+              console.log("Updated Movie", movieItem);
               return movieItem;
             } else {
               return mv;
             }
           })
         );
+        history.push(`/`);
       })
       .catch((err) => console.log(err));
   };
 
   return (
-    <div>
+    <div className="saved-list">
       <h2>Update Movie</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
-          name="name"
+          name="title"
           onChange={changeHandler}
-          placeholder="name"
-          value={movieItem.title}
-        />
-        <div className="baseline" />
-
-        {/* <input
-          type="number"
-          name="price"
-          onChange={changeHandler}
-          placeholder="Price"
-          value={movieItem.price}
+          placeholder="Title"
         />
         <div className="baseline" />
 
         <input
-          type="string"
-          name="imageUrl"
+          type="text"
+          name="director"
           onChange={changeHandler}
-          placeholder="Image"
-          value={movieItem.imageUrl}
+          placeholder="Director"
         />
         <div className="baseline" />
 
         <input
-          type="string"
-          name="description"
+          type="integer"
+          name="metascore"
           onChange={changeHandler}
-          placeholder="Description"
-          value={movieItem.description}
+          placeholder="Metascore"
         />
-        <div className="baseline" />
-
-        <input
-          type="string"
-          name="shipping"
-          onChange={changeHandler}
-          placeholder="Shipping"
-          value={movieItem.shipping}
-        /> */}
         <div className="baseline" />
 
         <button className="md-button form-button">Update</button>
