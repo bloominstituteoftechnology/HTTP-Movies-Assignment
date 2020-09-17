@@ -54,11 +54,12 @@ body {
   margin: 1rem auto;
 }
 .save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
+  display: flex;
+  width: 3rem;
+  flex-direction: column;
   border: 1px solid grey;
   padding: 5px 10px;
+  margin: 5px 10px;
   background-color: lightseagreen;
 }
 .save-button:hover {
@@ -74,4 +75,11 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.add-movie-button {
+  text-align: center;
+  text-decoration: none;
+  padding: 1rem;
+  background-color: lightseagreen;
 }
