@@ -53,6 +53,9 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
+.save-wrapper a {
+  color: black;
+}
 .save-button {
   position: absolute;
   top: 25px;
@@ -61,7 +64,19 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+.update-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
 .save-button:hover {
+  background-color: green;
+  color: white;
+}
+.update-button:hover {
   background-color: green;
   color: white;
 }
@@ -74,4 +89,12 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+/*Update for UpdateMovie*/
+.form-row {
+  justify-content: center;
+}
+form .btn {
+  display: flex;
+  margin: auto;
 }
