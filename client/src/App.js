@@ -5,9 +5,12 @@ import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
 
+import UpdateMovie from './Movies/UpdateMovie'
+
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+  const [refreshList, setRefreshList] = useState(false)
 
   const getMovieList = () => {
     axios
@@ -24,6 +27,10 @@ const App = () => {
     getMovieList();
   }, []);
 
+  const refreshHandler = ()=>{
+    setRefreshList(!refreshList)
+  }
+
   return (
     <>
       <SavedList list={savedList} />
@@ -33,7 +40,12 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+      <Movie addToSavedList={addToSavedList} refreshHandler={refreshHandler}/>
+      </Route>
+
+      <Route path='/update-movie/:id'>
+        <UpdateMovie refreshHandler={refreshHandler}/>
+      
       </Route>
     </>
   );
