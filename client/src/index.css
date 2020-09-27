@@ -53,6 +53,10 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
+.save-wrapper a {
+  color: black;
+}
+
 .save-button {
   position: absolute;
   top: 25px;
@@ -61,12 +65,43 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+.update-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: dodgerblue;
+}
+.delete-button {
+  position: absolute;
+  top: 105px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: red;
+}
 .save-button:hover {
   background-color: green;
   color: white;
 }
+.update-button:hover {
+  background-color: lightblue;
+  color: white;
+}
+.delete-button:hover {
+  background-color: tomato;
+  color: white;
+}
 
 .home-button {
+  margin-right: 5px;
+
+  padding: 5px 10px;
+  background-color: lightskyblue;
+}
+
+.add-button {
   padding: 5px 10px;
   background-color: lightskyblue;
 }
@@ -74,4 +109,31 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+.saved-buttons {
+  display: flex;
+  flex-direction: row;
+}
+/*Update for UpdateMovie*/
+.form-row {
+  justify-content: center;
+}
+form .btn {
+  display: flex;
+  margin: auto;
+}
+.stars {
+  display: flex;
+}
+#stars-label {
+  margin-bottom: 1rem;
+  margin-top: 1rem;
+  display: flex;
+  flex-flow: row;
+  justify-content: center;
+  align-items: baseline;
+}
+#stars-label button {
+  margin: unset;
+  margin-left: 5px;
 }
