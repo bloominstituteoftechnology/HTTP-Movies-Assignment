@@ -1,38 +1,28 @@
 import React, {useState,useEffect} from "react";
 import { useHistory,useParams } from "react-router";
 import axios from 'axios';
-const UpdateMovie = (movies) => {
-    //useHistory hook & params
-    const history = useHistory();
-    const { id } = useParams();
 
-    //setting up empty state for axios put request to edit movie
-    const [form,setForm] = useState({
-        id:Date.now(),
-        title:"",
-        director:"",
-        metascore:"",
-        stars:[]
-    });
-    const emptyState = {
-        id:Date.now(),
-        title:"",
-        director:"",
-        metascore:"",
-        stars:[]
-    }
-    //useEffect to pull in intial movie to edit 
-    useEffect(() => {
-        axios
-          .get(`http://localhost:5000/api/movies/${id}`)
-          .then((res) => {
-            console.log(res);
-            setForm(res.data);
-          })
-          .catch((err) => console.error(err));
-      }, [id]);
-    
-    const handleChanges = e => {
+const AddMovie = () => {
+     //useHistory hook & params
+     const history = useHistory();
+     const { id } = useParams();
+ 
+     //setting up empty state for axios put request to edit movie
+     const [form,setForm] = useState({
+         id:Date.now(),
+         title:"",
+         director:"",
+         metascore:"",
+         stars:["Michael Jackson", "Chris Engal"]
+     });
+     const emptyState = {
+         id:Date.now(),
+         title:"",
+         director:"",
+         metascore:"",
+         stars:["Michael Jackson", "Chris Engal"]
+     }
+     const handleChanges = e => {
         const newFormData = {
             ...form, [e.target.name] : e.target.value
         }
@@ -41,10 +31,9 @@ const UpdateMovie = (movies) => {
     const handleSubmit = e => {
         e.preventDefault();
         axios
-        .put(`http://localhost:5000/api/movies/${id}`, form )
+        .post(`http://localhost:5000/api/movies`, form )
         .then((res) => {
             console.log(res)
-            console.log(movies)
             history.push("/");
         })
         .catch((err) => {
@@ -53,13 +42,7 @@ const UpdateMovie = (movies) => {
     }
     return(
         <div>
-        <h2>Update Movie!</h2>
-        <p>
-            {form.title}
-        </p>
-        <p>
-            {form.director}
-        </p>
+            <h2>Add Movie!</h2>
         <form onSubmit = {handleSubmit}>
             <label htmlFor = "title">
                 title:
@@ -81,10 +64,21 @@ const UpdateMovie = (movies) => {
             onChange = {handleChanges}
              />
             </label>
-            <button>Update</button>
+            <label htmlFor = "metascore">
+                metascore:
+            <input
+            type = "text" 
+            name = "metascore"
+            placeholder = "metascore"
+            value = {form.metascore}
+            onChange = {handleChanges}
+             />
+            </label>
+            
+            <button>Add</button>
         </form>
         </div>
     )
 }
 
-export default UpdateMovie;
+export default AddMovie;
