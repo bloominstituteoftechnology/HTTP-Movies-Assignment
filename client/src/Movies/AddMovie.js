@@ -6,14 +6,15 @@ const AddMovie = () => {
      //useHistory hook & params
      const history = useHistory();
      const { id } = useParams();
- 
+    //setting up a state to stor the stars
+    const [starz, setStarz] = useState("")
      //setting up empty state for axios put request to edit movie
      const [form,setForm] = useState({
          id:Date.now(),
          title:"",
          director:"",
          metascore:"",
-         stars:["Michael Jackson", "Chris Engal"]
+         stars:[]
      });
      const emptyState = {
          id:Date.now(),
@@ -28,6 +29,23 @@ const AddMovie = () => {
         }
         setForm(newFormData);
     }
+    //star changes 
+    const starChanges =e => {
+        setStarz(e.target.value)
+        console.log(starz);
+    }
+    //push star onclick function
+    const addStar = (e) => {
+        if(form.stars.includes(starz)){
+            console.log("error, already have this star")
+        }
+        else{
+        form.stars.push(starz);
+        setStarz("")
+        console.log("hey")
+        }
+    }
+    
     const handleSubmit = e => {
         e.preventDefault();
         axios
@@ -42,6 +60,15 @@ const AddMovie = () => {
     }
     return(
         <div>
+            <div>
+                <h2>Your Form :</h2>
+                <p>title:{form.title}</p>
+                <p>director:{form.director}</p>
+                <p>metascore:{form.metascore}</p>
+                <p>stars:{form.stars.map(star => (
+                    <p>{star},</p>
+                ))}</p>
+            </div>
             <h2>Add Movie!</h2>
         <form onSubmit = {handleSubmit}>
             <label htmlFor = "title">
@@ -74,9 +101,19 @@ const AddMovie = () => {
             onChange = {handleChanges}
              />
             </label>
-            
-            <button>Add</button>
+            <label htmlFor = "stars">
+                stars:
+            <input
+            type = "text" 
+            name = "stars"
+            placeholder = "stars"
+            value = {starz}
+            onChange = {starChanges}
+             />
+            </label>
+            <button type = "submit">Add</button>
         </form>
+        <button onClick = {() => addStar()}>Click to add a star!</button>
         </div>
     )
 }
