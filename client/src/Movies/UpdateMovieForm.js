@@ -69,7 +69,7 @@ const UpdateMovieForm = (props) =>{
     return(
         <div>
             <h2>Edit Movie</h2>
-            <form onSubmit={handleSubmit}>
+            <form className="edit" onSubmit={handleSubmit}>
             <input
             type="text"
             id="title"
@@ -106,7 +106,7 @@ const UpdateMovieForm = (props) =>{
 
             </form>
             <button className="update-button" onClick={handleSubmit} >
-        update
+        Save Edit
       </button>
          
         </div>

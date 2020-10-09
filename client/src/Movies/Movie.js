@@ -29,6 +29,24 @@ function Movie({ addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
 
+  const deleteMovie = (e) =>{
+    e.preventDefault();
+    axios
+    .delete(`http://localhost:5000/api/movies/${id}`)
+    .then((res) =>{
+      console.log("KH Movies.js: deleteMovie: axios delete", res)
+      push('/movies')
+
+    })
+    .catch((err) => console.error(`unable to delete ${id}`,err))
+
+  }
+
+  const addMovie = (e) =>{
+    e.preventDefault();
+    push(`/add-movie`)
+  }
+
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
@@ -41,7 +59,10 @@ function Movie({ addToSavedList }) {
       }}>
         Edit
       </button>
-
+<button className="delete-button" onClick={deleteMovie}>
+  Delete Movie
+</button>
+<button className="add-movie-button" onClick={addMovie}>Add Movie</button>
     </div>
   );
 }
