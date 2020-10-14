@@ -2,8 +2,20 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  background-color: #ffffff;
+  display:flex;
+  text-align: center;
+  flex-direction: column;
+  justify-content: center;
+  margin: 6rem;
 }
+
+.addMovie {
+  margin: 2rem;
+  padding: 2rem;
+}
+
+
 
 .movie-card {
   background-color: #fff;
@@ -13,8 +25,9 @@ body {
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 3rem auto;
 }
+
 
 .movie-director {
   padding: 4px 0;
@@ -29,7 +42,7 @@ body {
   padding: 1rem;
   cursor: pointer;
   position: relative;
-  margin: 1rem auto;
+  margin: 4rem auto;
   width: 75%;
   display: flex;
   align-items: center;
@@ -57,18 +70,18 @@ body {
   position: absolute;
   top: 25px;
   right: 25px;
-  border: 1px solid grey;
+  border: 1px solid rgb(192, 26, 26);
   padding: 5px 10px;
-  background-color: lightseagreen;
+  background-color: rgb(252, 252, 252);
 }
 .save-button:hover {
-  background-color: green;
+  background-color: rgb(0, 41, 128);
   color: white;
 }
 
 .home-button {
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: rgb(255, 255, 255);
 }
 
 .movie-warning {
