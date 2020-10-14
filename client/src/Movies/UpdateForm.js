@@ -21,7 +21,7 @@ const UpdateForm = ({ setMovieList, movieList }) => {
   }, [id]);
 
   const changeHandler = (e) => {
-    e.persist()
+      e.persist()
     setNewMovie({
       ...newMovie,
       [e.target.name]: e.target.value,
@@ -35,10 +35,17 @@ const UpdateForm = ({ setMovieList, movieList }) => {
       .put(`http://localhost:5000/api/movies/${id}`, newMovie)
       .then((res) => {
           console.log('inside of input',res)
-        setMovieList([...movieList, res.data]);
-        history.push("/");
+        // setMovieList([...movieList, res.data]);
+        const updatedState = movieList.map(movie => {
+            return movie.id === id ? res.data.data : movie;
+         })
+         setMovieList(updatedState)
+      
       })
-      .catch((err) => console.log(err));
+      .catch((err) => console.log(err))
+      .finally(() => {
+        history.push("/")
+      })
   };
 
   return (
