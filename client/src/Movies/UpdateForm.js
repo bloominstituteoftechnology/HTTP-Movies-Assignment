@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from "react";
-import axios from 'axios';
-import { useParams } from "react-router-dom";
-
+import axios from "axios";
+import { useParams, useHistory } from "react-router-dom";
 
 const initialItem = {
   title: "",
@@ -9,30 +8,38 @@ const initialItem = {
   metascore: "",
 };
 
-const UpdateForm = () => {
- const { id } = useParams();
+const UpdateForm = ({ setMovieList, movieList }) => {
+  const history = useHistory();
+  const { id } = useParams();
   const [newMovie, setNewMovie] = useState(initialItem);
 
   useEffect(() => {
-      axios.get(`http://localhost:5000/api/movies/${id}`)
+    axios
+      .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => setNewMovie(res.data))
-      .catch((err) => console.log(err))
-  }, [id])
+      .catch((err) => console.log(err));
+  }, [id]);
 
   const changeHandler = (e) => {
-      setNewMovie({
-          ...newMovie,
-            [e.target.name]: e.target.value
-      })
-  }
+    e.persist()
+    setNewMovie({
+      ...newMovie,
+      [e.target.name]: e.target.value,
+    });
+  };
 
   const handleSubmit = (e) => {
-      e.preventDefault()
+    e.preventDefault();
     //   console.log('handleSubmit', newMovie)
-    axios.put(`http://localhost:5000/api/movies/${id}`, newMovie)
-    .then((res) => console.log('inside the input', res))
-    .catch((err) => console.log(err))
-  }
+    axios
+      .put(`http://localhost:5000/api/movies/${id}`, newMovie)
+      .then((res) => {
+          console.log('inside of input',res)
+        setMovieList([...movieList, res.data]);
+        history.push("/");
+      })
+      .catch((err) => console.log(err));
+  };
 
   return (
     <form onSubmit={handleSubmit}>
