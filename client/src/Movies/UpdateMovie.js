@@ -5,7 +5,7 @@ import { useHistory, useParams } from 'react-router-dom'
 const initialValues = {
     title: '',
     director: '',
-    metascore: 0,
+    metascore: '',
     id: '',
     stars: []
 }
@@ -30,7 +30,7 @@ export default function UpdateMovie(props) {
         const { name, value } = e.target
         setValues({
             ...values,
-            [name]: name === 'metascore' ? parseInt(value, 10) : value
+            [name]: value
         })
     }
 
@@ -38,7 +38,6 @@ export default function UpdateMovie(props) {
         e.preventDefault()
         axios.put(`http://localhost:5000/api/movies/${id}`, values)
             .then(res => {
-                console.log(res)
                 props.getMovieList()
                 history.push('/')
             })
@@ -67,7 +66,7 @@ export default function UpdateMovie(props) {
                 />
                 <label>Metascore</label>
                 <input 
-                    type='number'
+                    type='text'
                     name='metascore'
                     value={values.metascore}
                     onChange={handleChanges}
