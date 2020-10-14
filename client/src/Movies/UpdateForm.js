@@ -29,6 +29,9 @@ const UpdateForm = () => {
   const handleSubmit = (e) => {
       e.preventDefault()
     //   console.log('handleSubmit', newMovie)
+    axios.put(`http://localhost:5000/api/movies/${id}`, newMovie)
+    .then((res) => console.log('inside the input', res))
+    .catch((err) => console.log(err))
   }
 
   return (
