@@ -7,7 +7,7 @@ const initialValues = {
     director: '',
     metascore: '',
     id: '',
-    stars: []
+    stars: ''
 }
 
 export default function UpdateMovie(props) {
@@ -19,7 +19,7 @@ export default function UpdateMovie(props) {
     useEffect(() => {
         axios.get(`http://localhost:5000/api/movies/${id}`)
         .then(res => {
-            setValues(res.data)
+            setValues({...res.data, stars: res.data.stars.join()})
         })
         .catch(err => {
             console.log(err)
@@ -36,7 +36,9 @@ export default function UpdateMovie(props) {
 
     const handleSubmit = (e) => {
         e.preventDefault()
-        axios.put(`http://localhost:5000/api/movies/${id}`, values)
+        const formattedValues = {...values, stars: values.stars.split(',')}
+        console.log(formattedValues)
+        axios.put(`http://localhost:5000/api/movies/${id}`, formattedValues)
             .then(res => {
                 props.getMovieList()
                 history.push('/')
@@ -69,6 +71,12 @@ export default function UpdateMovie(props) {
                     type='text'
                     name='metascore'
                     value={values.metascore}
+                    onChange={handleChanges}
+                />
+                <input 
+                    type='text'
+                    name='stars'
+                    value={values.stars}
                     onChange={handleChanges}
                 />
                 <button>Submit</button>

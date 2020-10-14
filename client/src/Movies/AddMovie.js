@@ -26,7 +26,6 @@ export default function AddMovie(props) {
     const handleSubmit = (e) => {
         e.preventDefault()
         const formattedMovie = {...values, id: Date.now(), stars: values.stars.split(',')}
-        console.log(formattedMovie)
         Axios.post('http://localhost:5000/api/movies', formattedMovie)
             .then(res => {
                 props.getMovieList()
