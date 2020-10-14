@@ -71,6 +71,11 @@ body {
   background-color: lightskyblue;
 }
 
+.addMovie-button {
+  padding: 5px 10px;
+  background-color: green;
+}
+
 .movie-warning {
   color: red;
   text-align: center;
