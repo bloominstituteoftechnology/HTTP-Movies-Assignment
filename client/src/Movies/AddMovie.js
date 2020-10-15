@@ -7,7 +7,7 @@ const initialItem = {
   title: "",
   director: "",
   metascore: "",
-  stars: [],
+  stars: "",
 };
 
 const AddMovie = () => {
@@ -21,7 +21,7 @@ const AddMovie = () => {
       ...movie,
       [e.target.name]:
         e.target.name === "stars"
-          ? [e.target.value.split(",")]
+          ? e.target.value.split(",")
           : e.target.value,
     });
   };
