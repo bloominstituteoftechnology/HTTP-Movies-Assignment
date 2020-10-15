@@ -4,10 +4,13 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
+import UpdateMovie from "./Movies/UpdateMovie";
+import AddMovie from './Movies/AddMovie';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+  const [isFetching, setIsFetching] = useState(false)
 
   const getMovieList = () => {
     axios
@@ -22,7 +25,7 @@ const App = () => {
 
   useEffect(() => {
     getMovieList();
-  }, []);
+  }, [isFetching]);
 
   return (
     <>
@@ -32,9 +35,22 @@ const App = () => {
         <MovieList movies={movieList} />
       </Route>
 
-      <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+      <Route exact path="/movies">
+        <MovieList movies={movieList} />
       </Route>
+
+      <Route path="/movies/:id">
+        <Movie addToSavedList={addToSavedList} setIsFetching={setIsFetching} />
+      </Route>
+
+      <Route path="/update-movie/:id" render={(props) => {
+        return <UpdateMovie {...props} setMovieList={setMovieList} setIsFetching={setIsFetching} />}} 
+        />
+      
+      <Route path="/add-movie" render={(props) => {
+        return <AddMovie {...props} setMovieList={setMovieList} setIsFetching={setIsFetching} />}} 
+        />
+
     </>
   );
 };
