@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
+import { useHistory } from "react-router-dom";
 
 const initialItem = {
   id: Date.now(),
@@ -10,6 +11,7 @@ const initialItem = {
 };
 
 const AddMovie = () => {
+  const history = useHistory();
   const [movie, setMovie] = useState(initialItem);
 
   const handleChange = (e) => {
@@ -17,24 +19,27 @@ const AddMovie = () => {
 
     setMovie({
       ...movie,
-      [e.target.name]: e.target.name === "stars" ? [e.target.value.split(',')]: e.target.value
+      [e.target.name]:
+        e.target.name === "stars"
+          ? [e.target.value.split(",")]
+          : e.target.value,
     });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    // axios.post('')
     console.log("post", movie);
+    axios
+      .post(`http://localhost:5000/api/movies/`, movie)
+      .then((res) => console.log(res))
+      .catch((err) => console.log(err))
+      .finally(() => {
+        history.push("/");
+      });
   };
 
   return (
     <div>
-      {/* <h1>{movie.title}</h1>
-      <p>{movie.director}</p>
-      <p>{movie.metascore}</p>
-      <h2>Actors</h2>
-      <p>{movie.stars}</p> */}
-
       <form onSubmit={handleSubmit}>
         <h1>Add New Movie!</h1>
         <input
