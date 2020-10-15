@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from "react";
-import { useParams, useHistory } from "react-router-dom";
-import axios from "axios";
+import React, { useState } from 'react';
+import axios from 'axios';
 
 const initialMovie = {
   title: "",
@@ -8,13 +7,8 @@ const initialMovie = {
   metascore: "",
 };
 
-const UpdateMovie = (props) => {
+const AddMovie = props => {
   const [movie, setMovie] = useState(initialMovie);
-
-  const changeHandler = (ev) => {
-    ev.persist();
-    let value = ev.target.value;
-    }
 
     setMovie({
       ...item,
@@ -22,32 +16,20 @@ const UpdateMovie = (props) => {
     });
   };
 
-  const { id } = useParams();
-  const{ push } = useHistory();
-
-  useEffect(() => {
-    axios
-      .get(`api/movies/${id}`)
-      .then((res) => {
-        setItem(res.data);
-      })
-      .catch((err) => console.log(err));
-  }, []);
-
   const handleSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`api/movies/${id}`, movie)
+      .post(`api/movies/${id}`, movie)
       .then((res) => {
         props.setMovies(res.data);
-        push(`/movies/${id}`);
+        push(`/movies/`);
       })
       .catch((err) => console.log(err));
   };
 
   return (
     <div>
-      <h2>Update Movie</h2>
+      <h2>Add New Movie</h2>
       <form onSubmit={handleSubmit}>
         <input
           type="text"
@@ -76,11 +58,12 @@ const UpdateMovie = (props) => {
         />
         <div />
 
-        <button className="md-button form-button">Update Movie</button>
+        <button className="add-movie-button">Add Movie</button>
 
       </form>
     </div>
   );
 };
 
-export default UpdateMovie;
+
+export default AddMovie;
