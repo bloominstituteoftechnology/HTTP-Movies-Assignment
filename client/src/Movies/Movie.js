@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { useParams, Link } from "react-router-dom";
+import { useParams, Link, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
 function Movie({ addToSavedList, setIsFetching }) {
@@ -14,8 +14,21 @@ function Movie({ addToSavedList, setIsFetching }) {
       .catch((err) => console.log(err.response));
   };
 
+  const history = useHistory()
+
   const deleteMovie = () => {
     setIsFetching(true)
+    axios
+      .delete(`http://localhost:5000/api/movies/${params.id}`)
+      .then((res) =>{
+        history.push('/movies')
+        setIsFetching(false)
+      })
+      .catch((err) => {
+        setIsFetching(false)
+        console.log(err)
+      })
+
 
   }
 
@@ -53,7 +66,7 @@ function Movie({ addToSavedList, setIsFetching }) {
         <Link to={`/update-movie/${params.id}`}>
         Edit
         </Link>
-        <button>Delete</button>
+        <button onClick={deleteMovie}>Delete</button>
       </div>
     </div>
   );
