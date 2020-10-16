@@ -75,3 +75,21 @@ body {
   color: red;
   text-align: center;
 }
+
+form {
+  text-align: center;
+  margin: 0 auto;
+}
+
+input {
+  margin: 5px;
+}
+
+button {
+  margin: 1%;
+}
+
+.update-delete-buttons {
+  text-align: center;
+  margin: 0 auto;
+}
