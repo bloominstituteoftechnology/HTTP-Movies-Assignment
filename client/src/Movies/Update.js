@@ -43,6 +43,13 @@ const Update=(props)=>{
             console.log(res.data))
         .catch(err=>console.log(err))
         push(`/movies/${id}`);
+        setMovie({
+            title:'',
+            director:'',
+            metascore:'',
+            stars:[],
+            id:''
+        })
     }
 
     

@@ -24,7 +24,7 @@ const deleteMovie=(e)=>{
   axios.delete(`http://localhost:5000/api/movies/${params.id}`)
   .then(res=>console.log(res))
   .catch(err=>console.log(err))
-  push('/ ')
+  push('/')
 }
 
   useEffect(() => {
