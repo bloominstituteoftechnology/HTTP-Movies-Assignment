@@ -5,9 +5,11 @@ const MovieCard = props => {
   return (
     <div className="movie-card">
       <h2>{title}</h2>
-      <div className="movie-director">
-        Director: <em>{director}</em>
-      </div>
+
+      <h3 className="movie-director">
+        Director: {director}
+      </h3>
+
       <div className="movie-metascore">
         Metascore: <strong>{metascore}</strong>
       </div>
