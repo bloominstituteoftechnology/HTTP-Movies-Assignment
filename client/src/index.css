@@ -53,10 +53,12 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
+.save-button-wrapper {
   position: absolute;
   top: 25px;
   right: 25px;
+}
+.save-button {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
