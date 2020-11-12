@@ -28,8 +28,10 @@ const NewMovieForm = ({ updateMovieList }) => {
 
   const handleSubmit = e => {
     e.preventDefault();
+    const processed = {...newMovie,}
+    processed.stars = newMovie.stars.split(', ')
     axios
-    .post(`http://localhost:5000/api/movies`, newMovie)
+    .post(`http://localhost:5000/api/movies`, processed)
     .then((res)=>{
       updateMovieList()
       push(`/movies/${res.data[res.data.length - 1].id}`);
