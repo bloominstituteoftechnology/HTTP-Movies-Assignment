@@ -1,8 +1,9 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import MovieCard from "./MovieCard";
+import AddMovie from './AddMovie'
 
-function MovieList({ movies }) {
+function MovieList({ movies, getMovieList}) {
   return (
     <div className="movie-list">
       {
@@ -12,6 +13,7 @@ function MovieList({ movies }) {
           </Link>
         ))
       }
+      <AddMovie getMovieList ={getMovieList} id={movies.length -1}/>
     </div>
   );
 }
