@@ -63,7 +63,7 @@ const UpdateMovieForm = (props) =>{
             console.error("error unable to update movie ${id} ",err)
 
         })
-        push(`/movies/${id}`)
+        push(`/movies`)
     }
 
     return(
