@@ -60,6 +60,8 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  width: 8.5%;
+  text-align: center;
 }
 .save-button:hover {
   background-color: green;
@@ -75,3 +77,35 @@ body {
   color: red;
   text-align: center;
 }
+
+.update {
+  position: absolute;
+  top: 75px;
+  right: 25px;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  background-color: lightseagreen;
+  
+}
+
+.delete {
+  position: absolute;
+  top: 125px;
+  right: 25px;
+  padding: 5px 10px;
+  border: 1px solid grey;
+  background-color: lightseagreen;
+}
+
+
+.update:hover {
+  background-color: green;
+  color: white;
+}
+
+
+.delete:hover {
+  background-color: green;
+  color: white;
+}
+
