@@ -1,5 +1,5 @@
 import React, {useState, useEffect} from 'react'
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios'
 
 
@@ -8,22 +8,24 @@ const initialState = {
     title: "",
     director: "",
     metascore: "",
-    stars: ""
+    stars: []
 }
 
 function UpdateMovie(props) {
 
 
-const [movie, setMovie] = useState(initialState)
+const [movieList, setMovieList] = useState(initialState)
 const params = useParams()
+const {push} = useHistory()
 
 useEffect(() => {
     axios
     .get(`http://localhost:5000/api/movies/${params.id}`)
       .then((res) => {
         // morphing of data
+        res.data.stars = res.data.stars.join(',')
         console.log(res.data);
-        setMovie(res.data);
+        setMovieList(res.data);
       })
       .catch(err => console.error(err));
   }, [params.id]);
@@ -31,64 +33,65 @@ useEffect(() => {
 
 const handleChange = e => {
     e.preventDefault()
-    setMovie({
-        ...movie,   
+    setMovieList({
+        ...movieList,   
         [e.target.name]: e.target.value
     })
 }
 
 const handleSubmit = e => {
     e.preventDefault();
+    movieList.stars = movieList.stars.split(',')
     // make a PUT request to edit the item
     const url = `http://localhost:5000/api/movies/${params.id}`;
-    axios.put(url, movie)
+    axios.put(url, movieList)
       .then((res) => {
-        console.log(res)
-        props.addToSavedList(movie)
+        console.log(res);
+        setMovieList(initialState);
+        props.getMovieList();
+        push('/');
+        props.setRefresh(true);
+        
       })    
       .catch(err => console.error(err));
   };
 
-//   const handleStars = e => {
-//       setMovie({
-//           ...movie,
-//           stars: e.target.value.split(',')
-//       })
-//   }
+
 
 
     return (
         <div>
+          <h1>Update Movies</h1>
             <form onSubmit={handleSubmit}>
             <label>title</label>
             <input
             type="text"
             name="title"
             onChange={handleChange}
-            value={movie.title}
+            value={movieList.title}
             />
             <label>director</label>
             <input
             type="text"
             name="director"
             onChange={handleChange}
-            value={movie.director}
+            value={movieList.director}
             />
             <label>metascore</label>
             <input
             type="number"
             name="metascore"
             onChange={handleChange}
-            value={movie.metascore}
+            value={movieList.metascore}
             />
             <label>stars</label>
             <input
             type="text"
             name="stars"
             onChange={handleChange}
-            value={movie.stars}
+            value={movieList.stars}
             />
-        <button>Redirect to new Movie</button>
+        <button>Update Movie</button>
         </form>
         </div>
     )
