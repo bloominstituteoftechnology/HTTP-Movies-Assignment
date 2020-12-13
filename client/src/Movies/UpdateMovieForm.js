@@ -45,13 +45,10 @@ const UpdateMovieForm = (props) => {
         res.data.stars = res.data.stars.join(",");
         setMovieValues(res.data);
       })
-      .catch(
-        (err) => {
-          console.log(err.message, "error useEffect");
-        },
-        [id]
-      );
-  });
+      .catch((err) => {
+        console.log(err.message, "error useEffect");
+      });
+  }, [id]);
 
   return (
     <div>

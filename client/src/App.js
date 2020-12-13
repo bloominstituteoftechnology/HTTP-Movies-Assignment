@@ -16,7 +16,9 @@ const App = () => {
       .get("http://localhost:5000/api/movies")
       .then((res) => setMovieList(res.data))
       .catch((err) => console.log(err.response))
-      .finally(() => setRefresh(false));
+      .finally(() => {
+        setRefresh(false);
+      });
   };
 
   const addToSavedList = (movie) => {
@@ -39,7 +41,7 @@ const App = () => {
         <Movie addToSavedList={addToSavedList} getMovieList={getMovieList} />
       </Route>
 
-      <Route>
+      <Route path="/update-movies/:id">
         <UpdateMovieForm
           setMovieList={setMovieList}
           getMovieList={getMovieList}
