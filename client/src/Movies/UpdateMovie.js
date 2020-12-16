@@ -1,8 +1,9 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
+import { useHistory, useParams } from "react-router-dom";
 
 const initialFormValues = {
-  // id: null,
+  id: null,
   title: "",
   director: "",
   metascore: "",
@@ -10,20 +11,41 @@ const initialFormValues = {
 };
 
 const UpdateMovie = (props) => {
+  const { push } = useHistory();
+  const params = useParams();
+
   const [formValues, setFormValues] = useState(initialFormValues);
 
+  useEffect(() => {
+    axios
+      .get(`http://localhost:5000/api/movies/${params.id}`)
+      .then((res) => {
+        console.log(res);
+        setFormValues(res.data);
+      })
+      .catch((err) => {
+        console.log(err);
+      });
+  }, []);
+
   const handleFormChange = (e) => {
-    console.log(e.target.value);
+    e.persist();
+    setFormValues({
+      ...formValues,
+      [e.target.name]: e.target.value,
+    });
   };
 
   const handleSubmit = (e) => {
     e.preventDefault();
+    console.log("formValues: ", formValues);
     axios
-      .put(`http://localhost:5000/api/movies/:id`) //make id template literals
+      .put(`http://localhost:5000/api/movies/${params.id}`, formValues) //make id template literals
       .then((res) => {
-        console.log("res: ", res);
         //now set state to updated list and push history to /movies/id
         setFormValues(initialFormValues);
+        props.getMovieList();
+        props.history.push(`/`); //change id template literal
       })
       .catch((err) => {
         console.log("err: ", err);
