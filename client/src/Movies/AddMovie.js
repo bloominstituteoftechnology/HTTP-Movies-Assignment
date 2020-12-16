@@ -37,6 +37,7 @@ const AddMovie = (props, { setMovieList }) => {
       .then((res) => {
         console.log("res: ", res);
         props.setMovieList(res.data);
+        setMovieValues(initialFormValues);
         props.history.push("/");
       })
       .catch((err) => {
