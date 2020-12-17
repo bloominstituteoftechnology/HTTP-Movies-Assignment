@@ -36,7 +36,7 @@ function Movie({ addToSavedList }, props) {
     .delete(`/api/movies/${params.id}`)
     .then(res => {
         setMovie(res.data)
-        push('/movies')
+        push('/')
     })
     .catch(err => console.log(err))
 }
