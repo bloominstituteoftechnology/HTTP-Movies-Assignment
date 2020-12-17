@@ -23,8 +23,16 @@ function Movie({ addToSavedList }) {
     fetchMovie(id);
   }, [id]);
 
-  const clickHandler = () => {
+  const updateHandler = () => {
     push(`/update-movie/${id}`)
+  }
+
+  const deleteHandler = () => {
+    axios
+      .delete(`http://localhost:5000/api/movies/${id}`)
+      .then(res => {
+        push('/')
+      })
   }
 
   if (!movie) {
@@ -35,13 +43,17 @@ function Movie({ addToSavedList }) {
     <div className="save-wrapper">
       <MovieCard movie={movie} />
       
-      <button onClick={clickHandler}>
-        Update
-      </button>
-
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
+
+      <button onClick={updateHandler}>
+        Update
+      </button>
+
+      <button onClick={deleteHandler}>
+        Delete
+      </button>
     </div>
   );
 }

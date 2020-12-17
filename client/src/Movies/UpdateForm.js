@@ -7,7 +7,6 @@ const initialState = {
     title: '',
     director: '',
     metascore: '',
-    stars: ''
 };
 
 const UpdateForm = ({movieList, setMovieList}) => {
@@ -49,8 +48,6 @@ const UpdateForm = ({movieList, setMovieList}) => {
                 <input value={formData.director} onChange={handleChange} name='director' type='text'/><br/>
                 <br/>
                 <input value={formData.metascore} onChange={handleChange} name='metascore' type='text' /><br/>
-                <br/>
-                <input value={formData.stars} onChange={handleChange} name='stars' type='text' /><br/>
                 <br/>
                 <button>Submit</button>
             </form>
