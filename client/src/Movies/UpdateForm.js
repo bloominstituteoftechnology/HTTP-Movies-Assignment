@@ -34,30 +34,38 @@ const UpdateForm = ({ movieList, setMovieList }) => {
     };
 
     return (
-        <div>
+        <div className='updateMovie'>
             {!formValues ? (
                 'Loading...'
             ) : (
                 <form onSubmit={handleSubmit}>
-                    <input
-                        type='text'
-                        name='title'
-                        value={formValues.title}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type='text'
-                        name='director'
-                        value={formValues.director}
-                        onChange={handleChange}
-                    />
-                    <input
-                        type='text'
-                        name='metascore'
-                        value={formValues.metascore}
-                        onChange={handleChange}
-                    />
-                    <button>Submit</button>
+                    <div className='inputItem'>
+                        <input
+                            type='text'
+                            name='title'
+                            value={formValues.title}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className='inputItem'>
+                        <input
+                            type='text'
+                            name='director'
+                            value={formValues.director}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className='inputItem'>
+                        <input
+                            type='text'
+                            name='metascore'
+                            value={formValues.metascore}
+                            onChange={handleChange}
+                        />
+                    </div>
+                    <div className='inputItem'>
+                        <button className="submit-button">Submit</button>
+                    </div>
                 </form>
             )}
         </div>

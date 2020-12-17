@@ -80,6 +80,44 @@ body {
   border-radius: 0;
 }
 
+.updateMovie {
+  display: flex;
+  flex-direction: column;
+  border: black 3px solid;
+  margin: 1rem;
+  padding: 1rem;
+  width: auto;
+
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.updateMovie .inputItem {
+  margin: 0;
+  padding: .5rem;
+}
+
+.updateMovie .inputItem input {
+  width: 30rem;
+  height: 1.1rem;
+  border: 1px solid grey;
+  border-radius: 0;
+}
+
+.updateMovie button {
+  margin: 0 auto;
+}
+
 .saved-list h3 {
   margin-right: 10px;
 }
