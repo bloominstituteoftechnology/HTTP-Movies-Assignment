@@ -33,35 +33,43 @@ const AddMovie = () => {
     return (
         <div>
             <form className='addMovie' onSubmit={handleSubmit}>
-                <input 
-                    type='text'
-                    name='title'
-                    value={formValues.title}
-                    placeholder='Title'
-                    onChange={handleChanges}
-                />
-                <input 
-                    type='text'
-                    name='director'
-                    value={formValues.director}
-                    placeholder='Director'
-                    onChange={handleChanges}
-                />
-                <input 
-                    type='text'
-                    name='metascore'
-                    value={formValues.metascore}
-                    placeholder='Metascore'
-                    onChange={handleChanges}
-                />
-                <input 
-                    type='text'
-                    name='stars'
-                    value={formValues.stars}
-                    placeholder='Stars (seperated by comma)'
-                    onChange={handleChanges}
-                />
-                <button>Submit</button>
+                <div className='inputItem'>
+                    <input 
+                        type='text'
+                        name='title'
+                        value={formValues.title}
+                        placeholder='Title'
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputItem'>
+                    <input 
+                        type='text'
+                        name='director'
+                        value={formValues.director}
+                        placeholder='Director'
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputItem'>
+                    <input 
+                        type='text'
+                        name='metascore'
+                        value={formValues.metascore}
+                        placeholder='Metascore'
+                        onChange={handleChanges}
+                    />
+                </div>
+                <div className='inputItem'>
+                    <input 
+                        type='text'
+                        name='stars'
+                        value={formValues.stars}
+                        placeholder='Stars (seperated by ,)'
+                        onChange={handleChanges}
+                    />
+                </div>
+                <button className="submit-button">Submit</button>
             </form>
         </div>
     );

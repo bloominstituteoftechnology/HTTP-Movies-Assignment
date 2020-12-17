@@ -10,10 +10,15 @@ body {
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
+  padding: 1rem 1rem 3rem 1rem;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  width: 90%
+}
+
+.movie-card h2 {
+  width: 75%;
 }
 
 .movie-director {
@@ -36,17 +41,57 @@ body {
   justify-content: space-between;
 }
 
+.savedMovieBox {
+  width: 125px;
+  margin-right: 0; 
+} 
+
+.addMovie {
+  display: flex;
+  flex-direction: column;
+  border: black 3px solid;
+  margin: 1rem;
+  padding: 1rem;
+  width: auto;
+
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+  width: 75%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.addMovie .inputItem {
+  margin: 0;
+  padding: .5rem;
+}
+
+.addMovie .inputItem input {
+  width: 30rem;
+  height: 1.1rem;
+  border: 1px solid grey;
+  border-radius: 0;
+}
+
 .saved-list h3 {
   margin-right: 10px;
 }
 
 .saved-movie {
   margin: 0 10px;
+  font-size: .8rem;
+  text-decoration: none;
+  text-align: center !important;
 }
 .saved-active {
-  color: blue;
-  border: 1px solid grey;
-  padding: 5px;
+  font-weight: bold;
 }
 .save-wrapper {
   position: relative;
@@ -56,7 +101,7 @@ body {
 .save-button {
   position: absolute;
   top: 25px;
-  right: 25px;
+  right: 35px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
@@ -69,7 +114,7 @@ body {
 .update-button {
   position: absolute;
   top: 65px;
-  right: 25px;
+  right: 35px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: rgb(212, 55, 218);
@@ -82,7 +127,7 @@ body {
 .delete-button {
   position: absolute;
   top: 105px;
-  right: 25px;
+  right: 35px;
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: rgb(233, 71, 42);
@@ -95,6 +140,25 @@ body {
 .home-button {
   padding: 5px 10px;
   background-color: lightskyblue;
+}
+
+.submit-button {
+  margin-top: .5rem;
+  font-size: 1rem;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: rgb(73, 151, 92);
+}
+
+.submit-button:focus {
+  outline: none;
+  box-shadow: none;
+}
+
+.submit-button:hover {
+
+  background-color: rgb(19, 197, 63);
+  color: white;
 }
 
 .movie-warning {
