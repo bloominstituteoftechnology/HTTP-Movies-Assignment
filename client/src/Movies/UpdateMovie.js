@@ -1,7 +1,6 @@
 import React, { useState, useEffect } from 'react'
 import { useParams, useHistory } from 'react-router-dom'
 import { axiosCall } from '../utils/axiosCall'
-import Popup from './Popup'
 
 const initialMovie = {
     director: '',
@@ -12,8 +11,6 @@ const initialMovie = {
 }
 
 const UpdateMovie = props => {
-
-const [showPopUp, setShowPopUp] = useState(false)
 const [movie, setMovie] = useState(initialMovie)
 const { push } = useHistory()
 const { id } = useParams()
@@ -48,25 +45,6 @@ const handleSubmit = e => {
         .catch(err => console.log('ERROR: ', err))
 }
 
-const deleteItem = () => {
-setShowPopUp(true)
-deleteCall()
-}
-
-const closePopup = () => {
-    setShowPopUp(false)
-}
-
-const deleteCall = () => {
-    axiosCall()
-    .delete('')
-    .then(res => {
-        //props.setItem()
-    })
-    .catch(err => console.log(err))
-}
-
-
     return (
 
         <div className="movieUpdate">
@@ -93,7 +71,7 @@ const deleteCall = () => {
         <br />
         <label>Metascore:</label>
         <input
-        type='number'
+        type='text'
         name='score'
         id='score'
         value={movie.metascore}
@@ -110,11 +88,7 @@ const deleteCall = () => {
         />
         <br/>
         <button className="update-button" type="submit">Save Changes</button>
-        <button className="delete-button">Delete</button>
 
-{ showPopUp &&
-        <Popup onYes={deleteItem} onNo={closePopup}/>
-}
         </form>
         </div>
     )

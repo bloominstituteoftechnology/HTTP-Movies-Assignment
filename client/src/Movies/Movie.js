@@ -2,10 +2,11 @@ import React, { useEffect, useState } from "react";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import { axiosCall } from "../utils/axiosCall";
+import Popup from './Popup'
 
-
-function Movie({ addToSavedList }) {
+function Movie({ addToSavedList }, props) {
   const [movie, setMovie] = useState(null);
+  const [showPopUp, setShowPopUp] = useState(false)
   const params = useParams();
   const { push } = useHistory()
 
@@ -30,6 +31,26 @@ function Movie({ addToSavedList }) {
     push(`/update-movie/${params.id}`)
   }
 
+  const deleteCall = () => {
+    axiosCall()
+    .delete(`/api/movies/${params.id}`)
+    .then(res => {
+        setMovie(res.data)
+        push('/movies')
+    })
+    .catch(err => console.log(err))
+}
+
+const deleteItem = () => {
+setShowPopUp(true)
+deleteCall()
+}
+
+const closePopup = () => {
+    setShowPopUp(false)
+}
+
+
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
@@ -43,6 +64,12 @@ function Movie({ addToSavedList }) {
       </div>
       <div className="edit-button" onClick={updateMovie}>
       Edit Stats</div>
+      <button className="delete-button" onClick={deleteCall}> Delete</button>
+
+{ showPopUp &&
+        <Popup onYes={deleteItem} onNo={closePopup}/>
+}
+
     </div>
   );
 }

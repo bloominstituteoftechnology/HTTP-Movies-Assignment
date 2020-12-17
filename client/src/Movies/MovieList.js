@@ -4,7 +4,7 @@ import { axiosCall } from "../utils/axiosCall";
 import MovieCard from "./MovieCard";
 
 
-const MovieList = () => {
+const MovieList = props => {
 const [renderMovies, setRenderMovies] = useState([])
 
 useEffect(() => {
@@ -24,7 +24,7 @@ useEffect(() => {
       {
         renderMovies.map(movie => (
           <Link key={movie.id} to={`/movies/${movie.id}`}>
-            <MovieCard movie={movie} />
+            <MovieCard props={props} movie={movie} />
           </Link>
         ))
       }

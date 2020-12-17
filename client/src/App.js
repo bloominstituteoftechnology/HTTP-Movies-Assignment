@@ -31,8 +31,10 @@ const App = () => {
     <>
       <SavedList list={savedList} />
 
-      <Route exact path="/">
-        <MovieList movies={movieList} />
+      <Route exact path="/"
+      render={props => {
+        return <MovieList {...props} movies={movieList} />
+      }}>
       </Route>
 
       <Route path="/movies/:id">
