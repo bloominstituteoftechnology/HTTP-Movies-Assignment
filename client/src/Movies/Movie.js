@@ -21,7 +21,7 @@ function Movie(props) {
   };
 
   const updateMovie = () => {
-    history.push(`http://localhost:3000/update-movie/${params.id}`);
+    history.push(`/update-movie/${params.id}`);
   }
   
   useEffect(() => {
