@@ -1,28 +1,18 @@
-import React, {useState, useEffect} from 'react';
-import {useHistory, useParams} from 'react-router-dom';
 import axios from 'axios';
+import React, {useState} from 'react';
+import {useHistory} from 'react-router-dom';
 
 const initialState = {
+    id: '',
     title: '',
     director: '',
     metascore: '',
+    stars: ''
 };
 
-const UpdateForm = ({movieList, setMovieList}) => {
-    const [formData, setFormData] = useState(initialState);
+const AddForm = () => {
+    const [formData, setFormData] = useState(initialState)
     const {push} = useHistory();
-    const {id} = useParams();
-
-    useEffect(() => {
-        axios   
-            .get(`http://localhost:5000/api/movies/${id}`)
-            .then(res => {
-                setFormData(res.data)
-            })
-            .catch(err => {
-                console.log(err)
-            })
-    }, [])
 
     const handleChange = (e) => {
         setFormData({...formData, [e.target.name]: e.target.value})
@@ -30,16 +20,18 @@ const UpdateForm = ({movieList, setMovieList}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        const newMovie = {
+            ...formData, stars: formData.stars.split(',')
+        };
         axios
-            .put(`http://localhost:5000/api/movies/${id}`, formData)
-            .then(res => {
-                setMovieList([...movieList, res.data]);
-                push('/');
+            .post('http://localhost:5000/api/movies', newMovie)
+            .then( res => {
+                setFormData(initialState);
+                push('/')
             })
-            .catch(err => console.log(err))
     }
 
-    return (
+    return(
         <div style={{textAlign:'center'}}>
             <form onSubmit={handleSubmit}>
                 <input value={formData.title} onChange={handleChange} name='title' type='text'/><br/>
@@ -48,10 +40,12 @@ const UpdateForm = ({movieList, setMovieList}) => {
                 <br/>
                 <input value={formData.metascore} onChange={handleChange} name='metascore' type='text' /><br/>
                 <br/>
-                <button>Submit Changes</button>
+                <input value={formData.stars} onChange={handleChange} name='stars' type='text'/>
+                <br/>
+                <button>Add Movie</button>
             </form>
         </div>
     )
 }
 
-export default UpdateForm;
+export default AddForm;
