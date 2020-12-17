@@ -5,7 +5,28 @@ body {
   background-color: #f2f2f2;
 }
 
+input {
+  outline: none;
+  border-style: none;
+  border-bottom: solid 1px lightseagreen;
+  box-shadow: none;
+  text-shadow: none;
+}
+
 .movie-card {
+  background-color: #fff;
+  border: 0;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+  padding: 1rem;
+  cursor: pointer;
+  position: relative;
+  margin: 1rem auto;
+}
+
+.form {
+  display: flex;
+  flex-direction: column;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
@@ -21,7 +42,9 @@ body {
   font-size: 0.8rem;
 }
 
-.saved-list {
+.saved-list, .movieUpdate {
+  display: flex;
+  flex-wrap: wrap;
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
@@ -43,26 +66,60 @@ body {
 .saved-movie {
   margin: 0 10px;
 }
+
 .saved-active {
   color: blue;
   border: 1px solid grey;
   padding: 5px;
 }
+
 .save-wrapper {
   position: relative;
   width: 75%;
   margin: 1rem auto;
 }
+
 .save-button {
   position: absolute;
-  top: 25px;
+  top: 10%;
   right: 25px;
   border: 1px solid grey;
+  border-radius: 20px;
   padding: 5px 10px;
-  background-color: lightseagreen;
+  background-color: (231, 231, 231);
 }
-.save-button:hover {
-  background-color: green;
+
+.edit-button {
+  position: absolute;
+  top: 25%;
+  right: 25px;
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 5px 10px;
+  background-color: (231, 231, 231);
+}
+
+.update-button, .delete-button {
+  border: 1px solid grey;
+  border-radius: 20px;
+  padding: 5px 10px;
+  margin-top: 5px;
+  background-color: rgb(231, 231, 231);
+  text-align: center;
+}
+
+.save-button:hover, .delete-button:hover {
+  background-color: darkcyan;
+  color: white;
+}
+
+.edit-button:hover {
+  background-color: darkcyan;
+  color: white;
+}
+
+.update-button:hover {
+  background-color: darkcyan;
   color: white;
 }
 
