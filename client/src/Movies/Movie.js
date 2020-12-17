@@ -1,39 +1,32 @@
 import React, { useEffect, useState } from "react";
-import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 import { axiosCall } from "../utils/axiosCall";
 
 
-function Movie({ addToSavedList }, props) {
+function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
   const { push } = useHistory()
-  const fetchMovie = (id) => {
-    axios
-      .get(`http://localhost:5000/api/movies/${id}`)
-      .then((res) => setMovie(res.data))
-      .catch((err) => console.log(err.response));
-  };
-
-  console.log(props.movieList)
-
-  const saveMovie = () => {
-    addToSavedList(movie);
-  };
 
   useEffect(() => {
     fetchMovie(params.id);
   }, [params.id]);
 
-  const updateMovie = e => {
-    e.preventDefault()
+  const fetchMovie = id => {
     axiosCall()
-      .put(`/api/movies/{$params.id}`, movie)
+      .get(`/api/movies/${id}`)
       .then(res => {
-     props.setMovieList(res.data)
-   })
-   .catch(err => (console.log('ERROR: ', err)))
+        setMovie(res.data)
+      })
+      .catch(err => console.log(err.response)
+      )};
+  
+  const saveMovie = () => {
+    addToSavedList(movie);
+  };
+
+  const updateMovie = e => {
     push(`/update-movie/${params.id}`)
   }
 

@@ -1,16 +1,45 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
+import { useParams, useHistory } from 'react-router-dom'
 import { axiosCall } from '../utils/axiosCall'
 import Popup from './Popup'
+
+const initialMovie = {
+    director: '',
+    id: '',
+    metascore: '',
+    stars: [],
+    title: ''
+}
 
 const UpdateMovie = props => {
 
 const [showPopUp, setShowPopUp] = useState(false)
+const [movie, setMovie] = useState(initialMovie)
+const { push } = useHistory()
+const { id } = useParams()
 
-const { onUpdateClick } = props
+useEffect(() => {
+    axiosCall()
+        .get(`/api/movies/${id}`)
+        .then(res => {
+            setMovie(res.data)
+        })
+        .catch(err => console.log('ERROR:', err))
+}, [id])
 
 const changeHandler = e => {
     e.persist()
-    let value = e.target.value
+}
+
+const handleSubmit = e => {
+    e.preventDefault()
+    axiosCall()
+        .put(`/api/movies/${id}`, movie)
+        .then(res => {
+            props.setMovieList(res.data)
+            push(`/movies/${id}`)
+        })
+        .catch(err => console.log('ERROR: ', err))
 }
 
 const deleteItem = () => {
@@ -36,7 +65,7 @@ const deleteCall = () => {
 
         <div className="movieUpdate">
         <h3>See an error? Fix it!</h3>
-        <form className="form" onSubmit={onUpdateClick}>
+        <form className="form" onSubmit={handleSubmit}>
         
         <label>Title:</label>
         <input

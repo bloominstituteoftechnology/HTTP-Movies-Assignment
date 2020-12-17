@@ -6,9 +6,11 @@ import UpdateMovie from './Movies/UpdateMovie'
 import Movie from "./Movies/Movie";
 import { axiosCall } from './utils/axiosCall'
 
+const initialState = []
+
 const App = () => {
-  const [savedList, setSavedList] = useState([]);
-  const [movieList, setMovieList] = useState([]);
+  const [savedList, setSavedList] = useState(initialState);
+  const [movieList, setMovieList] = useState(initialState);
 
   const getMovieList = () => {
     axiosCall()
@@ -20,10 +22,6 @@ const App = () => {
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
-
-  const updateMovie = () => {
-
-  }
 
   useEffect(() => {
     getMovieList();
@@ -43,7 +41,7 @@ const App = () => {
 
       <Route path='/update-movie/:id' 
       render={props => {
-      return <UpdateMovie {...props} movieList={movieList} setMovieList={setMovieList}/>
+      return <UpdateMovie {...props} setMovieList={setMovieList}/>
         }}>
       
       </Route>
