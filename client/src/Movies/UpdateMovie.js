@@ -22,6 +22,7 @@ useEffect(() => {
     axiosCall()
         .get(`/api/movies/${id}`)
         .then(res => {
+            console.log(res.data)
             setMovie(res.data)
         })
         .catch(err => console.log('ERROR:', err))
@@ -29,6 +30,11 @@ useEffect(() => {
 
 const changeHandler = e => {
     e.persist()
+
+    setMovie({
+        ...movie,
+        [e.target.name]: e.target.value
+    })
 }
 
 const handleSubmit = e => {
@@ -66,12 +72,13 @@ const deleteCall = () => {
         <div className="movieUpdate">
         <h3>See an error? Fix it!</h3>
         <form className="form" onSubmit={handleSubmit}>
-        
+        <h3>Edit Entries</h3>
         <label>Title:</label>
         <input
         type='text'
         name='title'
         id='title'
+        value={movie.title}
         onChange={changeHandler}
         />
         <br />
@@ -80,6 +87,7 @@ const deleteCall = () => {
         type='text'
         name='director'
         id='director'
+        value={movie.director}
         onChange={changeHandler}
         />
         <br />
@@ -88,14 +96,16 @@ const deleteCall = () => {
         type='number'
         name='score'
         id='score'
+        value={movie.metascore}
         onChange={changeHandler}
         />
         <br />
-        <label>Actor:</label>
+        <label>Starring:</label>
         <input
         type='text'
         name='actor'
         id='actor'
+        value={movie.stars}
         onChange={changeHandler}
         />
         <br/>
