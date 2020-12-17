@@ -26,7 +26,9 @@ const AddMovie = () => {
 
         axios
             .post('http://localhost:5000/api/movies', newMovie)
-            .then(response => console.log(response))
+            .then(response => {
+                setFormValues(initialState);
+            })
             .catch(error => console.log(error))
     };
 
