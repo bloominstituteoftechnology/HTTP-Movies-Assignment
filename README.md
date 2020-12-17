@@ -11,7 +11,7 @@
 - Still inside the `client` folder run `npm start` to run the client application.
 
 ### Task 2: MVP
-
+//soon there is going to be a lot of work and a lot of understanding.
 #### Updating A Movie:
 
 - Add a route at the path `/update-movie/:id`
