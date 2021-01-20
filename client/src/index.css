@@ -77,6 +77,20 @@ body {
 	color: white;
 }
 
+.delete-button {
+	position: absolute;
+	bottom: 25px;
+	right: 25px;
+	border: 1px solid grey;
+	padding: 5px 10px;
+	background-color: lightseagreen;
+}
+
+.delete-button:hover {
+	background-color: darkred;
+	color: white;
+}
+
 .home-button {
 	padding: 5px 10px;
 	background-color: lightskyblue;

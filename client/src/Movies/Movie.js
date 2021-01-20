@@ -11,12 +11,25 @@ function Movie({ addToSavedList }) {
 	const fetchMovie = id => {
 		axios
 			.get(`http://localhost:5000/api/movies/${id}`)
-			.then(res => setMovie(res.data))
+			.then(res => {
+				setMovie(res.data);
+			})
 			.catch(err => console.log(err.response));
 	};
 
 	const saveMovie = () => {
 		addToSavedList(movie);
+	};
+
+	//movie deletion
+	const deleteMovie = e => {
+		e.preventDefault();
+		axios
+			.delete(`http://localhost:5000/api/movies/${params.id}`)
+			.then(res => {
+				push('/');
+			})
+			.catch(err => console.log(err));
 	};
 
 	useEffect(() => {
@@ -36,6 +49,9 @@ function Movie({ addToSavedList }) {
 			</div>
 			<div className="update-button" onClick={() => push(`/update-movie/${params.id}`)}>
 				Update
+			</div>
+			<div className="delete-button" onClick={deleteMovie}>
+				Delete
 			</div>
 		</div>
 	);
