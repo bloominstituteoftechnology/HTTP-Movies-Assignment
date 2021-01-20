@@ -1,9 +1,10 @@
-import React, { useState, useEffect } from 'react';
-import { useHistory, useParams } from 'react-router-dom';
+import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
-function UpdateMovie({ movieList, setMovieList }) {
+function UpdateMovie() {
 	const [item, setItem] = useState({
+		id: '',
 		title: '',
 		director: '',
 		metascore: '',
@@ -11,16 +12,6 @@ function UpdateMovie({ movieList, setMovieList }) {
 	});
 
 	const { push } = useHistory();
-	const { id } = useParams();
-
-	useEffect(() => {
-		axios
-			.get(`http://localhost:5000/api/movies/${id}`)
-			.then(res => {
-				setItem(res.data);
-			})
-			.catch(err => console.log(err));
-	}, [id]);
 
 	const handleChange = e => {
 		setItem({
@@ -29,25 +20,25 @@ function UpdateMovie({ movieList, setMovieList }) {
 		});
 	};
 
-	const updateMovie = e => {
+	const addMovie = e => {
 		e.preventDefault();
-
-		const itemChanger = {
+		const formatter = {
 			...item,
+			id: Date.now(),
 			stars: item.stars.split(', ')
 		};
-
 		axios
-			.put(`http://localhost:5000/api/movies/${id}`, itemChanger)
+			.post('http://localhost:5000/api/movies', formatter)
 			.then(res => {
-				push(`/movies/${id}`);
+				console.log(res);
+				push('/');
 			})
 			.catch(err => console.log(err));
 	};
 
 	return (
 		<div className="update__form__container">
-			<form onSubmit={updateMovie}>
+			<form onSubmit={addMovie}>
 				<label htmlFor="title">Title</label>
 				<input id="title" name="title" value={item.title} onChange={handleChange} />
 				<label htmlFor="director">Director</label>
@@ -57,7 +48,7 @@ function UpdateMovie({ movieList, setMovieList }) {
 				<label htmlFor="stars">Stars</label>
 				<input id="stars" name="stars" value={item.stars} onChange={handleChange} />
 				<button className="update-button" type="submit">
-					Update
+					Add
 				</button>
 			</form>
 		</div>

@@ -91,7 +91,8 @@ body {
 	color: white;
 }
 
-.home-button {
+.home-button a {
+	margin-left: 1rem;
 	padding: 5px 10px;
 	background-color: lightskyblue;
 }
