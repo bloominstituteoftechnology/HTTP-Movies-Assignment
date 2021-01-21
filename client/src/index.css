@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  background-color: #a8a7a7;
 }
 
 .movie-card {
@@ -10,7 +11,6 @@ body {
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
-  padding: 1rem;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
@@ -22,15 +22,13 @@ body {
 }
 
 .saved-list {
-  background-color: #fff;
+  background-color: #363636;
   border: 0;
-  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
-    0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
-  width: 75%;
+  width: 95%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -38,13 +36,44 @@ body {
 
 .saved-list h3 {
   margin-right: 10px;
+  color: white;
+  font-weight: bolder;
+  font-size: 2rem;
+}
+
+.home-button {
+  display: flex;
+  width: 250px;
+  justify-content: space-between;
+  padding-right: 2rem;
+}
+
+.add, .home {
+  background: white;
+  padding: 0.5rem 1rem;
+  border-radius: 10% 10% 10% 10% / 15% 15% 15% 15%;
+}
+
+.movie-card {
+  width: 94.5%;
+  background: #474747;
+  color: rgb(212, 212, 212);
+  text-align: center;
+  padding: 1rem;
 }
 
 .saved-movie {
   margin: 0 10px;
 }
+
+.button-wrapper {
+  width: 600px;
+  display: flex; 
+  justify-content: space-between;
+}
+
 .saved-active {
-  color: blue;
+  color: #e8175D;
   border: 1px solid grey;
   padding: 5px;
 }
@@ -53,25 +82,50 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
-}
-.save-button:hover {
-  background-color: green;
-  color: white;
+
+.button-wrapper {
+  display: flex;
+  width: 98.5%;
+  justify-content: space-between;
 }
 
-.home-button {
-  padding: 5px 10px;
-  background-color: lightskyblue;
+.save-button {
+  height: 40px; 
+  width: 120px;
+  text-align: center;
+  border: 1px solid grey;
+  padding-top: 15px;
+  margin-left: 23px;
+  background-color: #E8175d;
+}
+
+
+.save-button:hover {
+  background-color: #363636;
+  color: white;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.wrapper {
+  width: 99%; 
+  height: 50%;
+  padding-top: 4%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.wrapper input {
+  margin-bottom: 10px;
+  cursor: pointer;
+}
+
+.form-wrapper {
+  display: flex;
+  flex-direction: column; 
 }
