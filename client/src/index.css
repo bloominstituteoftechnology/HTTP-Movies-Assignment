@@ -20,17 +20,38 @@ body {
   padding: 4px 0;
   font-size: 0.8rem;
 }
-
+.updateInput{
+  text-align: center;
+  margin-top:4vh;
+}
+.updateInput input{
+  width:25vw;
+  height: 4vh;
+  border-radius: 20px;
+  text-align: center;
+  font-size:1rem;
+  font-weight:550;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
+.updateInput button{
+  border-radius:15px;
+  height:4vh;
+  font-weight: 550;
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+    0 2px 4px rgba(0, 0, 0, 0.24);
+}
 .saved-list {
   background-color: #fff;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
+  border-radius:50px;
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
-  width: 75%;
+  width: 65%;
   display: flex;
   align-items: center;
   justify-content: space-between;
@@ -49,29 +70,50 @@ body {
   padding: 5px;
 }
 .save-wrapper {
-  position: relative;
-  width: 75%;
-  margin: 1rem auto;
+text-align: center;
 }
-.save-button {
-  position: absolute;
-  top: 25px;
-  right: 25px;
-  border: 1px solid grey;
-  padding: 5px 10px;
-  background-color: lightseagreen;
+.button{
+  display:flex;
+  justify-content: space-between;
+  width:17vw;
+  margin:auto
 }
-.save-button:hover {
-  background-color: green;
-  color: white;
+.buttonIn{
+  box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
+  0 2px 4px rgba(0, 0, 0, 0.24);
+  border: solid 1px black;
+  padding:5px 10px;
+  border-radius: 25px;
 }
+
 
 .home-button {
   padding: 5px 10px;
-  background-color: lightskyblue;
+}
+.home-button a{
+  text-decoration: none;
+  color:black;
+  margin: 1vh 1.5vw;
+  font-weight: 550;
 }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+.movie-card{
+  width:20vw;
+  text-align: center;
+  border-radius: 50px;
+  margin:3vh auto;
+}
+
+.movie-list{
+  display:flex;
+  flex-wrap: wrap;
+  justify-content: space-around;
+}
+.movie-list a{
+  text-decoration:none;
+  color: black;
 }
