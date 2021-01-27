@@ -3,26 +3,18 @@ import { useParams, useHistory } from "react-router-dom";
 import axios from "axios";
 
 const initialMovie = {
-  title: "",
-  director: "",
-  metaScore: "",
-};
-
-const MovieForm = (props) => {
+    title: "",
+    director: "",
+    metaScore: "",
+    stars:[],
+    starText:''
+  };
+  
+const AddForm = props => {
+ 
   const [movie, setMovie] = useState(initialMovie);
   const { id } = useParams();
   const { push } = useHistory();
-
-  useEffect(() => {
-    axios
-      .put(`http://localhost:5000/api/movies/${id}`)
-      .then((res) => {
-        setMovie(res.data);
-      })
-      .catch((err) => {
-        console.log(err);
-      });
-  }, []);
 
   const changeHandler = (ev) => {
     ev.persist();
@@ -36,10 +28,11 @@ const MovieForm = (props) => {
     });
   };
 
-  const handleSubmit = (e) => {
+
+  const handleSubmit = e => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .post(`http://localhost:5000/api/movies/`, movie)
       .then((res) => {
         props.setMovieList(res.data);
         push(`/api/movie-list/${id}`);
@@ -48,6 +41,14 @@ const MovieForm = (props) => {
         console.log(err);
       });
   };
+
+  const handleStar = e => {
+    e.preventDefault();
+    setMovie({
+        ...movie,
+        stars: [...movie.stars, movie.starText],
+    })
+  }
 
   return (
     <div>
@@ -80,10 +81,22 @@ const MovieForm = (props) => {
         />
         <div className="baseline" />
 
-        <button>Update</button>
+       <label>
+           Stars: {movie.stars.join(', ')}
+           <input
+          type="text"
+          name="starText"
+          onChange={changeHandler}
+          placeholder="star"
+          value={movie.starText}
+        />
+        <button  onClick={handleStar}>More Stars</button>
+       </label>
+
+        <button>Submit</button>
       </form>
     </div>
   );
 };
 
-export default MovieForm;
+export default AddForm;
