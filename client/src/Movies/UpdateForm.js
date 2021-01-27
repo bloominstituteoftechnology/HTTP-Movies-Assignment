@@ -11,18 +11,22 @@ const initialValues ={
 
 
 const UpdateForm = (props) =>{
+
+    console.log('props', props)
     const { push } = useHistory();
     const [movie, setMovie] = useState(initialValues);
     const { id } = useParams();
+    console.log('id',id.title)
 
     useEffect(()=>{
         axios
-          .get(`http://localhost:5000/api/${id}`)
+          .get(`http://localhost:5000/api/movies/${id}`)
           .then(res=>{
+              console.log(res.data)
             setMovie(res.data);
           })
           .catch(err=>{
-            console.log(err);
+            console.log('hello', err);
           });
       }, []);
 
@@ -41,9 +45,9 @@ const UpdateForm = (props) =>{
 
       const handleSubmit = (evt) =>{
           evt.preventDefault();
-          axios.put(`http://localhost:5000/api/${id}`, movie)
+          axios.put(`http://localhost:5000/api/movies/${id}`, movie)
           .then((res) =>{
-              props.setMovie(res.data);
+              setMovie(res.data);
               push(`/`)
           })
           .catch((err) =>{
