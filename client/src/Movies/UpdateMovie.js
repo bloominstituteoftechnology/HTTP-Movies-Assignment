@@ -5,9 +5,8 @@ import axios from 'axios';
 
 function UpdateMovie(props){
     const { id } = useParams();
-    const movieId= parseInt(id)
-    console.log(props.movies)
-    console.log(id)
+    const movieId = parseInt(id)
+    const history = useHistory();
 
     const [movie, setMovie] = useState({})
 
@@ -33,9 +32,10 @@ function UpdateMovie(props){
 
     function submitEdit(e){
         e.preventDefault();
-        axios.put(`http://localhost:5000/api/movies${id}`)
+        axios.put(`http://localhost:5000/api/movies/${id}`, movie)
         .then(res=>{
             console.log(res)
+            history.push(`/movies/${movieId}`)
         })
         .catch(drama=>{
             console.log(drama)
