@@ -1,7 +1,15 @@
 import React from 'react';
+import { useHistory } from 'react-router-dom';
 
 const MovieCard = props => {
-  const { title, director, metascore, stars } = props.movie;
+  const { title, director, metascore, stars, id } = props.movie;
+  const history = useHistory();
+
+  function editMovie(e){
+    e.preventDefault();
+    history.push(`/update-movie/${id}`)
+  }
+
   return (
     <div className="movie-card">
       <h2>{title}</h2>
@@ -18,6 +26,7 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+      <button onClick={editMovie}>Edit Movie</button>
     </div>
   );
 };
