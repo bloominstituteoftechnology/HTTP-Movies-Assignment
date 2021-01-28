@@ -11,22 +11,19 @@ const initialValues ={
 
 
 const UpdateForm = (props) =>{
-
-    console.log('props', props)
     const { push } = useHistory();
     const [movie, setMovie] = useState(initialValues);
     const { id } = useParams();
-    console.log('id',id.title)
 
     useEffect(()=>{
         axios
           .get(`http://localhost:5000/api/movies/${id}`)
           .then(res=>{
-              console.log(res.data)
+            //   console.log(res.data)
             setMovie(res.data);
           })
           .catch(err=>{
-            console.log('hello', err);
+            console.log( err);
           });
       }, []);
 
@@ -47,8 +44,11 @@ const UpdateForm = (props) =>{
           evt.preventDefault();
           axios.put(`http://localhost:5000/api/movies/${id}`, movie)
           .then((res) =>{
-              setMovie(res.data);
-              push(`/`)
+            //   console.log(res.data)
+            //   console.log('wdwd',movie)
+            // setMovie(res.data);
+            // props.setMovieList(movie)
+            push(`/`)
           })
           .catch((err) =>{
               console.log(err)
@@ -58,7 +58,7 @@ const UpdateForm = (props) =>{
     return(
         <div>
             <h2>Edit Movie</h2>
-            <form onClick={handleSubmit}>
+            <form >
 
                 <input 
                     type='text'
@@ -85,14 +85,14 @@ const UpdateForm = (props) =>{
                 />
 
                 <input 
-                    type='text'
+                    type='string'
                     name='stars'
                     placeholder='Stars'
                     value={movie.stars}
                     onChange={changeHandler}
                 />
 
-                <button >Update</button>
+                <button onClick={handleSubmit}>Update</button>
 
             </form>
         </div>
