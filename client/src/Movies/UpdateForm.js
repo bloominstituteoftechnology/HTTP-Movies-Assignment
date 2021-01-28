@@ -40,6 +40,14 @@ const UpdateForm = (props) =>{
         });
       }
 
+      const handleStars = (e) => {
+        let starsArr = e.target.value.split(',');
+        setMovie({
+          ...movie,
+          stars: starsArr,
+        });
+      };
+
       const handleSubmit = (evt) =>{
           evt.preventDefault();
           axios.put(`http://localhost:5000/api/movies/${id}`, movie)
@@ -89,7 +97,7 @@ const UpdateForm = (props) =>{
                     name='stars'
                     placeholder='Stars'
                     value={movie.stars}
-                    onChange={changeHandler}
+                    onChange={handleStars}
                 />
 
                 <button onClick={handleSubmit}>Update</button>
