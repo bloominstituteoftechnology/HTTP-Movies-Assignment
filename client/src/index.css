@@ -52,6 +52,7 @@ body {
   position: relative;
   width: 75%;
   margin: 1rem auto;
+  
 }
 .save-button {
   position: absolute;
@@ -60,8 +61,37 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  border: 1px solid red;
 }
 .save-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.edit-button {
+  position: absolute;
+  top: 60px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 14px;
+  background-color: lightseagreen;
+  border: 1px solid red;
+}
+.edit-button:hover {
+  background-color: green;
+  color: white;
+}
+
+.delete-button {
+  position: absolute;
+  top: 95px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 5px;
+  background-color: lightseagreen;
+  border: 1px solid red;
+}
+.delete-button:hover {
   background-color: green;
   color: white;
 }
@@ -74,4 +104,28 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+form {
+  margin: 0 auto;
+  width: 300px;
+}
+
+input {
+  border: 0;
+  outline: none;
+}
+
+.baseline,
+input {
+  background-color: #fff;
+  font-size: 21px;
+  height: 50px;
+  width: 300px;
+  padding: 0 8px;
+  color: #1c5d76;
+}
+.baseline {
+  height: 3px;
+  background-color: #dcdcdc;
 }
