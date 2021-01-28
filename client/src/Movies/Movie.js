@@ -5,7 +5,7 @@ import MovieCard from "./MovieCard";
 
 // import UpdateMovie from "./updateMovie";
 
-function Movie({ addToSavedList, movieList, setMovieList }) {
+function Movie({ addToSavedList, movieList, setMovieList, getMovieList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
   const { push } = useHistory();
@@ -30,11 +30,12 @@ function Movie({ addToSavedList, movieList, setMovieList }) {
     axios
       .delete(`http://localhost:5000/api/movies/${id}`)
       .then((res) => {
-        setMovieList(
-          movieList.filter((item) => {
-            return item.id !== movie.id;
-          })
-        );
+        getMovieList();
+        // setMovieList(
+        //   movieList.filter((item) => {
+        //     return item.id !== movie.id;
+        //   })
+        // );
         push("/");
       })
       .catch((err) => {

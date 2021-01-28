@@ -29,7 +29,9 @@ const AddMovie = (props) => {
     axios
       .post("http://localhost:5000/api/movies/", value)
       .then((res) => {
-        props.setMovieList([...MovieList, res.data]);
+        // props.setMovieList([...MovieList, res.data]);
+        // props.setMovieList(res.data);
+        props.getMovieList();
         setValue(initialValues);
         console.log(res.data, "handleSubmit");
         push(`/`);
@@ -76,7 +78,7 @@ const AddMovie = (props) => {
           />
         </label>
         <br></br>
-        <label>
+        {/* <label>
           Stars
           <input
             type="text"
@@ -85,7 +87,7 @@ const AddMovie = (props) => {
             placeholder="enter stars"
             value={value.stars}
           />
-        </label>
+        </label> */}
         <br></br>
         <button className="button">Add</button>
       </form>
