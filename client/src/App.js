@@ -1,4 +1,4 @@
-import React, { useState, useEffect, Fragment } from "react";
+import React, { useState, useEffect } from "react";
 import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
@@ -30,7 +30,7 @@ const App = () => {
   }, [refresh]);
 
   return (
-    <Fragment>
+    <>
       <SavedList list={savedList} />
 
       <Route exact path="/">
@@ -48,7 +48,7 @@ const App = () => {
           setRefresh={setRefresh}
         />
       </Route>
-    </Fragment>
+    </>
   );
 };
 
