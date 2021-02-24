@@ -1,6 +1,7 @@
 import React from 'react';
 import { NavLink, Link } from 'react-router-dom';
 
+
 function SavedList({ list }) {
   return (
     <div className="saved-list">
@@ -19,6 +20,7 @@ function SavedList({ list }) {
       <div className="home-button">
         <Link to="/">Home</Link>
       </div>
+      <div className='add-button'> <Link to='/add-movie'> Add Movie Here</Link></div>
     </div>
   );
 }
