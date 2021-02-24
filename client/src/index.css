@@ -5,6 +5,23 @@ body {
   background-color: #f2f2f2;
 }
 
+.form {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.inner-form {
+  display: flex;
+  flex-flow: column wrap;
+  align-items: center;
+}
+
+.inner-form input {
+  margin: 20px;
+  padding: 5px;
+  max-width: 200px;
+}
+
 .movie-card {
   background-color: #fff;
   border: 0;
@@ -53,6 +70,15 @@ body {
   width: 75%;
   margin: 1rem auto;
 }
+.edit-button {
+  position: absolute;
+  top: 100px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: orangered;
+}
+
 .save-button {
   position: absolute;
   top: 25px;

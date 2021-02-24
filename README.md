@@ -2,20 +2,21 @@
 
 ## Instructions
 
-### Task 1: Project Setup 
+### Task 1: Project Setup
 
-- **Fork** this repository, then clone your fork.
-- Run `npm install` to download dependencies.
-- Run the server using `npm start`.
-- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
-- Still inside the `client` folder run `npm start` to run the client application.
+✔- **Fork** this repository, then clone your fork.
+✔- Run `npm install` to download dependencies.
+✔- Run the server using `npm start`.
+✔- In a separate terminal cd into the `client` folder and run `npm install` to download dependencies.
+✔- Still inside the `client` folder run `npm start` to run the client application.
 
 ### Task 2: MVP
 
 #### Updating A Movie:
 
-- Add a route at the path `/update-movie/:id`
-- Create a component with a form to update the chosen movie
+✔- Add a route at the path `/update-movie/:id`
+✔- Create a component with a form to update the chosen movie
+
 - Add a button in the movie component that routes you to your new route with the movies's id as the URL param
 - The form should make a PUT request to the server when submitted
 - When the call comes back successfully, reset your form state and route the user to `/` where they will see the updated movie in the list
@@ -65,4 +66,5 @@ Movie object format:
 - Style the app!
 
 ## Submission Format
-* [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's  Repo). **Please don't merge your own pull request**
+
+- [ ] Submit a Pull-Request to merge `<firstName-lastName>` Branch into `main` (student's Repo). **Please don't merge your own pull request**
