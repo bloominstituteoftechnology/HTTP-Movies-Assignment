@@ -48,7 +48,7 @@ let movies = [
     title: "Tombstone",
     director: "George P. Cosmatos",
     metascore: 89,
-    stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"]
+    stars: ["Kurt Russell", "Bill Paxton", "Sam Elliot"] 
   }
 ];
 
