@@ -10,17 +10,19 @@ const initialState = {
 }
 
 const MovieUpdateForm = (props) => {
-    const { push } = useHistory()
+    
     const [movie, setMovie] = useState(initialState)
     const { id } = useParams()
-    const { setMovieList, movieList } = props
+   
 
     useEffect(() => {
         axios
             .get(`http://localhost:5000/api/movies/${id}`)
-            .then((res) => setMovie(res.data))
-            .catch((err) => console.error(err))
-    }, [id])
+            .then((res) => { console.log(res.data)
+            setMovie(res.data);
+               })
+            .catch()
+    }, [])
 
     const handleChange = (e) => {
         e.persist()
@@ -35,28 +37,35 @@ const MovieUpdateForm = (props) => {
         }
         const handleSubmit = (e) => {
             e.preventDefault()
-            axios
-                .put(`http://localhost:5000/api/movies/${id}`, movie)
-                .then((res) => {
-                  console.log('update props:', props);
-                  console.log(res.data);
-                  props.setMovie(res.data);
-                  props.history.push(`/movies/${id}`);
 
-                    // const movies = [...movieList]
-                    // setMovieList(
-                    //     movies.map((movie) => {
-                    //         return movie.id !== parseInt(id, 10)
-                    //             ? movie
-                    //             : res.data
-                    //     })
-                    // )
-                    // push(`/`)
-                })
-                .catch((err) => {
-                    console.log(err)
-                })
+           axios
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .then((res) => {
+        console.log('update props:', props);
+        console.log(res.data);
+        props.setMovie(res.data);
+        props.history.push(`/movies/${id}`);
+      })
+      .catch(err => {
+        console.log(err);
+      })
+
+                //     const movies = [...movieList]
+                //     setMovieList(
+                //         movies.map((movie) => {
+                //             return movie.id !== parseInt(id, 10)
+                //                 ? movie
+                //                 : res.data
+                //         })
+                //     )
+                //     push(`/`)
+                // })
+                // .catch((err) => {
+                //     console.log(err)
+                // })
         }
+
+
         return (
             <div>
                 <h3>Update Movie</h3>
@@ -94,7 +103,7 @@ const MovieUpdateForm = (props) => {
                         value={movie.stars}
                     />
 
-                    <button>Update</button>
+                    <button className="md-button form-button">Update</button>
                 </form>
             </div>
         )

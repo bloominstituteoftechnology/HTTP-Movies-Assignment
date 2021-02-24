@@ -51,5 +51,4 @@ function Movie({ addToSavedList, setMovieList, movieList }) {
         </div>
     )
 }
-
-export default Movie
+export default Movie;
