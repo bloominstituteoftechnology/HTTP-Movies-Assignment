@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
+import { Route, useHistory } from "react-router-dom";
 
+import AddForm from "./Movies/AddForm";
 import Movie from "./Movies/Movie";
 import MovieList from "./Movies/MovieList";
-import { Route } from "react-router-dom";
 import SavedList from "./Movies/SavedList";
 import UpdateForm from "./Movies/UpdateForm";
 import axios from "axios";
@@ -10,6 +11,7 @@ import axios from "axios";
 const App = () => {
   const [savedList, setSavedList] = useState([]);
   const [movieList, setMovieList] = useState([]);
+  const { push } = useHistory();
 
   const getMovieList = () => {
     axios
@@ -22,6 +24,10 @@ const App = () => {
     setSavedList([...savedList, movie]);
   };
 
+  const handleClick = () => {
+    push("/add-movie");
+  };
+
   useEffect(() => {
     getMovieList();
   }, []);
@@ -29,7 +35,21 @@ const App = () => {
   return (
     <>
       <SavedList list={savedList} />
-
+      <button
+        style={{
+          background: "blue",
+          color: "white",
+          borderRadius: "5px",
+          cursor: "pointer",
+          display: "block",
+          margin: "0 auto",
+          textAlign: "center",
+          maxWidth: "100px",
+        }}
+        onClick={handleClick}
+      >
+        Add New Movie
+      </button>
       <Route exact path="/">
         <MovieList movies={movieList} />
       </Route>
@@ -51,6 +71,9 @@ const App = () => {
           addToSavedList={addToSavedList}
           setMovieList={setMovieList}
         />
+      </Route>
+      <Route path="/add-movie">
+        <AddForm movieList={movieList} setMovieList={setMovieList} />
       </Route>
     </>
   );
