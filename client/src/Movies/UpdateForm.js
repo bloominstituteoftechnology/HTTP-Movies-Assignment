@@ -28,7 +28,17 @@ const UpdateForm = (props) => {
     e.preventDefault();
     axios
       .put(`http://localhost:5000/api/movies/${id}`, values)
-      .then((res) => console.log(res))
+      .then((res) => {
+        const updatedMovieList = props.movieList.map((movie) => {
+          if (movie.id === res.data.id) {
+            return res.data;
+          }
+          return movie;
+        });
+        props.setMovieList(updatedMovieList);
+        setValues(initialForm);
+        props.history.push("/");
+      })
       .catch((err) => console.log(err));
   };
 
