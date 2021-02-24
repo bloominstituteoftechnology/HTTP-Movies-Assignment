@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
+import { useHistory, useParams } from "react-router-dom";
 
 import axios from "axios";
-import { useParams } from "react-router-dom";
 
 const AddForm = (props) => {
   const initialForm = {
@@ -14,6 +14,7 @@ const AddForm = (props) => {
 
   const { id } = useParams();
   const [values, setValues] = useState(initialForm);
+  const { push } = useHistory();
 
   const onSubmit = (e) => {
     e.preventDefault();
@@ -26,43 +27,69 @@ const AddForm = (props) => {
           }
           return movie;
         });
-        props.setMovieList(updatedMovieList);
+        props.setMovieList(res.data);
         setValues(initialForm);
-        props.history.push("/");
+        push("/");
       })
       .catch((err) => console.log(err));
   };
 
   const handleChange = (e) => {
     const { value, name } = e.target;
-    setValues({
-      ...values,
-      [name]: value,
-    });
+    if (name === "stars") {
+      setValues({
+        ...values,
+        stars: value.split(","),
+      });
+    } else {
+      setValues({
+        ...values,
+        [name]: value,
+      });
+    }
   };
 
   return (
     <form className="form" onSubmit={onSubmit}>
       <div className="inner-form">
-        <input
-          text="type"
-          name="title"
-          value={values.title}
-          onChange={handleChange}
-        />
-        <input
-          text="type"
-          name="director"
-          value={values.director}
-          onChange={handleChange}
-        />
-        <input
-          text="type"
-          name="metascore"
-          value={values.metascore}
-          onChange={handleChange}
-        />
-        <input text="type" name="stars" value={values.stars} />
+        <label>
+          title
+          <input
+            text="type"
+            name="title"
+            value={values.title}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          director
+          <input
+            text="type"
+            name="director"
+            value={values.director}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          metascore
+          <input
+            text="type"
+            name="metascore"
+            value={values.metascore}
+            onChange={handleChange}
+          />
+        </label>
+        <label>
+          stars
+          <input
+            text="type"
+            name="stars"
+            value={values.stars}
+            onChange={handleChange}
+          />
+        </label>
+        <p>* separate stars by a comma</p>
+        <button style={{ margin: "0 auto" }}>Add Movie</button>
       </div>
     </form>
   );
