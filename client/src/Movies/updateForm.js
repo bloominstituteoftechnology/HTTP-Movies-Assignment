@@ -3,25 +3,41 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
 export default function UpdateForm(props) {
-
+   const {id} = useParams()
     const [movie ,setMovie] = useState({
       metascore:null,
       director:"",
       stars:[],
-      id:null,
       title:""
     })
-
+    useEffect(()=>{
+      axios.get(`http:/localhost:5000/api/movies/${id}`)
+        .then(res =>{
+          setMovie(res.data)
+        })
+        .catch((err) =>{
+          console.log(err);
+        } )
+    }, [])
     const { id } = useParams();
 
     const onSubmit = (e) => {
     e.preventDefault();
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movie)
-      .then((res) => props.setMovieList(res.data))
+      .then((res) => props.setMovieList(props.movieList.map(movie =>{
+        if (movie.id === id){
+        return res.data
+        
+        
+        }
+        else {
+          return movie
+        }
+      }
 
       .catch((err) => console.log(err.response));
-    j
+    
   };
     const handleChange = (e) => {
     e.persist();

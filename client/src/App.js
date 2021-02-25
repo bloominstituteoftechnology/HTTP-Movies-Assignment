@@ -48,7 +48,7 @@ const App = () => {
 			/>
 			<Route
 				exact
-				path="/add-movie "
+				path="/add-movie/:id "
 				render={(props) => {
 					return <AddMovie {...props} setMovieList={setMovieList} />;
 				}}

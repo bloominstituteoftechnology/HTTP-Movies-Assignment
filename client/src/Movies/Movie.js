@@ -41,7 +41,7 @@ function Movie({addToSavedList }) {
       })
   }
     const addClick = () =>{
-      window.location.href ="/add-movie"
+      window.location.href =`/add-movie/${movie.id}`
     }
   return (
     <div className="save-wrapper">
