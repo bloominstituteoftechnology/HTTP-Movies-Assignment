@@ -30,7 +30,7 @@ function Movie({addToSavedList }) {
   }
   
   const deleteClick = () => {
-    axios.delete(`http://localhost:5000/api/movies/${params.id},movieList`)
+    axios.delete(`http://localhost:5000/api/movies/${params.id}`)
       .then(res=>{
         setMovie(res.data);
         console.log(res.data)
@@ -40,6 +40,9 @@ function Movie({addToSavedList }) {
         console.log(err);
       })
   }
+    const addClick = () =>{
+      window.location.href ="/add-movie"
+    }
   return (
     <div className="save-wrapper">
       <MovieCard movie={movie} />
@@ -52,6 +55,7 @@ function Movie({addToSavedList }) {
       <div>
           <button onClick={updateClick} >UpdateMovie</button>
           <button onClick={deleteClick}>Delete Movie</button>
+          <button onClick={addClick}>Add Movie</button>
       </div>
     </div>
   );

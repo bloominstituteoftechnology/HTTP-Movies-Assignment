@@ -11,7 +11,6 @@ export default function UpdateForm(props) {
       id:null,
       title:""
     })
-    const { push } = useHistory();
 
     const { id } = useParams();
 
