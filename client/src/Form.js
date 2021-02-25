@@ -52,9 +52,26 @@ const updateMovie = (props) => {
         <div>
             <h1> Update Movie </h1>
             <form>
-                <input />
-                <input />
-                <input />
+                <input 
+                type="text"
+                name="title"
+                onChange={changeHandler}
+                placeholder="Movie Title"
+                value={movie.title}
+                />
+                <input 
+                type="text"
+                name="director"
+                onChange={changeHandler}
+                placeholder="Movie Director"
+                value={movie.director}
+                />
+                <input
+                type="number"
+                name="metascore"
+                onChange={changeHandler}
+                placeholder="Movie Rating"
+                value={movie.metascore}/>
                 <button>Update This Movie</button>
             </form>
         </div>
