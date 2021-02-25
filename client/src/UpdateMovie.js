@@ -28,6 +28,7 @@ export default function UpdateMovie(props) {
 			.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then((res) => {
 				props.setMovieList(res.data);
+                console.log(res.data)
 				
 				setMovie({ ...movie });
 			    window.location.href = "/movies"

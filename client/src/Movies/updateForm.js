@@ -19,11 +19,11 @@ export default function UpdateForm() {
     const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .put(`http://localhost:5000/api/movies/${params.id}`, movie)
       .then((res) => setMovie(res.data))
 
       .catch((err) => console.log(err.response));
-    push("/movie/");
+    push("/movie");
   };
     const handleChange = (e) => {
     e.persist();
