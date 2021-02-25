@@ -25,6 +25,9 @@ function Movie({addToSavedList }) {
   if (!movie) {
     return <div>Loading movie information...</div>;
   }
+  const updateClick = () =>{
+    window.location.href =`/update-movie/${movie.id}`
+  }
   
   const deleteClick = () => {
     axios.delete(`http://localhost:5000/api/movies/${params.id},movieList`)
@@ -47,7 +50,7 @@ function Movie({addToSavedList }) {
         Save
       </div>
       <div>
-          <button >UpdateMovie</button>
+          <button onClick={updateClick} >UpdateMovie</button>
           <button onClick={deleteClick}>Delete Movie</button>
       </div>
     </div>

@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 
-export default function UpdateForm() {
+export default function UpdateForm(props) {
 
     const [movie ,setMovie] = useState({
       metascore:null,
@@ -14,16 +14,15 @@ export default function UpdateForm() {
     const { push } = useHistory();
 
     const { id } = useParams();
-    console.log(useParams());
 
     const onSubmit = (e) => {
     e.preventDefault();
     axios
-      .put(`http://localhost:5000/api/movies/${params.id}`, movie)
-      .then((res) => setMovie(res.data))
+      .put(`http://localhost:5000/api/movies/${id}`, movie)
+      .then((res) => props.setMovieList(res.data))
 
       .catch((err) => console.log(err.response));
-    push("/movie");
+    j
   };
     const handleChange = (e) => {
     e.persist();
@@ -33,13 +32,11 @@ export default function UpdateForm() {
       [e.target.name]: value,
     });
   };
-    const updateClick = () => {
-    push(`/update-movie/${id}`);
-  };
+ 
 
   return (
     <div>
-      <form onSubmit={onSubmit}>
+      <form>
         <label>
           <input
             type="text"
@@ -78,7 +75,7 @@ export default function UpdateForm() {
           />
         </label>
       </form>
-      <button onClick={updateClick}>Update Movie</button>
+      <button onClick={onSubmit}>Update Movie</button>
     </div>
   );
 }
