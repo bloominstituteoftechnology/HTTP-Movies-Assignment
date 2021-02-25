@@ -12,10 +12,10 @@ const initialMovie = {
 
 export default function UpdateMovie(props) {
 	const [movie, setMovie] = useState(initialMovie);
-
-	const { id } = useParams();
+    console.log(props)
+	const { id,params } = useParams();
 	const { push } = useHistory();
-
+ 
 	const handleChange = (e) => {
 		e.persist();
 		setMovie({
@@ -26,8 +26,9 @@ export default function UpdateMovie(props) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.put(`http:localhost:5000/api/movies/${id}`, movie)
+			.put(`http:localhost:5000/api/movies/${params.id}`, movie)
 			.then((res) => {
+                console.log(res)
 				props.setMovieList(res.data);
 				console.log(res.data);
 				setMovie({ ...movie });
