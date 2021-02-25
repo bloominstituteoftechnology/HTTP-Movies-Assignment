@@ -26,8 +26,8 @@ function Movie({addToSavedList }) {
     return <div>Loading movie information...</div>;
   }
   const handleClick = () =>{
-    push(`update-movie/${params.id}`)
-    console.log("here")
+window.location.href =`/update-movie/${params.id}`    
+console.log("here")
 
   }
   return (

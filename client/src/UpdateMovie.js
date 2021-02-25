@@ -12,12 +12,11 @@ const initialMovie = {
 
 export default function UpdateMovie(props) {
 	const [movie, setMovie] = useState(initialMovie);
-    console.log(props)
-	const { id,params } = useParams();
+
+	const { id } = useParams();
 	const { push } = useHistory();
- 
+    console.log(props)
 	const handleChange = (e) => {
-		e.persist();
 		setMovie({
 			...movie,
 			[e.target.name]: e.target.value,
@@ -26,23 +25,23 @@ export default function UpdateMovie(props) {
 	const onSubmit = (e) => {
 		e.preventDefault();
 		axios
-			.put(`http:localhost:5000/api/movies/${params.id}`, movie)
+			.put(`http://localhost:5000/api/movies/${id}`, movie)
 			.then((res) => {
-                console.log(res)
 				props.setMovieList(res.data);
-				console.log(res.data);
+				
 				setMovie({ ...movie });
-				push("/movies");
+			    window.location.href = "/movies"
 			})
 			.catch((err) => {
 				console.log(err);
 			});
 	};
 
+
 	return (
 		<div>
 			<h2>Update Movie</h2>
-			<form onSubmit={onSubmit}>
+			<form>
 				<input
 					type="text"
 					name="title"
@@ -73,7 +72,7 @@ export default function UpdateMovie(props) {
 				<div className="baseline" />
 
 				<input
-					type="string"
+					type="array"
 					name="stars"
 					onChange={handleChange}
 					placeholder="stars"
@@ -81,6 +80,7 @@ export default function UpdateMovie(props) {
 				/>
 				<div className="baseline" />
 			</form>
+			<button onClick={onSubmit}>Submit</button>
 		</div>
 	);
 }
