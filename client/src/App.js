@@ -43,6 +43,14 @@ const App = () => {
           return <UpdateMovie {...props} movieList={movieList} setMovieList={setMovieList} getMovieList={getMovieList} />
         }
       } />
+
+      <Route path="/add-movie" 
+      render={
+        props => {
+        return <AddMovie {...props} movieList={movieList} setMovieList={setMovieList} getMovieList={getMovieList} />
+        }
+      } >
+      </Route>
         
     </>
   );
