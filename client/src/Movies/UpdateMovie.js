@@ -3,14 +3,13 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const initialValue = {
-    id: '',
     title: '',
     director: '',
     metascore: '',
     stars: '',
 };
 
-const UpdateMovie = props => {
+const UpdateMovie = (props) => {
     const [movieItem, setMovieItem] = useState(initialValue);
     const { id } = useParams();
     const { push } = useHistory();
@@ -35,15 +34,19 @@ const UpdateMovie = props => {
         e.preventDefault();
         axios
         .put(`http://localhost:5000/api/movies/${id}`, movieItem)
-        .then(() => {
-            axios
-            .get('http://localhost:5000/api/movies')
-            .then(res => {
-                props.setMovieList(res.data);
-                push('/');
+        .then((res) => {
+            console.log(res.data);
+            props.setMovieList(
+                props.movieList.map(movie => {
+                    if (String(movie.id) === String(id)) {
+                        return(res.data);
+                    } else {
+                        return(movie);
+                    }
+                })
+            );
+            push('/');
             })
-        })
-        
         .catch(err => {
             console.log(err)
         });
@@ -74,7 +77,7 @@ const UpdateMovie = props => {
                 placeholder='Insert metascore'
                 value={movieItem.metascore}
                 />
-                <button className='addButton'>Add Movie</button>
+                <button className='updateButton'>Update</button>    
             </form>
         </div>
     )

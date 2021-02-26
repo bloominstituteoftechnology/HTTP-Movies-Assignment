@@ -1,16 +1,14 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState} from 'react';
 import axios from 'axios';
-import { useParams, useHistory } from 'react-router-dom';
+import { useHistory } from 'react-router-dom';
 
 const initialAddValue = {
-    id: '',
     title: '',
     director: '',
     metascore: '',
-    stars: '',
 };
 
-const AddMovie = () => {
+const AddMovie = (props) => {
     const [addMovie, setAddMovie] = useState(initialAddValue);
     const { push } = useHistory();
 
@@ -24,9 +22,10 @@ const AddMovie = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios
-        .post('http://localhost:5000/api/movies', addMovie)
-        .then((res) => {
-            console.log(res);
+        .post(`http://localhost:5000/api/movies`, addMovie)
+        .then(res => {
+            props.setMovieList(res.data);
+            push('/');
         })
         .catch((err) => {
             console.log(err);
@@ -58,14 +57,7 @@ const AddMovie = () => {
                 placeholder='Add Insert metascore'
                 value={addMovie.metascore}
                 />
-                <input 
-                type='text'
-                name='stars'
-                onChange={handleChange}
-                placeholder='Add Movie Stars'
-                value={addMovie.stars}
-                />
-                <button className='updateButton'>Update</button>
+                <button className='addButton'>Add Movie</button>
             </form>
         </div>
     )
