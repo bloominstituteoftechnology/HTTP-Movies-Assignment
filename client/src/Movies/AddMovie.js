@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import {useParams} from "react-router-dom";
+import { useParams } from "react-router-dom";
 import Axios from "axios";
 import axios from "axios";
 const initialState = {
@@ -11,7 +11,7 @@ const initialState = {
 };
 export default function AddMovie(props) {
 	const [addMovie, setAddMovie] = useState(initialState);
-    const {id} = useParams()
+	const { id } = useParams();
 	const handleChange = (e) => {
 		e.persist();
 		setAddMovie({
@@ -27,6 +27,7 @@ export default function AddMovie(props) {
 				console.log(res);
 				props.setMovieList(res.data);
 				setAddMovie({ ...addMovie });
+                console.log("here")
 			})
 			.catch((err) => {
 				console.log(err);

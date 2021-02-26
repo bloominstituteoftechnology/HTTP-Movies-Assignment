@@ -26,7 +26,7 @@ export default function UpdateForm(props) {
     axios
       .put(`http://localhost:5000/api/movies/${id}`, movie)
       .then((res) => props.setMovieList(props.movieList.map(movie =>{
-        if (movie.id === id){
+        if (String(movie.id )=== String(id){
         return res.data
         
         
@@ -34,11 +34,11 @@ export default function UpdateForm(props) {
         else {
           return movie
         }
-      }
+      
 
-      .catch((err) => console.log(err.response));
     
-  };
+    })
+
     const handleChange = (e) => {
     e.persist();
     let value = e.target.value;

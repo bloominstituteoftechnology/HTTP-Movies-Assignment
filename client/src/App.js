@@ -42,15 +42,15 @@ const App = () => {
 				path="/update-movie/:id"
 				render={(props) => {
 					return (
-						<UpdateMovie {...props} setMovieList={setMovieList} />
+						<UpdateMovie {...props} setMovieList={setMovieList} movieList={movieList} />
 					);
 				}}
 			/>
 			<Route
 				exact
-				path="/add-movie/:id "
+				path="/add-movie/"
 				render={(props) => {
-					return <AddMovie {...props} setMovieList={setMovieList} />;
+					return <AddMovie {...props} setMovieList={setMovieList} movieList ={movieList} />;
 				}}
 			/>
 		</div>
