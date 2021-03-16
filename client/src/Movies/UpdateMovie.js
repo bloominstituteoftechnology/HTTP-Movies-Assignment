@@ -13,7 +13,7 @@ const UpdateMovie = () => {
     const { id } = useParams();
 
     useEffect(() => {
-        axios.get(`http://localhost/5000/api/movies/${id}`)
+        axios.get(`http://localhost/3000/api/movies/${id}`)
             .then(res => {
                 console.log(res);
                 setMovie(res.data)
@@ -31,7 +31,7 @@ const UpdateMovie = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost/5000/api/movies/${id}`, movie)
+        axios.put(`http://localhost/3000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res);
             })
