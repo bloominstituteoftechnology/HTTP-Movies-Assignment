@@ -6,7 +6,7 @@ import MovieCard from "./MovieCard";
 function Movie({ addToSavedList }) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
-  const { push } = useHistory()
+  const { push } = useHistory();
 
   const fetchMovie = (id) => {
     axios
@@ -21,6 +21,14 @@ function Movie({ addToSavedList }) {
 
   const updateMovie = id => {
     push(`/update-movie/:${id}`)
+  }
+
+  const deleteMovie = id => {
+    id.preventDefault();
+    axios.delete(`http://localhost:5000/movies/${id}`)
+      .then(res => setMovie(res.data))
+      .catch(err => console.log(err));
+    push('/')
   }
 
   useEffect(() => {
@@ -42,6 +50,10 @@ function Movie({ addToSavedList }) {
 
       <button className="edit-button" onClick={updateMovie}>
         Edit
+      </button>
+
+      <button className="delete-button" onClick={deleteMovie}>
+        Delete
       </button>
 
     </div>

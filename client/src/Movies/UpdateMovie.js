@@ -1,22 +1,27 @@
 import React, { useEffect, useState } from 'react';
 import axios from 'axios';
-import { useParams } from 'react-router-dom';
+import { useParams, useHistory } from 'react-router-dom';
 
 const initialState = {
+    id: Date.now(),
     title: '',
     director: '',
     metascore: '',
     stars: '',
 }
 const UpdateMovie = () => {
+    
     const [movie, setMovie] = useState(initialState);
+
     const { id } = useParams();
 
+    const { push } = useHistory();
+
     useEffect(() => {
-        axios.get(`http://localhost/3000/api/movies/${id}`)
+        axios.get(`http://localhost/5000/api/movies/${id}`)
             .then(res => {
                 console.log(res);
-                setMovie(res.data)
+                setMovie(res.data);
             })
             .catch(err => console.log(err))
     }, [id])
@@ -31,9 +36,11 @@ const UpdateMovie = () => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost/3000/api/movies/${id}`, movie)
+        axios.put(`http://localhost/5000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res);
+                setMovie(res.data);
+                push('/');
             })
             .catch(err => console.log(err))
     }
@@ -72,6 +79,8 @@ const UpdateMovie = () => {
                 onChange={handleChange}
                 placeholder='stars'
             />
+
+            <button>Update</button>
 
         </form>
     )
