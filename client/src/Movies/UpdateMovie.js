@@ -3,13 +3,11 @@ import axios from 'axios';
 import { useParams, useHistory } from 'react-router-dom';
 
 const initialState = {
-    id: Date.now(),
     title: '',
     director: '',
     metascore: '',
-    stars: '',
 }
-const UpdateMovie = () => {
+const UpdateMovie = (props) => {
     
     const [movie, setMovie] = useState(initialState);
 
@@ -39,7 +37,7 @@ const UpdateMovie = () => {
         axios.put(`http://localhost/5000/api/movies/${id}`, movie)
             .then(res => {
                 console.log(res);
-                setMovie(res.data);
+                props.setMovieList(res.data);
                 push('/');
             })
             .catch(err => console.log(err))
@@ -70,14 +68,6 @@ const UpdateMovie = () => {
                 value={movie.metascore}
                 onChange={handleChange}
                 placeholder='metascore'
-            />
-
-            <input
-                type='text'
-                name='stars'
-                value={movie.stars}
-                onChange={handleChange}
-                placeholder='stars'
             />
 
             <button>Update</button>
