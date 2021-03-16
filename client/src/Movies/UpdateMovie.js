@@ -3,6 +3,7 @@ import { useParams, useHistory } from 'react-router-dom';
 import axios from "axios";
 
 const initialMovie = {
+  id: 0,
   title: "",
   director: "",
   metascore: "", // an integer
@@ -14,10 +15,12 @@ const initialMovie = {
 
 const UpdateMovie = (props) => {
   const [movie, setMovie] = useState(initialMovie);
-  const { id } = useParams();
+  const { id } = useParams(); //returns "string"
+  const idNumber = parseInt(id);
   const { push } = useHistory();
   // console.log("props: ", props)
-  const { setMovieList } = props;
+  const { setMovieList, movies } = props;
+
 
   useEffect(() => {
     axios.get(`http://localhost:5000/api/movies/${id}`)
@@ -26,31 +29,57 @@ const UpdateMovie = (props) => {
         setMovie(res.data);
       })
       .catch(err => console.log(err));
-  }, [id]);
+  }, [id]); // QUESTION
 
   const changeHandler = e => {
     let value = e.target.value;
     let name = e.target.name;
+
+    if (name === "stars") {
+      name = [value];
+    } 
   
     setMovie({
       ...movie, 
+      id: idNumber,
       [name]: value
     });
   };
 
+
+
   const handleSubmit = e => {
     e.preventDefault();
     // Axios PUT request here (PUT = update)
+    console.log("movie state from UM: ", movie)
     axios.put(`http://localhost:5000/api/movies/${id}`, movie)
       .then(res => {
-        console.log("res in put request: ", res);
-        setMovieList(res.data);
-        // push(`/movies/${id}`);
+        console.log("res in put request: ", res); 
+        // returns updated movie object
+        console.log("movies state: ", movies)
+        // console.log("id: ", typeof(idNumber))
+        // console.log(idNumber)
+
+        setMovieList(
+          movies.map((movie) => {
+            if (movie.id === `${id}`) {
+              return res.data; //  single source of truth
+              // PROBLEM:  the server returns a string id not an integer
+            } else {
+              return movie;
+            }
+          })
+        );
+        
+        setMovie(initialMovie);// resets form
+
+        push(`/movies/${id}`);
       })
       .catch(err => console.log(err));
   };
       // - When the call comes back successfully, reset your form state 
-  
+
+
 
   return (
     <div className="update-movie-form-container">

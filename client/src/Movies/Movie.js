@@ -12,7 +12,7 @@ function Movie({ addToSavedList }) {
     axios
       .get(`http://localhost:5000/api/movies/${id}`)
       .then((res) => setMovie(res.data))
-      .catch((err) => console.log(err.response));
+      .catch((err) => console.log("error", err));
   };
 
   const { id } = useParams();
@@ -32,14 +32,24 @@ function Movie({ addToSavedList }) {
 
   return (
     <div className="save-wrapper">
+
       <MovieCard movie={movie} />
-      <button onClick={(evt) => history.push(`/movies/${movie.id}`)}>
-        `${movie}`
-      </button>
+      {/* <button onClick={(evt) => history.push(`/update-movie/${movie.id}`)}>
+        Update
+      </button> */}
 
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
+
+      <div className="update-button"onClick={(evt) => history.push(`/update-movie/${movie.id}`)}>
+        Update
+      </div>
+
+      <div className="delete-button">
+        Delete
+      </div>
+
     </div>
   );
 }
