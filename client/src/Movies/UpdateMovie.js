@@ -37,8 +37,8 @@ const UpdateMovie = (props) => {
     axios.put(`http://localhost:5000/api/movies/${id}`, movie)
       .then(res => {
         console.log('submitting changes to movie', res)
-        props.setMovie(res.data)
-        push(`/movie-list/${id}`)
+        props.setMovieList(res.data)
+        push('/movie-list')
       })
       .catch(err => console.log('error updating', err))
     }
