@@ -29,7 +29,7 @@ const UpdateMovie = (props) => {
         setMovie(res.data);
       })
       .catch(err => console.log(err));
-  }, [id]); // QUESTION
+  }, [id]); // FIRST RENDER
 
   const changeHandler = e => {
     let value = e.target.value;
@@ -51,34 +51,32 @@ const UpdateMovie = (props) => {
   const handleSubmit = e => {
     e.preventDefault();
     // Axios PUT request here (PUT = update)
-    console.log("movie state from UM: ", movie)
+    // console.log("movie state from UM: ", movie)
     axios.put(`http://localhost:5000/api/movies/${id}`, movie)
       .then(res => {
         console.log("res in put request: ", res); 
         // returns updated movie object
-        console.log("movies state: ", movies)
+        // console.log("movies state: ", movies)
         // console.log("id: ", typeof(idNumber))
         // console.log(idNumber)
 
         setMovieList(
           movies.map((movie) => {
-            if (movie.id === `${id}`) {
+            if (toString(movie.id) === `${id}`) {
               return res.data; //  single source of truth
-              // PROBLEM:  the server returns a string id not an integer
+              // the server returns a string id, NaN
             } else {
               return movie;
             }
           })
         );
         
-        setMovie(initialMovie);// resets form
+        setMovie(initialMovie);// resets form state
 
         push(`/movies/${id}`);
       })
       .catch(err => console.log(err));
   };
-      // - When the call comes back successfully, reset your form state 
-
 
 
   return (
