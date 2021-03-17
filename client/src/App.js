@@ -4,6 +4,8 @@ import SavedList from "./Movies/SavedList";
 import MovieList from "./Movies/MovieList";
 import Movie from "./Movies/Movie";
 import axios from 'axios';
+import UpdateMovie from './Movies/UpdateMovie';
+import AddMovie from './Movies/AddMovie';
 
 const App = () => {
   const [savedList, setSavedList] = useState([]);
@@ -15,6 +17,18 @@ const App = () => {
       .then(res => setMovieList(res.data))
       .catch(err => console.log(err.response));
   };
+
+  const updateMovieList = (movie) => {
+    setMovieList(
+      movieList.map(item => {
+        if(item.id === movie.id){
+          return movie
+        } else {
+          return item
+        }
+      })
+    )
+  }
 
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
@@ -33,7 +47,15 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie movieList={movieList} setMovieList={setMovieList} addToSavedList={addToSavedList} />
+      </Route>
+
+      <Route path="/update-movie/:id">
+        <UpdateMovie setMovieList={setMovieList} updateMovieList={updateMovieList}/>
+      </Route>
+
+      <Route path="/add-movie/:id">
+        <AddMovie setMovieList={setMovieList}/>
       </Route>
     </>
   );
