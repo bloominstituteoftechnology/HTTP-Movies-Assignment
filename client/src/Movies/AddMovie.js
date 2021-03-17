@@ -1,21 +1,24 @@
 import React, { useState } from 'react';
+import { useHistory } from 'react-router-dom';
 import axios from 'axios';
 
 const initialState = {
     title: '',
     director: '',
     metascore: '',
+    stars: []
 }
 
 const AddMovie = (props) => {
-    console.log(props)
     const [movie, setMovie] = useState(initialState);
+    const { push } = useHistory();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/api/movies', movie)
             .then(res => props.setMovieList(res.data))
-            .catch(err => console.log(err))
+            .catch(err => console.log(err));
+        push('/');
     };
 
     const handleChange = (e) => {
@@ -54,6 +57,14 @@ const AddMovie = (props) => {
                     placeholder="metascore"
                     value={movie.metascore}
                 />
+
+                {/* <input
+                    type="text"
+                    name="stars"
+                    onChange={handleChange}
+                    placeholder="stars"
+                    value={movie.stars}
+                /> */}
 
                 <button>Add</button>
             </form>

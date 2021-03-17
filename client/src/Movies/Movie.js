@@ -3,9 +3,9 @@ import axios from "axios";
 import { useParams, useHistory } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-function Movie({ addToSavedList }) {
+function Movie({ addToSavedList, movieList, setMovieList }) {
   const [movie, setMovie] = useState(null);
-  const params = useParams();
+  const { id } = useParams();
   const { push } = useHistory();
 
   const fetchMovie = (id) => {
@@ -19,21 +19,25 @@ function Movie({ addToSavedList }) {
     addToSavedList(movie);
   };
 
-  const updateMovie = id => {
-    push(`/update-movie/:${id}`)
+  const updateMovie = () => {
+    push(`/update-movie/${id}`)
   }
 
-  const deleteMovie = id => {
-    id.preventDefault();
-    axios.delete(`http://localhost:5000/movies/${id}`)
-      .then(res => setMovie(res.data))
+  const deleteMovie = (e) => {
+    e.preventDefault();
+    axios.delete(`http://localhost:5000/api/movies/${movie.id}`)
+      .then(res => {
+        setMovieList(movieList.filter(item => {
+          return item.id !== movie.id
+        }))
+      })
       .catch(err => console.log(err));
-    push('/')
-  }
+    push('/');
+  };
 
   useEffect(() => {
-    fetchMovie(params.id);
-  }, [params.id]);
+    fetchMovie(id);
+  }, [id]);
 
   if (!movie) {
     return <div>Loading movie information...</div>;

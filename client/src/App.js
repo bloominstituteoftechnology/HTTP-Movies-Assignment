@@ -18,6 +18,18 @@ const App = () => {
       .catch(err => console.log(err.response));
   };
 
+  const updateMovieList = (movie) => {
+    setMovieList(
+      movieList.map(item => {
+        if(item.id === movie.id){
+          return movie
+        } else {
+          return item
+        }
+      })
+    )
+  }
+
   const addToSavedList = movie => {
     setSavedList([...savedList, movie]);
   };
@@ -35,11 +47,11 @@ const App = () => {
       </Route>
 
       <Route path="/movies/:id">
-        <Movie addToSavedList={addToSavedList} />
+        <Movie movieList={movieList} setMovieList={setMovieList} addToSavedList={addToSavedList} />
       </Route>
 
       <Route path="/update-movie/:id">
-        <UpdateMovie setMovieList={setMovieList}/>
+        <UpdateMovie setMovieList={setMovieList} updateMovieList={updateMovieList}/>
       </Route>
 
       <Route path="/add-movie/:id">

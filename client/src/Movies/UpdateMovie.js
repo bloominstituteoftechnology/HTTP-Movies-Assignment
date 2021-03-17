@@ -6,23 +6,19 @@ const initialState = {
     title: '',
     director: '',
     metascore: '',
+    stars: []
 }
 const UpdateMovie = (props) => {
     
     const [movie, setMovie] = useState(initialState);
-
     const { id } = useParams();
-
     const { push } = useHistory();
 
     useEffect(() => {
-        axios.get(`http://localhost/5000/api/movies/${id}`)
-            .then(res => {
-                console.log(res);
-                setMovie(res.data);
-            })
+        axios.get(`http://localhost:5000/api/movies/${id}`)
+            .then(res => setMovie(res.data))
             .catch(err => console.log(err))
-    }, [id])
+    },[id])
 
     const handleChange = (e) => {
         e.persist();
@@ -34,13 +30,10 @@ const UpdateMovie = (props) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`http://localhost/5000/api/movies/${id}`, movie)
-            .then(res => {
-                console.log(res);
-                props.setMovieList(res.data);
-                push('/');
-            })
-            .catch(err => console.log(err))
+        axios.put(`http://localhost:5000/api/movies/${id}`, movie)
+            .then(res => props.updateMovieList(res.data))
+            .catch(err => console.log(err));
+        push('/');
     }
 
     return(
@@ -68,6 +61,14 @@ const UpdateMovie = (props) => {
                 value={movie.metascore}
                 onChange={handleChange}
                 placeholder='metascore'
+            />
+
+            <input
+                type='text'
+                name='stars'
+                value={movie.stars}
+                onChange={handleChange}
+                placeholder='stars'
             />
 
             <button>Update</button>
