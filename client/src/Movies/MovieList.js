@@ -8,7 +8,7 @@ function MovieList({ setMovieList, movies }) {
   useEffect(() => {
     axios.get(`http://localhost:5000/api/movies/`)
       .then(res => {
-        console.log("Get movies request response", res);
+        // console.log("Get movies request response", res);
         setMovieList(res.data);
       })
       .catch(err => console.log(err));
