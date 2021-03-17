@@ -3,7 +3,7 @@ import axios from "axios";
 import { useParams } from "react-router-dom";
 import MovieCard from "./MovieCard";
 
-function Movie({ addToSavedList }) {
+function Movie({ addToSavedList}, props) {
   const [movie, setMovie] = useState(null);
   const params = useParams();
 
@@ -17,6 +17,12 @@ function Movie({ addToSavedList }) {
   const saveMovie = () => {
     addToSavedList(movie);
   };
+
+  const handleEdit = (ev) => {
+   ev.preventDefault();
+   console.log('Routing to path:', `/update-item/${movie.id}`)
+   props.history.push(`/update-item/${movie.id}`)
+  }
 
   useEffect(() => {
     fetchMovie(params.id);
@@ -33,6 +39,12 @@ function Movie({ addToSavedList }) {
       <div className="save-button" onClick={saveMovie}>
         Save
       </div>
+
+      <div className="update-button" onClick={handleEdit}>
+          Update
+      </div>
+      
+      
     </div>
   );
 }
