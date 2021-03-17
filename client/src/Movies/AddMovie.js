@@ -1,5 +1,8 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { useHistory } from 'react-router-dom';
+
+
 
 const initialState = {
   id: Date.now(),
@@ -9,8 +12,9 @@ const initialState = {
   stars: ['Daniel Vazquez', 'Webpt24'],
 }
 
-const AddMovie = props => {
+const AddMovie = (props) => {
   const [newMovie, setNewMovie] = useState(initialState)
+  const { push } = useHistory()
 
   const handleChanges = e => {
     setNewMovie({
@@ -21,10 +25,11 @@ const AddMovie = props => {
 
   const handleSubmit = e => {
     e.preventDefault()
-    axios.post('`http://localhost:5000/api/movies/', newMovie)
+    axios.post('http://localhost:5000/api/movies/', newMovie)
       .then(res => {
         console.log('added new movie to list!', res)
-        props.setNewMovie(res.data)
+        props.setMovieList(res.data)
+        push('/')
       })
       .catch(err => console.log('error adding new movie', err))
     }

@@ -38,7 +38,7 @@ const UpdateMovie = (props) => {
       .then(res => {
         console.log('submitting changes to movie', res)
         props.setMovieList(res.data)
-        push('/movie-list')
+        push('/')
       })
       .catch(err => console.log('error updating', err))
     }
