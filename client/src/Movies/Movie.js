@@ -9,7 +9,7 @@ function Movie({ addToSavedList }) {
 
   const fetchMovie = (id) => {
     axios
-      .get(`http://localhost:5000/api/movies/${id}`)
+      .get(`http://localhost:5555/api/movies/${id}`)
       .then((res) => setMovie(res.data))
       .catch((err) => console.log(err.response));
   };
