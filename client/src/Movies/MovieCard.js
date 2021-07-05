@@ -1,10 +1,28 @@
 import React from 'react';
+import { Link } from "react-router-dom";
+import { IoIosCloseCircle, IoMdCreate } from "react-icons/io";
+import { useHistory } from "react-router-dom";
 
 const MovieCard = props => {
-  const { title, director, metascore, stars } = props.movie;
+  let history = useHistory();
+
+  const removeMovie =  () => {
+    console.log("remove movie");
+    if (window.confirm('Are you sure you want to remove this movie?')) {
+      props.removeMovie(props.movie.id);
+
+    }else{
+      history.push('/');
+    }
+  }
+
+
+  const { id, title, director, metascore, stars } = props.movie;
   return (
     <div className="movie-card">
-      <h2>{title}</h2>
+      <Link key={id} to={`/movies/${id}`}>
+        <h2>{title}</h2>
+      </Link>
       <div className="movie-director">
         Director: <em>{director}</em>
       </div>
@@ -18,6 +36,18 @@ const MovieCard = props => {
           {star}
         </div>
       ))}
+      
+      <Link to={`/update-movie/${props.movie.id}`}>  
+      <div className="update-button" >
+        Update
+      </div>
+      </Link>
+
+      <div className="remove-button">
+        <IoIosCloseCircle className="remove" onClick={removeMovie}/>
+      </div>
+      
+      
     </div>
   );
 };

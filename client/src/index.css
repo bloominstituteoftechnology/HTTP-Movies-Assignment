@@ -11,7 +11,7 @@ body {
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
-  cursor: pointer;
+  
   position: relative;
   margin: 1rem auto;
 }
@@ -61,6 +61,16 @@ body {
   padding: 5px 10px;
   background-color: lightseagreen;
 }
+
+.update-button {
+  position: absolute;
+  top: 200px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 10px;
+  background-color: lightseagreen;
+}
+
 .save-button:hover {
   background-color: green;
   color: white;
@@ -74,4 +84,20 @@ body {
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.submit-button {
+  border: 1px solid grey;
+  background-color: lightseagreen;
+}
+
+.remove-button {
+  position: absolute;
+  top: 25px;
+  right: 25px;
+  cursor: pointer;
+  
+  
+
+
 }
