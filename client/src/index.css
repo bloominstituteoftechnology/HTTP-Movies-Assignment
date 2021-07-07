@@ -2,11 +2,14 @@ body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
-  background-color: #f2f2f2;
+  background-image: url('https://i.postimg.cc/bwqMJzjg/movie-seats.jpg');
+  /* background-repeat: no-repeat; */
+  /* background-size: 1899px 950px; */
 }
 
+
 .movie-card {
-  background-color: #fff;
+  background-color: #e4ddbd;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
@@ -14,6 +17,9 @@ body {
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  width: 45%;
+  color: black;
+  text-align: center;
 }
 
 .movie-director {
@@ -22,7 +28,7 @@ body {
 }
 
 .saved-list {
-  background-color: #fff;
+  background-color: #e4ddbd;
   border: 0;
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
@@ -38,13 +44,16 @@ body {
 
 .saved-list h3 {
   margin-right: 10px;
+  width: 50%;
+  
 }
 
 .saved-movie {
   margin: 0 10px;
 }
 .saved-active {
-  color: blue;
+  color: whitesmoke;
+  font-weight: bold;
   border: 1px solid grey;
   padding: 5px;
 }
@@ -60,15 +69,18 @@ body {
   border: 1px solid grey;
   padding: 5px 10px;
   background-color: lightseagreen;
+  
 }
 .save-button:hover {
   background-color: green;
-  color: white;
+  color: whitesmoke;
 }
 
 .home-button {
   padding: 5px 10px;
-  background-color: lightskyblue;
+  background-color: #e4ddbd;
+  color: black;
+  font-weight: bold;
 }
 
 .movie-warning {
