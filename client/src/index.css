@@ -75,3 +75,27 @@ body {
   color: red;
   text-align: center;
 }
+.editButton{
+  padding:10px;
+  background: lightskyblue;
+  color:bold black;
+  width:1.5%;
+  margin: 0 auto;
+}
+.updateDiv{
+  width:40%;
+  margin: 0 auto;
+}
+.updateHeader{
+  width:40%;
+  margin: 0 auto;
+  padding-bottom: 10px;
+}
+.delete-button {
+  position: absolute;
+  top: 65px;
+  right: 25px;
+  border: 1px solid grey;
+  padding: 5px 6px;
+  background-color: lightseagreen;
+}
