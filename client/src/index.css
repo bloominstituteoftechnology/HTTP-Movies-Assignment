@@ -1,8 +1,11 @@
+@import url('https://fonts.googleapis.com/css2?family=Sansita+Swashed:wght@400;900&display=swap');
 body {
   margin: 0;
   padding: 0;
   font-family: sans-serif;
   background-color: #f2f2f2;
+  background-image: url("https://ae01.alicdn.com/kf/H9a279adf7edc4fba9707035a2bc235fax.jpg_q50.jpg");
+
 }
 
 .movie-card {
@@ -11,9 +14,15 @@ body {
   box-shadow: 0 -1px 0 #e0e0e0, 0 0 2px rgba(0, 0, 0, 0.12),
     0 2px 4px rgba(0, 0, 0, 0.24);
   padding: 1rem;
+  width:50%;
+  
   cursor: pointer;
   position: relative;
   margin: 1rem auto;
+  color:black;
+  text-decoration: none;
+  background-image: url("https://img.freepik.com/free-photo/cinema-concept-with-popcorn-background_23-2147989043.jpg?size=626&ext=jpg&ga=GA1.2.334233834.1600473600");
+
 }
 
 .movie-director {
@@ -34,6 +43,8 @@ body {
   display: flex;
   align-items: center;
   justify-content: space-between;
+  background-image: url("https://img.freepik.com/free-photo/cinema-concept-with-popcorn-background_23-2147989043.jpg?size=626&ext=jpg&ga=GA1.2.334233834.1600473600");
+
 }
 
 .saved-list h3 {
@@ -50,8 +61,9 @@ body {
 }
 .save-wrapper {
   position: relative;
-  width: 75%;
+  width: 100%;
   margin: 1rem auto;
+  background-image: url("https://ae01.alicdn.com/kf/H9a279adf7edc4fba9707035a2bc235fax.jpg_q50.jpg");
 }
 .save-button {
   position: absolute;
@@ -67,11 +79,86 @@ body {
 }
 
 .home-button {
-  padding: 5px 10px;
-  background-color: lightskyblue;
+margin-bottom: 4rem;
+text-decoration: none;
+margin-left: 2rem;
+display: flex;
 }
+.home-button a{
+ margin-top: 3rem;
+  text-decoration: none;
+  margin-left: 2rem;
+  font-size: 1.5rem;
+  
+  }
 
 .movie-warning {
   color: red;
   text-align: center;
+}
+
+.movie-list{
+  text-decoration: none;
+  background-color: black;
+  background-image: url("https://ae01.alicdn.com/kf/H9a279adf7edc4fba9707035a2bc235fax.jpg_q50.jpg");
+}
+a{
+  margin-top: 5rem;
+  display: flex;
+  justify-content: center;
+  text-decoration: none;
+  font-family: 'Sansita Swashed', cursive;
+  font-weight: 900;
+  /* background-image: url("https://render.fineartamerica.com/images/rendered/default/poster/10/8/break/images/artworkimages/medium/1/1-popcorn-background-carlos-caetano.jpg"); */
+}
+.edit{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width:50%;
+  margin-left:15rem;  
+}
+input{
+  margin-top: 2rem;
+  font-family: 'Sansita Swashed', cursive;
+
+}
+h2{
+  justify-content: center;
+  display: flex;
+}
+button{
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  margin-left:25rem;
+  text-decoration: none;
+  color: rgba(106, 0, 0, 0.8);
+  background: rgb(218, 186, 8);
+  padding: 15px 40px;
+  border-radius: 4px;
+  font-weight: normal;
+  text-transform: uppercase;
+  transition: all 0.2s ease-in-out;
+
+}
+
+.update-button{
+  margin-left: 15rem;
+}
+.delete-button{
+  background: red;
+  color:white;
+  margin-top: -3rem;
+  margin-left:35rem;
+}
+.add-movie-button{
+  margin-left: 15rem;
+}
+.add-form{
+  display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  width:50%;
+  margin-left:15rem;  
 }

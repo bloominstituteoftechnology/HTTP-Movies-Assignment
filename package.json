@@ -1,24 +1,24 @@
 {
-  "name": "movies",
+  "name": "http-movies-assignment",
   "version": "1.0.0",
-  "description": "",
+  "description": "## Instructions",
   "main": "server.js",
+  "dependencies": {
+    "restart": "^2.0.0"
+  },
+  "devDependencies": {},
   "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
     "start": "node server.js"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/SPA-Routing-React"
+    "url": "git+https://github.com/zzeroyzz/HTTP-Movies-Assignment.git"
   },
-  "author": "Lambda School",
+  "author": "",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LambdaSchool/SPA-Routing-React/issues"
+    "url": "https://github.com/zzeroyzz/HTTP-Movies-Assignment/issues"
   },
-  "homepage": "hhttps://github.com/LambdaSchool/SPA-Routing-React#readme",
-  "dependencies": {
-    "body-parser": "^1.19.0",
-    "cors": "^2.8.5",
-    "express": "^4.17.1"
-  }
+  "homepage": "https://github.com/zzeroyzz/HTTP-Movies-Assignment#readme"
 }
