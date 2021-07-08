@@ -1,10 +1,14 @@
 import React from 'react';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useParams, useHistory } from 'react-router-dom';
+import axios from "axios";
 
-function SavedList({ list }) {
+const SavedList = ({ list }, props) =>  {
+          const params = useParams();
+
+  
   return (
     <div className="saved-list">
-      <h3>Saved Movies:</h3>
+      <h3>Watchlist:</h3>
       {list.map(movie => {
         return (
           <NavLink
@@ -13,12 +17,12 @@ function SavedList({ list }) {
             activeClassName="saved-active"
           >
             <span className="saved-movie">{movie.title}</span>
+            <button onClick={()=> list.pop(movie)}> X  </button> 
           </NavLink>
+
         );
       })}
-      <div className="home-button">
-        <Link to="/">Home</Link>
-      </div>
+       
     </div>
   );
 }
