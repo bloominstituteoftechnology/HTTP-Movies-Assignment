@@ -8,14 +8,14 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/LambdaSchool/SPA-Routing-React"
+    "url": "git+https://github.com/BloomInstituteOfTechnology/SPA-Routing-React"
   },
-  "author": "Lambda School",
+  "author": "BloomTech",
   "license": "ISC",
   "bugs": {
-    "url": "https://github.com/LambdaSchool/SPA-Routing-React/issues"
+    "url": "https://github.com/BloomInstituteOfTechnology/SPA-Routing-React/issues"
   },
-  "homepage": "hhttps://github.com/LambdaSchool/SPA-Routing-React#readme",
+  "homepage": "hhttps://github.com/BloomInstituteOfTechnology/SPA-Routing-React#readme",
   "dependencies": {
     "body-parser": "^1.19.0",
     "cors": "^2.8.5",
