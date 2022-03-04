@@ -74,26 +74,22 @@ app.post("/api/movies", (req, res) => {
 });
 
 app.put("/api/movies/:id", (req, res) => {
-  if (!req.params.id)
-    res.status(400).send("Your request is missing the movie id");
-  if (
-    req.body.id === undefined ||
-    !req.body.title ||
-    !req.body.director ||
-    !req.body.metascore ||
-    !req.body.stars
-  ) {
-    res
-      .status(422)
-      .send("Make sure your request body has all the fields it needs");
-  }
-  movies = movies.map(movie => {
-    if (`${movie.id}` === req.params.id) {
-      return req.body;
+    const { id } = req.params;
+
+    const friendIndex = movies.findIndex(f => f.id == id);
+  
+    if (friendIndex > -1) {
+      const friend = { ...movies[friendIndex], ...req.body };
+  
+      movies = [
+        ...movies.slice(0, friendIndex),
+        friend,
+        ...movies.slice(friendIndex + 1)
+      ];
+    res.send(movies);
+    }else {
+      res.status(404).send({ msg: 'Friend not found' });
     }
-    return movie;
-  });
-  res.status(200).send(req.body);
 });
 
 app.delete("/api/movies/:id", (req, res) => {
@@ -110,3 +106,4 @@ app.get("/", function(req, res) {
 app.listen(5000, () => {
   console.log("Server listening on port 5000");
 });
+
